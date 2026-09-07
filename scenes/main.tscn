@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://main.gd" id="1_main"]
-[ext_resource type="Script" path="res://player.gd" id="2_player"]
-[ext_resource type="Script" path="res://quest_item.gd" id="3_quest"]
-[ext_resource type="Script" path="res://door.gd" id="4_door"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_player"]
+[ext_resource type="Script" path="res://scripts/quest_item.gd" id="3_quest"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="4_door"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trigger"]
 radius = 50.0
