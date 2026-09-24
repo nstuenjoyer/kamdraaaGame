@@ -1,265 +1,313 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_player"]
 [ext_resource type="Script" path="res://scripts/quest_item.gd" id="3_quest"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="4_door"]
+[ext_resource type="Script" path="res://scripts/dialogue_box.gd" id="5_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="6_pause"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trigger"]
-radius = 50.0
+radius = 65.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_player"]
-radius = 14.0
+radius = 12.0
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_main")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.72, 0.74, 0.85, 1)
+
 [node name="Floor" type="Node2D" parent="."]
-z_index = -5
+z_index = -10
 
 [node name="RoomFloor" type="Polygon2D" parent="Floor"]
-color = Color(0.2, 0.22, 0.26, 1)
-polygon = PackedVector2Array(200, 350, 600, 150, 1000, 350, 600, 550)
+color = Color(0.14, 0.16, 0.2, 1)
+polygon = PackedVector2Array(240, 340, 600, 160, 960, 340, 600, 520)
 
 [node name="FloorGridLine1" type="Line2D" parent="Floor"]
-points = PackedVector2Array(400, 250, 800, 450)
-width = 1.5
-default_color = Color(0.28, 0.3, 0.36, 0.6)
+points = PackedVector2Array(360, 400, 720, 220)
+width = 1.0
+default_color = Color(0.22, 0.25, 0.32, 0.4)
 
 [node name="FloorGridLine2" type="Line2D" parent="Floor"]
-points = PackedVector2Array(400, 450, 800, 250)
-width = 1.5
-default_color = Color(0.28, 0.3, 0.36, 0.6)
+points = PackedVector2Array(480, 460, 840, 280)
+width = 1.0
+default_color = Color(0.22, 0.25, 0.32, 0.4)
 
 [node name="FloorGridLine3" type="Line2D" parent="Floor"]
-points = PackedVector2Array(600, 150, 600, 550)
-width = 1.5
-default_color = Color(0.28, 0.3, 0.36, 0.6)
+points = PackedVector2Array(360, 280, 720, 460)
+width = 1.0
+default_color = Color(0.22, 0.25, 0.32, 0.4)
 
 [node name="FloorGridLine4" type="Line2D" parent="Floor"]
-points = PackedVector2Array(200, 350, 1000, 350)
-width = 1.5
-default_color = Color(0.28, 0.3, 0.36, 0.6)
+points = PackedVector2Array(480, 220, 840, 400)
+width = 1.0
+default_color = Color(0.22, 0.25, 0.32, 0.4)
 
 [node name="FloorBorder" type="Line2D" parent="Floor"]
-points = PackedVector2Array(200, 350, 600, 150, 1000, 350, 600, 550, 200, 350)
-width = 3.0
-default_color = Color(0.4, 0.45, 0.52, 1)
+points = PackedVector2Array(240, 340, 600, 160, 960, 340, 600, 520, 240, 340)
+width = 2.5
+default_color = Color(0.28, 0.32, 0.4, 0.8)
 
-[node name="OutsideWalkway" type="Polygon2D" parent="Floor"]
-color = Color(0.16, 0.18, 0.22, 1)
-polygon = PackedVector2Array(750, 475, 850, 425, 930, 465, 830, 515)
+[node name="HallwayFloor" type="Polygon2D" parent="Floor"]
+color = Color(0.08, 0.09, 0.12, 1)
+polygon = PackedVector2Array(740, 450, 820, 410, 890, 445, 810, 485)
 
-[node name="OutsideWalkwayBorder" type="Line2D" parent="Floor"]
-points = PackedVector2Array(750, 475, 830, 515, 930, 465, 850, 425)
+[node name="HallwayBorder" type="Line2D" parent="Floor"]
+points = PackedVector2Array(740, 450, 810, 485, 890, 445, 820, 410)
 width = 2.0
-default_color = Color(0.35, 0.4, 0.46, 0.8)
+default_color = Color(0.2, 0.22, 0.3, 0.7)
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="WallNW_Collision" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(200, 350, 600, 150, 600, 138, 200, 338)
+polygon = PackedVector2Array(240, 340, 600, 160, 600, 145, 240, 325)
 
 [node name="WallNW_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.32, 0.35, 0.42, 1)
-polygon = PackedVector2Array(200, 350, 600, 150, 600, 110, 200, 310)
+color = Color(0.22, 0.24, 0.3, 1)
+polygon = PackedVector2Array(240, 340, 600, 160, 600, 20, 240, 200)
 
 [node name="WallNE_Collision" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(600, 150, 1000, 350, 1000, 338, 600, 138)
+polygon = PackedVector2Array(600, 160, 960, 340, 960, 325, 600, 145)
 
 [node name="WallNE_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.27, 0.3, 0.36, 1)
-polygon = PackedVector2Array(600, 150, 1000, 350, 1000, 310, 600, 110)
+color = Color(0.18, 0.2, 0.26, 1)
+polygon = PackedVector2Array(600, 160, 960, 340, 960, 200, 600, 20)
 
 [node name="WallSW_Collision" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(200, 350, 600, 550, 600, 562, 200, 362)
+polygon = PackedVector2Array(240, 340, 600, 520, 600, 535, 240, 355)
 
 [node name="WallSW_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.38, 0.42, 0.5, 1)
-polygon = PackedVector2Array(200, 350, 600, 550, 600, 535, 200, 335)
+color = Color(0.28, 0.3, 0.38, 1)
+polygon = PackedVector2Array(240, 340, 600, 520, 600, 505, 240, 325)
 
 [node name="WallSE_Part1_Collision" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(600, 550, 750, 475, 750, 463, 600, 538)
+polygon = PackedVector2Array(600, 520, 740, 450, 740, 435, 600, 505)
 
 [node name="WallSE_Part1_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.34, 0.38, 0.45, 1)
-polygon = PackedVector2Array(600, 550, 750, 475, 750, 460, 600, 535)
+color = Color(0.25, 0.27, 0.34, 1)
+polygon = PackedVector2Array(600, 520, 740, 450, 740, 435, 600, 505)
 
 [node name="WallSE_Part2_Collision" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(850, 425, 1000, 350, 1000, 338, 850, 413)
+polygon = PackedVector2Array(820, 410, 960, 340, 960, 325, 820, 395)
 
 [node name="WallSE_Part2_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.34, 0.38, 0.45, 1)
-polygon = PackedVector2Array(850, 425, 1000, 350, 1000, 335, 850, 410)
+color = Color(0.25, 0.27, 0.34, 1)
+polygon = PackedVector2Array(820, 410, 960, 340, 960, 325, 820, 395)
 
-[node name="Door" type="StaticBody2D" parent="."]
-z_index = 2
-position = Vector2(750, 475)
-script = ExtResource("4_door")
+[node name="MirrorWithLipstick" type="Node2D" parent="."]
+position = Vector2(360, 220)
 
-[node name="DoorPanel" type="Polygon2D" parent="Door"]
-color = Color(0.55, 0.25, 0.15, 1)
-polygon = PackedVector2Array(0, 0, 100, -50, 100, -110, 0, -60)
+[node name="MirrorFrame" type="Polygon2D" parent="MirrorWithLipstick"]
+color = Color(0.35, 0.37, 0.45, 1)
+polygon = PackedVector2Array(-24, 12, 24, -12, 24, -68, -24, -44)
 
-[node name="DoorSide" type="Polygon2D" parent="Door"]
-color = Color(0.4, 0.18, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 6, 3, 6, -57, 0, -60)
+[node name="MirrorGlass" type="Polygon2D" parent="MirrorWithLipstick"]
+color = Color(0.5, 0.58, 0.68, 0.85)
+polygon = PackedVector2Array(-20, 10, 20, -10, 20, -64, -20, -44)
 
-[node name="DoorLabel" type="Label" parent="Door"]
-offset_left = 18.0
-offset_top = -85.0
-offset_right = 82.0
-offset_bottom = -62.0
-rotation = -0.4636
-text = "Заперто"
+[node name="LipstickMark" type="Line2D" parent="MirrorWithLipstick"]
+points = PackedVector2Array(-10, -14, 12, -40, 4, -46)
+width = 3.5
+default_color = Color(0.9, 0.1, 0.25, 0.95)
+
+[node name="MirrorLabel" type="Label" parent="MirrorWithLipstick"]
+offset_left = -35.0
+offset_top = -88.0
+offset_right = 45.0
+offset_bottom = -68.0
+theme_override_font_sizes/font_size = 10
+text = "Помада на зеркале"
 horizontal_alignment = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
-polygon = PackedVector2Array(-4, 4, 104, -46, 104, -54, -4, -4)
+[node name="SpilledBottle" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(540, 360)
+
+[node name="Puddle" type="Polygon2D" parent="SpilledBottle"]
+color = Color(0.18, 0.22, 0.3, 0.5)
+polygon = PackedVector2Array(-14, 2, 6, 8, 16, 0, 4, -6, -8, -4)
+
+[node name="BottleVisual" type="Polygon2D" parent="SpilledBottle"]
+color = Color(0.18, 0.45, 0.32, 1)
+polygon = PackedVector2Array(-8, 3, 10, -6, 8, -14, -10, -5)
+
+[node name="BottleCap" type="Polygon2D" parent="SpilledBottle"]
+color = Color(0.8, 0.7, 0.3, 1)
+polygon = PackedVector2Array(10, -6, 13, -8, 11, -12, 8, -14)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpilledBottle"]
+polygon = PackedVector2Array(-10, 2, 10, -6, 6, -10, -10, -2)
+
+[node name="BarReceipt" type="Node2D" parent="."]
+position = Vector2(460, 335)
+
+[node name="ReceiptPaper" type="Polygon2D" parent="BarReceipt"]
+color = Color(0.88, 0.86, 0.8, 1)
+polygon = PackedVector2Array(-7, 2, 5, 8, 11, 2, -1, -4)
+
+[node name="ReceiptLine" type="Line2D" parent="BarReceipt"]
+points = PackedVector2Array(-3, 1, 6, 5)
+width = 1.0
+default_color = Color(0.4, 0.4, 0.4, 0.8)
+
+[node name="ReceiptLabel" type="Label" parent="BarReceipt"]
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 35.0
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 9
+text = "Чек из бара"
+horizontal_alignment = 1
 
 [node name="Bed" type="StaticBody2D" parent="."]
-position = Vector2(380, 270)
+y_sort_enabled = true
+position = Vector2(380, 260)
 
-[node name="BedSideLeft" type="Polygon2D" parent="Bed"]
-color = Color(0.24, 0.29, 0.36, 1)
-polygon = PackedVector2Array(-60, 0, 0, 30, 0, 6, -60, -24)
+[node name="BedFrameLeft" type="Polygon2D" parent="Bed"]
+color = Color(0.18, 0.2, 0.26, 1)
+polygon = PackedVector2Array(-60, 0, 0, 30, 0, 8, -60, -22)
 
-[node name="BedSideRight" type="Polygon2D" parent="Bed"]
-color = Color(0.18, 0.22, 0.28, 1)
-polygon = PackedVector2Array(0, 30, 60, 0, 60, -24, 0, 6)
+[node name="BedFrameRight" type="Polygon2D" parent="Bed"]
+color = Color(0.13, 0.15, 0.2, 1)
+polygon = PackedVector2Array(0, 30, 60, 0, 60, -22, 0, 8)
 
-[node name="BedTop" type="Polygon2D" parent="Bed"]
-color = Color(0.35, 0.43, 0.52, 1)
-polygon = PackedVector2Array(-60, -24, 0, -54, 60, -24, 0, 6)
+[node name="BedMattress" type="Polygon2D" parent="Bed"]
+color = Color(0.28, 0.34, 0.42, 1)
+polygon = PackedVector2Array(-60, -22, 0, -52, 60, -22, 0, 8)
+
+[node name="BedSheet" type="Polygon2D" parent="Bed"]
+color = Color(0.4, 0.48, 0.58, 1)
+polygon = PackedVector2Array(-50, -18, 0, 6, 50, -18, 10, -38, -25, -28)
 
 [node name="BedPillow" type="Polygon2D" parent="Bed"]
-color = Color(0.75, 0.8, 0.85, 1)
+color = Color(0.7, 0.74, 0.8, 1)
 polygon = PackedVector2Array(-45, -24, -15, -39, 5, -29, -25, -14)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bed"]
-polygon = PackedVector2Array(-60, 0, 0, -30, 60, 0, 0, 30)
+polygon = PackedVector2Array(-58, 0, 0, -28, 58, 0, 0, 28)
 
 [node name="BedLabel" type="Label" parent="Bed"]
 offset_left = -30.0
-offset_top = -75.0
+offset_top = -70.0
 offset_right = 30.0
-offset_bottom = -52.0
+offset_bottom = -50.0
+theme_override_font_sizes/font_size = 11
 text = "Кровать"
 horizontal_alignment = 1
 
-[node name="PizzaBox" type="StaticBody2D" parent="."]
-position = Vector2(480, 390)
-
-[node name="PizzaSideLeft" type="Polygon2D" parent="PizzaBox"]
-color = Color(0.68, 0.37, 0.17, 1)
-polygon = PackedVector2Array(-22, 0, 0, 11, 0, 3, -22, -8)
-
-[node name="PizzaSideRight" type="Polygon2D" parent="PizzaBox"]
-color = Color(0.52, 0.27, 0.11, 1)
-polygon = PackedVector2Array(0, 11, 22, 0, 22, -8, 0, 3)
-
-[node name="PizzaTop" type="Polygon2D" parent="PizzaBox"]
-color = Color(0.85, 0.49, 0.26, 1)
-polygon = PackedVector2Array(-22, -8, 0, -19, 22, -8, 0, 3)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PizzaBox"]
-polygon = PackedVector2Array(-22, 0, 0, -11, 22, 0, 0, 11)
-
-[node name="PizzaLabel" type="Label" parent="PizzaBox"]
-offset_left = -25.0
-offset_top = -42.0
-offset_right = 25.0
-offset_bottom = -19.0
-scale = Vector2(0.85, 0.85)
-text = "Пицца"
-horizontal_alignment = 1
-
-[node name="Bottle" type="StaticBody2D" parent="."]
-position = Vector2(440, 340)
-
-[node name="BottleSideLeft" type="Polygon2D" parent="Bottle"]
-color = Color(0.2, 0.4, 0.29, 1)
-polygon = PackedVector2Array(-8, 0, 0, 4, 0, -18, -8, -22)
-
-[node name="BottleSideRight" type="Polygon2D" parent="Bottle"]
-color = Color(0.13, 0.27, 0.19, 1)
-polygon = PackedVector2Array(0, 4, 8, 0, 8, -22, 0, -18)
-
-[node name="BottleTop" type="Polygon2D" parent="Bottle"]
-color = Color(0.28, 0.55, 0.41, 1)
-polygon = PackedVector2Array(-8, -22, 0, -26, 8, -22, 0, -18)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bottle"]
-polygon = PackedVector2Array(-8, 0, 0, -4, 8, 0, 0, 4)
-
-[node name="BottleLabel" type="Label" parent="Bottle"]
-offset_left = -25.0
-offset_top = -50.0
-offset_right = 35.0
-offset_bottom = -27.0
-scale = Vector2(0.8, 0.8)
-text = "Бутылка"
-horizontal_alignment = 1
-
-[node name="QuestItem" type="Area2D" parent="." node_paths=PackedStringArray("door_to_open")]
-position = Vector2(550, 360)
+[node name="QuestItem" type="Area2D" parent="." node_paths=PackedStringArray("door_to_open", "dialogue_box", "player")]
+y_sort_enabled = true
+position = Vector2(680, 320)
 script = ExtResource("3_quest")
 door_to_open = NodePath("../Door")
+dialogue_box = NodePath("../UI")
+player = NodePath("../Player")
 
 [node name="TriggerCollision" type="CollisionShape2D" parent="QuestItem"]
 shape = SubResource("CircleShape2D_trigger")
 
-[node name="PhoneSideLeft" type="Polygon2D" parent="QuestItem"]
-color = Color(0.64, 0.48, 0.19, 1)
-polygon = PackedVector2Array(-16, 0, 0, 8, 0, -8, -16, -16)
+[node name="NightstandLeft" type="Polygon2D" parent="QuestItem"]
+color = Color(0.2, 0.18, 0.16, 1)
+polygon = PackedVector2Array(-22, 0, 0, 11, 0, -18, -22, -29)
 
-[node name="PhoneSideRight" type="Polygon2D" parent="QuestItem"]
-color = Color(0.48, 0.35, 0.12, 1)
-polygon = PackedVector2Array(0, 8, 16, 0, 16, -16, 0, -8)
+[node name="NightstandRight" type="Polygon2D" parent="QuestItem"]
+color = Color(0.14, 0.12, 0.1, 1)
+polygon = PackedVector2Array(0, 11, 22, 0, 22, -29, 0, -18)
 
-[node name="PhoneTop" type="Polygon2D" parent="QuestItem"]
-color = Color(0.83, 0.64, 0.29, 1)
-polygon = PackedVector2Array(-16, -16, 0, -24, 16, -16, 0, -8)
+[node name="NightstandTop" type="Polygon2D" parent="QuestItem"]
+color = Color(0.3, 0.26, 0.22, 1)
+polygon = PackedVector2Array(-22, -29, 0, -40, 22, -29, 0, -18)
+
+[node name="PhoneBody" type="Node2D" parent="QuestItem"]
+position = Vector2(0, -26)
+
+[node name="PhoneBase" type="Polygon2D" parent="QuestItem/PhoneBody"]
+color = Color(0.85, 0.72, 0.35, 1)
+polygon = PackedVector2Array(-10, 0, 0, 5, 10, 0, 0, -5)
+
+[node name="PhoneHandset" type="Polygon2D" parent="QuestItem/PhoneBody"]
+color = Color(0.95, 0.85, 0.45, 1)
+polygon = PackedVector2Array(-12, -4, 0, 2, 12, -4, 0, -8)
 
 [node name="SolidBody" type="StaticBody2D" parent="QuestItem"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="QuestItem/SolidBody"]
-polygon = PackedVector2Array(-16, 0, 0, -8, 16, 0, 0, 8)
+polygon = PackedVector2Array(-22, 0, 0, -11, 22, 0, 0, 11)
 
 [node name="PhoneLabel" type="Label" parent="QuestItem"]
-offset_left = -50.0
-offset_top = -55.0
-offset_right = 50.0
-offset_bottom = -32.0
-text = "☎ Телефон [E]"
+offset_left = -60.0
+offset_top = -68.0
+offset_right = 60.0
+offset_bottom = -45.0
+theme_override_font_sizes/font_size = 12
+text = "☎ Звонок... [E]"
 horizontal_alignment = 1
 
+[node name="Door" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(740, 450)
+script = ExtResource("4_door")
+
+[node name="DoorPanel" type="Polygon2D" parent="Door"]
+color = Color(0.48, 0.22, 0.16, 1)
+polygon = PackedVector2Array(0, 0, 80, -40, 80, -105, 0, -65)
+
+[node name="DoorSide" type="Polygon2D" parent="Door"]
+color = Color(0.32, 0.14, 0.1, 1)
+polygon = PackedVector2Array(0, 0, 6, 3, 6, -62, 0, -65)
+
+[node name="LockLED" type="Polygon2D" parent="Door"]
+color = Color(1, 0.2, 0.2, 1)
+polygon = PackedVector2Array(66, -56, 74, -60, 74, -66, 66, -62)
+
+[node name="DoorLabel" type="Label" parent="Door"]
+offset_left = 12.0
+offset_top = -86.0
+offset_right = 72.0
+offset_bottom = -64.0
+rotation = -0.4636
+theme_override_font_sizes/font_size = 11
+text = "Заперто"
+horizontal_alignment = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+polygon = PackedVector2Array(-4, 4, 84, -36, 84, -44, -4, -4)
+
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(480, 300)
+y_sort_enabled = true
+position = Vector2(480, 290)
 script = ExtResource("2_player")
 
+[node name="PlayerShadow" type="Polygon2D" parent="Player"]
+color = Color(0.08, 0.09, 0.12, 0.5)
+polygon = PackedVector2Array(-12, 0, 0, 6, 12, 0, 0, -6)
+
 [node name="PlayerBody" type="Polygon2D" parent="Player"]
-color = Color(0.29, 0.56, 0.89, 1)
-polygon = PackedVector2Array(-12, 0, 0, 6, 12, 0, 12, -36, 0, -42, -12, -36)
+color = Color(0.24, 0.42, 0.68, 1)
+polygon = PackedVector2Array(-10, 0, 0, 5, 10, 0, 10, -32, 0, -37, -10, -32)
 
 [node name="PlayerHead" type="Polygon2D" parent="Player"]
-color = Color(0.95, 0.79, 0.63, 1)
-polygon = PackedVector2Array(-8, -36, 8, -36, 8, -52, -8, -52)
+color = Color(0.95, 0.8, 0.68, 1)
+polygon = PackedVector2Array(-7, -32, 7, -32, 7, -46, -7, -46)
 
 [node name="PlayerHair" type="Polygon2D" parent="Player"]
-color = Color(0.43, 0.3, 0.25, 1)
-polygon = PackedVector2Array(-10, -46, 10, -46, 10, -56, -10, -56)
+color = Color(0.35, 0.24, 0.2, 1)
+polygon = PackedVector2Array(-9, -40, 9, -40, 9, -50, -9, -50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_player")
 
 [node name="PlayerLabel" type="Label" parent="Player"]
 offset_left = -25.0
-offset_top = -78.0
+offset_top = -70.0
 offset_right = 25.0
-offset_bottom = -55.0
+offset_bottom = -50.0
+theme_override_font_sizes/font_size = 11
 text = "Даша"
 horizontal_alignment = 1
 
@@ -267,4 +315,63 @@ horizontal_alignment = 1
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 9.0
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(1.3, 1.3)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("5_dialogue")
+
+[node name="DialogueContainer" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="UI/DialogueContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -150.0
+offset_right = 340.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DialogueContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DialogueContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SpeakerLabel" type="Label" parent="UI/DialogueContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Говорящий"
+
+[node name="TextLabel" type="Label" parent="UI/DialogueContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Текст диалога..."
+autowrap_mode = 2
+
+[node name="ContinuePrompt" type="Label" parent="UI/DialogueContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.9, 0.85)
+theme_override_font_sizes/font_size = 11
+text = "▼ [ ЛКМ / Пробел ] — Далее"
+horizontal_alignment = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_pause")]
+

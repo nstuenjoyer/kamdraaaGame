@@ -7,7 +7,18 @@ extends CharacterBody2D
 @export var acceleration: float = 2200.0
 @export var friction: float = 2600.0
 
+# Блокировка управления во время диалогов и катсцен
+var is_control_locked: bool = false
+
+func set_control_locked(locked: bool) -> void:
+	is_control_locked = locked
+
 func _physics_process(delta: float) -> void:
+	if is_control_locked:
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		move_and_slide()
+		return
+
 	# Получаем направление движения по осям X и Y
 	var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	

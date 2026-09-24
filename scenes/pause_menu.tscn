@@ -1,0 +1,459 @@
+[gd_scene format=3 uid="uid://c6s7vyx2w8pm7"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_pause"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_norm"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.12, 0.18, 0.9)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.45, 0.65, 0.7)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.15, 0.22, 0.32, 0.95)
+border_width_left = 4
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.1, 0.85, 1, 0.95)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0.85, 1, 0.2)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_press"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.2, 0.35, 0.48, 1)
+border_width_left = 4
+border_color = Color(1, 0.4, 0.7, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.08, 0.1, 0.15, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.15, 0.7, 0.9, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12, 0.16, 0.24, 0.95)
+border_width_left = 3
+border_color = Color(0.2, 0.9, 0.5, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 50
+script = ExtResource("1_pause")
+
+[node name="PauseContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="PauseContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.04, 0.07, 0.75)
+
+[node name="MenuPanel" type="PanelContainer" parent="PauseContainer"]
+custom_minimum_size = Vector2(340, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -180.0
+offset_right = 170.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="PauseContainer/MenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="PauseContainer/MenuPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PauseContainer/MenuPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "⏸ ПАУЗА"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="PauseContainer/MenuPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.85)
+theme_override_font_sizes/font_size = 11
+text = "Расследование приостановлено"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="PauseContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="BtnResume" type="Button" parent="PauseContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "▶  Продолжить"
+
+[node name="BtnSave" type="Button" parent="PauseContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "💾  Сохранить игру"
+
+[node name="BtnLoad" type="Button" parent="PauseContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "📂  Загрузить игру"
+
+[node name="BtnSettings" type="Button" parent="PauseContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "⚙  Настройки"
+
+[node name="BtnMainMenu" type="Button" parent="PauseContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "🏠  Главное меню"
+
+[node name="SaveDialog" type="PanelContainer" parent="PauseContainer"]
+visible = false
+custom_minimum_size = Vector2(560, 440)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -220.0
+offset_right = 280.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="PauseContainer/SaveDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="PauseContainer/SaveDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="PauseContainer/SaveDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "💾 СОХРАНЕНИЕ В СЛОТ"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="PauseContainer/SaveDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.85)
+theme_override_font_sizes/font_size = 11
+text = "Выберите ячейку для сохранения прогресса (F5 — быстрое сохранение)"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="PauseContainer/SaveDialog/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SaveSlotContainer" type="VBoxContainer" parent="PauseContainer/SaveDialog/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BtnCloseSave" type="Button" parent="PauseContainer/SaveDialog/Margin/VBox"]
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Назад"
+
+[node name="LoadDialog" type="PanelContainer" parent="PauseContainer"]
+visible = false
+custom_minimum_size = Vector2(580, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -230.0
+offset_right = 290.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="PauseContainer/LoadDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="PauseContainer/LoadDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="PauseContainer/LoadDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "📂 ЗАГРУЗИТЬ СОХРАНЕНИЕ"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="PauseContainer/LoadDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.85)
+theme_override_font_sizes/font_size = 11
+text = "Выберите сохранение для мгновенной загрузки (F9 — быстрая загрузка)"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="PauseContainer/LoadDialog/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LoadSlotContainer" type="VBoxContainer" parent="PauseContainer/LoadDialog/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BtnCloseLoad" type="Button" parent="PauseContainer/LoadDialog/Margin/VBox"]
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Назад"
+
+[node name="SettingsDialog" type="PanelContainer" parent="PauseContainer"]
+visible = false
+custom_minimum_size = Vector2(540, 440)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -220.0
+offset_right = 270.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="PauseContainer/SettingsDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="PauseContainer/SettingsDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "⚙ НАСТРОЙКИ"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="PauseContainer/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="MasterLabel" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Общая громкость:"
+
+[node name="MasterSlider" type="HSlider" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(220, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="MasterValue" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MusicLabel" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Музыка:"
+
+[node name="MusicSlider" type="HSlider" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(220, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="MusicValue" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "80%"
+horizontal_alignment = 2
+
+[node name="SFXLabel" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Звуковые эффекты:"
+
+[node name="SFXSlider" type="HSlider" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(220, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="SFXValue" type="Label" parent="PauseContainer/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "80%"
+horizontal_alignment = 2
+
+[node name="OptionsList" type="VBoxContainer" parent="PauseContainer/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CheckFullscreen" type="CheckBox" parent="PauseContainer/SettingsDialog/Margin/VBox/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Полноэкранный режим"
+
+[node name="CheckVSync" type="CheckBox" parent="PauseContainer/SettingsDialog/Margin/VBox/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Вертикальная синхронизация"
+
+[node name="CheckCRT" type="CheckBox" parent="PauseContainer/SettingsDialog/Margin/VBox/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Неонуарная атмосфера / CRT виньетка"
+
+[node name="BtnCloseSettings" type="Button" parent="PauseContainer/SettingsDialog/Margin/VBox"]
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Назад"
+
+[node name="ToastNotification" type="PanelContainer" parent="PauseContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -65.0
+offset_right = 160.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_toast")
+
+[node name="Margin" type="MarginContainer" parent="PauseContainer/ToastNotification"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="ToastLabel" type="Label" parent="PauseContainer/ToastNotification/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "💾 Сохранено"
+horizontal_alignment = 1

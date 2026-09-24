@@ -1,0 +1,645 @@
+[gd_scene format=3 uid="uid://cb5c4n5o81m6m"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_norm"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.12, 0.18, 0.85)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.45, 0.65, 0.7)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.15, 0.22, 0.32, 0.95)
+border_width_left = 4
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.1, 0.85, 1, 0.95)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0.85, 1, 0.2)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_press"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.35, 0.48, 1)
+border_width_left = 4
+border_color = Color(1, 0.4, 0.7, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.08, 0.1, 0.15, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.15, 0.7, 0.9, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.16, 0.24, 0.95)
+border_width_left = 3
+border_color = Color(0.2, 0.9, 0.5, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 10
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.07, 0.1, 1)
+
+[node name="DecorIsoGrid" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.15)
+
+[node name="Line1" type="Line2D" parent="DecorIsoGrid"]
+points = PackedVector2Array(0, 200, 1280, 840)
+width = 1.5
+default_color = Color(0.15, 0.6, 0.8, 1)
+
+[node name="Line2" type="Line2D" parent="DecorIsoGrid"]
+points = PackedVector2Array(0, 400, 1280, 1040)
+width = 1.5
+default_color = Color(0.15, 0.6, 0.8, 1)
+
+[node name="Line3" type="Line2D" parent="DecorIsoGrid"]
+points = PackedVector2Array(0, 0, 1280, 640)
+width = 1.5
+default_color = Color(0.15, 0.6, 0.8, 1)
+
+[node name="Line4" type="Line2D" parent="DecorIsoGrid"]
+points = PackedVector2Array(200, 0, 0, 100)
+width = 1.0
+default_color = Color(0.8, 0.2, 0.5, 0.5)
+
+[node name="Line5" type="Line2D" parent="DecorIsoGrid"]
+points = PackedVector2Array(1280, 100, 0, 740)
+width = 1.5
+default_color = Color(0.8, 0.2, 0.5, 0.5)
+
+[node name="Line6" type="Line2D" parent="DecorIsoGrid"]
+points = PackedVector2Array(1280, 300, 0, 940)
+width = 1.5
+default_color = Color(0.8, 0.2, 0.5, 0.5)
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.05, 0.45)
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Header" type="VBoxContainer" parent="Content"]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 70.0
+offset_right = 700.0
+offset_bottom = 220.0
+theme_override_constants/separation = 4
+
+[node name="Category" type="Label" parent="Content/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.4, 0.65, 1)
+theme_override_font_sizes/font_size = 14
+text = "🍸 НЕОНУАРНЫЙ КОМЕДИЙНЫЙ ТРИЛЛЕР"
+
+[node name="Title" type="Label" parent="Content/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.8, 1, 0.5)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 54
+text = "KAMDRAAA"
+
+[node name="Subtitle" type="Label" parent="Content/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.75, 0.25, 0.95)
+theme_override_font_sizes/font_size = 16
+text = "ПОХМЕЛЬНЫЙ ДЕТЕКТИВ • УТРО ПОСЛЕ КАТАСТРОФЫ"
+
+[node name="Divider" type="ColorRect" parent="Content"]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 215.0
+offset_right = 440.0
+offset_bottom = 217.0
+color = Color(0.2, 0.7, 0.9, 0.6)
+
+[node name="MenuButtons" type="VBoxContainer" parent="Content"]
+layout_mode = 1
+offset_left = 90.0
+offset_top = 245.0
+offset_right = 380.0
+offset_bottom = 545.0
+theme_override_constants/separation = 12
+
+[node name="BtnPlay" type="Button" parent="Content/MenuButtons"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_hover_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "▶  ИГРАТЬ"
+alignment = 0
+
+[node name="BtnLoad" type="Button" parent="Content/MenuButtons"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_hover_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "💾  ЗАГРУЗИТЬ"
+alignment = 0
+
+[node name="BtnSettings" type="Button" parent="Content/MenuButtons"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_hover_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "⚙  НАСТРОЙКИ"
+alignment = 0
+
+[node name="BtnQuit" type="Button" parent="Content/MenuButtons"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.5, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "✖  ВЫЙТИ"
+alignment = 0
+
+[node name="BtnAbout" type="Button" parent="Content/MenuButtons"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_hover_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "ℹ  ОБ ИГРЕ"
+alignment = 0
+
+[node name="FooterInfo" type="Label" parent="Content"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = -50.0
+offset_right = 500.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.4, 0.45, 0.58, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "Kamdraaa Game v0.2.0 • Godot 4.7 • Изометрический детектив"
+
+[node name="ModalBackdrop" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.06, 0.75)
+
+[node name="Modals" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayDialog" type="PanelContainer" parent="Modals"]
+visible = false
+custom_minimum_size = Vector2(400, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 120)
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="Modals/PlayDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="Modals/PlayDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Modals/PlayDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "▶ НАЧАЛО ИГРЫ"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Modals/PlayDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.8, 0.9, 0.85)
+theme_override_font_sizes/font_size = 13
+text = "Обнаружено существующее сохранение. Выберите действие:"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BtnContinue" type="Button" parent="Modals/PlayDialog/Margin/VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Продолжить последнее сохранение"
+
+[node name="BtnNewGame" type="Button" parent="Modals/PlayDialog/Margin/VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Начать новую игру"
+
+[node name="BtnCancelPlay" type="Button" parent="Modals/PlayDialog/Margin/VBox"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Отмена"
+
+[node name="LoadDialog" type="PanelContainer" parent="Modals"]
+visible = false
+custom_minimum_size = Vector2(640, 520)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -260.0
+offset_right = 320.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 260)
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="Modals/LoadDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Modals/LoadDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Modals/LoadDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "💾 ЗАГРУЗКА ИГРЫ"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Modals/LoadDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.85)
+theme_override_font_sizes/font_size = 12
+text = "Выберите ячейку сохранения, чтобы продолжить расследование Даши"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Modals/LoadDialog/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SlotContainer" type="VBoxContainer" parent="Modals/LoadDialog/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="LoadFooter" type="HBoxContainer" parent="Modals/LoadDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnCloseLoad" type="Button" parent="Modals/LoadDialog/Margin/VBox/LoadFooter"]
+custom_minimum_size = Vector2(140, 38)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Назад в меню"
+
+[node name="BtnRestoreSaves" type="Button" parent="Modals/LoadDialog/Margin/VBox/LoadFooter"]
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "⚡ Сбросить к демо-сейвам"
+
+[node name="SettingsDialog" type="PanelContainer" parent="Modals"]
+visible = false
+custom_minimum_size = Vector2(560, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -240.0
+offset_right = 280.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(280, 240)
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="Modals/SettingsDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="Modals/SettingsDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Modals/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "⚙ НАСТРОЙКИ"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="MasterLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Общая громкость:"
+
+[node name="MasterSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="MasterValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MusicLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Музыка:"
+
+[node name="MusicSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="MusicValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "80%"
+horizontal_alignment = 2
+
+[node name="SFXLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Звуковые эффекты:"
+
+[node name="SFXSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="SFXValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "80%"
+horizontal_alignment = 2
+
+[node name="OptionsList" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CheckFullscreen" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Полноэкранный режим"
+
+[node name="CheckVSync" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Вертикальная синхронизация (V-Sync)"
+
+[node name="CheckCRT" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Неонуарная атмосфера / CRT виньетка"
+
+[node name="BtnCloseSettings" type="Button" parent="Modals/SettingsDialog/Margin/VBox"]
+custom_minimum_size = Vector2(140, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Назад в меню"
+
+[node name="AboutDialog" type="PanelContainer" parent="Modals"]
+visible = false
+custom_minimum_size = Vector2(620, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -250.0
+offset_right = 310.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(310, 250)
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="Modals/AboutDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="Modals/AboutDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Modals/AboutDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "ℹ ОБ ИГРЕ KAMDRAAA"
+horizontal_alignment = 1
+
+[node name="AboutText" type="RichTextLabel" parent="Modals/AboutDialog/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.82, 0.86, 0.94, 0.95)
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "[color=#00e5ff][b]Сюжет:[/b][/color]
+Даша просыпается в незнакомой конспиративной квартире с жесточайшим похмельем. В ушах пульсирует кровь, дверь заперта на электронный замок, а в глубине комнаты настойчиво звонит стационарный телефон. Восстановите хронологию событий безумной ночи и выберитесь наружу!
+
+[color=#ffaa33][b]Особенности:[/b][/color]
+• [color=#00e5ff]Изометрическое исследование[/color] квартиры в приглушенном нуарном освещении.
+• [color=#ff007f]Искажение реальности (Паранойя)[/color]: обычные бытовые предметы мерещатся следами спецоперации синдиката.
+• [color=#00ff88]Интерактивное окружение[/color]: улики, телефонные переговоры и разблокировка дверей.
+
+[color=#00e5ff][b]Управление:[/b][/color]
+• [b]WASD / Стрелки[/b] — Плавное 8-направленное перемещение
+• [b]E[/b] — Взаимодействие (поднять трубку, открыть дверь)
+• [b]ESC[/b] — Пауза и меню сохранения
+• [b]F5 / F9[/b] — Быстрое сохранение / Быстрая загрузка
+
+[color=#7a889b]Движок: Godot Engine 4.7 • Версия 0.2.0 • Kamdraaa Studio[/color]"
+
+[node name="BtnCloseAbout" type="Button" parent="Modals/AboutDialog/Margin/VBox"]
+custom_minimum_size = Vector2(140, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Понятно"
+
+[node name="ToastNotification" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -68.0
+offset_right = 170.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_toast")
+
+[node name="Margin" type="MarginContainer" parent="ToastNotification"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="ToastLabel" type="Label" parent="ToastNotification/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "💾 Игра успешно сохранена"
+horizontal_alignment = 1
