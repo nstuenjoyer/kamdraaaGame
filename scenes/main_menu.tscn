@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://cb5c4n5o81m6m"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Shader" path="res://shaders/menu_rain.gdshader" id="2_rain"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rain"]
+shader = ExtResource("2_rain")
+shader_parameter/rain_speed = 1.6
+shader_parameter/rain_intensity = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_norm"]
 content_margin_left = 18.0
@@ -95,6 +101,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.06, 0.07, 0.1, 1)
+
+[node name="RainOverlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rain")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="DecorIsoGrid" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.15)
@@ -424,20 +440,20 @@ text = "⚡ Сбросить к демо-сейвам"
 
 [node name="SettingsDialog" type="PanelContainer" parent="Modals"]
 visible = false
-custom_minimum_size = Vector2(560, 480)
+custom_minimum_size = Vector2(600, 530)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -240.0
-offset_right = 280.0
-offset_bottom = 240.0
+offset_left = -300.0
+offset_top = -265.0
+offset_right = 300.0
+offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(280, 240)
+pivot_offset = Vector2(300, 265)
 theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
 
 [node name="Margin" type="MarginContainer" parent="Modals/SettingsDialog"]
@@ -449,7 +465,7 @@ theme_override_constants/margin_bottom = 22
 
 [node name="VBox" type="VBoxContainer" parent="Modals/SettingsDialog/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 14
 
 [node name="Title" type="Label" parent="Modals/SettingsDialog/Margin/VBox"]
 layout_mode = 2
@@ -458,95 +474,306 @@ theme_override_font_sizes/font_size = 22
 text = "⚙ НАСТРОЙКИ"
 horizontal_alignment = 1
 
-[node name="Grid" type="GridContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+[node name="TabHeader" type="HBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnTabAudio" type="Button" parent="Modals/SettingsDialog/Margin/VBox/TabHeader"]
+custom_minimum_size = Vector2(145, 34)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "🔊 Звук / Экран"
+
+[node name="BtnTabText" type="Button" parent="Modals/SettingsDialog/Margin/VBox/TabHeader"]
+custom_minimum_size = Vector2(145, 34)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "💬 Текст и речь"
+
+[node name="BtnTabControls" type="Button" parent="Modals/SettingsDialog/Margin/VBox/TabHeader"]
+custom_minimum_size = Vector2(145, 34)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "⌨ Управление"
+
+[node name="AudioTab" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Grid" type="GridContainer" parent="Modals/SettingsDialog/Margin/VBox/AudioTab"]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 12
 columns = 3
 
-[node name="MasterLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="MasterLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Общая громкость:"
 
-[node name="MasterSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="MasterSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 custom_minimum_size = Vector2(240, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
+value = 100.0
 
-[node name="MasterValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="MasterValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "80%"
+text = "100%"
 horizontal_alignment = 2
 
-[node name="MusicLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="MusicLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Музыка:"
 
-[node name="MusicSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="MusicSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 custom_minimum_size = Vector2(240, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
+value = 100.0
 
-[node name="MusicValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="MusicValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "80%"
+text = "100%"
 horizontal_alignment = 2
 
-[node name="SFXLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="SFXLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Звуковые эффекты:"
 
-[node name="SFXSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="SFXSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 custom_minimum_size = Vector2(240, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-value = 80.0
+value = 100.0
 
-[node name="SFXValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/Grid"]
+[node name="SFXValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/Grid"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "80%"
+text = "100%"
 horizontal_alignment = 2
 
-[node name="OptionsList" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+[node name="OptionsList" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox/AudioTab"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CheckFullscreen" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/OptionsList"]
+[node name="CheckFullscreen" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/OptionsList"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Полноэкранный режим"
 
-[node name="CheckVSync" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/OptionsList"]
+[node name="CheckVSync" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/OptionsList"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Вертикальная синхронизация (V-Sync)"
 
-[node name="CheckCRT" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/OptionsList"]
+[node name="CheckCRT" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/AudioTab/OptionsList"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Неонуарная атмосфера / CRT виньетка"
 
-[node name="BtnCloseSettings" type="Button" parent="Modals/SettingsDialog/Margin/VBox"]
-custom_minimum_size = Vector2(140, 38)
+[node name="TextTab" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Grid" type="GridContainer" parent="Modals/SettingsDialog/Margin/VBox/TextTab"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="SpeedLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/TextTab/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Скорость печати:"
+
+[node name="SpeedSlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/TextTab/Grid"]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 3.0
+value = 2.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="SpeedValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/TextTab/Grid"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Обычная"
+horizontal_alignment = 2
+
+[node name="DelayLabel" type="Label" parent="Modals/SettingsDialog/Margin/VBox/TextTab/Grid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Задержка авточтения:"
+
+[node name="DelaySlider" type="HSlider" parent="Modals/SettingsDialog/Margin/VBox/TextTab/Grid"]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.5
+max_value = 5.0
+step = 0.5
+value = 2.0
+
+[node name="DelayValue" type="Label" parent="Modals/SettingsDialog/Margin/VBox/TextTab/Grid"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "2.0 сек"
+horizontal_alignment = 2
+
+[node name="OptionsList" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox/TextTab"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CheckAutoAdvance" type="CheckBox" parent="Modals/SettingsDialog/Margin/VBox/TextTab/OptionsList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Автоматический переход к следующей реплике"
+
+[node name="TextTip" type="Label" parent="Modals/SettingsDialog/Margin/VBox/TextTab"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.9, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "💡 В игре журнал истории реплик открывается на [H] или колесо мыши вверх."
+autowrap_mode = 2
+
+[node name="ControlsTab" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ControlsTip" type="Label" parent="Modals/SettingsDialog/Margin/VBox/ControlsTab"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.9, 0.85)
+theme_override_font_sizes/font_size = 12
+text = "Нажмите на кнопку с клавишей, чтобы назначить новую (ESC — отмена)"
+horizontal_alignment = 1
+
+[node name="ScrollControls" type="ScrollContainer" parent="Modals/SettingsDialog/Margin/VBox/ControlsTab"]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="KeybindList" type="VBoxContainer" parent="Modals/SettingsDialog/Margin/VBox/ControlsTab/ScrollControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BtnResetKeybinds" type="Button" parent="Modals/SettingsDialog/Margin/VBox/ControlsTab"]
+custom_minimum_size = Vector2(220, 34)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "↺ Сбросить клавиши по умолчанию"
+
+[node name="SettingsFooter" type="HBoxContainer" parent="Modals/SettingsDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnApplySettings" type="Button" parent="Modals/SettingsDialog/Margin/VBox/SettingsFooter"]
+custom_minimum_size = Vector2(180, 38)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "✔ Сохранить настройки"
+
+[node name="BtnCloseSettings" type="Button" parent="Modals/SettingsDialog/Margin/VBox/SettingsFooter"]
+custom_minimum_size = Vector2(130, 38)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
 text = "Назад в меню"
+
+[node name="SettingsConfirmDialog" type="PanelContainer" parent="Modals"]
+visible = false
+custom_minimum_size = Vector2(440, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -100.0
+offset_right = 220.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(220, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="Modals/SettingsConfirmDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Modals/SettingsConfirmDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Modals/SettingsConfirmDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "⚠️ Несохранённые изменения"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="Modals/SettingsConfirmDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 0.9)
+theme_override_font_sizes/font_size = 13
+text = "Сохранить новые параметры настроек перед выходом?"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Modals/SettingsConfirmDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnConfirmSave" type="Button" parent="Modals/SettingsConfirmDialog/Margin/VBox/HBox"]
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Да, сохранить"
+
+[node name="BtnDiscardSave" type="Button" parent="Modals/SettingsConfirmDialog/Margin/VBox/HBox"]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Сбросить"
+
+[node name="BtnCancelConfirm" type="Button" parent="Modals/SettingsConfirmDialog/Margin/VBox/HBox"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+text = "Отмена"
 
 [node name="AboutDialog" type="PanelContainer" parent="Modals"]
 visible = false
@@ -617,25 +844,24 @@ text = "Понятно"
 [node name="ToastNotification" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -170.0
-offset_top = -68.0
-offset_right = 170.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 70.0
+grow_horizontal = 0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_toast")
 
 [node name="Margin" type="MarginContainer" parent="ToastNotification"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 6
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
 
 [node name="ToastLabel" type="Label" parent="ToastNotification/Margin"]
 layout_mode = 2

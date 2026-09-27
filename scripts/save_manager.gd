@@ -234,7 +234,10 @@ func save_game(slot_id: String, custom_title: String = "", location_override: St
 		"quest": {
 			"phone_answered": phone_answered,
 			"door_opened": door_opened
-		}
+		},
+		"paranoia": (get_node_or_null("/root/ParanoiaManager").get_paranoia() if get_node_or_null("/root/ParanoiaManager") else 22.0),
+		"clues": (get_node_or_null("/root/ClueManager").get_save_data() if get_node_or_null("/root/ClueManager") else {}),
+		"inventory": (get_node_or_null("/root/InventoryManager").get_save_data() if get_node_or_null("/root/InventoryManager") else {})
 	}
 
 	var file: FileAccess = FileAccess.open(get_slot_path(slot_id), FileAccess.WRITE)
@@ -280,22 +283,26 @@ func load_game(slot_id: String) -> bool:
 	pending_save_data = data
 	last_used_slot = slot_id
 
-	var current_scene: Node = get_tree().current_scene
-	var is_already_game: bool = current_scene and current_scene.scene_file_path == GAME_SCENE_PATH
-
-	if is_already_game:
-		apply_pending_save_if_any(current_scene)
-	else:
-		get_tree().change_scene_to_file(GAME_SCENE_PATH)
+	# Гарантированно снимаем паузу SceneTree перед загрузкой
+	get_tree().paused = false
 
 	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
 	if sound_mgr and sound_mgr.has_method("play_click"):
 		sound_mgr.play_click()
 
-	var toast_msg: String = "📂 Загружено: %s" % data.get("slot_title", slot_id)
-	toast_requested.emit(toast_msg)
+	var current_scene: Node = get_tree().current_scene
+	var is_already_game: bool = current_scene and current_scene.scene_file_path == GAME_SCENE_PATH
+
+	if is_already_game:
+		# Если мы уже находимся в игровой комнате, мгновенно восстанавливаем
+		# состояние на месте без перезагрузки сцены и без потери фокуса ввода
+		apply_pending_save_if_any(current_scene)
+	else:
+		# Если мы загружаемся из главного меню, переходим на сцену игры
+		get_tree().change_scene_to_file(GAME_SCENE_PATH)
+
 	game_loaded.emit(slot_id, true)
-	print("[SaveManager]: Сохранение '%s' загружено" % slot_id)
+	print("[SaveManager]: Сохранение '%s' успешно загружено" % slot_id)
 	return true
 
 func delete_save(slot_id: String) -> bool:
@@ -320,15 +327,27 @@ func apply_pending_save_if_any(scene_root: Node) -> bool:
 	var data: Dictionary = pending_save_data
 	pending_save_data = {}
 
-	# Восстанавливаем позицию игрока
+	# 1. Гарантированно снимаем паузу
+	scene_root.get_tree().paused = false
+
+	# 2. Восстанавливаем позицию и сбрасываем блокировку управления игрока
 	var player_data: Dictionary = data.get("player", {})
 	var player: Node = scene_root.find_child("Player", true, false)
 	if player and player is CharacterBody2D:
 		var px: float = float(player_data.get("pos_x", 480.0))
 		var py: float = float(player_data.get("pos_y", 290.0))
-		(player as CharacterBody2D).global_position = Vector2(px, py)
+		var p_body: CharacterBody2D = player as CharacterBody2D
+		p_body.global_position = Vector2(px, py)
+		p_body.velocity = Vector2.ZERO
+		if p_body.has_method("set_control_locked"):
+			p_body.set_control_locked(false)
 
-	# Восстанавливаем квест телефона
+		# Мгновенно центрируем камеру на загруженном положении игрока
+		var camera: Camera2D = p_body.get_node_or_null("Camera2D") as Camera2D
+		if camera and camera.has_method("reset_smoothing"):
+			camera.reset_smoothing()
+
+	# 3. Восстанавливаем квест телефона
 	var quest_data: Dictionary = data.get("quest", {})
 	var phone_answered: bool = bool(quest_data.get("phone_answered", false))
 	var quest_item: Node = scene_root.find_child("QuestItem", true, false)
@@ -338,7 +357,7 @@ func apply_pending_save_if_any(scene_root: Node) -> bool:
 		else:
 			quest_item.is_phone_answered = phone_answered
 
-	# Восстанавливаем дверь
+	# 4. Восстанавливаем дверь
 	var door_opened: bool = bool(quest_data.get("door_opened", false))
 	var door: Node = scene_root.find_child("Door", true, false)
 	if door:
@@ -346,6 +365,47 @@ func apply_pending_save_if_any(scene_root: Node) -> bool:
 			door.set_state(door_opened)
 		elif door_opened and door.has_method("open"):
 			door.open()
+
+	# 5. Если в сцене был активен UI диалога, сбрасываем его
+	var dialogue_ui: Node = scene_root.find_child("UI", true, false)
+	if dialogue_ui:
+		if dialogue_ui.has_method("cancel_dialogue"):
+			dialogue_ui.cancel_dialogue()
+		elif dialogue_ui.has_method("_close_dialogue"):
+			dialogue_ui._close_dialogue()
+
+	# 6. Восстанавливаем открытые улики
+	var clues_data: Dictionary = data.get("clues", {})
+	var clue_mgr: Node = get_node_or_null("/root/ClueManager")
+	if clue_mgr and clue_mgr.has_method("load_save_data") and not clues_data.is_empty():
+		clue_mgr.load_save_data(clues_data)
+
+	# 6.1. Восстанавливаем уровень пульса и паранойи
+	var saved_paranoia: float = float(data.get("paranoia", 22.0))
+	var paranoia_mgr: Node = get_node_or_null("/root/ParanoiaManager")
+	if paranoia_mgr and paranoia_mgr.has_method("set_paranoia"):
+		paranoia_mgr.set_paranoia(saved_paranoia)
+
+	# 6.2. Восстанавливаем предметы инвентаря
+	var inventory_data: Dictionary = data.get("inventory", {})
+	var inv_mgr: Node = get_node_or_null("/root/InventoryManager")
+	if inv_mgr and inv_mgr.has_method("load_save_data"):
+		inv_mgr.load_save_data(inventory_data)
+
+	# 7. Закрываем меню паузы, если оно отображается
+	var pause_menu: Node = scene_root.find_child("PauseMenu", true, false)
+	if pause_menu:
+		if pause_menu.has_method("close_menu"):
+			pause_menu.close_menu()
+		else:
+			var container: Control = pause_menu.get_node_or_null("PauseContainer") as Control
+			if container:
+				container.visible = false
+
+	# 7. Показываем всплывающее уведомление о загрузке
+	var toast_title: String = data.get("slot_title", _get_default_slot_title(last_used_slot))
+	var toast_msg: String = "📂 Загружено: %s" % toast_title
+	toast_requested.emit(toast_msg)
 
 	print("[SaveManager]: Данные сохранения успешно применены к сцене.")
 	return true

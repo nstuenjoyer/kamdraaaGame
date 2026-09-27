@@ -1,0 +1,195 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory_dialog.gd" id="1_inv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.05, 0.07, 0.11, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18, 0.45, 0.65, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_detail"]
+bg_color = Color(0.07, 0.1, 0.15, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18, 0.32, 0.45, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_use_btn"]
+bg_color = Color(0.12, 0.38, 0.52, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.85, 1, 0.95)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="InventoryDialog" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_inv")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.05, 0.65)
+
+[node name="WindowPanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -220.0
+offset_right = 340.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+
+[node name="Margin" type="MarginContainer" parent="WindowPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="WindowPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderHBox" type="HBoxContainer" parent="WindowPanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="WindowPanel/Margin/VBox/HeaderHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.88, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "💼 ВЕЩЕВЫЕ ДОКАЗАТЕЛЬСТВА & ИНВЕНТАРЬ"
+
+[node name="HotkeyHint" type="Label" parent="WindowPanel/Margin/VBox/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.65, 0.78, 0.8)
+theme_override_font_sizes/font_size = 11
+text = "[ I — Закрыть ]"
+horizontal_alignment = 2
+
+[node name="BtnClose" type="Button" parent="WindowPanel/Margin/VBox/HeaderHBox"]
+custom_minimum_size = Vector2(28, 24)
+layout_mode = 2
+focus_mode = 0
+text = "✕"
+
+[node name="ContentHBox" type="HBoxContainer" parent="WindowPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="LeftCol" type="VBoxContainer" parent="WindowPanel/Margin/VBox/ContentHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+
+[node name="ColHeader" type="Label" parent="WindowPanel/Margin/VBox/ContentHBox/LeftCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.88, 0.9)
+theme_override_font_sizes/font_size = 11
+text = "ПРЕДМЕТЫ В КАРМАНАХ:"
+
+[node name="Scroll" type="ScrollContainer" parent="WindowPanel/Margin/VBox/ContentHBox/LeftCol"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemListContainer" type="VBoxContainer" parent="WindowPanel/Margin/VBox/ContentHBox/LeftCol/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="EmptyLabel" type="Label" parent="WindowPanel/Margin/VBox/ContentHBox/LeftCol"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.55, 0.62, 0.72, 0.7)
+theme_override_font_sizes/font_size = 12
+text = "В карманах пальто пока пусто.
+Осмотрите комнату, чтобы найти полезные предметы."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightCol" type="VBoxContainer" parent="WindowPanel/Margin/VBox/ContentHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+
+[node name="DetailPanel" type="PanelContainer" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_detail")
+
+[node name="Margin" type="MarginContainer" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DetailIcon" type="Label" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "💊"
+horizontal_alignment = 1
+
+[node name="DetailTitle" type="Label" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "Название предмета"
+horizontal_alignment = 1
+
+[node name="DetailCount" type="Label" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.85, 0.92, 0.8)
+theme_override_font_sizes/font_size = 11
+text = "Количество: 1 шт."
+horizontal_alignment = 1
+
+[node name="DetailDesc" type="RichTextLabel" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.78, 0.82, 0.88, 0.9)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "Подробное описание предмета..."
+
+[node name="BtnUse" type="Button" parent="WindowPanel/Margin/VBox/ContentHBox/RightCol/DetailPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_use_btn")
+text = "Принять / Использовать"
