@@ -53,6 +53,15 @@ polygon = PackedVector2Array(600, 520, 740, 450, 740, 435, 600, 505)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_se2"]
 polygon = PackedVector2Array(820, 410, 960, 340, 960, 325, 820, 395)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_nw"]
+polygon = PackedVector2Array(240, 200, 600, 20, 600, 10, 240, 190)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_ne"]
+polygon = PackedVector2Array(600, 20, 960, 200, 960, 190, 600, 10)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_sw"]
+polygon = PackedVector2Array(240, 340, 600, 520, 600, 535, 240, 355)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_crates"]
 polygon = PackedVector2Array(-24, 0, 0, -12, 24, 0, 0, 12)
 
@@ -154,25 +163,22 @@ polygon = PackedVector2Array(600, 160, 960, 340, 960, 325, 600, 145)
 color = Color(0.18, 0.2, 0.26, 1)
 polygon = PackedVector2Array(600, 160, 960, 340, 960, 200, 600, 20)
 
+[node name="WallNW_Occluder" type="LightOccluder2D" parent="Walls"]
+occluder = SubResource("OccluderPolygon2D_wall_nw")
+
+[node name="WallNE_Occluder" type="LightOccluder2D" parent="Walls"]
+occluder = SubResource("OccluderPolygon2D_wall_ne")
+
 [node name="WallSW_Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(240, 340, 600, 520, 600, 535, 240, 355)
 
-[node name="WallSW_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.28, 0.3, 0.38, 1)
-polygon = PackedVector2Array(240, 340, 600, 520, 600, 505, 240, 325)
+[node name="WallSW_Occluder" type="LightOccluder2D" parent="Walls"]
+occluder = SubResource("OccluderPolygon2D_wall_sw")
 
 [node name="WallSE_Part1_Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(600, 520, 740, 450, 740, 435, 600, 505)
 
-[node name="WallSE_Part1_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.25, 0.27, 0.34, 1)
-polygon = PackedVector2Array(600, 520, 740, 450, 740, 435, 600, 505)
-
 [node name="WallSE_Part2_Collision" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(820, 410, 960, 340, 960, 325, 820, 395)
-
-[node name="WallSE_Part2_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.25, 0.27, 0.34, 1)
 polygon = PackedVector2Array(820, 410, 960, 340, 960, 325, 820, 395)
 
 [node name="WallSE_Part1_Occluder" type="LightOccluder2D" parent="Walls"]
@@ -183,10 +189,6 @@ occluder = SubResource("OccluderPolygon2D_wall_se2")
 
 [node name="DarkCorridorLeft_Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(740, 450, 880, 520, 880, 535, 740, 465)
-
-[node name="DarkCorridorLeft_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.2, 0.22, 0.28, 1)
-polygon = PackedVector2Array(740, 450, 880, 520, 880, 505, 740, 435)
 
 [node name="DarkCorridorLeft_Occluder" type="LightOccluder2D" parent="Walls"]
 occluder = SubResource("OccluderPolygon2D_dark_corridor_left")
@@ -214,22 +216,71 @@ occluder = SubResource("OccluderPolygon2D_dark_wall_nw")
 [node name="DarkWallSE_Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(1320, 480, 1140, 570, 960, 660, 960, 675, 1140, 585, 1320, 495)
 
-[node name="DarkWallSE_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.22, 0.24, 0.3, 1)
-polygon = PackedVector2Array(1320, 480, 1140, 570, 960, 660, 960, 645, 1140, 555, 1320, 465)
-
 [node name="DarkWallSE_Occluder" type="LightOccluder2D" parent="Walls"]
 occluder = SubResource("OccluderPolygon2D_dark_wall_se")
 
 [node name="DarkWallSW_Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(960, 660, 880, 620, 880, 520, 865, 520, 865, 625, 960, 675)
 
-[node name="DarkWallSW_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.22, 0.24, 0.3, 1)
-polygon = PackedVector2Array(960, 660, 880, 620, 880, 520, 865, 505, 865, 605, 960, 645)
-
 [node name="DarkWallSW_Occluder" type="LightOccluder2D" parent="Walls"]
 occluder = SubResource("OccluderPolygon2D_dark_wall_sw")
+
+[node name="FrontWalls" type="Node2D" parent="."]
+z_index = 2
+
+[node name="WallSW_FrontVisual" type="Polygon2D" parent="FrontWalls"]
+color = Color(0.22, 0.26, 0.36, 0.42)
+polygon = PackedVector2Array(240, 340, 600, 520, 600, 445, 240, 265)
+
+[node name="WallSW_FrontRim" type="Line2D" parent="FrontWalls"]
+points = PackedVector2Array(240, 265, 600, 445)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.8, 0.75)
+
+[node name="WallSE_Part1_FrontVisual" type="Polygon2D" parent="FrontWalls"]
+color = Color(0.22, 0.26, 0.36, 0.42)
+polygon = PackedVector2Array(600, 520, 740, 450, 740, 375, 600, 445)
+
+[node name="WallSE_Part1_FrontRim" type="Line2D" parent="FrontWalls"]
+points = PackedVector2Array(600, 445, 740, 375)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.8, 0.75)
+
+[node name="WallSE_Part2_FrontVisual" type="Polygon2D" parent="FrontWalls"]
+color = Color(0.22, 0.26, 0.36, 0.42)
+polygon = PackedVector2Array(820, 410, 960, 340, 960, 265, 820, 335)
+
+[node name="WallSE_Part2_FrontRim" type="Line2D" parent="FrontWalls"]
+points = PackedVector2Array(820, 335, 960, 265)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.8, 0.75)
+
+[node name="DarkCorridorLeft_FrontVisual" type="Polygon2D" parent="FrontWalls"]
+color = Color(0.18, 0.22, 0.32, 0.45)
+polygon = PackedVector2Array(740, 450, 880, 520, 880, 445, 740, 375)
+
+[node name="DarkCorridorLeft_FrontRim" type="Line2D" parent="FrontWalls"]
+points = PackedVector2Array(740, 375, 880, 445)
+width = 2.0
+default_color = Color(0.42, 0.5, 0.7, 0.7)
+
+[node name="DarkWallSW_FrontVisual" type="Polygon2D" parent="FrontWalls"]
+color = Color(0.16, 0.19, 0.28, 0.45)
+polygon = PackedVector2Array(880, 520, 880, 620, 960, 660, 960, 585, 880, 545, 880, 445)
+
+[node name="DarkWallSW_FrontRim" type="Line2D" parent="FrontWalls"]
+points = PackedVector2Array(880, 445, 880, 545, 960, 585)
+width = 2.0
+default_color = Color(0.4, 0.48, 0.68, 0.7)
+
+[node name="DarkWallSE_FrontVisual" type="Polygon2D" parent="FrontWalls"]
+color = Color(0.16, 0.19, 0.28, 0.45)
+polygon = PackedVector2Array(960, 660, 1140, 570, 1320, 480, 1320, 405, 1140, 495, 960, 585)
+
+[node name="DarkWallSE_FrontRim" type="Line2D" parent="FrontWalls"]
+points = PackedVector2Array(960, 585, 1140, 495, 1320, 405)
+width = 2.0
+default_color = Color(0.4, 0.48, 0.68, 0.7)
 
 [node name="Window" type="Node2D" parent="."]
 position = Vector2(310, 305)
@@ -675,7 +726,9 @@ color = Color(0.96, 0.95, 0.92, 1)
 energy = 1.3
 texture = SubResource("GradientTexture2D_fill")
 texture_scale = 6.2
-shadow_enabled = false
+shadow_enabled = true
+shadow_filter = 1
+shadow_color = Color(0.02, 0.03, 0.05, 0.9)
 
 [node name="DeskLampLight" type="PointLight2D" parent="RoomLights"]
 position = Vector2(600, 240)

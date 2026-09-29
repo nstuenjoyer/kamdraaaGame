@@ -38,9 +38,10 @@ All singletons are configured in `project.godot` and accessible from any script 
 - **Root**: `Node2D` with script [scripts/main.gd](file:///e:/kamdraaa-game/scripts/main.gd)
 - **Room Dimensions**: 840 × 520 (boundaries: X: 220–1060, Y: 100–620)
 - **Key Entities**:
-  - `Player` (`CharacterBody2D` with [scripts/player.gd](file:///e:/kamdraaa-game/scripts/player.gd)): Starts at `(480, 290)`. Contains `Flashlight` component ([scripts/flashlight.gd](file:///e:/kamdraaa-game/scripts/flashlight.gd)) with dynamic cone spotlight, PCF5 shadows, volumetric beam, smooth mouse aiming (clamped to 90° radius when running), and toggle hotkeys (`F` / `ПКМ`).
+  - `Player` (`CharacterBody2D` with [scripts/player.gd](file:///e:/kamdraaa-game/scripts/player.gd)): Starts at `(480, 290)`. Contains `Flashlight` component ([scripts/flashlight.gd](file:///e:/kamdraaa-game/scripts/flashlight.gd)) with dynamic cone spotlight, PCF5 shadows with zero wall penetration (`shadow_color = Color(0,0,0,0)`), smoothly clamped aiming (+/- 90° when running), ambient aura with shadows, and toggle hotkeys (`F` / `ПКМ`).
+  - `FrontWalls` (`Node2D` at `z_index = 2`): Semi-transparent foreground walls facing the camera (`alpha ~ 0.42`) with glowing top rims, ensuring clear visibility into rooms without feeling wall-less.
   - `Window` (`Node2D` with [scripts/window_lighting.gd](file:///e:/kamdraaa-game/scripts/window_lighting.gd) & [scripts/window_rain_drawer.gd](file:///e:/kamdraaa-game/scripts/window_rain_drawer.gd)): NW wall `(310, 305)`. Rainy glass, Venetian blinds with shadow occluder slats, neon sign flicker, and sweeping car headlights.
-  - `RoomLights` (`Node2D`): `Room1CeilingLight` (wide fill light illuminating Room 1), `DeskLampLight` (with PCF5 shadows), `MirrorLight`, and `DoorLockLight` (red/green lock status).
+  - `RoomLights` (`Node2D`): `Room1CeilingLight` (wide fill light with PCF5 shadows blocking light from entering Room 2), `DeskLampLight` (soft local accent), `MirrorLight`, and `DoorLockLight` (red/green lock status).
   - `Furniture/Bed` (`StaticBody2D`): Located at NE wall `(680, 290)`.
   - `Pills` (`Area2D` + [scripts/pills_item.gd](file:///e:/kamdraaa-game/scripts/pills_item.gd)): Near bed `(620, 335)`. Blister pack of sedative pills picked up into inventory.
   - `Furniture/MirrorWithLipstick` (`Area2D` + [scripts/interactive_clue.gd](file:///e:/kamdraaa-game/scripts/interactive_clue.gd)): NW wall `(380, 270)`. Inspects lipstick message "ПОМНИ 04:15".
