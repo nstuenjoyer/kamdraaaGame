@@ -5,6 +5,8 @@ extends StaticBody2D
 @onready var door_panel: Polygon2D = $DoorPanel
 @onready var door_label: Label = $DoorLabel
 @onready var lock_led: Polygon2D = get_node_or_null("LockLED") as Polygon2D
+@onready var lock_light: PointLight2D = get_node_or_null("DoorLockLight") as PointLight2D
+@onready var door_occluder: LightOccluder2D = get_node_or_null("DoorOccluder") as LightOccluder2D
 
 var is_opened: bool = false
 var door_tween: Tween
@@ -17,6 +19,10 @@ func _ready() -> void:
 		door_panel.color = Color(0.48, 0.22, 0.16, 1.0)
 	if lock_led:
 		lock_led.color = Color(1.0, 0.2, 0.2, 1.0)
+	if lock_light:
+		lock_light.color = Color(1.0, 0.25, 0.2, 1.0)
+	if door_occluder:
+		door_occluder.visible = true
 
 func set_state(opened: bool) -> void:
 	if opened:
@@ -46,6 +52,10 @@ func open() -> void:
 		door_label.modulate = Color(0.3, 1.0, 0.4, 1.0)
 	if lock_led:
 		lock_led.color = Color(0.2, 1.0, 0.4, 1.0)
+	if lock_light:
+		lock_light.color = Color(0.2, 1.0, 0.4, 1.0)
+	if door_occluder:
+		door_occluder.visible = false
 
 	# Анимация открытия: полупрозрачность дверного полотна
 	door_tween = create_tween().set_parallel(true)
@@ -70,6 +80,10 @@ func close() -> void:
 		door_label.modulate = Color(1.0, 0.3, 0.3, 1.0)
 	if lock_led:
 		lock_led.color = Color(1.0, 0.2, 0.2, 1.0)
+	if lock_light:
+		lock_light.color = Color(1.0, 0.25, 0.2, 1.0)
+	if door_occluder:
+		door_occluder.visible = true
 	if door_panel:
 		door_panel.color = Color(0.48, 0.22, 0.16, 1.0)
 		door_panel.modulate.a = 1.0

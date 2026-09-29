@@ -22,6 +22,12 @@ var _clue_stream: AudioStreamWAV
 var _paper_stream: AudioStreamWAV
 var _typewriter_stream: AudioStreamWAV
 var _pills_stream: AudioStreamWAV
+var _deduction_success_stream: AudioStreamWAV
+var _deduction_fail_stream: AudioStreamWAV
+var _clue_pin_stream: AudioStreamWAV
+var _flashlight_on_stream: AudioStreamWAV
+var _flashlight_off_stream: AudioStreamWAV
+var _car_pass_stream: AudioStreamWAV
 
 var _player: AudioStreamPlayer
 var _music_player: AudioStreamPlayer
@@ -169,6 +175,58 @@ func _generate_procedural_sounds() -> void:
 
 	# 16. Бесшовная неонуарная эмбиент-музыка (8.0 сек. идеальный математический луп)
 	_bg_music_stream = _create_looping_music(8.0, 22050)
+
+	# 17. Триумфальное детективное озарение («Чертоги разума» / Eureka)
+	_deduction_success_stream = _create_sound(0.72, 22050, func(t: float, progress: float) -> float:
+		var env1: float = exp(-t * 5.0)
+		var env2: float = exp(-maxf(0.0, t - 0.1) * 4.5) if t >= 0.1 else 0.0
+		var env3: float = exp(-maxf(0.0, t - 0.22) * 4.0) if t >= 0.22 else 0.0
+		var tone1: float = (sin(t * 523.25 * TAU) + 0.3 * sin(t * 1046.5 * TAU)) * env1
+		var tone2: float = (sin((t - 0.1) * 659.25 * TAU) + 0.25 * sin((t - 0.1) * 1318.5 * TAU)) * env2
+		var tone3: float = (sin((t - 0.22) * 987.77 * TAU) + 0.2 * sin((t - 0.22) * 1975.5 * TAU)) * env3
+		return (tone1 * 0.25 + tone2 * 0.28 + tone3 * 0.34) * (1.0 - progress) * 0.8
+	)
+
+	# 18. Нестыковка улик (мягкий нуарный диссонанс)
+	_deduction_fail_stream = _create_sound(0.24, 22050, func(t: float, progress: float) -> float:
+		var env: float = (1.0 - progress) * (1.0 - progress)
+		var freq: float = lerpf(260.0, 150.0, progress)
+		var tone: float = sin(t * freq * TAU) + 0.45 * sin(t * (freq * 1.414) * TAU)
+		return tone * env * 0.26
+	)
+
+	# 19. Прикрепление улики на доску дедукции
+	_clue_pin_stream = _create_sound(0.055, 22050, func(t: float, progress: float) -> float:
+		var env: float = exp(-t * 60.0)
+		var click: float = sin(t * 1350.0 * TAU) * env
+		var thud: float = sin(t * 240.0 * TAU) * exp(-t * 32.0) * 0.5
+		return (click * 0.5 + thud * 0.5) * 0.32
+	)
+
+	# 20. Включение фонарика (четкий щелчок тумблера)
+	_flashlight_on_stream = _create_sound(0.045, 22050, func(t: float, progress: float) -> float:
+		var env: float = (1.0 - progress) * (1.0 - progress)
+		var click1: float = sin(t * 1420.0 * TAU) * env
+		var click2: float = sin(t * 2850.0 * TAU) * 0.4 * env if progress < 0.3 else 0.0
+		return (click1 + click2) * 0.35
+	)
+
+	# 21. Выключение фонарика
+	_flashlight_off_stream = _create_sound(0.045, 22050, func(t: float, progress: float) -> float:
+		var env: float = (1.0 - progress) * (1.0 - progress)
+		var click1: float = sin(t * 980.0 * TAU) * env
+		return click1 * 0.32
+	)
+
+	# 22. Проезжающая под окном машина (тихий шелест шин по мокрому асфальту)
+	_car_pass_stream = _create_sound(3.4, 22050, func(t: float, progress: float) -> float:
+		var bell: float = sin(progress * PI)
+		var env: float = bell * bell
+		var lcg: int = int(t * 784321.0) & 0x7fffffff
+		var noise: float = (float(lcg % 20001) / 10000.0) - 1.0
+		var rumble: float = sin(t * 68.0 * TAU) * 0.35 + sin(t * 115.0 * TAU) * 0.2
+		return (rumble + noise * 0.42) * env * 0.28
+	)
 
 func _create_sound(duration: float, sample_rate: int, generator: Callable) -> AudioStreamWAV:
 	var total_samples: int = int(duration * float(sample_rate))
@@ -499,6 +557,27 @@ func play_typewriter_tick() -> void:
 	_typewriter_player.stream = _typewriter_stream
 	_typewriter_player.pitch_scale = randf_range(0.92, 1.14)
 	_typewriter_player.play()
+
+func play_deduction_success() -> void:
+	if _deduction_success_stream:
+		_play_stream(_deduction_success_stream)
+
+func play_deduction_fail() -> void:
+	if _deduction_fail_stream:
+		_play_stream(_deduction_fail_stream)
+
+func play_clue_pin() -> void:
+	if _clue_pin_stream:
+		_play_stream_pitched(_clue_pin_stream, randf_range(0.95, 1.05), 0.0)
+
+func play_flashlight_toggle(is_on: bool) -> void:
+	var stream: AudioStreamWAV = _flashlight_on_stream if is_on else _flashlight_off_stream
+	if stream:
+		_play_stream_pitched(stream, randf_range(0.96, 1.04), 0.0)
+
+func play_car_pass() -> void:
+	if _car_pass_stream:
+		_play_stream_pitched(_car_pass_stream, randf_range(0.95, 1.05), -4.0)
 
 func _play_stream(stream: AudioStreamWAV) -> void:
 	var player: AudioStreamPlayer = AudioStreamPlayer.new()

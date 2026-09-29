@@ -17,6 +17,8 @@ const REBINDABLE_ACTIONS: Array[Dictionary] = [
 	{"action": "quick_save", "name": "Быстрое сохранение"},
 	{"action": "quick_load", "name": "Быстрая загрузка"},
 	{"action": "toggle_clues", "name": "Материалы дела / Улики"},
+	{"action": "toggle_mind_palace", "name": "Чертоги разума (Доска улик)"},
+	{"action": "toggle_flashlight", "name": "Фонарик (Вкл / Выкл)"},
 	{"action": "toggle_history", "name": "Журнал истории диалогов"},
 	{"action": "toggle_fullscreen", "name": "Полный экран"}
 ]

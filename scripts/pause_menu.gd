@@ -15,19 +15,49 @@ extends CanvasLayer
 @onready var btn_settings: Button = $PauseContainer/MenuPanel/Margin/VBox/BtnSettings
 @onready var btn_main_menu: Button = $PauseContainer/MenuPanel/Margin/VBox/BtnMainMenu
 
-# Модальные окна
+# Модальное окно материалов дела и чертогов разума
 @onready var clues_dialog: PanelContainer = $PauseContainer/CluesDialog
-@onready var clue_list_container: VBoxContainer = $PauseContainer/CluesDialog/Margin/VBox/HSplit/LeftScroll/ClueListContainer
-@onready var clues_counter: Label = $PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/CluesCounter
-@onready var detail_icon: Label = $PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailIcon
-@onready var detail_title: Label = $PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox/DetailTitle
-@onready var detail_meta: Label = $PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox/DetailMeta
-@onready var detail_desc: Label = $PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/DetailDesc
-@onready var hint_text: Label = $PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/HintBox/HintMargin/HintText
+@onready var btn_tab_dossier: Button = $PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/TabHeaderHBox/BtnTabDossier
+@onready var btn_tab_mind_palace: Button = $PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/TabHeaderHBox/BtnTabMindPalace
+@onready var clues_counter: Label = $PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/CountersHBox/CluesCounter
+@onready var deductions_counter: Label = $PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/CountersHBox/DeductionsCounter
+@onready var clues_subtitle: Label = $PauseContainer/CluesDialog/Margin/VBox/Subtitle
+
+# Вкладка Досье улик
+@onready var dossier_view: Control = $PauseContainer/CluesDialog/Margin/VBox/DossierView
+@onready var clue_list_container: VBoxContainer = $PauseContainer/CluesDialog/Margin/VBox/DossierView/LeftScroll/ClueListContainer
+@onready var detail_icon: Label = $PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailIcon
+@onready var detail_title: Label = $PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox/DetailTitle
+@onready var detail_meta: Label = $PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox/DetailMeta
+@onready var detail_desc: Label = $PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/DetailDesc
+@onready var hint_text: Label = $PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/HintBox/HintMargin/HintText
+
+# Вкладка Чертоги разума
+@onready var mind_palace_view: Control = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView
+@onready var board_clue_list: VBoxContainer = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/BoardCluesCol/BoardScroll/BoardClueList
+@onready var btn_reset_slots: Button = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/SynthesisHeader/BtnResetSlots
+@onready var slot1_card: PanelContainer = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card
+@onready var slot1_icon: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox/Slot1Icon
+@onready var slot1_title: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox/Slot1Title
+@onready var btn_clear_slot1: Button = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox/BtnClearSlot1
+@onready var btn_synthesize: Button = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/ActionHBox/BtnSynthesize
+@onready var slot2_card: PanelContainer = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card
+@onready var slot2_icon: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox/Slot2Icon
+@onready var slot2_title: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox/Slot2Title
+@onready var btn_clear_slot2: Button = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox/BtnClearSlot2
+@onready var insight_title: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox/InsightTitle
+@onready var insight_text: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox/InsightScroll/InsightText
+@onready var insight_status: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox/InsightStatus
+@onready var deductions_sub: Label = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/DeductionsCol/DeductionsSub
+@onready var deductions_list: VBoxContainer = $PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/DeductionsCol/DeductionsScroll/DeductionsList
+
 @onready var btn_close_clues: Button = $PauseContainer/CluesDialog/Margin/VBox/FooterHBox/BtnCloseClues
 
 var _selected_clue_id: String = ""
 var _opened_via_clues_hotkey: bool = false
+var _current_clues_tab: String = "dossier" # "dossier" или "mind_palace"
+var _selected_slot1_clue_id: String = ""
+var _selected_slot2_clue_id: String = ""
 @onready var save_dialog: PanelContainer = $PauseContainer/SaveDialog
 @onready var save_slot_container: VBoxContainer = $PauseContainer/SaveDialog/Margin/VBox/Scroll/SaveSlotContainer
 @onready var btn_close_save: Button = $PauseContainer/SaveDialog/Margin/VBox/BtnCloseSave
@@ -131,6 +161,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_clues_menu()
 		return
 
+	var is_mind_palace_key: bool = event.is_action_pressed("toggle_mind_palace") or (
+		event is InputEventKey and event.pressed and not event.is_echo() and event.keycode == KEY_M
+	)
+	if is_mind_palace_key:
+		var ui_dialogue: CanvasLayer = get_node_or_null("../UI") as CanvasLayer
+		if ui_dialogue and ui_dialogue.get("_is_history_open"):
+			return
+		get_viewport().set_input_as_handled()
+		open_mind_palace()
+		return
+
 	var is_pause_key: bool = event.is_action_pressed("ui_cancel") or (
 		event is InputEventKey and event.pressed and not event.is_echo() and (
 			event.keycode == KEY_ESCAPE or event.keycode == KEY_P
@@ -216,11 +257,25 @@ func _connect_buttons() -> void:
 	btn_discard_save.pressed.connect(_on_discard_save_pressed)
 	btn_cancel_confirm.pressed.connect(_on_cancel_confirm_pressed)
 
+	if btn_tab_dossier:
+		btn_tab_dossier.pressed.connect(func(): _switch_clues_tab("dossier"))
+	if btn_tab_mind_palace:
+		btn_tab_mind_palace.pressed.connect(func(): _switch_clues_tab("mind_palace"))
+	if btn_reset_slots:
+		btn_reset_slots.pressed.connect(_clear_both_slots)
+	if btn_clear_slot1:
+		btn_clear_slot1.pressed.connect(func(): _clear_slot(1))
+	if btn_clear_slot2:
+		btn_clear_slot2.pressed.connect(func(): _clear_slot(2))
+	if btn_synthesize:
+		btn_synthesize.pressed.connect(_on_synthesize_pressed)
+
 	_bind_sound_feedback([
 		btn_resume, btn_clues, btn_save, btn_load, btn_settings, btn_main_menu,
 		btn_close_clues, btn_close_save, btn_close_load, btn_apply_settings, btn_close_settings,
 		btn_tab_audio, btn_tab_text, btn_tab_controls, btn_reset_keybinds,
-		btn_confirm_save, btn_discard_save, btn_cancel_confirm
+		btn_confirm_save, btn_discard_save, btn_cancel_confirm,
+		btn_tab_dossier, btn_tab_mind_palace, btn_reset_slots, btn_clear_slot1, btn_clear_slot2, btn_synthesize
 	])
 
 func _bind_sound_feedback(buttons: Array[Button]) -> void:
@@ -685,30 +740,48 @@ func show_toast(text: String) -> void:
 	)
 
 # ========================================================
-# Панель материалов дела и улик (CluesDialog)
+# Панель материалов дела и чертогов разума (CluesDialog)
 # ========================================================
 
 func toggle_clues_menu() -> void:
-	if container.visible and clues_dialog and clues_dialog.visible:
+	if not is_node_ready():
+		return
+	if container and container.visible and clues_dialog and clues_dialog.visible:
 		if _opened_via_clues_hotkey:
 			close_menu()
 		else:
 			_close_all_modals()
 	else:
-		_opened_via_clues_hotkey = not container.visible
+		_opened_via_clues_hotkey = not (container and container.visible)
 		get_tree().paused = true
-		container.visible = true
+		if container:
+			container.visible = true
 		_on_clues_pressed()
 
+func open_mind_palace() -> void:
+	if not is_node_ready():
+		return
+	if container and container.visible and clues_dialog and clues_dialog.visible and _current_clues_tab == "mind_palace":
+		close_menu()
+	else:
+		_opened_via_clues_hotkey = not (container and container.visible)
+		get_tree().paused = true
+		if container:
+			container.visible = true
+		_on_clues_pressed()
+		_switch_clues_tab("mind_palace")
+
 func _on_clues_pressed() -> void:
-	menu_panel.visible = false
-	save_dialog.visible = false
-	load_dialog.visible = false
-	settings_dialog.visible = false
+	if not is_node_ready():
+		return
+	if menu_panel: menu_panel.visible = false
+	if save_dialog: save_dialog.visible = false
+	if load_dialog: load_dialog.visible = false
+	if settings_dialog: settings_dialog.visible = false
 	if settings_confirm_dialog:
 		settings_confirm_dialog.visible = false
-	clues_dialog.visible = true
-	_populate_clues_ui()
+	if clues_dialog: clues_dialog.visible = true
+	_switch_clues_tab(_current_clues_tab)
 	if btn_close_clues:
 		btn_close_clues.grab_focus()
 
@@ -718,9 +791,59 @@ func _on_close_clues_pressed() -> void:
 	else:
 		_close_all_modals()
 
+func _switch_clues_tab(tab_name: String) -> void:
+	_current_clues_tab = tab_name
+	if dossier_view:
+		dossier_view.visible = (tab_name == "dossier")
+	if mind_palace_view:
+		mind_palace_view.visible = (tab_name == "mind_palace")
+
+	if btn_tab_dossier:
+		btn_tab_dossier.modulate = Color(1.0, 1.0, 1.0, 1.0) if tab_name == "dossier" else Color(0.65, 0.7, 0.8, 0.7)
+	if btn_tab_mind_palace:
+		btn_tab_mind_palace.modulate = Color(1.0, 1.0, 1.0, 1.0) if tab_name == "mind_palace" else Color(0.65, 0.7, 0.8, 0.7)
+
+	if clues_subtitle:
+		if tab_name == "dossier":
+			clues_subtitle.text = "Все обнаруженные сюжетные улики, детали дебоша и подсказки к дальнейшим действиям"
+		else:
+			clues_subtitle.text = "Чертоги разума: сопоставляйте найденные зацепки для выстраивания логических цепочек и озарений"
+
+	_update_clues_and_deductions_counters()
+
+	if tab_name == "dossier":
+		_populate_clues_ui()
+	else:
+		_populate_mind_palace_ui()
+
 func _on_clues_updated() -> void:
 	if clues_dialog and clues_dialog.visible:
-		_populate_clues_ui()
+		_update_clues_and_deductions_counters()
+		if _current_clues_tab == "dossier":
+			_populate_clues_ui()
+		else:
+			_populate_mind_palace_ui()
+
+func _update_clues_and_deductions_counters() -> void:
+	var clue_mgr: Node = get_node_or_null("/root/ClueManager")
+	if not clue_mgr:
+		return
+
+	var discovered_count: int = clue_mgr.get_discovered_count()
+	var total_count: int = clue_mgr.get_total_count()
+	var unlocked_ded_count: int = clue_mgr.get_unlocked_deductions_count()
+	var total_ded_count: int = clue_mgr.get_total_deductions_count()
+
+	if clues_counter:
+		clues_counter.text = "🔍 Улики: %d / %d" % [discovered_count, total_count]
+	if deductions_counter:
+		deductions_counter.text = "🧠 Выводы: %d / %d" % [unlocked_ded_count, total_ded_count]
+	if deductions_sub:
+		deductions_sub.text = "Сформировано выводов: %d из %d" % [unlocked_ded_count, total_ded_count]
+
+# --------------------------------------------------------
+# Вкладка 1: Досье улик (Dossier)
+# --------------------------------------------------------
 
 func _populate_clues_ui() -> void:
 	if not clue_list_container:
@@ -734,12 +857,6 @@ func _populate_clues_ui() -> void:
 		return
 
 	var all_clues: Array[Dictionary] = clue_mgr.get_all_clues()
-	var discovered_count: int = clue_mgr.get_discovered_count()
-	var total_count: int = clue_mgr.get_total_count()
-
-	if clues_counter:
-		clues_counter.text = "Найдено: %d / %d" % [discovered_count, total_count]
-
 	var selected_clue_to_show: Dictionary = {}
 
 	for clue in all_clues:
@@ -831,3 +948,269 @@ func _show_clue_detail(clue: Dictionary) -> void:
 			var hint_panel: Control = hint_text.get_parent().get_parent() as Control
 			if hint_panel:
 				hint_panel.visible = true
+
+# --------------------------------------------------------
+# Вкладка 2: Чертоги разума (Mind Palace)
+# --------------------------------------------------------
+
+func _populate_mind_palace_ui() -> void:
+	var clue_mgr: Node = get_node_or_null("/root/ClueManager")
+	if not clue_mgr:
+		return
+
+	# 1. Заполняем левую колонку доступных улик
+	if board_clue_list:
+		for child in board_clue_list.get_children():
+			child.queue_free()
+
+		var all_clues: Array[Dictionary] = clue_mgr.get_all_clues()
+		var discovered_count: int = 0
+
+		for clue in all_clues:
+			var c_id: String = clue.get("id", "")
+			var is_discovered: bool = bool(clue.get("discovered", false))
+
+			var btn: Button = Button.new()
+			btn.custom_minimum_size = Vector2(0, 46)
+			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			btn.add_theme_font_size_override("font_size", 11)
+
+			if is_discovered:
+				discovered_count += 1
+				var status_prefix: String = "[📌] "
+				var font_col: Color = Color(0.92, 0.95, 1.0, 1.0)
+
+				if c_id == _selected_slot1_clue_id:
+					status_prefix = "[СЛОТ 1 ⚡] "
+					font_col = Color(0.2, 0.85, 1.0, 1.0)
+				elif c_id == _selected_slot2_clue_id:
+					status_prefix = "[СЛОТ 2 ⚡] "
+					font_col = Color(1.0, 0.45, 0.75, 1.0)
+
+				btn.text = "%s%s %s\n[%s]" % [
+					status_prefix,
+					clue.get("icon", ""),
+					clue.get("title", ""),
+					clue.get("location", "")
+				]
+				btn.add_theme_color_override("font_color", font_col)
+
+				btn.pressed.connect(func():
+					_select_clue_for_mind_palace(c_id)
+				)
+				btn.mouse_entered.connect(func():
+					var s_mgr: Node = get_node_or_null("/root/SoundManager")
+					if s_mgr and s_mgr.has_method("play_hover"):
+						s_mgr.play_hover()
+				)
+			else:
+				btn.text = "❓  Неизвестная улика\n[Не исследовано в комнате]"
+				btn.add_theme_color_override("font_color", Color(0.45, 0.5, 0.6, 0.6))
+				btn.disabled = true
+
+			board_clue_list.add_child(btn)
+
+		if discovered_count == 0:
+			var empty_lbl: Label = Label.new()
+			empty_lbl.text = "В комнате ещё не найдено ни одной улик.\nОсмотрите помещение клавишей [E]."
+			empty_lbl.add_theme_font_size_override("font_size", 11)
+			empty_lbl.add_theme_color_override("font_color", Color(0.6, 0.65, 0.75, 0.7))
+			empty_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			board_clue_list.add_child(empty_lbl)
+
+	# 2. Обновляем карточки слотов дедукции
+	_update_mind_palace_slots_ui()
+
+	# 3. Заполняем правую колонку журнала озарений
+	if deductions_list:
+		for child in deductions_list.get_children():
+			child.queue_free()
+
+		var all_deductions: Array[Dictionary] = clue_mgr.get_all_deductions()
+		var unlocked_count: int = 0
+
+		for d in all_deductions:
+			var is_unlocked: bool = bool(d.get("unlocked", false))
+			var btn: Button = Button.new()
+			btn.custom_minimum_size = Vector2(0, 48)
+			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			btn.add_theme_font_size_override("font_size", 11)
+
+			if is_unlocked:
+				unlocked_count += 1
+				btn.text = "%s  %s\n[✓ В %s • Тревога %d%%]" % [
+					d.get("icon", "💡"),
+					d.get("title", ""),
+					d.get("unlocked_at", ""),
+					int(d.get("paranoia_relief", 15.0)) * -1
+				]
+				btn.add_theme_color_override("font_color", Color(1.0, 0.9, 0.5, 1.0))
+				btn.pressed.connect(func():
+					_show_deduction_inspection(d)
+				)
+				btn.mouse_entered.connect(func():
+					var s_mgr: Node = get_node_or_null("/root/SoundManager")
+					if s_mgr and s_mgr.has_method("play_hover"):
+						s_mgr.play_hover()
+				)
+			else:
+				btn.text = "🔒  Нераскрытое озарение\n[Сопоставьте две зацепки]"
+				btn.add_theme_color_override("font_color", Color(0.45, 0.5, 0.6, 0.5))
+				btn.disabled = true
+
+			deductions_list.add_child(btn)
+
+		if unlocked_count == 0:
+			var hint_lbl: Label = Label.new()
+			hint_lbl.text = "Пока нет сформулированных выводов.\n\nПопробуйте сопоставить, например, время на смятом чеке из бара с надписью на зеркале."
+			hint_lbl.add_theme_font_size_override("font_size", 11)
+			hint_lbl.add_theme_color_override("font_color", Color(0.5, 0.7, 0.8, 0.8))
+			hint_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			deductions_list.add_child(hint_lbl)
+
+func _update_mind_palace_slots_ui() -> void:
+	var clue_mgr: Node = get_node_or_null("/root/ClueManager")
+	if not clue_mgr:
+		return
+
+	# Слот 1
+	if _selected_slot1_clue_id != "":
+		var c1: Dictionary = clue_mgr.get_clue(_selected_slot1_clue_id)
+		if slot1_icon: slot1_icon.text = c1.get("icon", "🔍")
+		if slot1_title:
+			slot1_title.text = c1.get("title", _selected_slot1_clue_id)
+			slot1_title.add_theme_color_override("font_color", Color(0.4, 0.85, 1.0, 1.0))
+		if btn_clear_slot1: btn_clear_slot1.visible = true
+	else:
+		if slot1_icon: slot1_icon.text = "❓"
+		if slot1_title:
+			slot1_title.text = "Выберите первую улику слева..."
+			slot1_title.add_theme_color_override("font_color", Color(0.65, 0.7, 0.8, 0.6))
+		if btn_clear_slot1: btn_clear_slot1.visible = false
+
+	# Слот 2
+	if _selected_slot2_clue_id != "":
+		var c2: Dictionary = clue_mgr.get_clue(_selected_slot2_clue_id)
+		if slot2_icon: slot2_icon.text = c2.get("icon", "🔍")
+		if slot2_title:
+			slot2_title.text = c2.get("title", _selected_slot2_clue_id)
+			slot2_title.add_theme_color_override("font_color", Color(1.0, 0.45, 0.75, 1.0))
+		if btn_clear_slot2: btn_clear_slot2.visible = true
+	else:
+		if slot2_icon: slot2_icon.text = "❓"
+		if slot2_title:
+			slot2_title.text = "Выберите вторую улику слева..."
+			slot2_title.add_theme_color_override("font_color", Color(0.65, 0.7, 0.8, 0.6))
+		if btn_clear_slot2: btn_clear_slot2.visible = false
+
+	# Кнопка сопоставления
+	if btn_synthesize:
+		var can_synthesize: bool = (_selected_slot1_clue_id != "" and _selected_slot2_clue_id != "" and _selected_slot1_clue_id != _selected_slot2_clue_id)
+		btn_synthesize.disabled = not can_synthesize
+		if can_synthesize:
+			btn_synthesize.text = "⚡  СОПОСТАВИТЬ ЗАЦЕПКИ В ЧЕРТОГАХ"
+			btn_synthesize.modulate = Color(1.1, 1.1, 1.0, 1.0)
+		else:
+			btn_synthesize.text = "⚡  ВЫБЕРИТЕ 2 РАЗНЫЕ ЗАЦЕПКИ"
+			btn_synthesize.modulate = Color(0.7, 0.75, 0.8, 0.65)
+
+func _select_clue_for_mind_palace(clue_id: String) -> void:
+	if _selected_slot1_clue_id == clue_id:
+		_selected_slot1_clue_id = ""
+	elif _selected_slot2_clue_id == clue_id:
+		_selected_slot2_clue_id = ""
+	elif _selected_slot1_clue_id == "":
+		_selected_slot1_clue_id = clue_id
+	elif _selected_slot2_clue_id == "":
+		_selected_slot2_clue_id = clue_id
+	else:
+		_selected_slot2_clue_id = clue_id
+
+	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
+	if sound_mgr and sound_mgr.has_method("play_clue_pin"):
+		sound_mgr.play_clue_pin()
+
+	_populate_mind_palace_ui()
+
+func _clear_slot(slot_idx: int) -> void:
+	if slot_idx == 1:
+		_selected_slot1_clue_id = ""
+	elif slot_idx == 2:
+		_selected_slot2_clue_id = ""
+
+	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
+	if sound_mgr and sound_mgr.has_method("play_cancel"):
+		sound_mgr.play_cancel()
+
+	_populate_mind_palace_ui()
+
+func _clear_both_slots() -> void:
+	_selected_slot1_clue_id = ""
+	_selected_slot2_clue_id = ""
+
+	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
+	if sound_mgr and sound_mgr.has_method("play_cancel"):
+		sound_mgr.play_cancel()
+
+	_populate_mind_palace_ui()
+
+func _on_synthesize_pressed() -> void:
+	if _selected_slot1_clue_id == "" or _selected_slot2_clue_id == "":
+		return
+
+	var clue_mgr: Node = get_node_or_null("/root/ClueManager")
+	if not clue_mgr:
+		return
+
+	var result: Dictionary = clue_mgr.connect_clues(_selected_slot1_clue_id, _selected_slot2_clue_id)
+
+	if result.get("success", false):
+		var d: Dictionary = result.get("deduction", {})
+		if insight_title:
+			insight_title.text = "💡 ЭВРИКА: " + d.get("title", "")
+			insight_title.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3, 1.0))
+		if insight_text:
+			insight_text.text = d.get("insight", "")
+		if insight_status:
+			insight_status.text = "🫀 " + d.get("narrative_effect", "")
+			insight_status.visible = true
+
+		show_toast("🧩 Чертоги разума: «%s»!" % d.get("title", ""))
+	elif result.get("already_unlocked", false):
+		var d: Dictionary = result.get("deduction", {})
+		if insight_title:
+			insight_title.text = "ℹ️ УЖЕ СФОРМИРОВАНО: " + d.get("title", "")
+			insight_title.add_theme_color_override("font_color", Color(0.4, 0.85, 1.0, 1.0))
+		if insight_text:
+			insight_text.text = d.get("insight", "")
+		if insight_status:
+			insight_status.text = "Логический вывод уже зафиксирован в материалах дела."
+			insight_status.visible = true
+	else:
+		if insight_title:
+			insight_title.text = "❌ НЕСТЫКОВКА ЗАЦЕПОК"
+			insight_title.add_theme_color_override("font_color", Color(1.0, 0.4, 0.5, 1.0))
+		if insight_text:
+			insight_text.text = str(result.get("reason", "Связь между этими зацепками не обнаружена."))
+		if insight_status:
+			insight_status.visible = false
+
+	_update_clues_and_deductions_counters()
+	_populate_mind_palace_ui()
+
+func _show_deduction_inspection(deduction: Dictionary) -> void:
+	if insight_title:
+		insight_title.text = "🔍 ВЫВОД: " + deduction.get("title", "")
+		insight_title.add_theme_color_override("font_color", Color(1.0, 0.9, 0.4, 1.0))
+	if insight_text:
+		insight_text.text = deduction.get("insight", "")
+	if insight_status:
+		insight_status.text = "🫀 " + deduction.get("narrative_effect", "") + " (Сформировано в " + deduction.get("unlocked_at", "") + ")"
+		insight_status.visible = true
+
+	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
+	if sound_mgr and sound_mgr.has_method("play_click"):
+		sound_mgr.play_click()
+

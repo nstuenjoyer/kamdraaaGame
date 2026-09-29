@@ -1,5 +1,5 @@
 ﻿# Kamdraaa - Codebase Index and Architecture Map
-*Auto-generated on 2026-09-28 00:51:41 for instant AI navigation.*
+*Auto-generated on 2026-09-30 00:59:31 for instant AI navigation.*
 
 ## 1. Project Overview
 - **Game**: Kamdraaa (Psychological Noir Detective Adventure)
@@ -18,14 +18,14 @@
 | `InventoryManager` | `res://scripts/inventory_manager.gd` | Global Autoload |
 
 ## 3. Input Actions
-`ui_cancel`, `move_left`, `move_right`, `move_up`, `move_down`, `interact`, `quick_save`, `quick_load`, `toggle_fullscreen`, `toggle_clues`, `toggle_history`
+`ui_cancel`, `move_left`, `move_right`, `move_up`, `move_down`, `interact`, `quick_save`, `quick_load`, `toggle_fullscreen`, `toggle_clues`, `toggle_history`, `toggle_mind_palace`, `toggle_flashlight`
 
-## 4. Scripts Inventory (17 scripts in scripts/)
-### [clue_manager.gd](scripts/clue_manager.gd) (149 lines)
-*Глобальный менеджер улик и подсказок (ClueManager)*
+## 4. Scripts Inventory (21 scripts in scripts/)
+### [clue_manager.gd](scripts/clue_manager.gd) (385 lines)
+*Глобальный менеджер улик, подсказок и чертогов разума (ClueManager)*
 
 - **Extends**: `Node`
-- **Signals**: `clue_discovered(clue_id: String, clue_data: Dictionary)`, `clues_updated`
+- **Signals**: `clue_discovered(clue_id: String, clue_data: Dictionary)`, `clues_updated`, `deduction_unlocked(deduction_id: String, deduction_data: Dictionary)`, `deduction_failed(clue_a: String, clue_b: String, reason: String)`
 - **Key Functions**:
   - `_ready()-> void`
   - `discover_clue(clue_id: String)-> bool`
@@ -33,9 +33,26 @@
   - `get_clue(clue_id: String)-> Dictionary`
   - `get_discovered_count()-> int`
   - `get_total_count()-> int`
-  - `get_save_data()-> Dictionary`
-  - `load_save_data(data: Dictionary)-> void`
-  - `reset_all_clues()-> void`
+  - `connect_clues(clue_a: String, clue_b: String)-> Dictionary`
+  - `get_mismatch_reason(clue_a: String, clue_b: String)-> String`
+  - `is_deduction_unlocked(deduction_id: String)-> bool`
+  - `get_deduction(deduction_id: String)-> Dictionary`
+  - *... and 5 more functions*
+
+### [darkness_anxiety.gd](scripts/darkness_anxiety.gd) (121 lines)
+*DarknessAnxiety — Механика паники и тревоги в темноте (Fear of the Dark)*
+
+- **Extends**: `Node`
+- **Class**: `DarknessAnxiety`
+- **Exports**: `var player: CharacterBody2D`, `var dark_zone: Area2D`
+- **Key Functions**:
+  - `_ready()-> void`
+  - `_on_dark_zone_body_entered(body: Node2D)-> void`
+  - `_on_dark_zone_body_exited(body: Node2D)-> void`
+  - `_process(delta: float)-> void`
+  - `_handle_darkness(delta: float)-> void`
+  - `_trigger_darkness_whisper()-> void`
+  - `_resolve_darkness_relief(lit_by_flashlight: bool)-> void`
 
 ### [dialogue_box.gd](scripts/dialogue_box.gd) (765 lines)
 *Портреты персонажей в диалогах*
@@ -55,7 +72,7 @@
   - `_finish_typing_instantly()-> void`
   - *... and 11 more functions*
 
-### [door.gd](scripts/door.gd) (79 lines)
+### [door.gd](scripts/door.gd) (93 lines)
 *Скрипт двери с электрозамком*
 
 - **Extends**: `StaticBody2D`
@@ -64,6 +81,24 @@
   - `set_state(opened: bool)-> void`
   - `open()-> void`
   - `close()-> void`
+
+### [flashlight.gd](scripts/flashlight.gd) (228 lines)
+*Flashlight — Система налобного/карманного фонарика Даши с динамическими тенями*
+
+- **Extends**: `Node2D`
+- **Class**: `Flashlight`
+- **Signals**: `flashlight_toggled(is_on: bool)`
+- **Exports**: `var is_flashlight_on: bool`, `var beam_color: Color`, `var ambient_color: Color`, `var beam_energy: float`, `var ambient_energy: float`, `var smooth_speed: float`
+- **Key Functions**:
+  - `_ready()-> void`
+  - `_setup_lights()-> void`
+  - `_input(event: InputEvent)-> void`
+  - `toggle_flashlight(enable_state: Variant = null)-> void`
+  - `is_on()-> bool`
+  - `_update_light_states()-> void`
+  - `_process(delta: float)-> void`
+  - `_get_or_create_cone_texture()-> ImageTexture`
+  - `_get_or_create_radial_texture()-> ImageTexture`
 
 ### [hud_paranoia.gd](scripts/hud_paranoia.gd) (214 lines)
 *HUD: Монитор биоритмов и шкала паранойи (Heart Rate & Paranoia System)*
@@ -79,7 +114,7 @@
   - `_on_ecg_draw()-> void`
   - `draw_line_grid(target: Control, size: Vector2, grid_color: Color)-> void`
 
-### [interactive_clue.gd](scripts/interactive_clue.gd) (238 lines)
+### [interactive_clue.gd](scripts/interactive_clue.gd) (259 lines)
 *Универсальный скрипт интерактивного объекта / улики расследования*
 
 - **Extends**: `Area2D`
@@ -126,7 +161,7 @@
   - `load_save_data(data: Dictionary)-> void`
   - *... and 1 more functions*
 
-### [main.gd](scripts/main.gd) (41 lines)
+### [main.gd](scripts/main.gd) (42 lines)
 *Сцена: Стартовая комната (Похмельное пробуждение Даши)*
 
 - **Extends**: `Node2D`
@@ -168,7 +203,7 @@
   - `is_panic()-> bool`
   - *... and 3 more functions*
 
-### [pause_menu.gd](scripts/pause_menu.gd) (833 lines)
+### [pause_menu.gd](scripts/pause_menu.gd) (1216 lines)
 *Скрипт меню паузы во время игры (PauseMenu)*
 
 - **Extends**: `CanvasLayer`
@@ -183,7 +218,7 @@
   - `_on_load_pressed()-> void`
   - `_on_settings_pressed()-> void`
   - `_on_main_menu_pressed()-> void`
-  - *... and 26 more functions*
+  - *... and 36 more functions*
 
 ### [pills_item.gd](scripts/pills_item.gd) (90 lines)
 *Интерактивный предмет: Блистер с успокоительными таблетками (PillsItem)*
@@ -247,7 +282,7 @@
   - `has_any_save()-> bool`
   - *... and 6 more functions*
 
-### [settings_manager.gd](scripts/settings_manager.gd) (279 lines)
+### [settings_manager.gd](scripts/settings_manager.gd) (281 lines)
 *Менеджер настроек (SettingsManager)*
 
 - **Extends**: `Node`
@@ -265,7 +300,7 @@
   - `_apply_action_key(action_name: String, key_code: Key)-> void`
   - *... and 15 more functions*
 
-### [sound_manager.gd](scripts/sound_manager.gd) (519 lines)
+### [sound_manager.gd](scripts/sound_manager.gd) (598 lines)
 *Менеджер процедурных звуковых эффектов (SoundManager)*
 
 - **Extends**: `Node`
@@ -280,7 +315,35 @@
   - `_create_looping_music(duration: float, sample_rate: int)-> AudioStreamWAV`
   - `start_bg_music()-> void`
   - `stop_bg_music()-> void`
-  - *... and 21 more functions*
+  - *... and 26 more functions*
+
+### [window_lighting.gd](scripts/window_lighting.gd) (321 lines)
+*WindowLighting — Нуарное окно в ночной дождливый город*
+
+- **Extends**: `Node2D`
+- **Class**: `WindowLighting`
+- **Exports**: `var is_active: bool`
+- **Key Functions**:
+  - `_ready()-> void`
+  - `_create_window_visuals()-> void`
+  - `_create_blinds_and_occluders()-> void`
+  - `_create_lights()-> void`
+  - `_setup_car_timer()-> void`
+  - `_init_rain_droplets()-> void`
+  - `_process(delta: float)-> void`
+  - `_update_neon_sign(delta: float)-> void`
+  - `_trigger_car_pass()-> void`
+  - `_update_car_pass(delta: float)-> void`
+  - *... and 3 more functions*
+
+### [window_rain_drawer.gd](scripts/window_rain_drawer.gd) (41 lines)
+*WindowRainDrawer — Отрисовка капель и струек дождя на изометрическом стекле окна*
+
+- **Extends**: `Node2D`
+- **Class**: `WindowRainDrawer`
+- **Key Functions**:
+  - `set_droplets(drops: Array)-> void`
+  - `_draw()-> void`
 
 ## 5. Scenes Inventory (5 scenes in scenes/)
 ### [hud_paranoia.tscn](scenes/hud_paranoia.tscn) (Root: `HUDParanoia` [CanvasLayer])
@@ -324,7 +387,7 @@
   - *... and 7 more child nodes*
 
 ### [main.tscn](scenes/main.tscn) (Root: `Main` [Node2D])
-- Node count: 98
+- Node count: 156
 - **Node Tree Hierarchy**:
   - ./CanvasModulate (CanvasModulate)
   - ./Floor (Node2D)
@@ -334,15 +397,15 @@
   - Floor/FloorGridLine3 (Line2D)
   - Floor/FloorGridLine4 (Line2D)
   - Floor/FloorBorder (Line2D)
-  - Floor/HallwayFloor (Polygon2D)
-  - Floor/HallwayBorder (Line2D)
+  - Floor/DarkRoomFloor (Polygon2D)
+  - Floor/DarkRoomGrid1 (Line2D)
+  - Floor/DarkRoomGrid2 (Line2D)
+  - Floor/DarkRoomGrid3 (Line2D)
+  - Floor/DarkRoomBorder (Line2D)
+  - Floor/BloodStain (Polygon2D)
   - ./Walls (StaticBody2D)
   - Walls/WallNW_Collision (CollisionPolygon2D)
-  - Walls/WallNW_Visual (Polygon2D)
-  - Walls/WallNE_Collision (CollisionPolygon2D)
-  - Walls/WallNE_Visual (Polygon2D)
-  - Walls/WallSW_Collision (CollisionPolygon2D)
-  - *... and 81 more child nodes*
+  - *... and 139 more child nodes*
 
 ### [main_menu.tscn](scenes/main_menu.tscn) (Root: `MainMenu` [Control])
 - Node count: 104
@@ -366,7 +429,7 @@
   - *... and 87 more child nodes*
 
 ### [pause_menu.tscn](scenes/pause_menu.tscn) (Root: `PauseMenu` [CanvasLayer])
-- Node count: 112
+- Node count: 157
 - **Node Tree Hierarchy**:
   - ./PauseContainer (Control)
   - PauseContainer/Backdrop (ColorRect)
@@ -384,5 +447,5 @@
   - PauseContainer/MenuPanel/Margin/VBox/BtnMainMenu (Button)
   - PauseContainer/SaveDialog (PanelContainer)
   - PauseContainer/SaveDialog/Margin (MarginContainer)
-  - *... and 95 more child nodes*
+  - *... and 140 more child nodes*
 

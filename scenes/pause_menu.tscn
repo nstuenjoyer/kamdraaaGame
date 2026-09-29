@@ -209,7 +209,7 @@ layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
-text = "🔍  Материалы дела / Улики [Tab]"
+text = "🔍  Материалы дела и Чертоги разума [Tab / M]"
 
 [node name="BtnSave" type="Button" parent="PauseContainer/MenuPanel/Margin/VBox"]
 custom_minimum_size = Vector2(0, 42)
@@ -701,47 +701,78 @@ text = "Отмена"
 
 [node name="CluesDialog" type="PanelContainer" parent="PauseContainer"]
 visible = false
-custom_minimum_size = Vector2(740, 480)
+custom_minimum_size = Vector2(880, 540)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -370.0
-offset_top = -240.0
-offset_right = 370.0
-offset_bottom = 240.0
+offset_left = -440.0
+offset_top = -270.0
+offset_right = 440.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="Margin" type="MarginContainer" parent="PauseContainer/CluesDialog"]
 layout_mode = 2
-theme_override_constants/margin_left = 22
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 22
-theme_override_constants/margin_bottom = 18
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
 
 [node name="VBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
 [node name="HeaderHBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 14
 
 [node name="HeaderTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "📁 МАТЕРИАЛЫ ДЕЛА И УЛИКИ"
+theme_override_font_sizes/font_size = 18
+text = "📁 РАССЛЕДОВАНИЕ"
 
-[node name="CluesCounter" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox"]
+[node name="TabHeaderHBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BtnTabDossier" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/TabHeaderHBox"]
+custom_minimum_size = Vector2(170, 32)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_font_sizes/font_size = 12
+text = "📋 Досье улик [Tab]"
+
+[node name="BtnTabMindPalace" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/TabHeaderHBox"]
+custom_minimum_size = Vector2(190, 32)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_font_sizes/font_size = 12
+text = "🧩 Чертоги разума [M]"
+
+[node name="CountersHBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CluesCounter" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/CountersHBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.9, 0.6, 1)
-theme_override_font_sizes/font_size = 13
-text = "Найдено: 0 / 5"
+theme_override_font_sizes/font_size = 12
+text = "🔍 Улики: 0 / 5"
+
+[node name="DeductionsCounter" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HeaderHBox/CountersHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "🧠 Выводы: 0 / 5"
 
 [node name="Subtitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox"]
 layout_mode = 2
@@ -749,97 +780,333 @@ theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.85)
 theme_override_font_sizes/font_size = 11
 text = "Все обнаруженные сюжетные улики, детали дебоша и подсказки к дальнейшим действиям"
 
-[node name="HSplit" type="HSplitContainer" parent="PauseContainer/CluesDialog/Margin/VBox"]
+[node name="DossierView" type="HSplitContainer" parent="PauseContainer/CluesDialog/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 260
+split_offset = 280
 
-[node name="LeftScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit"]
+[node name="LeftScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.42
 horizontal_scroll_mode = 0
 
-[node name="ClueListContainer" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/LeftScroll"]
+[node name="ClueListContainer" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/LeftScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="RightDetailPanel" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit"]
+[node name="RightDetailPanel" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.58
 theme_override_styles/panel = SubResource("StyleBoxFlat_detail")
 
-[node name="DetailMargin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel"]
+[node name="DetailMargin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 14
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 14
 
-[node name="DetailVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin"]
+[node name="DetailVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DetailHeader" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox"]
+[node name="DetailHeader" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox"]
 layout_mode = 2
 
-[node name="DetailIcon" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader"]
+[node name="DetailIcon" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "🧾"
 
-[node name="DetailTitleVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader"]
+[node name="DetailTitleVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DetailTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox"]
+[node name="DetailTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
 theme_override_font_sizes/font_size = 16
 text = "Смятый чек из бара"
 
-[node name="DetailMeta" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox"]
+[node name="DetailMeta" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailHeader/DetailTitleVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.6, 0.75, 0.9)
 theme_override_font_sizes/font_size = 11
 text = "Категория: Улика | Место: Пол гостиной"
 
-[node name="DetailDescScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox"]
+[node name="DetailDescScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="DetailDescVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll"]
+[node name="DetailDescVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="DetailDesc" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox"]
+[node name="DetailDesc" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
 theme_override_font_sizes/font_size = 12
 text = "Выберите улику из списка слева для подробного ознакомления с материалами расследования."
 autowrap_mode = 3
 
-[node name="HintBox" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox"]
+[node name="HintBox" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hint")
 
-[node name="HintMargin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/HintBox"]
+[node name="HintMargin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/HintBox"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
-[node name="HintText" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/HSplit/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/HintBox/HintMargin"]
+[node name="HintText" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/DossierView/RightDetailPanel/DetailMargin/DetailVBox/DetailDescScroll/DetailDescVBox/HintBox/HintMargin"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 0.95, 0.85, 1)
 theme_override_font_sizes/font_size = 11
 text = "💡 Подсказка к расследованию..."
 autowrap_mode = 3
+
+[node name="MindPalaceView" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="BoardCluesCol" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BoardCluesTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/BoardCluesCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "📌 НАЙДЕННЫЕ ЗАЦЕПКИ"
+
+[node name="BoardCluesHint" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/BoardCluesCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.7)
+theme_override_font_sizes/font_size = 10
+text = "Кликните улику, чтобы выбрать в слот"
+
+[node name="BoardScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/BoardCluesCol"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="BoardClueList" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/BoardCluesCol/BoardScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="SynthesisCol" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+theme_override_styles/panel = SubResource("StyleBoxFlat_detail")
+
+[node name="SynthesisMargin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="SynthesisVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SynthesisHeader" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox"]
+layout_mode = 2
+
+[node name="SynthesisTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/SynthesisHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "⚡ МЕНТАЛЬНЫЙ УЗЕЛ ДЕДУКЦИИ"
+
+[node name="BtnResetSlots" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/SynthesisHeader"]
+custom_minimum_size = Vector2(80, 26)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_font_sizes/font_size = 11
+text = "↺ Сброс"
+
+[node name="Slot1Card" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_norm")
+
+[node name="Slot1Margin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="Slot1HBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Slot1Badge" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "[СЛОТ 1]"
+
+[node name="Slot1Icon" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "❓"
+
+[node name="Slot1Title" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Выберите первую улику слева..."
+
+[node name="BtnClearSlot1" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot1Card/Slot1Margin/Slot1HBox"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_font_sizes/font_size = 11
+text = "✕"
+
+[node name="ActionHBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnSynthesize" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/ActionHBox"]
+custom_minimum_size = Vector2(260, 36)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_press")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_font_sizes/font_size = 12
+text = "⚡  СОПОСТАВИТЬ ЗАЦЕПКИ"
+
+[node name="Slot2Card" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_norm")
+
+[node name="Slot2Margin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="Slot2HBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Slot2Badge" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4, 0.7, 1)
+theme_override_font_sizes/font_size = 10
+text = "[СЛОТ 2]"
+
+[node name="Slot2Icon" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "❓"
+
+[node name="Slot2Title" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Выберите вторую улику слева..."
+
+[node name="BtnClearSlot2" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/Slot2Card/Slot2Margin/Slot2HBox"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_font_sizes/font_size = 11
+text = "✕"
+
+[node name="InsightPanel" type="PanelContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_hint")
+
+[node name="InsightMargin" type="MarginContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="InsightVBox" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="InsightTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "💡 МЫСЛИ ДАШИ:"
+
+[node name="InsightScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="InsightText" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox/InsightScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 11
+text = "Выберите две улики слева и нажмите «Сопоставить», чтобы проанализировать связь между ними."
+autowrap_mode = 3
+
+[node name="InsightStatus" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/SynthesisCol/SynthesisMargin/SynthesisVBox/InsightPanel/InsightMargin/InsightVBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 10
+text = "🫀 Тревога снижена: -15% | Пульс стабилизировался"
+
+[node name="DeductionsCol" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DeductionsTitle" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/DeductionsCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 13
+text = "🧠 ЖУРНАЛ ОЗАРЕНИЙ"
+
+[node name="DeductionsSub" type="Label" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/DeductionsCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.7)
+theme_override_font_sizes/font_size = 10
+text = "Сформированные логические выводы"
+
+[node name="DeductionsScroll" type="ScrollContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/DeductionsCol"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DeductionsList" type="VBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox/MindPalaceView/DeductionsCol/DeductionsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
 
 [node name="FooterHBox" type="HBoxContainer" parent="PauseContainer/CluesDialog/Margin/VBox"]
 layout_mode = 2
@@ -849,7 +1116,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.5, 0.55, 0.65, 0.8)
 theme_override_font_sizes/font_size = 11
-text = "Горячая клавиша: [Tab] или [J] | Выход: [Esc]"
+text = "Горячие клавиши: [Tab] / [J] — Досье | [M] — Чертоги разума | [Esc] — Выход"
 
 [node name="BtnCloseClues" type="Button" parent="PauseContainer/CluesDialog/Margin/VBox/FooterHBox"]
 custom_minimum_size = Vector2(130, 36)
