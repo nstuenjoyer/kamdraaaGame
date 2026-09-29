@@ -48,8 +48,7 @@ func open() -> void:
 
 	# Обновляем визуальный статус
 	if door_label:
-		door_label.text = "Открыто"
-		door_label.modulate = Color(0.3, 1.0, 0.4, 1.0)
+		door_label.visible = false
 	if lock_led:
 		lock_led.color = Color(0.2, 1.0, 0.4, 1.0)
 	if lock_light:
@@ -57,16 +56,17 @@ func open() -> void:
 	if door_occluder:
 		door_occluder.visible = false
 
-	# Анимация открытия: полупрозрачность дверного полотна
+	# Анимация распахивания створки: дверь распахивается вдоль стены коридора
 	door_tween = create_tween().set_parallel(true)
 	if door_panel:
-		door_tween.tween_property(door_panel, "color", Color(0.2, 0.5, 0.3, 0.4), 0.5)
-		door_tween.tween_property(door_panel, "modulate:a", 0.3, 0.5)
+		door_panel.modulate.a = 1.0
+		door_panel.color = Color(0.45, 0.22, 0.15, 1.0)
+		door_tween.tween_method(_set_door_swing, 0.0, 1.0, 0.45).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	var door_side: CanvasItem = get_node_or_null("DoorSide") as CanvasItem
 	if door_side:
-		door_tween.tween_property(door_side, "modulate:a", 0.3, 0.5)
+		door_tween.tween_property(door_side, "modulate:a", 0.0, 0.2)
 
-	print("🚪 [ДВЕРЬ]: Электрозамок открыт! Проход свободен.")
+	print("🚪 [ДВЕРЬ]: Электрозамок открыт! Створка распахнута вдоль стены.")
 
 func close() -> void:
 	is_opened = false
@@ -78,6 +78,7 @@ func close() -> void:
 	if door_label:
 		door_label.text = "Заперто"
 		door_label.modulate = Color(1.0, 0.3, 0.3, 1.0)
+		door_label.visible = true
 	if lock_led:
 		lock_led.color = Color(1.0, 0.2, 0.2, 1.0)
 	if lock_light:
@@ -85,9 +86,24 @@ func close() -> void:
 	if door_occluder:
 		door_occluder.visible = true
 	if door_panel:
-		door_panel.color = Color(0.48, 0.22, 0.16, 1.0)
 		door_panel.modulate.a = 1.0
+		door_panel.color = Color(0.48, 0.22, 0.16, 1.0)
+		door_tween = create_tween().set_parallel(true)
+		door_tween.tween_method(_set_door_swing, 1.0, 0.0, 0.35).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	var door_side: CanvasItem = get_node_or_null("DoorSide") as CanvasItem
 	if door_side:
 		door_side.modulate.a = 1.0
 	print("🚪 [ДВЕРЬ]: Электрозамок заблокирован.")
+
+func _set_door_swing(t: float) -> void:
+	if not door_panel:
+		return
+	# Интерполяция положения створки: от закрытого (80, -40) к распахнутому вдоль стены коридора (60, 30)
+	var tip_base: Vector2 = Vector2(80.0, -40.0).lerp(Vector2(60.0, 30.0), t)
+	var tip_top: Vector2 = tip_base + Vector2(0.0, -65.0)
+	door_panel.polygon = PackedVector2Array([
+		Vector2(0, 0),
+		tip_base,
+		tip_top,
+		Vector2(0, -65)
+	])

@@ -41,13 +41,13 @@ All singletons are configured in `project.godot` and accessible from any script 
   - `Player` (`CharacterBody2D` with [scripts/player.gd](file:///e:/kamdraaa-game/scripts/player.gd)): Starts at `(480, 290)`. Contains `Flashlight` component ([scripts/flashlight.gd](file:///e:/kamdraaa-game/scripts/flashlight.gd)) with dynamic cone spotlight, PCF5 shadows, volumetric beam, smooth mouse aiming (clamped to 90° radius when running), and toggle hotkeys (`F` / `ПКМ`).
   - `Window` (`Node2D` with [scripts/window_lighting.gd](file:///e:/kamdraaa-game/scripts/window_lighting.gd) & [scripts/window_rain_drawer.gd](file:///e:/kamdraaa-game/scripts/window_rain_drawer.gd)): NW wall `(310, 305)`. Rainy glass, Venetian blinds with shadow occluder slats, neon sign flicker, and sweeping car headlights.
   - `RoomLights` (`Node2D`): `Room1CeilingLight` (wide fill light illuminating Room 1), `DeskLampLight` (with PCF5 shadows), `MirrorLight`, and `DoorLockLight` (red/green lock status).
-  - `Furniture/Bed` (`StaticBody2D`): Located at NE wall `(680, 290)` with `BedOccluder` (`LightOccluder2D`).
+  - `Furniture/Bed` (`StaticBody2D`): Located at NE wall `(680, 290)`.
   - `Pills` (`Area2D` + [scripts/pills_item.gd](file:///e:/kamdraaa-game/scripts/pills_item.gd)): Near bed `(620, 335)`. Blister pack of sedative pills picked up into inventory.
   - `Furniture/MirrorWithLipstick` (`Area2D` + [scripts/interactive_clue.gd](file:///e:/kamdraaa-game/scripts/interactive_clue.gd)): NW wall `(380, 270)`. Inspects lipstick message "ПОМНИ 04:15".
   - `Furniture/BarReceipt` (`Area2D` + [scripts/interactive_clue.gd](file:///e:/kamdraaa-game/scripts/interactive_clue.gd)): Floor `(530, 410)`. Paper rustle audio + cryptic warning note.
   - `Furniture/SpilledBottle` (`Area2D` + [scripts/interactive_clue.gd](file:///e:/kamdraaa-game/scripts/interactive_clue.gd)): Near center `(450, 360)`.
-  - `QuestItem` (`Area2D` + [scripts/quest_item.gd](file:///e:/kamdraaa-game/scripts/quest_item.gd)): Telephone nightstand at `(600, 250)` with `NightstandOccluder` (`LightOccluder2D`). Triggers phone call dialog & unlocks door clue.
-  - `Door` (`StaticBody2D` + [scripts/door.gd](file:///e:/kamdraaa-game/scripts/door.gd)): SE wall `(740, 450)`. Dynamic `DoorLockLight` (red -> green) and `DoorOccluder`. Unlocks after telephone interaction.
+  - `QuestItem` (`Area2D` + [scripts/quest_item.gd](file:///e:/kamdraaa-game/scripts/quest_item.gd)): Telephone nightstand at `(600, 250)`. Triggers phone call dialog & unlocks door clue.
+  - `Door` (`StaticBody2D` + [scripts/door.gd](file:///e:/kamdraaa-game/scripts/door.gd)): SE wall `(740, 450)`. Dynamic `DoorLockLight` (red -> green), solid swinging wooden panel, and `DoorOccluder`. Unlocks after telephone interaction.
   - `DarkRoomProps` (`Node2D`): Dark storage room behind the door with `DarkRoomCrates` (`LightOccluder2D`), `DarkRoomSafe` (`Area2D` clue inspection), `BloodStain`, and `EmergencyFlickerLight`.
   - `DarkZone` (`Area2D`): Trigger zone encompassing the dark corridor and storage room for darkness anxiety calculation.
   - `DarknessAnxiety` (`Node` + [scripts/darkness_anxiety.gd](file:///e:/kamdraaa-game/scripts/darkness_anxiety.gd)): Drives panic in the dark (BPM spike, paranoia bar increase, fear whispers, and relief upon lighting up).

@@ -1,5 +1,5 @@
 ﻿{
-    "GeneratedAt":  "2026-09-30T00:59:31",
+    "GeneratedAt":  "2026-09-30T01:09:02",
     "ProjectName":  "Kamdraaa",
     "Engine":  "Godot 4.7.2",
     "MainScene":  "res://scenes/main_menu.tscn",
@@ -146,7 +146,7 @@
                         "Path":  "scripts/door.gd",
                         "ClassName":  "",
                         "Extends":  "StaticBody2D",
-                        "Lines":  93,
+                        "Lines":  109,
                         "Description":  "Скрипт двери с электрозамком",
                         "Signals":  [
 
@@ -158,7 +158,8 @@
                                           "_ready()-\u003e void",
                                           "set_state(opened: bool)-\u003e void",
                                           "open()-\u003e void",
-                                          "close()-\u003e void"
+                                          "close()-\u003e void",
+                                          "_set_door_swing(t: float)-\u003e void"
                                       ]
                     },
                     {
@@ -775,7 +776,7 @@
                        "Path":  "scenes/main.tscn",
                        "RootNode":  "Main",
                        "RootType":  "Node2D",
-                       "NodeCount":  156,
+                       "NodeCount":  151,
                        "Nodes":  [
                                      "./CanvasModulate (CanvasModulate)",
                                      "./Floor (Node2D)",
@@ -802,9 +803,6 @@
                                      "Walls/WallSE_Part1_Visual (Polygon2D)",
                                      "Walls/WallSE_Part2_Collision (CollisionPolygon2D)",
                                      "Walls/WallSE_Part2_Visual (Polygon2D)",
-                                     "Walls/WallNW_Occluder (LightOccluder2D)",
-                                     "Walls/WallNE_Occluder (LightOccluder2D)",
-                                     "Walls/WallSW_Occluder (LightOccluder2D)",
                                      "Walls/WallSE_Part1_Occluder (LightOccluder2D)",
                                      "Walls/WallSE_Part2_Occluder (LightOccluder2D)",
                                      "Walls/DarkCorridorLeft_Collision (CollisionPolygon2D)",
@@ -865,7 +863,6 @@
                                      "Bed/BedPillow (Polygon2D)",
                                      "Bed/CollisionPolygon2D (CollisionPolygon2D)",
                                      "Bed/BedLabel (Label)",
-                                     "Bed/BedOccluder (LightOccluder2D)",
                                      "./QuestItem (Area2D)",
                                      "QuestItem/TriggerCollision (CollisionShape2D)",
                                      "QuestItem/NightstandLeft (Polygon2D)",
@@ -876,7 +873,6 @@
                                      "QuestItem/PhoneBody/PhoneHandset (Polygon2D)",
                                      "QuestItem/SolidBody (StaticBody2D)",
                                      "QuestItem/SolidBody/CollisionPolygon2D (CollisionPolygon2D)",
-                                     "QuestItem/NightstandOccluder (LightOccluder2D)",
                                      "QuestItem/PhoneLabel (Label)",
                                      "./Door (StaticBody2D)",
                                      "Door/DoorPanel (Polygon2D)",

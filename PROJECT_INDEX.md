@@ -1,5 +1,5 @@
 ﻿# Kamdraaa - Codebase Index and Architecture Map
-*Auto-generated on 2026-09-30 00:59:31 for instant AI navigation.*
+*Auto-generated on 2026-09-30 01:09:02 for instant AI navigation.*
 
 ## 1. Project Overview
 - **Game**: Kamdraaa (Psychological Noir Detective Adventure)
@@ -72,7 +72,7 @@
   - `_finish_typing_instantly()-> void`
   - *... and 11 more functions*
 
-### [door.gd](scripts/door.gd) (93 lines)
+### [door.gd](scripts/door.gd) (109 lines)
 *Скрипт двери с электрозамком*
 
 - **Extends**: `StaticBody2D`
@@ -81,6 +81,7 @@
   - `set_state(opened: bool)-> void`
   - `open()-> void`
   - `close()-> void`
+  - `_set_door_swing(t: float)-> void`
 
 ### [flashlight.gd](scripts/flashlight.gd) (228 lines)
 *Flashlight — Система налобного/карманного фонарика Даши с динамическими тенями*
@@ -387,7 +388,7 @@
   - *... and 7 more child nodes*
 
 ### [main.tscn](scenes/main.tscn) (Root: `Main` [Node2D])
-- Node count: 156
+- Node count: 151
 - **Node Tree Hierarchy**:
   - ./CanvasModulate (CanvasModulate)
   - ./Floor (Node2D)
@@ -405,7 +406,7 @@
   - Floor/BloodStain (Polygon2D)
   - ./Walls (StaticBody2D)
   - Walls/WallNW_Collision (CollisionPolygon2D)
-  - *... and 139 more child nodes*
+  - *... and 134 more child nodes*
 
 ### [main_menu.tscn](scenes/main_menu.tscn) (Root: `MainMenu` [Control])
 - Node count: 104
