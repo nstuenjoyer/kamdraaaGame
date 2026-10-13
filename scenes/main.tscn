@@ -51,13 +51,13 @@ polygon = PackedVector2Array(-4, 4, 84, -36, 84, -44, -4, -4)
 polygon = PackedVector2Array(600, 520, 740, 450, 740, 435, 600, 505)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_se2"]
-polygon = PackedVector2Array(820, 410, 960, 340, 960, 325, 820, 395)
+polygon = PackedVector2Array(820, 410, 960, 340, 960, 480)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_nw"]
-polygon = PackedVector2Array(240, 200, 600, 20, 600, 10, 240, 190)
+polygon = PackedVector2Array(240, 340, 600, 160, 600, 145, 240, 325)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_ne"]
-polygon = PackedVector2Array(600, 20, 960, 200, 960, 190, 600, 10)
+polygon = PackedVector2Array(600, 160, 960, 340, 960, 325, 600, 145)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wall_sw"]
 polygon = PackedVector2Array(240, 340, 600, 520, 600, 535, 240, 355)
@@ -187,6 +187,19 @@ occluder = SubResource("OccluderPolygon2D_wall_se1")
 [node name="WallSE_Part2_Occluder" type="LightOccluder2D" parent="Walls"]
 occluder = SubResource("OccluderPolygon2D_wall_se2")
 
+[node name="WallSE_Part2_Visual" type="Polygon2D" parent="Walls"]
+color = Color(0.19, 0.21, 0.27, 1)
+polygon = PackedVector2Array(820, 410, 960, 340, 960, 265, 820, 335)
+
+[node name="WallSE_Part2_Rim" type="Line2D" parent="Walls"]
+points = PackedVector2Array(820, 335, 960, 265)
+width = 2.0
+default_color = Color(0.35, 0.4, 0.52, 0.85)
+
+[node name="WallPartitionTop_Visual" type="Polygon2D" parent="Walls"]
+color = Color(0.24, 0.27, 0.35, 1)
+polygon = PackedVector2Array(820, 335, 960, 265, 960, 360)
+
 [node name="DarkCorridorLeft_Collision" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(740, 450, 880, 520, 880, 535, 740, 465)
 
@@ -197,8 +210,8 @@ occluder = SubResource("OccluderPolygon2D_dark_corridor_left")
 polygon = PackedVector2Array(820, 410, 960, 480, 960, 465, 820, 395)
 
 [node name="DarkCorridorRight_Visual" type="Polygon2D" parent="Walls"]
-color = Color(0.18, 0.2, 0.26, 1)
-polygon = PackedVector2Array(820, 410, 960, 480, 960, 360, 820, 290)
+color = Color(0.14, 0.16, 0.21, 1)
+polygon = PackedVector2Array(820, 410, 960, 480, 960, 360, 820, 335)
 
 [node name="DarkCorridorRight_Occluder" type="LightOccluder2D" parent="Walls"]
 occluder = SubResource("OccluderPolygon2D_dark_corridor_right")
@@ -243,15 +256,6 @@ polygon = PackedVector2Array(600, 520, 740, 450, 740, 375, 600, 445)
 
 [node name="WallSE_Part1_FrontRim" type="Line2D" parent="FrontWalls"]
 points = PackedVector2Array(600, 445, 740, 375)
-width = 2.0
-default_color = Color(0.5, 0.6, 0.8, 0.75)
-
-[node name="WallSE_Part2_FrontVisual" type="Polygon2D" parent="FrontWalls"]
-color = Color(0.22, 0.26, 0.36, 0.42)
-polygon = PackedVector2Array(820, 410, 960, 340, 960, 265, 820, 335)
-
-[node name="WallSE_Part2_FrontRim" type="Line2D" parent="FrontWalls"]
-points = PackedVector2Array(820, 335, 960, 265)
 width = 2.0
 default_color = Color(0.5, 0.6, 0.8, 0.75)
 
@@ -671,6 +675,8 @@ energy = 0.22
 texture = SubResource("GradientTexture2D_radial")
 texture_scale = 1.1
 shadow_enabled = true
+shadow_filter = 1
+shadow_color = Color(0, 0, 0, 0)
 
 [node name="DarkZone" type="Area2D" parent="."]
 
@@ -725,10 +731,10 @@ position = Vector2(560, 330)
 color = Color(0.96, 0.95, 0.92, 1)
 energy = 1.3
 texture = SubResource("GradientTexture2D_fill")
-texture_scale = 6.2
+texture_scale = 4.0
 shadow_enabled = true
 shadow_filter = 1
-shadow_color = Color(0.02, 0.03, 0.05, 0.9)
+shadow_color = Color(0, 0, 0, 0)
 
 [node name="DeskLampLight" type="PointLight2D" parent="RoomLights"]
 position = Vector2(600, 240)

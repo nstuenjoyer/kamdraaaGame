@@ -124,7 +124,7 @@ func _create_lights() -> void:
 	neon_light.position = Vector2(-25, -45)
 	neon_light.shadow_enabled = true
 	neon_light.shadow_filter = PointLight2D.SHADOW_FILTER_PCF5
-	neon_light.shadow_color = Color(0.04, 0.05, 0.08, 0.82)
+	neon_light.shadow_color = Color(0.0, 0.0, 0.0, 0.0)
 	add_child(neon_light)
 
 	# 2. Фары проезжающей машины
@@ -137,7 +137,7 @@ func _create_lights() -> void:
 	car_light.texture_scale = 2.4
 	car_light.shadow_enabled = true
 	car_light.shadow_filter = PointLight2D.SHADOW_FILTER_PCF5
-	car_light.shadow_color = Color(0.03, 0.04, 0.07, 0.85)
+	car_light.shadow_color = Color(0.0, 0.0, 0.0, 0.0)
 	add_child(car_light)
 
 func _setup_car_timer() -> void:
