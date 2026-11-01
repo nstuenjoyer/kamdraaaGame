@@ -8,10 +8,12 @@ extends Node2D
 signal flashlight_toggled(is_on: bool)
 
 @export var is_flashlight_on: bool = true
+@export var available: bool = true
+var input_enabled: bool = true
 @export var beam_color: Color = Color(1.0, 0.97, 0.9, 1.0)
-@export var ambient_color: Color = Color(0.85, 0.9, 1.0, 0.4)
-@export var beam_energy: float = 1.3
-@export var ambient_energy: float = 0.35
+@export var ambient_color: Color = Color(0.85, 0.9, 1.0, 1.0)
+@export var beam_energy: float = 2.1
+@export var ambient_energy: float = 0.85
 @export var smooth_speed: float = 14.0
 
 var cone_light: PointLight2D
@@ -42,7 +44,7 @@ func _setup_lights() -> void:
 	cone_light.texture = _get_or_create_cone_texture()
 	cone_light.position = Vector2.ZERO
 	cone_light.offset = Vector2.ZERO
-	cone_light.texture_scale = 1.85
+	cone_light.texture_scale = 2.2
 	add_child(cone_light)
 
 	# 2. Мягкий рассеянный круговой свет вокруг Даши с тенями, чтобы не просвечивал сквозь стены
@@ -54,26 +56,22 @@ func _setup_lights() -> void:
 	ambient_light.shadow_filter = PointLight2D.SHADOW_FILTER_PCF5
 	ambient_light.shadow_color = Color(0.0, 0.0, 0.0, 0.0) # Не пробивает стены
 	ambient_light.texture = _get_or_create_radial_texture()
-	ambient_light.texture_scale = 1.2
+	ambient_light.texture_scale = 1.65
 	add_child(ambient_light)
 
 func _input(event: InputEvent) -> void:
-	if get_tree().paused:
+	if get_tree().paused or not input_enabled or not available:
 		return
 
-	var is_toggle_key: bool = false
-	if event.is_action_pressed("toggle_flashlight"):
-		is_toggle_key = true
-	elif event is InputEventKey and event.pressed and not event.is_echo() and event.keycode == KEY_F:
-		is_toggle_key = true
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-		is_toggle_key = true
+	var is_toggle_key: bool = event.is_action_pressed("toggle_flashlight") and not event.is_echo()
 
 	if is_toggle_key:
 		get_viewport().set_input_as_handled()
 		toggle_flashlight()
 
 func toggle_flashlight(enable_state: Variant = null) -> void:
+	if not available and (enable_state == null or bool(enable_state)):
+		return
 	if enable_state != null:
 		is_flashlight_on = bool(enable_state)
 	else:
@@ -89,7 +87,7 @@ func toggle_flashlight(enable_state: Variant = null) -> void:
 	# Уведомление игроку
 	var save_mgr: Node = get_node_or_null("/root/SaveManager")
 	if save_mgr and save_mgr.has_signal("toast_requested"):
-		save_mgr.toast_requested.emit("🔦 Фонарик: %s [F / ПКМ]" % ("ВКЛЮЧЕН" if is_flashlight_on else "ВЫКЛЮЧЕН"))
+		save_mgr.toast_requested.emit("🔦 Фонарик: %s [%s / ПКМ]" % [("ВКЛЮЧЕН" if is_flashlight_on else "ВЫКЛЮЧЕН"), SettingsManager.get_action_key_name("toggle_flashlight")])
 
 	flashlight_toggled.emit(is_flashlight_on)
 
@@ -153,7 +151,7 @@ func _get_or_create_cone_texture() -> ImageTexture:
 
 	var origin: Vector2 = Vector2(float(size) / 2.0, float(size) / 2.0) # Точно по центру источника
 	var max_dist: float = 245.0
-	var cone_half_angle_rad: float = deg_to_rad(34.0) # Угол рассеивания луча ~68°
+	var cone_half_angle_rad: float = deg_to_rad(40.0)
 	var hotspot_angle_rad: float = deg_to_rad(10.0) # Центральный пучок
 
 	for y in range(size):
@@ -173,7 +171,7 @@ func _get_or_create_cone_texture() -> ImageTexture:
 
 			# Радиальное затухание по дальности
 			var dist_norm: float = dist / max_dist
-			var dist_factor: float = pow(1.0 - dist_norm, 1.3)
+			var dist_factor: float = pow(1.0 - dist_norm, 0.85)
 
 			# Угловое затухание от центра к краям конуса (smoothstep)
 			var angle_norm: float = angle / cone_half_angle_rad
@@ -204,7 +202,7 @@ func _get_or_create_radial_texture() -> ImageTexture:
 		for x in range(size):
 			var d: float = Vector2(x, y).distance_to(center)
 			var factor: float = clampf(1.0 - (d / radius), 0.0, 1.0)
-			var alpha: float = factor * factor
+			var alpha: float = pow(factor, 1.25)
 			img.set_pixel(x, y, Color(1, 1, 1, alpha))
 
 	_cached_radial_texture = ImageTexture.create_from_image(img)

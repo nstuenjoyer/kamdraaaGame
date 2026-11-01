@@ -1,12 +1,16 @@
+param(
+    [string]$GodotExe = $env:GODOT_EXE,
+    [string]$IsccExe = $env:ISCC_EXE
+)
+$ErrorActionPreference = "Stop"
+if (-not $GodotExe) { $GodotExe = (Get-Command godot -ErrorAction Stop).Source }
+if (-not $IsccExe) { $IsccExe = (Get-Command ISCC -ErrorAction Stop).Source }
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 Write-Host "========================================================" -ForegroundColor Cyan
 Write-Host "  Kamdraaa Game Build & Installer" -ForegroundColor Cyan
 Write-Host "========================================================" -ForegroundColor Cyan
-
-$godotExe = "C:\Users\ilya\Desktop\Godot_v4.7.2-stable_win64.exe"
-$isccExe = "C:\Users\ilya\AppData\Local\Programs\Inno Setup 6\ISCC.exe"
-$projectDir = "e:\kamdraaa-game"
+$projectDir = $PSScriptRoot
 $distDir = "$projectDir\build\dist"
 $installerDir = "$projectDir\installer"
 

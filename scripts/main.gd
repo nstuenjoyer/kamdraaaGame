@@ -13,6 +13,7 @@ func _ready() -> void:
 		has_pending_save = save_mgr.apply_pending_save_if_any(self)
 	
 	if not has_pending_save:
+		ClueManager.reset_all_clues()
 		var paranoia_mgr: Node = get_node_or_null("/root/ParanoiaManager")
 		if paranoia_mgr and paranoia_mgr.has_method("reset_to_default"):
 			paranoia_mgr.reset_to_default()

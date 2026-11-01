@@ -4,10 +4,10 @@ extends Node2D
 # WindowLighting — Нуарное окно в ночной дождливый город
 # Включает:
 # - Стекло с каплями и струйками дождя
-# - Жалюзи (Venetian blinds) с окклюдерами теней
+# - Жалюзи с проекцией мягких световых полос на изометрический пол
 # - Мигающую неоновую вывеску за окном (пурпурно-циановые вспышки)
 # - Периодические фары проезжающих по мокрой улице машин, отбрасывающие
-#   медленно ползущие тени от жалюзи по всей комнате.
+#   медленно смещающуюся проекцию жалюзи на пол.
 
 @export var is_active: bool = true
 
@@ -29,20 +29,19 @@ var _neon_color_mode: bool = false # false: Cyan/Blue, true: Magenta/Pink
 var _is_car_passing: bool = false
 var _car_progress: float = 0.0
 var _car_duration: float = 3.6
-var _car_start_pos: Vector2 = Vector2(-180, -90)
-var _car_end_pos: Vector2 = Vector2(80, -20)
+const WINDOW_LIGHT_ORIGIN: Vector2 = Vector2(12.0, 6.0)
 var _car_base_energy: float = 1.35
 
 # Параметры капель дождя на стекле
 var _rain_droplets: Array[Dictionary] = []
 const MAX_DROPLETS: int = 14
 
-static var _cached_radial_texture: ImageTexture = null
+static var _cached_neon_texture: ImageTexture = null
 static var _cached_car_texture: ImageTexture = null
 
 func _ready() -> void:
 	_create_window_visuals()
-	_create_blinds_and_occluders()
+	_create_blinds_visuals()
 	_create_lights()
 	_init_rain_droplets()
 	_setup_car_timer()
@@ -79,7 +78,7 @@ func _create_window_visuals() -> void:
 	rain_node.script = load("res://scripts/window_rain_drawer.gd")
 	add_child(rain_node)
 
-func _create_blinds_and_occluders() -> void:
+func _create_blinds_visuals() -> void:
 	# Жалюзи (горизонтальные ламели)
 	var blinds_root: Node2D = Node2D.new()
 	blinds_root.name = "Blinds"
@@ -99,19 +98,8 @@ func _create_blinds_and_occluders() -> void:
 		slat.default_color = Color(0.18, 0.22, 0.28, 0.92)
 		blinds_root.add_child(slat)
 
-		# Теневой окклюдер для каждой ламели, чтобы свет снаружи отбрасывал полосатые тени!
-		var occluder: LightOccluder2D = LightOccluder2D.new()
-		var poly: OccluderPolygon2D = OccluderPolygon2D.new()
-		poly.cull_mode = OccluderPolygon2D.CULL_DISABLED
-		# Тонкий окклюдер вдоль ламели
-		poly.polygon = PackedVector2Array([
-			p1 + Vector2(0, -1.0),
-			p2 + Vector2(0, -1.0),
-			p2 + Vector2(0, 1.0),
-			p1 + Vector2(0, 1.0)
-		])
-		occluder.occluder = poly
-		blinds_root.add_child(occluder)
+	# Vertical slats are visual only. Ground-plane occluders would create
+	# wedges from every room light; the window texture projects their pattern.
 
 func _create_lights() -> void:
 	# 1. Неоновая вывеска снаружи
@@ -119,9 +107,9 @@ func _create_lights() -> void:
 	neon_light.name = "NeonSignLight"
 	neon_light.color = Color(0.15, 0.85, 1.0, 1.0)
 	neon_light.energy = 0.8
-	neon_light.texture = _get_or_create_radial_texture()
-	neon_light.texture_scale = 1.9
-	neon_light.position = Vector2(-25, -45)
+	neon_light.texture = _get_or_create_projected_texture(false)
+	neon_light.texture_scale = 1.0
+	neon_light.position = WINDOW_LIGHT_ORIGIN
 	neon_light.shadow_enabled = true
 	neon_light.shadow_filter = PointLight2D.SHADOW_FILTER_PCF5
 	neon_light.shadow_color = Color(0.0, 0.0, 0.0, 0.0)
@@ -133,8 +121,9 @@ func _create_lights() -> void:
 	car_light.color = Color(1.0, 0.96, 0.85, 1.0)
 	car_light.energy = 0.0
 	car_light.enabled = false
-	car_light.texture = _get_or_create_car_headlight_texture()
-	car_light.texture_scale = 2.4
+	car_light.texture = _get_or_create_projected_texture(true)
+	car_light.texture_scale = 1.25
+	car_light.position = WINDOW_LIGHT_ORIGIN
 	car_light.shadow_enabled = true
 	car_light.shadow_filter = PointLight2D.SHADOW_FILTER_PCF5
 	car_light.shadow_color = Color(0.0, 0.0, 0.0, 0.0)
@@ -234,13 +223,9 @@ func _update_car_pass(delta: float) -> void:
 		car_light.energy = 0.0
 		return
 
-	# Плавное движение фар по траектории за окном
-	var pos: Vector2 = _car_start_pos.lerp(_car_end_pos, _car_progress)
-	car_light.position = pos
-
-	# Угол луча фар разворачивается по мере проезда машины
-	var sweep_angle_rad: float = lerpf(deg_to_rad(35.0), deg_to_rad(75.0), _car_progress)
-	car_light.rotation = sweep_angle_rad
+	# Keep the projected source on the room side of the wall; slide along it.
+	car_light.position = WINDOW_LIGHT_ORIGIN + Vector2(2.0, -1.0) * lerpf(-8.0, 8.0, _car_progress)
+	car_light.rotation = lerpf(-0.06, 0.06, _car_progress)
 
 	# Колоколообразная кривая яркости фар (нарастание ➔ пик ➔ затухание вдали)
 	var bell: float = sin(_car_progress * PI)
@@ -261,61 +246,33 @@ func _update_rain(delta: float) -> void:
 # Процедурные текстуры
 # ========================================================
 
-func _get_or_create_radial_texture() -> ImageTexture:
-	if _cached_radial_texture:
-		return _cached_radial_texture
+func _get_or_create_projected_texture(for_car: bool) -> ImageTexture:
+	var cached: ImageTexture = _cached_car_texture if for_car else _cached_neon_texture
+	if cached:
+		return cached
 
-	var size: int = 256
+	var size: int = 512
 	var img: Image = Image.create(size, size, false, Image.FORMAT_RGBA8)
-	var center: Vector2 = Vector2(size / 2.0, size / 2.0)
-	var radius: float = size / 2.0
-
-	for y in range(size):
-		for x in range(size):
-			var d: float = Vector2(x, y).distance_to(center)
-			var a: float = clampf(1.0 - (d / radius), 0.0, 1.0)
-			img.set_pixel(x, y, Color(1, 1, 1, a * a))
-
-	_cached_radial_texture = ImageTexture.create_from_image(img)
-	return _cached_radial_texture
-
-func _get_or_create_car_headlight_texture() -> ImageTexture:
-	if _cached_car_texture:
-		return _cached_car_texture
-
-	var w: int = 512
-	var h: int = 512
-	var img: Image = Image.create(w, h, false, Image.FORMAT_RGBA8)
-
-	var origin: Vector2 = Vector2(30.0, 256.0)
-	var max_dist: float = 480.0
-	var cone_angle: float = deg_to_rad(45.0)
-
-	for y in range(h):
-		for x in range(w):
-			var diff: Vector2 = Vector2(x, y) - origin
-			var dist: float = diff.length()
-			if diff.x < 0 or dist > max_dist:
-				img.set_pixel(x, y, Color(0, 0, 0, 0))
+	for y: int in range(size):
+		for x: int in range(size):
+			var point: Vector2 = Vector2(x, y) - Vector2(size, size) * 0.5
+			# Inverse isometric basis: along the NW wall (1, -0.5), into room (1, 0.5).
+			var along_wall: float = (point.x - 2.0 * point.y) * 0.5
+			var depth: float = (point.x + 2.0 * point.y) * 0.5
+			if depth < 0.0 or depth > 230.0:
 				continue
+			var half_width: float = lerpf(29.0, 43.0, depth / 230.0)
+			var aperture: float = 1.0 - smoothstep(half_width - 5.0, half_width, absf(along_wall))
+			var falloff: float = smoothstep(0.0, 10.0, depth) * pow(1.0 - depth / 230.0, 1.2)
+			var bands: float = smoothstep(0.18, 0.42, absf(sin((depth + 8.0) * PI / 27.0)))
+			var alpha: float = aperture * falloff * (0.08 + bands * 0.92)
+			if for_car:
+				alpha *= 0.6 + 0.4 * absf(sin(along_wall * 0.06))
+			img.set_pixel(x, y, Color(1.0, 1.0, 1.0, alpha))
 
-			var ang: float = abs(diff.angle())
-			if ang > cone_angle:
-				img.set_pixel(x, y, Color(0, 0, 0, 0))
-				continue
-
-			var dist_factor: float = pow(1.0 - (dist / max_dist), 1.3)
-			var ang_factor: float = pow(1.0 - (ang / cone_angle), 1.6)
-
-			# Две спаренные полосы (две фары автомобиля)
-			var y_norm: float = (float(y) - 256.0) / (dist * 0.4 + 1.0)
-			var dual_beam: float = maxf(
-				exp(-pow(y_norm - 0.22, 2.0) * 8.0),
-				exp(-pow(y_norm + 0.22, 2.0) * 8.0)
-			)
-
-			var alpha: float = dist_factor * ang_factor * (0.4 + dual_beam * 0.6)
-			img.set_pixel(x, y, Color(1, 1, 1, clampf(alpha, 0.0, 1.0)))
-
-	_cached_car_texture = ImageTexture.create_from_image(img)
-	return _cached_car_texture
+	var texture: ImageTexture = ImageTexture.create_from_image(img)
+	if for_car:
+		_cached_car_texture = texture
+	else:
+		_cached_neon_texture = texture
+	return texture

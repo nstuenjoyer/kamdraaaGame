@@ -3,7 +3,7 @@ extends Control
 # Скрипт главного меню (MainMenu)
 # Отвечает за навигацию, диалоги сохранения/загрузки, настройки и экран "Об игре"
 
-const GAME_SCENE_PATH: String = "res://scenes/main.tscn"
+const GAME_SCENE_PATH: String = "res://scenes/chapter_1/apartment.tscn"
 
 # Главные кнопки
 @onready var btn_play: Button = $Content/MenuButtons/BtnPlay
@@ -77,6 +77,9 @@ const GAME_SCENE_PATH: String = "res://scenes/main.tscn"
 @onready var rain_overlay: ColorRect = get_node_or_null("RainOverlay") as ColorRect
 
 var toast_tween: Tween
+var modal_tween: Tween
+var return_focus: Control
+var _composition_ready: bool = false
 var _has_unsaved_settings: bool = false
 var _is_syncing_settings: bool = false
 
@@ -85,6 +88,12 @@ var _neon_flicker_duration: float = 0.0
 var _neon_flicker_factor: float = 1.0
 
 func _ready() -> void:
+	ParanoiaManager.is_active = false
+	SoundManager.stop_heartbeat()
+	SoundManager.start_menu_rain()
+	theme = NoirUI.make_theme()
+	NoirUI.restyle_tree(self)
+	_build_composition()
 	_connect_main_buttons()
 	_connect_modal_buttons()
 	_connect_settings_controls()
@@ -105,9 +114,12 @@ func _ready() -> void:
 	_update_load_button_state()
 	btn_play.grab_focus()
 
+func _exit_tree() -> void:
+	SoundManager.stop_menu_rain()
+
 func _update_load_button_state() -> void:
 	if btn_load:
-		btn_load.text = "💾  ЗАГРУЗИТЬ"
+		btn_load.text = "Загрузить игру"
 		btn_load.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _process(delta: float) -> void:
@@ -120,22 +132,145 @@ func _process(delta: float) -> void:
 	# Спонтанные микро-сбои и перебои напряжения неоновой трубки
 	if _neon_flicker_duration > 0.0:
 		_neon_flicker_duration -= delta
-		_neon_flicker_factor = randf_range(0.38, 1.25)
+		_neon_flicker_factor = randf_range(0.7, 1.08)
 	else:
 		_neon_flicker_factor = 1.0
 		# Случайный запуск короткого сбоя неоновой лампы
-		if randf() < 0.012:
+		if randf() < 1.0 - exp(-0.25 * delta):
 			_neon_flicker_duration = randf_range(0.06, 0.18)
 
 	var total_intensity: float = pulse * _neon_flicker_factor
 
 	# Гармонизация мерцания заголовка Kamdraaa и шейдера дождя за окном
 	if title_label:
-		var c_neon: Color = Color(1.05 * total_intensity, 0.94 * total_intensity, 1.2 * total_intensity, 1.0)
-		title_label.modulate = c_neon
+		title_label.modulate = Color.WHITE
 
 	if rain_overlay and rain_overlay.material is ShaderMaterial:
 		(rain_overlay.material as ShaderMaterial).set_shader_parameter("neon_flicker", total_intensity)
+
+func _build_composition() -> void:
+	var composition: Control = Control.new()
+	composition.set_script(preload("res://scripts/menu_composition.gd"))
+	composition.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(composition)
+	move_child(composition, $Content.get_index())
+	var artwork: TextureRect = TextureRect.new()
+	artwork.texture = load("res://assets/textures/menu/apartment_night.png")
+	artwork.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	artwork.stretch_mode = TextureRect.STRETCH_SCALE
+	artwork.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	artwork.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(artwork)
+	move_child(artwork, $RainOverlay.get_index())
+	rain_overlay.material = null
+	rain_overlay.color = Color(0,0,0,0)
+	$RainOverlay/GlassRain.restrict_to_window()
+	$Vignette.color = Color(0.02, 0.025, 0.03, 0.12)
+	$Content.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	$Content.size = Vector2(1280,720)
+	$Content/Header.position = Vector2(80, 122)
+	$Content/Header.size = Vector2(600, 180)
+	$Content/Header.add_theme_constant_override("separation", 16)
+	$Content/Header/Category.text = "ПСИХОЛОГИЧЕСКИЙ ТРИЛЛЕР"
+	$Content/Header/Category.add_theme_font_size_override("font_size", 12)
+	$Content/Header/Category.add_theme_color_override("font_color", NoirUI.ACCENT)
+	title_label.add_theme_font_override("font", NoirUI.title_font())
+	title_label.add_theme_font_size_override("font_size", 64)
+	title_label.add_theme_color_override("font_color", NoirUI.TEXT)
+	$Content/Header/Subtitle.text = "I   /   Тёмная квартира"
+	$Content/Header/Subtitle.add_theme_color_override("font_color", NoirUI.MUTED)
+	$Content/Header/Subtitle.add_theme_font_size_override("font_size", 20)
+	$Content/Divider.visible = false
+	$Content/MenuButtons.position = Vector2(80, 352)
+	$Content/MenuButtons.size = Vector2(330, 230)
+	$Content/MenuButtons.add_theme_constant_override("separation", 10)
+	btn_play.text = "Играть"
+	btn_load.text = "Загрузить игру"
+	btn_settings.text = "Настройки"
+	btn_about.text = "Об игре"
+	btn_quit.text = "Выйти"
+	for index: int in 3:
+		var entry: Button = [btn_play,btn_load,btn_settings][index]
+		entry.custom_minimum_size.y = 50
+		entry.add_theme_font_size_override("font_size",20)
+		for state: String in ["normal","hover","pressed","disabled","focus"]:
+			var style: StyleBoxFlat = NoirUI.primary_style(state) if index == 0 else NoirUI.action_style(state)
+			style.content_margin_left = 54
+			entry.add_theme_stylebox_override(state,style)
+		for color_name: String in ["font_color","font_hover_color","font_pressed_color","font_focus_color"]:
+			entry.add_theme_color_override(color_name,NoirUI.INK if index == 0 else NoirUI.TEXT)
+		var number: Label = Label.new()
+		number.text = "%02d" % (index+1)
+		number.position = Vector2(17,17)
+		number.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		number.add_theme_font_size_override("font_size",12)
+		number.add_theme_color_override("font_color",NoirUI.INK if index == 0 else NoirUI.MUTED)
+		entry.add_child(number)
+	var secondary: HBoxContainer = HBoxContainer.new()
+	secondary.add_theme_constant_override("separation",24)
+	$Content/MenuButtons.add_child(secondary)
+	btn_about.reparent(secondary)
+	btn_quit.reparent(secondary)
+	for entry: Button in [btn_about,btn_quit]:
+		entry.custom_minimum_size = Vector2(0,36)
+		entry.add_theme_font_size_override("font_size",16)
+		entry.add_theme_color_override("font_color",NoirUI.MUTED)
+	$Content/FooterInfo.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	$Content/FooterInfo.position = Vector2(80, 639)
+	$Content/FooterInfo.text = "↑ ↓   выбор        Enter   подтвердить"
+	$Content/FooterInfo.add_theme_color_override("font_color", NoirUI.MUTED)
+	$Content/FooterInfo.add_theme_font_size_override("font_size", 13)
+	_composition_ready = true
+	resized.connect(_layout_frontend)
+	_layout_frontend()
+	btn_restore_saves.visible = false
+	settings_dialog.offset_left = -350
+	settings_dialog.offset_right = 350
+	settings_dialog.offset_top = -310
+	settings_dialog.offset_bottom = 310
+	settings_dialog.custom_minimum_size = Vector2(700, 620)
+	settings_dialog.pivot_offset = Vector2(350, 310)
+	$Modals/SettingsDialog/Margin/VBox/ControlsTab/ScrollControls.custom_minimum_size.y = 310
+	for entry: Array in [[play_dialog,"Продолжить историю","ИГРА"],[load_dialog,"Сохранения","ПРОГРЕСС"],[settings_dialog,"Настройки","ПАРАМЕТРЫ"],[about_dialog,"Об игре","KAMDRAAA"]]:
+		var panel: PanelContainer = entry[0]
+		var box: VBoxContainer = panel.get_node("Margin/VBox")
+		var heading: Label = box.get_node("Title")
+		heading.text = entry[1]
+		var kicker: Label = Label.new()
+		kicker.text = entry[2]
+		kicker.add_theme_font_size_override("font_size",11)
+		kicker.add_theme_color_override("font_color",NoirUI.ACCENT)
+		box.add_child(kicker)
+		box.move_child(kicker,0)
+	btn_tab_text.text = "Текст"
+	btn_tab_audio.text = "Звук и экран"
+	$Modals/SettingsConfirmDialog/Margin/VBox/Title.text = "Несохранённые изменения"
+	for primary: Button in [btn_apply_settings,btn_continue,btn_confirm_save]:
+		for state: String in ["normal","hover","pressed","disabled","focus"]:
+			primary.add_theme_stylebox_override(state,NoirUI.primary_style(state))
+		for color_name: String in ["font_color","font_hover_color","font_pressed_color","font_focus_color"]:
+			primary.add_theme_color_override(color_name,NoirUI.INK)
+	var about_text: RichTextLabel = $Modals/AboutDialog/Margin/VBox/AboutText
+	about_text.text = "[b]Тёмная квартира[/b]\n\nДаша приходит в себя в собственной квартире. Света нет, телефон разряжен, а вчерашний вечер почти стёрся из памяти.\n\nИсследуйте комнаты, читайте записки и проверяйте свои догадки. Тревога меняет восприятие: не всему увиденному можно доверять.\n\n[b]Управление[/b]\nWASD / стрелки — движение\nE — взаимодействие\nI — сумка   /   J — дневник   /   M — план\nEsc — пауза\n\nПривязки клавиш можно изменить в настройках."
+	about_text.add_theme_font_size_override("normal_font_size", 18)
+	modal_backdrop.color = Color(0.025, 0.03, 0.025, 0.88)
+	for panel: PanelContainer in [play_dialog, load_dialog, settings_dialog, about_dialog, settings_confirm_dialog]:
+		panel.add_theme_stylebox_override("panel", NoirUI.frame_style(12))
+	if rain_overlay.material is ShaderMaterial:
+		var material: ShaderMaterial = rain_overlay.material as ShaderMaterial
+		material.set_shader_parameter("city_glow_cyan", Color(0.19, 0.27, 0.23, 0.45))
+		material.set_shader_parameter("city_glow_magenta", Color(0.2, 0.22, 0.16, 0.4))
+		material.set_shader_parameter("city_glow_amber", Color(0.52, 0.43, 0.25, 0.3))
+
+func _layout_frontend() -> void:
+	if not _composition_ready: return
+	var factor: float = minf(size.x/1280.0,size.y/720.0)
+	$Content.scale = Vector2(factor,factor)
+	$Content.position = (size-Vector2(1280,720)*factor)*0.5
+	for panel: PanelContainer in [play_dialog,load_dialog,settings_dialog,about_dialog,settings_confirm_dialog]:
+		panel.scale = Vector2(minf(1.0,(size.y-36.0)/620.0),minf(1.0,(size.y-36.0)/620.0))
+
+
 func _connect_main_buttons() -> void:
 	btn_play.pressed.connect(_on_play_pressed)
 	btn_load.pressed.connect(_on_load_pressed)
@@ -170,7 +305,7 @@ func _connect_modal_buttons() -> void:
 	var modal_btns: Array[Button] = [
 		btn_continue, btn_new_game, btn_cancel_play, btn_close_load,
 		btn_apply_settings, btn_close_settings, btn_close_about,
-		btn_tab_audio, btn_tab_controls, btn_reset_keybinds,
+		btn_tab_audio, btn_tab_text, btn_tab_controls, btn_reset_keybinds,
 		btn_confirm_save, btn_discard_save, btn_cancel_confirm
 	]
 	if btn_restore_saves:
@@ -242,105 +377,72 @@ func _populate_load_slots() -> void:
 
 func _create_slot_card(slot_id: String, info: Dictionary) -> PanelContainer:
 	var card: PanelContainer = PanelContainer.new()
-	var style: StyleBoxFlat = StyleBoxFlat.new()
-	var exists: bool = info.get("exists", false)
-	
-	style.bg_color = Color(0.12, 0.15, 0.22, 0.85) if exists else Color(0.08, 0.1, 0.14, 0.6)
-	style.border_color = Color(0.2, 0.6, 0.8, 0.8) if exists else Color(0.2, 0.25, 0.35, 0.4)
-	style.border_width_left = 3
-	style.border_width_top = 1
-	style.border_width_right = 1
+	var exists: bool = info.get("exists",false)
+	var style: StyleBoxFlat = NoirUI.surface(NoirUI.PANEL if exists else Color(0,0,0,0),16)
 	style.border_width_bottom = 1
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
-	card.add_theme_stylebox_override("panel", style)
-
-	var margin: MarginContainer = MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 14)
-	margin.add_theme_constant_override("margin_top", 10)
-	margin.add_theme_constant_override("margin_right", 14)
-	margin.add_theme_constant_override("margin_bottom", 10)
-	card.add_child(margin)
-
-	var hbox: HBoxContainer = HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 16)
-	margin.add_child(hbox)
-
-	# Иконка / Статус
-	var icon_label: Label = Label.new()
-	icon_label.text = "💾" if exists else "📁"
-	icon_label.add_theme_font_size_override("font_size", 22)
-	hbox.add_child(icon_label)
-
-	# Текстовая информация
-	var vbox_info: VBoxContainer = VBoxContainer.new()
-	vbox_info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	hbox.add_child(vbox_info)
-
-	var title_lbl: Label = Label.new()
-	title_lbl.text = info.get("title", slot_id)
-	title_lbl.add_theme_font_size_override("font_size", 15)
-	title_lbl.modulate = Color(1.0, 0.9, 0.5) if slot_id == "autosave" else Color(0.4, 0.85, 1.0)
-	vbox_info.add_child(title_lbl)
-
-	var meta_lbl: Label = Label.new()
+	style.border_color = NoirUI.LINE
+	card.add_theme_stylebox_override("panel",style)
+	var row: HBoxContainer = HBoxContainer.new()
+	row.add_theme_constant_override("separation",16)
+	card.add_child(row)
+	var number: Label = Label.new()
+	number.text = slot_id.trim_prefix("slot_").pad_zeros(2) if slot_id != "autosave" else "A"
+	number.custom_minimum_size.x = 32
+	number.add_theme_font_size_override("font_size",24)
+	number.add_theme_font_override("font",NoirUI.title_font())
+	number.add_theme_color_override("font_color",NoirUI.ACCENT if exists else NoirUI.MUTED)
+	row.add_child(number)
+	var text: VBoxContainer = VBoxContainer.new()
+	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	text.add_theme_constant_override("separation",6)
+	row.add_child(text)
+	var title: Label = Label.new()
+	title.text = info.get("title",slot_id)
+	title.add_theme_font_size_override("font_size",18)
+	text.add_child(title)
+	var meta: Label = Label.new()
+	meta.text = "%s\n%s" % [info.get("location","Тёмная квартира"),info.get("timestamp","")] if exists else "Нет сохранения"
+	if exists and not info.get("compatible",false): meta.text += "\nСохранение прежней версии"
+	meta.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	meta.add_theme_color_override("font_color",NoirUI.MUTED)
+	meta.add_theme_font_size_override("font_size",14)
+	text.add_child(meta)
 	if exists:
-		var loc: String = info.get("location", "Конспиративная берлога")
-		var time_str: String = info.get("timestamp", "")
-		var details: String = info.get("details", "")
-		meta_lbl.text = "📍 %s  •  🕒 %s\n%s" % [loc, time_str, details]
-		meta_lbl.modulate = Color(0.75, 0.8, 0.9, 0.9)
-	else:
-		meta_lbl.text = "Пустая ячейка для сохранения"
-		meta_lbl.modulate = Color(0.5, 0.55, 0.65, 0.6)
-	meta_lbl.add_theme_font_size_override("font_size", 11)
-	vbox_info.add_child(meta_lbl)
-
-	# Кнопки действий
-	var vbox_actions: HBoxContainer = HBoxContainer.new()
-	vbox_actions.add_theme_constant_override("separation", 8)
-	hbox.add_child(vbox_actions)
-
-	if exists:
-		var btn_load_slot: Button = Button.new()
-		btn_load_slot.text = "Загрузить"
-		btn_load_slot.custom_minimum_size = Vector2(95, 36)
-		btn_load_slot.pressed.connect(func():
-			var save_mgr: Node = get_node_or_null("/root/SaveManager")
-			if save_mgr:
-				save_mgr.load_game(slot_id)
-		)
-		vbox_actions.add_child(btn_load_slot)
-
-		var btn_del_slot: Button = Button.new()
-		btn_del_slot.text = "✖"
-		btn_del_slot.custom_minimum_size = Vector2(36, 36)
-		btn_del_slot.tooltip_text = "Удалить сохранение"
-		btn_del_slot.pressed.connect(func():
-			var save_mgr: Node = get_node_or_null("/root/SaveManager")
-			if save_mgr:
-				save_mgr.delete_save(slot_id)
-				_update_load_button_state()
-		)
-		vbox_actions.add_child(btn_del_slot)
-	else:
-		var btn_quick_save: Button = Button.new()
-		btn_quick_save.text = "+ Сейв"
-		btn_quick_save.custom_minimum_size = Vector2(95, 36)
-		btn_quick_save.tooltip_text = "Создать контрольную точку в этой ячейке"
-		btn_quick_save.pressed.connect(func():
-			var save_mgr: Node = get_node_or_null("/root/SaveManager")
-			if save_mgr and save_mgr.has_method("create_sample_save_for_slot"):
-				save_mgr.create_sample_save_for_slot(slot_id)
-				_populate_load_slots()
-				_update_load_button_state()
-				show_toast("💾 Создано сохранение: " + info.get("title", slot_id))
-		)
-		vbox_actions.add_child(btn_quick_save)
-
+		var actions: VBoxContainer = VBoxContainer.new()
+		row.add_child(actions)
+		var load_button: Button = Button.new()
+		load_button.text = "Продолжить"
+		load_button.disabled = not info.get("compatible",false)
+		load_button.custom_minimum_size = Vector2(128,38)
+		load_button.pressed.connect(func() -> void: SaveManager.load_game(slot_id))
+		actions.add_child(load_button)
+		var erase: Button = Button.new()
+		erase.text = "Удалить…"
+		erase.disabled = not info.get("compatible",false)
+		erase.custom_minimum_size.y = 32
+		erase.add_theme_font_size_override("font_size",14)
+		erase.add_theme_color_override("font_color",NoirUI.MUTED)
+		erase.pressed.connect(func() -> void: _confirm_delete_slot(slot_id))
+		actions.add_child(erase)
+		_bind_sound_feedback([load_button,erase])
 	return card
+
+func _confirm_delete_slot(slot_id: String) -> void:
+	var confirmation: ConfirmationDialog = ConfirmationDialog.new()
+	confirmation.title = "Удалить сохранение?"
+	confirmation.dialog_text = "Этот слот будет удалён. Остальные сохранения останутся."
+	confirmation.ok_button_text = "Удалить"
+	confirmation.cancel_button_text = "Отмена"
+	confirmation.theme = theme
+	add_child(confirmation)
+	confirmation.confirmed.connect(func() -> void:
+		SaveManager.delete_save(slot_id)
+		_update_load_button_state()
+		confirmation.queue_free()
+	)
+	confirmation.canceled.connect(confirmation.queue_free)
+	_bind_sound_feedback([confirmation.get_ok_button(),confirmation.get_cancel_button()])
+	confirmation.popup_centered(Vector2i(440,180))
 
 var _rebinding_action: String = ""
 var _rebinding_button: Button = null
@@ -364,10 +466,10 @@ func _update_save_button_state() -> void:
 	if not btn_apply_settings:
 		return
 	if _has_unsaved_settings:
-		btn_apply_settings.text = "💾 Сохранить изменения *"
-		btn_apply_settings.modulate = Color(1.3, 1.2, 0.4, 1.0)
+		btn_apply_settings.text = "Сохранить изменения *"
+		btn_apply_settings.modulate = NoirUI.ACCENT
 	else:
-		btn_apply_settings.text = "✔ Сохранить настройки"
+		btn_apply_settings.text = "Сохранить настройки"
 		btn_apply_settings.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_apply_settings_pressed() -> void:
@@ -391,13 +493,7 @@ func _open_settings_confirm_dialog() -> void:
 	if not settings_confirm_dialog:
 		_close_all_modals()
 		return
-	settings_confirm_dialog.visible = true
-	settings_confirm_dialog.scale = Vector2(0.92, 0.92)
-	settings_confirm_dialog.modulate.a = 0.0
-
-	var tween: Tween = create_tween().set_parallel(true)
-	tween.tween_property(settings_confirm_dialog, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(settings_confirm_dialog, "modulate:a", 1.0, 0.2)
+	_open_modal(settings_confirm_dialog)
 	btn_confirm_save.grab_focus()
 
 func _on_confirm_save_pressed() -> void:
@@ -431,7 +527,7 @@ func _on_cancel_confirm_pressed() -> void:
 	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
 	if sound_mgr and sound_mgr.has_method("play_cancel"):
 		sound_mgr.play_cancel()
-	settings_confirm_dialog.visible = false
+	_open_modal(settings_dialog)
 	if btn_close_settings:
 		btn_close_settings.grab_focus()
 
@@ -441,9 +537,12 @@ func _switch_settings_tab(tab_name: String) -> void:
 	text_tab.visible = (tab_name == "text")
 	controls_tab.visible = (tab_name == "controls")
 
-	btn_tab_audio.modulate = Color(1.0, 1.0, 1.0, 1.0) if tab_name == "audio" else Color(0.65, 0.7, 0.8, 0.7)
-	btn_tab_text.modulate = Color(1.0, 1.0, 1.0, 1.0) if tab_name == "text" else Color(0.65, 0.7, 0.8, 0.7)
-	btn_tab_controls.modulate = Color(1.0, 1.0, 1.0, 1.0) if tab_name == "controls" else Color(0.65, 0.7, 0.8, 0.7)
+	var tabs: Array[Button] = [btn_tab_audio, btn_tab_text, btn_tab_controls]
+	for index: int in tabs.size():
+		var active: bool = ["audio", "text", "controls"][index] == tab_name
+		tabs[index].modulate = Color.WHITE
+		tabs[index].add_theme_stylebox_override("normal", NoirUI.tab_style(active))
+		tabs[index].add_theme_color_override("font_color", NoirUI.ACCENT if active else NoirUI.MUTED)
 
 	if tab_name == "controls":
 		_populate_keybinds()
@@ -573,8 +672,12 @@ func _populate_keybinds() -> void:
 		btn_bind.pressed.connect(func():
 			_start_key_rebind(act_name, btn_bind)
 		)
+		_bind_sound_feedback([btn_bind])
 		hbox.add_child(btn_bind)
 
+		NoirUI.restyle_tree(row)
+		row.add_theme_stylebox_override("panel", NoirUI.surface(NoirUI.INK, 0))
+		btn_bind.custom_minimum_size.y = 36
 		keybind_list.add_child(row)
 
 func _start_key_rebind(action_name: String, btn: Button) -> void:
@@ -582,8 +685,8 @@ func _start_key_rebind(action_name: String, btn: Button) -> void:
 		_cancel_key_rebind()
 	_rebinding_action = action_name
 	_rebinding_button = btn
-	btn.text = "⌨ Нажмите клавишу..."
-	btn.modulate = Color(1.3, 1.2, 0.4, 1.0)
+	btn.text = "Нажмите клавишу…"
+	btn.modulate = NoirUI.ACCENT
 
 func _cancel_key_rebind() -> void:
 	if _rebinding_button and _rebinding_action != "":
@@ -630,18 +733,27 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _open_modal(target_dialog: Control) -> void:
+	var focused: Control = get_viewport().gui_get_focus_owner()
+	if focused != null and $Content.is_ancestor_of(focused): return_focus = focused
 	_close_all_modals(true)
+	$Content.visible = false
 	modal_backdrop.visible = true
 	target_dialog.visible = true
-	target_dialog.scale = Vector2(0.92, 0.92)
+	_layout_frontend()
 	target_dialog.modulate.a = 0.0
 
-	var tween: Tween = create_tween().set_parallel(true)
+	modal_tween = create_tween().set_parallel(true)
+	var tween: Tween = modal_tween
 	tween.tween_property(modal_backdrop, "modulate:a", 1.0, 0.2)
-	tween.tween_property(target_dialog, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(target_dialog, "modulate:a", 1.0, 0.2)
+	for candidate: Node in target_dialog.find_children("*", "Button", true, false):
+		if candidate.is_visible_in_tree() and not candidate.disabled:
+			candidate.grab_focus()
+			break
 
 func _close_all_modals(instant: bool = false) -> void:
+	if modal_tween and modal_tween.is_valid(): modal_tween.kill()
+	$Content.visible = true
 	if instant:
 		modal_backdrop.visible = false
 		modal_backdrop.modulate.a = 0.0
@@ -657,12 +769,13 @@ func _close_all_modals(instant: bool = false) -> void:
 	if sound_mgr and sound_mgr.has_method("play_cancel"):
 		sound_mgr.play_cancel()
 
-	var tween: Tween = create_tween().set_parallel(true)
+	modal_tween = create_tween().set_parallel(true)
+	var tween: Tween = modal_tween
 	tween.tween_property(modal_backdrop, "modulate:a", 0.0, 0.15)
 	for d in [play_dialog, load_dialog, settings_dialog, settings_confirm_dialog, about_dialog]:
 		if d and d.visible:
 			tween.tween_property(d, "modulate:a", 0.0, 0.15)
-			tween.tween_property(d, "scale", Vector2(0.95, 0.95), 0.15)
+			tween.tween_property(d, "scale", Vector2.ONE, 0.15)
 	tween.finished.connect(func():
 		modal_backdrop.visible = false
 		play_dialog.visible = false
@@ -671,14 +784,15 @@ func _close_all_modals(instant: bool = false) -> void:
 		if settings_confirm_dialog:
 			settings_confirm_dialog.visible = false
 		about_dialog.visible = false
-		if btn_play and is_inside_tree():
-			btn_play.grab_focus()
+		if is_inside_tree():
+			if is_instance_valid(return_focus): return_focus.grab_focus()
+			else: btn_play.grab_focus()
 	)
 
 func show_toast(text: String) -> void:
 	if not toast_panel or not toast_label:
 		return
-	toast_label.text = text
+	toast_label.text = NoirUI.clean_text(text)
 	toast_panel.visible = true
 	
 	if toast_tween and toast_tween.is_valid():
@@ -717,16 +831,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				_finish_key_rebind()
 			return
 
-	var is_cancel_key: bool = event.is_action_pressed("ui_cancel") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_ESCAPE or event.keycode == KEY_P
-		)
-	)
-	var is_load_key: bool = event.is_action_pressed("quick_load") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_F9 or event.keycode == KEY_F8 or event.keycode == KEY_L
-		)
-	)
+	var is_cancel_key: bool = event.is_action_pressed("ui_cancel") and not event.is_echo()
+	var is_load_key: bool = event.is_action_pressed("quick_load") and not event.is_echo()
 
 	if is_cancel_key:
 		if modal_backdrop.visible:

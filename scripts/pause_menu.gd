@@ -148,11 +148,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				_finish_key_rebind()
 			return
 
-	var is_clues_key: bool = event.is_action_pressed("toggle_clues") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_TAB or event.keycode == KEY_J
-		)
-	)
+	var is_clues_key: bool = event.is_action_pressed("toggle_clues") and not event.is_echo()
 	if is_clues_key:
 		var ui_dialogue: CanvasLayer = get_node_or_null("../UI") as CanvasLayer
 		if ui_dialogue and ui_dialogue.get("_is_history_open"):
@@ -161,9 +157,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_clues_menu()
 		return
 
-	var is_mind_palace_key: bool = event.is_action_pressed("toggle_mind_palace") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and event.keycode == KEY_M
-	)
+	var is_mind_palace_key: bool = event.is_action_pressed("toggle_mind_palace") and not event.is_echo()
 	if is_mind_palace_key:
 		var ui_dialogue: CanvasLayer = get_node_or_null("../UI") as CanvasLayer
 		if ui_dialogue and ui_dialogue.get("_is_history_open"):
@@ -172,21 +166,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		open_mind_palace()
 		return
 
-	var is_pause_key: bool = event.is_action_pressed("ui_cancel") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_ESCAPE or event.keycode == KEY_P
-		)
-	)
-	var is_save_key: bool = event.is_action_pressed("quick_save") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_F5 or event.keycode == KEY_F6 or event.keycode == KEY_K
-		)
-	)
-	var is_load_key: bool = event.is_action_pressed("quick_load") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_F9 or event.keycode == KEY_F8 or event.keycode == KEY_L
-		)
-	)
+	var is_pause_key: bool = event.is_action_pressed("ui_cancel") and not event.is_echo()
+	var is_save_key: bool = event.is_action_pressed("quick_save") and not event.is_echo()
+	var is_load_key: bool = event.is_action_pressed("quick_load") and not event.is_echo()
 
 	if is_pause_key:
 		# Если открыто окно истории реплик диалога [H], пусть Esc сначала закроет его

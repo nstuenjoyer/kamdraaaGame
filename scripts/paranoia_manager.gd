@@ -23,24 +23,33 @@ var _heartbeat_timer: float = 0.8
 var _is_panic_active: bool = false
 
 # Параметры затухания и реакции
-var decay_rate: float = 2.4 # Процент снижения тревоги в секунду (плавное возвращение в норму)
-var is_decay_active: bool = true
-var is_active: bool = true
+var decay_rate: float = 0.65 # Пункты шкалы в секунду после выхода из опасности
+var is_decay_active: bool = false
+var is_active: bool = false:
+	set(value):
+		is_active = value
+		if not value:
+			_heartbeat_timer = 0.35
+			_stop_heartbeat_audio()
 var _decay_delay_timer: float = 0.0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_update_bpm(0.0)
+	get_tree().scene_changed.connect(_on_scene_changed)
 
 func _process(delta: float) -> void:
-	if not is_active:
+	if not is_active or get_tree().paused or not _in_gameplay_scene():
+		_heartbeat_timer = 0.35
+		_stop_heartbeat_audio()
 		return
 
 	# 1. Плавный переход текущей паранойи к целевой
 	var prev_paranoia: float = paranoia_level
 	if absf(paranoia_level - target_paranoia) > 0.05:
-		paranoia_level = move_toward(paranoia_level, target_paranoia, delta * 38.0)
-		if absf(prev_paranoia - paranoia_level) > 0.1:
+		var response_rate: float = 65.0 if target_paranoia > paranoia_level else 1.2
+		paranoia_level = move_toward(paranoia_level, target_paranoia, delta * response_rate)
+		if not is_equal_approx(prev_paranoia, paranoia_level):
 			paranoia_changed.emit(paranoia_level, paranoia_level - prev_paranoia, "")
 
 	# 2. Естественное затухание тревоги со временем (после короткой задержки от шока)
@@ -56,8 +65,21 @@ func _process(delta: float) -> void:
 	var beat_interval: float = 60.0 / float(max(45, current_bpm))
 	_heartbeat_timer -= delta
 	if _heartbeat_timer <= 0.0:
-		_heartbeat_timer = beat_interval
+		_heartbeat_timer = maxf(0.03, _heartbeat_timer + beat_interval)
 		_trigger_heartbeat()
+
+func _in_gameplay_scene() -> bool:
+	var scene: Node = get_tree().current_scene
+	return scene != null and (scene.has_method("export_chapter_save") or scene.scene_file_path == "res://scenes/main.tscn")
+
+func _on_scene_changed() -> void:
+	is_active = _in_gameplay_scene()
+	_heartbeat_timer = 0.35
+	_stop_heartbeat_audio()
+
+func _stop_heartbeat_audio() -> void:
+	var sound: Node = get_node_or_null("/root/SoundManager")
+	if sound != null and sound.has_method("stop_heartbeat"): sound.stop_heartbeat()
 
 func _update_bpm(_delta: float) -> void:
 	# Рассчитываем BPM: от ~68 в спокойствии до ~172 при максимальном стрессе
@@ -70,12 +92,13 @@ func _update_bpm(_delta: float) -> void:
 	current_bpm = roundi(clampf(base_bpm + organic_jitter, 55.0, 190.0))
 
 	# Проверка входа/выхода из панического состояния
-	var now_panic: bool = paranoia_level >= SEVERE_THRESHOLD
+	var now_panic: bool = paranoia_level >= (70.0 if _is_panic_active else SEVERE_THRESHOLD)
 	if now_panic != _is_panic_active:
 		_is_panic_active = now_panic
 		panic_state_changed.emit(_is_panic_active)
 
 func _trigger_heartbeat() -> void:
+	if not is_active or get_tree().paused or not _in_gameplay_scene(): return
 	var intensity: float = clampf(paranoia_level / MAX_PARANOIA, 0.0, 1.0)
 	heartbeat_pulsed.emit(current_bpm, intensity)
 
@@ -88,7 +111,7 @@ func _trigger_heartbeat() -> void:
 func add_paranoia(amount: float, reason: String = "") -> void:
 	var old_target: float = target_paranoia
 	target_paranoia = clampf(target_paranoia + amount, 0.0, MAX_PARANOIA)
-	_decay_delay_timer = 2.2 # Даём почувствовать всплеск, затем тревога плавно спадает
+	_decay_delay_timer = 5.0 # Свет останавливает рост, но успокоение начинается не сразу
 	paranoia_changed.emit(paranoia_level, target_paranoia - old_target, reason)
 	
 	# При сильном резком скачке сбрасываем таймер сердцебиения для немедленного удара
@@ -106,6 +129,7 @@ func reduce_paranoia(amount: float) -> void:
 
 ## Принудительно установить уровень паранойи (например, при загрузке сохранения)
 func set_paranoia(level: float) -> void:
+	_decay_delay_timer = 5.0
 	paranoia_level = clampf(level, 0.0, MAX_PARANOIA)
 	target_paranoia = paranoia_level
 	_update_bpm(0.0)
@@ -144,6 +168,7 @@ func get_status_color() -> Color:
 
 ## Сброс состояния к стартовому уровню новой игры
 func reset_to_default() -> void:
+	_decay_delay_timer = 0.0
 	paranoia_level = 22.0
 	target_paranoia = 22.0
 	_is_panic_active = false

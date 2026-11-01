@@ -351,6 +351,7 @@ func get_save_data() -> Dictionary:
 	return save_dict
 
 func load_save_data(data: Dictionary) -> void:
+	reset_all_clues()
 	if data.has("clues") or data.has("deductions"):
 		var clues_dict: Dictionary = data.get("clues", {})
 		for k: String in clues_dict:
@@ -375,7 +376,16 @@ func load_save_data(data: Dictionary) -> void:
 
 	clues_updated.emit()
 
+var chapter_documents: Dictionary = {}
+
+func register_document(id: String, data: Dictionary) -> void:
+	if chapter_documents.has(id):
+		return
+	chapter_documents[id] = data.duplicate(true)
+	clues_updated.emit()
+
 func reset_all_clues() -> void:
+	chapter_documents.clear()
 	for k: String in _clues:
 		_clues[k]["discovered"] = false
 		_clues[k]["discovered_at"] = ""

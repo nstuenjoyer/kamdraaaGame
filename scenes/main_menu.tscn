@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
 [ext_resource type="Shader" path="res://shaders/menu_rain.gdshader" id="2_rain"]
+[ext_resource type="Script" path="res://scripts/menu_glass_rain.gd" id="3_glass"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rain"]
 shader = ExtResource("2_rain")
@@ -112,7 +113,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="GlassRain" type="Node2D" parent="RainOverlay"]
+script = ExtResource("3_glass")
+
 [node name="DecorIsoGrid" type="Node2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.15)
 
 [node name="Line1" type="Line2D" parent="DecorIsoGrid"]

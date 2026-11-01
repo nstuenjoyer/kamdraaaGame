@@ -140,11 +140,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if target_dialogue and "is_active" in target_dialogue and target_dialogue.is_active:
 		return
 
-	var is_interact: bool = event.is_action_pressed("interact") or (
-		event is InputEventKey and event.pressed and not event.is_echo() and (
-			event.keycode == KEY_E or event.keycode == KEY_SPACE
-		)
-	)
+	var is_interact: bool = event.is_action_pressed("interact") and not event.is_echo()
 	if not is_interact:
 		return
 
@@ -184,7 +180,7 @@ func _update_label() -> void:
 		return
 	if is_player_nearby:
 		label.visible = true
-		label.text = "%s [E]" % prompt_title
+		label.text = "%s [%s]" % [prompt_title, SettingsManager.get_action_key_name("interact")]
 		label.modulate = Color(1.0, 0.95, 0.5, 1.0)
 	else:
 		label.visible = true
@@ -202,7 +198,9 @@ func interact() -> void:
 
 	# Звук взаимодействия
 	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
-	if sound_mgr and sound_mgr.has_method(sound_method):
+	if sound_mgr and clue_id in ["mirror", "bottle", "safe"]:
+		sound_mgr.play_material_interact("metal" if clue_id == "safe" else "glass")
+	elif sound_mgr and sound_mgr.has_method(sound_method):
 		sound_mgr.call(sound_method)
 	elif sound_mgr and sound_mgr.has_method("play_interact"):
 		sound_mgr.play_interact()
@@ -215,6 +213,8 @@ func interact() -> void:
 	# Подключаем сигнал завершения диалога ДЛЯ ЛЮБОГО ТИПА ОСМОТРА
 	if not target_dialogue.dialogue_finished.is_connected(_on_inspection_finished):
 		target_dialogue.dialogue_finished.connect(_on_inspection_finished)
+	if not target_dialogue.dialogue_cancelled.is_connected(_on_dialogue_cancelled):
+		target_dialogue.dialogue_cancelled.connect(_on_dialogue_cancelled)
 
 	# Отправляем реплики
 	var raw_lines: Array = _clue_dialogues.get(clue_id, [])
@@ -242,6 +242,9 @@ func interact() -> void:
 		target_dialogue.start_dialogue(lines)
 
 func _on_inspection_finished() -> void:
+	var ui: Node = dialogue_box if dialogue_box else get_node_or_null("../UI")
+	if ui and ui.dialogue_cancelled.is_connected(_on_dialogue_cancelled):
+		ui.dialogue_cancelled.disconnect(_on_dialogue_cancelled)
 	var target_dialogue: CanvasLayer = dialogue_box if dialogue_box else get_node_or_null("../UI") as CanvasLayer
 	if target_dialogue and target_dialogue.has_signal("dialogue_finished"):
 		if target_dialogue.dialogue_finished.is_connected(_on_inspection_finished):
@@ -257,3 +260,13 @@ func _on_inspection_finished() -> void:
 	var clue_mgr: Node = get_node_or_null("/root/ClueManager")
 	if clue_mgr and clue_mgr.has_method("discover_clue"):
 		clue_mgr.discover_clue(clue_id)
+
+func _on_dialogue_cancelled() -> void:
+	var ui: Node = dialogue_box if dialogue_box else get_node_or_null("../UI")
+	if ui and ui.dialogue_cancelled.is_connected(_on_dialogue_cancelled):
+		ui.dialogue_cancelled.disconnect(_on_dialogue_cancelled)
+	if ui and ui.dialogue_finished.is_connected(_on_inspection_finished):
+		ui.dialogue_finished.disconnect(_on_inspection_finished)
+	var body: Node = player if player else get_node_or_null("../Player")
+	if body:
+		body.set_control_locked(false)

@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal dialogue_started
 signal dialogue_finished
+signal dialogue_line_shown(index: int)
+signal dialogue_cancelled
 
 @onready var container: Control = $DialogueContainer
 @onready var panel: PanelContainer = $DialogueContainer/Panel
@@ -325,6 +327,7 @@ func _show_next_line() -> void:
 			sound_mgr.play_dialogue_advance()
 
 	var current_data: Dictionary = dialogue_lines[current_line_index]
+	dialogue_line_shown.emit(current_line_index)
 	var speaker: String = current_data.get("speaker", "")
 	var raw_text: String = current_data.get("text", "")
 	var color: Color = current_data.get("color", Color(1, 1, 1, 1))
@@ -590,7 +593,7 @@ func cancel_dialogue() -> void:
 		container.visible = false
 		container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	close_history()
-	dialogue_finished.emit()
+	dialogue_cancelled.emit()
 
 func _close_dialogue() -> void:
 	if badge_tween and badge_tween.is_valid():
@@ -630,8 +633,8 @@ func advance_dialogue() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Открытие/закрытие журнала истории диалогов
-	var is_wheel_up: bool = (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed)
-	var is_key_h: bool = (event is InputEventKey and event.keycode == KEY_H and event.pressed and not event.is_echo())
+	var is_wheel_up: bool = false
+	var is_key_h: bool = event.is_action_pressed("toggle_history") and not event.is_echo()
 
 	if _is_history_open:
 		if (event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed and not event.is_echo()) or is_key_h:
@@ -649,11 +652,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	var is_lmb: bool = (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed)
-	var is_space: bool = (event is InputEventKey and event.keycode == KEY_SPACE and event.pressed and not event.is_echo())
-	var is_enter: bool = (event is InputEventKey and (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER) and event.pressed and not event.is_echo())
-	var is_interact_action: bool = event.is_action_pressed("interact") or (event is InputEventKey and event.keycode == KEY_E and event.pressed and not event.is_echo())
+	var is_interact_action: bool = event.is_action_pressed("interact") and not event.is_echo()
 
-	if is_lmb or is_space or is_enter or is_interact_action:
+	if is_lmb or is_interact_action:
 		get_viewport().set_input_as_handled()
 		advance_dialogue()
 

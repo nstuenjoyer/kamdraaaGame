@@ -38,7 +38,7 @@ func add_item(id: String, name: String, count: int = 1, icon: String = "📦", d
 		sound_mgr.play_interact()
 
 	# Уведомление
-	var msg: String = "🎒 Подобрано: %s (x%d)  [ Нажмите I — Инвентарь ]" % [name, count]
+	var msg: String = "Подобрано: %s ×%d · [%s] Инвентарь" % [name, count, SettingsManager.get_action_key_name("toggle_inventory")]
 	toast_requested.emit(msg)
 	var save_mgr: Node = get_node_or_null("/root/SaveManager")
 	if save_mgr and save_mgr.has_signal("toast_requested"):
@@ -49,7 +49,7 @@ func add_item(id: String, name: String, count: int = 1, icon: String = "📦", d
 
 ## Удалить предмет или уменьшить количество
 func remove_item(id: String, count: int = 1) -> bool:
-	if not _items.has(id):
+	if count <= 0 or not _items.has(id):
 		return false
 
 	var current_count: int = _items[id]["count"]
@@ -102,9 +102,8 @@ func use_item(id: String) -> bool:
 		"pills":
 			success = _use_pills()
 		_:
-			# Для будущих предметов
-			success = true
-			remove_item(id, 1)
+			# Contextual tools are applied by scene interactions, never consumed by an arbitrary inventory click.
+			success = false
 
 	if success:
 		item_used.emit(id, true)

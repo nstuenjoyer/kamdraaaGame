@@ -33,7 +33,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Открытие / закрытие по клавише I
-	var is_key_i: bool = (event is InputEventKey and event.keycode == KEY_I and event.pressed and not event.is_echo())
+	var is_key_i: bool = (event.is_action_pressed("toggle_inventory") and not event.is_echo())
 	if is_key_i:
 		get_viewport().set_input_as_handled()
 		toggle_inventory()
@@ -52,6 +52,9 @@ func toggle_inventory() -> void:
 		open_inventory()
 
 func open_inventory() -> void:
+	var dialogue_ui: Node = get_parent().get_node_or_null("UI")
+	if dialogue_ui and dialogue_ui.is_active:
+		return
 	is_open = true
 	visible = true
 	if backdrop:
@@ -191,6 +194,9 @@ func _select_item(id: String) -> void:
 		detail_count.text = "В наличии: %d шт." % item_data.get("count", 1)
 	if detail_desc:
 		detail_desc.text = item_data.get("description", "Обычный предмет из берлоги Даши.")
+		var tutorial: Node = get_parent().get_node_or_null("Tutorial")
+		if tutorial and tutorial.stage == 3 and selected_item_id == "pills":
+			detail_desc.text += "\n\nОБУЧЕНИЕ: нажмите «Принять / Использовать» ниже. Одна таблетка снизит тревогу со 100 до 60 и выведет Дашу из паники. Остальные дозы останутся в инвентаре."
 
 	if btn_use:
 		var usable: bool = item_data.get("usable", false)

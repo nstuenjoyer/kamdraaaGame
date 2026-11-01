@@ -39,8 +39,6 @@ func _on_dark_zone_body_entered(body: Node2D) -> void:
 func _on_dark_zone_body_exited(body: Node2D) -> void:
 	if body == player:
 		_is_player_in_dark_zone = false
-		if _is_in_darkness:
-			_resolve_darkness_relief(true)
 
 func _process(delta: float) -> void:
 	if not player or not is_instance_valid(player):
@@ -70,13 +68,15 @@ func _process(delta: float) -> void:
 	_is_in_darkness = now_in_darkness
 
 func _handle_darkness(delta: float) -> void:
+	var previous_duration: float = _darkness_duration
 	_darkness_duration += delta
 	_whisper_timer += delta
 
-	# Плавное нарастание паранойи (12.5% в секунду в полной тьме)
+	# Brief darkness is safe; sustained exposure builds stress over ~9 seconds.
+	var exposure: float = maxf(0.0, _darkness_duration - 1.5) - maxf(0.0, previous_duration - 1.5)
 	var paranoia_mgr: Node = get_node_or_null("/root/ParanoiaManager")
-	if paranoia_mgr and paranoia_mgr.has_method("add_paranoia"):
-		paranoia_mgr.add_paranoia(delta * 13.5, "Темнота")
+	if exposure > 0.0 and paranoia_mgr and paranoia_mgr.has_method("add_paranoia"):
+		paranoia_mgr.add_paranoia(exposure * 8.0, "Темнота")
 
 	# Напоминание игроку о фонарике через 2 секунды
 	if _darkness_duration >= 2.0 and not _toast_shown:
@@ -105,9 +105,8 @@ func _trigger_darkness_whisper() -> void:
 			save_mgr.toast_requested.emit(whisper_text)
 
 func _resolve_darkness_relief(lit_by_flashlight: bool) -> void:
-	var paranoia_mgr: Node = get_node_or_null("/root/ParanoiaManager")
-	if paranoia_mgr and paranoia_mgr.has_method("reduce_paranoia"):
-		paranoia_mgr.reduce_paranoia(15.0)
+	# Stopping exposure does not remove accumulated stress. The manager handles
+	# delayed recovery; toggling the light must never grant repeatable relief.
 
 	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
 	if sound_mgr and sound_mgr.has_method("play_hover"):

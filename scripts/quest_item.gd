@@ -37,9 +37,7 @@ func _start_ringing_animation() -> void:
 
 func _process(_delta: float) -> void:
 	if is_player_nearby and not is_phone_answered:
-		var pressed_interact: bool = (InputMap.has_action("interact") and Input.is_action_just_pressed("interact")) \
-			or Input.is_action_just_pressed("ui_accept") \
-			or Input.is_key_pressed(KEY_E)
+		var pressed_interact: bool = Input.is_action_just_pressed("interact")
 		if pressed_interact:
 			answer_phone()
 
@@ -48,7 +46,7 @@ func _on_body_entered(body: Node2D) -> void:
 		is_player_nearby = true
 		if not is_phone_answered:
 			if phone_label:
-				phone_label.text = "☎ Взять трубку [E / Пробел]"
+				phone_label.text = "☎ Взять трубку [%s]" % SettingsManager.get_action_key_name("interact")
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is CharacterBody2D:
@@ -83,11 +81,13 @@ func set_phone_state(answered: bool) -> void:
 		if sound_mgr and sound_mgr.has_method("start_phone_ringing"):
 			sound_mgr.start_phone_ringing()
 		if phone_label:
-			phone_label.text = "☎ Взять трубку [E / Пробел]" if is_player_nearby else "☎ Звонок..."
+			phone_label.text = "☎ Взять трубку [%s]" % SettingsManager.get_action_key_name("interact") if is_player_nearby else "☎ Звонок..."
 			phone_label.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		_start_ringing_animation()
 
 func answer_phone() -> void:
+	if get_node("../UI").is_active or get_node("../InventoryDialog").is_open:
+		return
 	if is_phone_answered:
 		return
 	is_phone_answered = true
@@ -159,20 +159,28 @@ func answer_phone() -> void:
 		},
 		{
 			"speaker": "🚪 Система",
-			"text": "Электронный замок щёлкнул. Дверь разблокирована!",
+			"text": "Электронный замок щёлкнул. Но прежде чем идти дальше, нужно справиться с паникой.",
 			"color": Color(0.3, 1.0, 0.5),
 			"paranoia": false
-		}
+		},
+		{"speaker": "Обучение: тревога", "text": "Слева сверху находится шкала СТРЕСС. Она показывает тревогу Даши: при высоком значении учащается пульс, дрожат руки и искажается восприятие. Звонок вызвал панический приступ.", "paranoia": false},
+		{"speaker": "Даша", "text": "Сердце колотится, не могу сосредоточиться... Я видела успокоительные у кровати. Сначала обыщу кровать, потом заберу таблетки и приму одну через инвентарь.", "paranoia": false}
 	]
 
 	if target_dialogue and target_dialogue.has_method("start_dialogue"):
 		if not target_dialogue.dialogue_finished.is_connected(_on_dialogue_finished):
 			target_dialogue.dialogue_finished.connect(_on_dialogue_finished)
+		if not target_dialogue.dialogue_cancelled.is_connected(_on_dialogue_cancelled):
+			target_dialogue.dialogue_cancelled.connect(_on_dialogue_cancelled)
+		get_node("../Tutorial").begin_call()
 		target_dialogue.start_dialogue(dialogue_lines)
 	else:
 		_on_dialogue_finished()
 
 func _on_dialogue_finished() -> void:
+	var ui: Node = dialogue_box if dialogue_box else get_node_or_null("../UI")
+	if ui and ui.dialogue_cancelled.is_connected(_on_dialogue_cancelled):
+		ui.dialogue_cancelled.disconnect(_on_dialogue_cancelled)
 	var target_dialogue: CanvasLayer = dialogue_box if dialogue_box else get_node_or_null("../UI") as CanvasLayer
 	if target_dialogue and target_dialogue.has_signal("dialogue_finished"):
 		if target_dialogue.dialogue_finished.is_connected(_on_dialogue_finished):
@@ -195,6 +203,7 @@ func _on_dialogue_finished() -> void:
 		clue_mgr.discover_clue("phone")
 		clue_mgr.discover_clue("door")
 
+	get_node("../Tutorial").finish_call()
 	open_door()
 
 func open_door() -> void:
@@ -215,3 +224,13 @@ func open_door() -> void:
 	else:
 		print("[ВНИМАНИЕ]: Узел двери не найден!")
 
+
+func _on_dialogue_cancelled() -> void:
+	var ui: Node = dialogue_box if dialogue_box else get_node_or_null("../UI")
+	if ui and ui.dialogue_cancelled.is_connected(_on_dialogue_cancelled):
+		ui.dialogue_cancelled.disconnect(_on_dialogue_cancelled)
+	if ui and ui.dialogue_finished.is_connected(_on_dialogue_finished):
+		ui.dialogue_finished.disconnect(_on_dialogue_finished)
+	var body: Node = player if player else get_node_or_null("../Player")
+	if body:
+		body.set_control_locked(false)

@@ -9,6 +9,11 @@ signal keybinds_updated
 const SETTINGS_FILE: String = "user://settings.json"
 
 const REBINDABLE_ACTIONS: Array[Dictionary] = [
+	{"action": "run", "name": "Бежать"},
+	{"action": "sneak", "name": "Красться"},
+	{"action": "use_tool", "name": "Перцовый баллончик"},
+	{"action": "throw_item", "name": "Бросить вазу"},
+	{"action": "blind", "name": "Ослепить фонариком"},
 	{"action": "move_up", "name": "Движение вверх"},
 	{"action": "move_down", "name": "Движение вниз"},
 	{"action": "move_left", "name": "Движение влево"},
@@ -19,6 +24,7 @@ const REBINDABLE_ACTIONS: Array[Dictionary] = [
 	{"action": "toggle_clues", "name": "Материалы дела / Улики"},
 	{"action": "toggle_mind_palace", "name": "Чертоги разума (Доска улик)"},
 	{"action": "toggle_flashlight", "name": "Фонарик (Вкл / Выкл)"},
+	{"action": "toggle_inventory", "name": "Инвентарь"},
 	{"action": "toggle_history", "name": "Журнал истории диалогов"},
 	{"action": "toggle_fullscreen", "name": "Полный экран"}
 ]
@@ -36,20 +42,37 @@ var auto_advance: bool = false
 var auto_advance_delay: float = 2.0
 
 var default_keybinds: Dictionary = {}
+var default_events: Dictionary = {}
 var custom_keybinds: Dictionary = {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if not InputMap.has_action("toggle_inventory"):
+		InputMap.add_action("toggle_inventory")
+		var inventory_key: InputEventKey = InputEventKey.new()
+		inventory_key.physical_keycode = KEY_I
+		InputMap.action_add_event("toggle_inventory", inventory_key)
+	for pair: Array in [["toggle_flashlight", MOUSE_BUTTON_RIGHT], ["toggle_history", MOUSE_BUTTON_WHEEL_UP]]:
+		var mouse_event: InputEventMouseButton = InputEventMouseButton.new()
+		mouse_event.button_index = pair[1]
+		InputMap.action_add_event(pair[0], mouse_event)
+	if not InputMap.has_action("run"):
+		InputMap.add_action("run")
+		var run_key: InputEventKey = InputEventKey.new()
+		run_key.physical_keycode = KEY_CTRL
+		InputMap.action_add_event("run", run_key)
 	_record_default_keybinds()
 	load_settings()
 	apply_settings()
 
 func _record_default_keybinds() -> void:
 	default_keybinds.clear()
+	default_events.clear()
 	for item in REBINDABLE_ACTIONS:
 		var act: String = item["action"]
 		if InputMap.has_action(act):
 			var events: Array[InputEvent] = InputMap.action_get_events(act)
+			default_events[act] = events.duplicate()
 			for ev in events:
 				if ev is InputEventKey:
 					var code: Key = ev.physical_keycode if ev.physical_keycode != KEY_NONE else ev.keycode
@@ -58,6 +81,7 @@ func _record_default_keybinds() -> void:
 						break
 
 func load_settings() -> void:
+	reset_keybinds_to_defaults()
 	if not FileAccess.file_exists(SETTINGS_FILE):
 		save_settings()
 		return
@@ -81,8 +105,10 @@ func load_settings() -> void:
 		auto_advance = bool(data.get("auto_advance", false))
 		auto_advance_delay = float(data.get("auto_advance_delay", 2.0))
 		
-		var saved_keys: Dictionary = data.get("keybinds", {})
+		var saved_keys: Dictionary = data.get("keybinds", {}) if data.get("keybinds", {}) is Dictionary else {}
 		for act in saved_keys.keys():
+			if not default_events.has(act):
+				continue
 			var code_int: int = int(saved_keys[act])
 			if code_int > 0:
 				custom_keybinds[act] = code_int
@@ -157,7 +183,7 @@ func _apply_action_key(action_name: String, key_code: Key) -> void:
 	# Добавляем новую клавишу
 	var new_ev: InputEventKey = InputEventKey.new()
 	new_ev.physical_keycode = key_code
-	new_ev.keycode = key_code
+	new_ev.keycode = KEY_NONE
 	InputMap.action_add_event(action_name, new_ev)
 
 func rebind_action(action_name: String, new_keycode: Key, auto_save: bool = false) -> void:
@@ -193,8 +219,10 @@ func get_action_key_name(action_name: String) -> String:
 func reset_keybinds_to_defaults(auto_save: bool = false) -> void:
 	for item in REBINDABLE_ACTIONS:
 		var act: String = item["action"]
-		if default_keybinds.has(act):
-			_apply_action_key(act, default_keybinds[act] as Key)
+		if default_events.has(act):
+			InputMap.action_erase_events(act)
+			for ev: InputEvent in default_events[act]:
+				InputMap.action_add_event(act, ev)
 	custom_keybinds.clear()
 	if auto_save:
 		save_settings()
@@ -262,7 +290,7 @@ func toggle_fullscreen() -> void:
 	set_fullscreen(not fullscreen, true)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_fullscreen") or (event is InputEventKey and event.keycode == KEY_F11 and event.pressed and not event.is_echo()):
+	if event.is_action_pressed("toggle_fullscreen") and not event.is_echo():
 		get_viewport().set_input_as_handled()
 		toggle_fullscreen()
 

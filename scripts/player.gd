@@ -9,24 +9,29 @@ extends CharacterBody2D
 
 # Блокировка управления во время диалогов и катсцен
 var is_control_locked: bool = false
+var movement_mode: String = "walk"
+var dasha_animation: DashaAnimation
 
 # Визуальная моделька и анимация персонажа (Даша)
 @onready var sprite: Sprite2D = get_node_or_null("DashaSprite") as Sprite2D
-var _base_scale: Vector2 = Vector2(0.17, 0.17)
 
 # Звуки шагов и столкновения со стенами
 @onready var camera: Camera2D = get_node_or_null("Camera2D") as Camera2D
 var _step_distance_accum: float = 0.0
-const STEP_DISTANCE: float = 52.0
+var _walk_distance: float = 0.0
+const STEP_DISTANCE: float = 82.0
 var _bump_cooldown: float = 0.0
 var _shake_strength: float = 0.0
 
 func _ready() -> void:
 	if sprite:
-		_base_scale = sprite.scale
+		dasha_animation = DashaAnimation.new()
+		dasha_animation.setup(sprite)
 
 func set_control_locked(locked: bool) -> void:
 	is_control_locked = locked
+	if locked and dasha_animation:
+		dasha_animation.settle(movement_mode)
 
 func _process(delta: float) -> void:
 	if _shake_strength > 0.0 and camera:
@@ -51,21 +56,6 @@ func _physics_process(delta: float) -> void:
 	# Получаем направление движения по осям X и Y
 	var input_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	# Запасной вариант: если действия в Input Map ещё не настроены,
-	# считываем нажатия клавиш WASD и стрелок напрямую
-	if input_vector == Vector2.ZERO:
-		var raw_x: float = 0.0
-		var raw_y: float = 0.0
-		if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-			raw_x -= 1.0
-		if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-			raw_x += 1.0
-		if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-			raw_y -= 1.0
-		if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-			raw_y += 1.0
-		input_vector = Vector2(raw_x, raw_y).normalized()
-
 	# Плавный расчёт скорости (разгон и торможение без дёрганья)
 	var target_velocity: Vector2 = input_vector * speed
 	if input_vector != Vector2.ZERO:
@@ -74,23 +64,26 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 
 	var prev_velocity: Vector2 = velocity
+	var previous_position: Vector2 = global_position
 
 	# Плавное скольжение вдоль стен и препятствий
 	move_and_slide()
 
 	# Обновление спрайта и микро-анимации шагов / покоя
+	_walk_distance += previous_position.distance_to(global_position)
 	_update_sprite_animation(delta)
 
 	# 1. Звук шагов при активном перемещении
+	var step_length: float = dasha_animation.step_distance(movement_mode) if dasha_animation else STEP_DISTANCE
 	if not is_control_locked and velocity.length() > 28.0:
-		_step_distance_accum += velocity.length() * delta
-		if _step_distance_accum >= STEP_DISTANCE:
-			_step_distance_accum = 0.0
+		_step_distance_accum += previous_position.distance_to(global_position)
+		if _step_distance_accum >= step_length:
+			_step_distance_accum = fmod(_step_distance_accum, step_length)
 			var sound_mgr: Node = get_node_or_null("/root/SoundManager")
 			if sound_mgr and sound_mgr.has_method("play_footstep"):
-				sound_mgr.play_footstep()
+				sound_mgr.play_footstep(_footstep_surface(), -10.0 if movement_mode == "sneak" else 1.0 if movement_mode == "run" else 0.0)
 	else:
-		_step_distance_accum = STEP_DISTANCE * 0.75
+		_step_distance_accum = step_length * 0.55
 
 	# 2. Определение врезания в стены и препятствия
 	if get_slide_collision_count() > 0 and _bump_cooldown <= 0.0:
@@ -104,42 +97,17 @@ func _physics_process(delta: float) -> void:
 					sound_mgr.play_wall_bump()
 				break
 
+func _footstep_surface() -> String:
+	var floor_root: Node = get_parent().get_node_or_null("Floor")
+	if floor_root:
+		for child: Node in floor_root.get_children():
+			if child is Polygon2D and child.has_meta("footstep_surface"):
+				var floor_polygon: Polygon2D = child as Polygon2D
+				if Geometry2D.is_point_in_polygon(floor_polygon.to_local(global_position), floor_polygon.polygon):
+					return str(child.get_meta("footstep_surface"))
+	return "wood"
+
 func _update_sprite_animation(delta: float) -> void:
-	if not sprite:
-		return
-
-	var is_moving: bool = not is_control_locked and velocity.length() > 20.0
-
-	# 1. Поворот спрайта по горизонтали
-	# Исходный спрайт смотрит влево (3/4).
-	# Если идём вправо (velocity.x > 0) -> отражаем flip_h = true.
-	# Если идём влево (velocity.x < 0) -> flip_h = false.
-	# При движении строго вверх/вниз сохраняем предыдущее направление.
-	if velocity.x > 8.0:
-		sprite.flip_h = true
-	elif velocity.x < -8.0:
-		sprite.flip_h = false
-
-	# 2. Анимация шагов (боббинг) и дыхания (покой)
-	if is_moving:
-		# Фаза шага от 0 до 2*PI, синхронизированная с шагами
-		var walk_phase: float = (_step_distance_accum / STEP_DISTANCE) * TAU
-		# Подскок вверх-вниз при каждом шаге
-		var bob_y: float = -abs(sin(walk_phase)) * 2.2
-		# Мягкий наклон корпуса в такт движению
-		var tilt: float = sin(walk_phase) * 0.025
-		if sprite.flip_h:
-			tilt = -tilt
-
-		sprite.position.y = bob_y
-		sprite.rotation = tilt
-		sprite.scale = _base_scale
-	else:
-		# Плавное возвращение к нейтральной стойке
-		sprite.position.y = move_toward(sprite.position.y, 0.0, delta * 14.0)
-		sprite.rotation = move_toward(sprite.rotation, 0.0, delta * 6.0)
-
-		# Мягкое дыхание в покое (микро-сквош и стретч)
-		var time_sec: float = Time.get_ticks_msec() / 1000.0
-		var breath: float = sin(time_sec * 2.4) * 0.006
-		sprite.scale = _base_scale * Vector2(1.0 - breath, 1.0 + breath)
+	if dasha_animation:
+		var desired: Vector2 = Vector2.ZERO if is_control_locked else Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		dasha_animation.update(delta, velocity, movement_mode, _walk_distance, is_control_locked, desired)

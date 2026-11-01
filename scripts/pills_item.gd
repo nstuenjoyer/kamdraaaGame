@@ -11,6 +11,7 @@ extends Area2D
 @onready var visual_root: CanvasItem = get_node_or_null("VisualRoot") as CanvasItem
 
 var is_player_nearby: bool = false
+var picked_up: bool = false
 var _pulse_tween: Tween
 
 func _ready() -> void:
@@ -30,9 +31,7 @@ func _start_subtle_glow() -> void:
 
 func _process(_delta: float) -> void:
 	if is_player_nearby:
-		var pressed_interact: bool = (InputMap.has_action("interact") and Input.is_action_just_pressed("interact")) \
-			or Input.is_action_just_pressed("ui_accept") \
-			or Input.is_key_pressed(KEY_E)
+		var pressed_interact: bool = Input.is_action_just_pressed("interact")
 		if pressed_interact:
 			pick_up_pills()
 
@@ -51,7 +50,7 @@ func _update_label() -> void:
 		return
 	if is_player_nearby:
 		label.visible = true
-		label.text = "💊 Взять %s [E]" % prompt_title
+		label.text = "💊 Взять %s [%s]" % [prompt_title, SettingsManager.get_action_key_name("interact")]
 		label.modulate = Color(0.4, 0.95, 1.0, 1.0)
 	else:
 		label.visible = true
@@ -59,6 +58,8 @@ func _update_label() -> void:
 		label.modulate = Color(0.65, 0.75, 0.85, 0.7)
 
 func pick_up_pills() -> void:
+	if picked_up or get_node("../Tutorial").stage < 2:
+		return
 	var target_dialogue: CanvasLayer = dialogue_box if dialogue_box else get_node_or_null("../UI") as CanvasLayer
 	if target_dialogue and "is_active" in target_dialogue and target_dialogue.is_active:
 		return
@@ -85,6 +86,12 @@ func pick_up_pills() -> void:
 				"paranoia": false
 			}
 		]
+		get_node("../Player").set_control_locked(true)
 		target_dialogue.start_dialogue(lines)
 
-	queue_free()
+	set_picked_up(true)
+
+func set_picked_up(value: bool) -> void:
+	picked_up = value
+	visible = not value
+	set_process(not value)

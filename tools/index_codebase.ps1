@@ -1,7 +1,7 @@
 # tools/index_codebase.ps1
 # Codebase indexer for Godot 4 project Kamdraaa
 
-$projectDir = "e:\kamdraaa-game"
+$projectDir = Split-Path $PSScriptRoot -Parent
 $scriptsDir = "$projectDir\scripts"
 $scenesDir = "$projectDir\scenes"
 $projectGodot = "$projectDir\project.godot"
