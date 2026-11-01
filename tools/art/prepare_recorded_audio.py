@@ -47,7 +47,7 @@ for name, start, end, peak in [("heartbeat_s1.wav", .026, .140, .55), ("heartbea
     sample[-release:] *= np.linspace(1, 0, release)[:, None] ** 2
     save(name, sample, rate, peak)
 
-rain, rate = read(ROOT / "docs/review/audio_sources/rain_window_original.wav")
+rain, rate = read(ROOT / "AI/review/audio_sources/rain_window_original.wav")
 rain = filter_audio(rain, rate, 30, 8000)
 overlap = round(rate * .30)
 fade = np.linspace(0, 1, overlap)[:, None]

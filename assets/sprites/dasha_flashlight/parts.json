@@ -1,0 +1,227 @@
+{
+  "source": "source.png",
+  "source_size": [
+    1774,
+    887
+  ],
+  "coordinate_space": "Dasha atlas pixels (standing character height200)",
+  "orientation": "proximal joint is on right, distal joint/torch lens on left",
+  "parts": {
+    "front_upper_arm": {
+      "file": "front_upper_arm.png",
+      "size": [
+        42,
+        33
+      ],
+      "source_cell": [
+        0,
+        0,
+        443,
+        443
+      ],
+      "source_crop": [
+        101,
+        131,
+        398,
+        366
+      ],
+      "proximal": [
+        34,
+        6
+      ],
+      "distal": [
+        6,
+        26
+      ]
+    },
+    "front_forearm": {
+      "file": "front_forearm.png",
+      "size": [
+        36,
+        20
+      ],
+      "source_cell": [
+        443,
+        0,
+        887,
+        443
+      ],
+      "source_crop": [
+        87,
+        169,
+        380,
+        330
+      ],
+      "proximal": [
+        31,
+        6
+      ],
+      "distal": [
+        5,
+        14
+      ]
+    },
+    "front_hand": {
+      "file": "front_hand.png",
+      "size": [
+        13,
+        12
+      ],
+      "source_cell": [
+        887,
+        0,
+        1330,
+        443
+      ],
+      "source_crop": [
+        85,
+        157,
+        373,
+        319
+      ],
+      "proximal": [
+        12,
+        5
+      ],
+      "grip": [
+        6,
+        7
+      ]
+    },
+    "front_flashlight": {
+      "file": "front_flashlight.png",
+      "size": [
+        28,
+        12
+      ],
+      "source_cell": [
+        1330,
+        0,
+        1774,
+        443
+      ],
+      "source_crop": [
+        106,
+        216,
+        353,
+        322
+      ],
+      "grip": [
+        20,
+        6
+      ],
+      "muzzle": [
+        1,
+        6
+      ]
+    },
+    "back_upper_arm": {
+      "file": "back_upper_arm.png",
+      "size": [
+        42,
+        33
+      ],
+      "source_cell": [
+        0,
+        443,
+        443,
+        887
+      ],
+      "source_crop": [
+        101,
+        109,
+        400,
+        345
+      ],
+      "proximal": [
+        34,
+        6
+      ],
+      "distal": [
+        6,
+        26
+      ]
+    },
+    "back_forearm": {
+      "file": "back_forearm.png",
+      "size": [
+        36,
+        18
+      ],
+      "source_cell": [
+        443,
+        443,
+        887,
+        887
+      ],
+      "source_crop": [
+        87,
+        156,
+        380,
+        305
+      ],
+      "proximal": [
+        31,
+        5
+      ],
+      "distal": [
+        5,
+        13
+      ]
+    },
+    "back_hand": {
+      "file": "back_hand.png",
+      "size": [
+        13,
+        12
+      ],
+      "source_cell": [
+        887,
+        443,
+        1330,
+        887
+      ],
+      "source_crop": [
+        85,
+        146,
+        373,
+        302
+      ],
+      "proximal": [
+        12,
+        5
+      ],
+      "grip": [
+        6,
+        7
+      ]
+    },
+    "back_flashlight": {
+      "file": "back_flashlight.png",
+      "size": [
+        28,
+        11
+      ],
+      "source_cell": [
+        1330,
+        443,
+        1774,
+        887
+      ],
+      "source_crop": [
+        104,
+        188,
+        363,
+        292
+      ],
+      "grip": [
+        20,
+        6
+      ],
+      "muzzle": [
+        1,
+        6
+      ]
+    }
+  }
+}

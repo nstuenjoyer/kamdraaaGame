@@ -66,13 +66,17 @@ func show_pose(state: String, index: int, direction: String) -> void:
 	frame_index = clampi(index, 0, 7)
 	# Only a tiny resting chest movement, never a per-state character resize.
 	sprite.scale = base_scale
-	if state == "crouch_idle" or (state == "idle" and facing == "back"):
+	if state in ["idle", "crouch_idle"]:
 		sprite.scale.y *= 1.0 - pow(sin(idle_phase*TAU),2.0)*0.006
 	if state in ["idle", "crouch_idle"]:
 		sprite.texture = IDLE_ATLAS
 		sprite.vframes = 4
 		var idle_row: int = (2 if state == "crouch_idle" else 0) + (1 if facing == "back" else 0)
-		sprite.frame = idle_row * FRAME_COUNT + frame_index
+		# Independently drawn front idle frames shift the face, hair and coat
+		# between drawings. Hold its registered neutral pose and use the same
+		# continuous, foot-anchored breathing as the back view.
+		var idle_frame: int = 0 if state == "idle" and facing == "front" else frame_index
+		sprite.frame = idle_row * FRAME_COUNT + idle_frame
 		return
 	sprite.texture = ATLAS
 	sprite.vframes = 8

@@ -8,7 +8,7 @@ import json
 import math
 ROOT=Path(__file__).resolve().parents[2]
 DEST=ROOT/'assets/sprites/dasha_animation'
-PREVIEW=ROOT/'docs/review/images/animation'
+PREVIEW=ROOT/'AI/review/images/animation'
 PREVIEW.mkdir(parents=True,exist_ok=True)
 
 def clean(im):
@@ -109,11 +109,11 @@ for t in range(64):
     out=Image.new('RGB',(1280,340),(25,30,29));d=ImageDraw.Draw(out)
     for i in range(8):
         if i in [0,4,6,7]:
-            row={0:0,4:2,6:1,7:3}[i];col=int(((t*.08/3.2)%1)*8);sheet=idle_atlas
+            row={0:0,4:2,6:1,7:3}[i];col=0 if i==0 else int(((t*.08/3.2)%1)*8);sheet=idle_atlas
         else:
             row={1:0,2:1,3:2,5:5}[i];col=(t//(2 if i in [2,5] else 3))%8;sheet=atlas
         pose=sheet.crop((col*160,row*256,(col+1)*160,(row+1)*256))
-        if i in [4,6,7]:
+        if i in [0,4,6,7]:
             breath=1-math.sin(t*.08/3.2*math.tau)**2*.006
             pose=pose.transform(pose.size,Image.Transform.AFFINE,(1,0,0,0,1/breath,244-244/breath),resample=Image.Resampling.NEAREST)
         out.paste(pose,(i*160,10),pose)

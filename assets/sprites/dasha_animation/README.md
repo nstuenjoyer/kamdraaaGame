@@ -4,11 +4,11 @@ Current runtime uses `redraw_source.png`, `redraw_crouch_source.png`, and `redra
 
 `dasha_atlas.png`: 8×8 cells, each160×256, baseline244. Rows: walk/run/crouch-walk/posture transition front, then same back. Main standing height200. Crouch lowers the hips; no runtime scale increase. Run flight frames2/6 have an explicit7px lift.
 
-`dasha_idle_atlas.png`: 8×4 cells. Front standing row uses separately drawn subtle breathing/blink frames. Back standing and both crouched rest rows reuse the registered corresponding posture endpoint: the independent `redraw_idle_source.png` family was rejected for incompatible anatomy. Runtime supplies tiny foot-anchored breathing to those rest poses. Thus not all32 runtime idle cells are independent drawings.
+`dasha_idle_atlas.png`: 8×4 cells. Front standing row contains separately drawn breathing/blink frames, but runtime holds frame0: differences in the face, hair and coat made switching these drawings visibly jerky. All resting views now use the same continuous foot-anchored breathing, up to0.6% below base height. Back standing and both crouched rest rows reuse the registered corresponding posture endpoint: the independent `redraw_idle_source.png` family was rejected for incompatible anatomy. Thus not all32 idle cells are independent drawings, and the front blink sequence is retained as source art rather than played in game.
 
 The first back-facing crouch source frame incorrectly showed a face; it is excluded. Replacement source order is recorded in atlas.json. Cropping, removal of alpha<16 specks, uniform nearest-neighbour resampling and registration are reproducible with `tools/art/repack_dasha.py`; no new articulated poses are synthesized by that script. Sources stay in the project, but only runtime atlases are shipped.
 
-Preview: `docs/review/images/animation/proportions.png`, `locomotion.gif`, `states.png`. Runtime directions and transitions: `scripts/dasha_animation.gd`. The original base is preserved unchanged.
+Preview: `AI/review/images/animation/proportions.png`, `locomotion.gif`, `states.png`. Runtime directions and transitions: `scripts/dasha_animation.gd`. The original base is preserved unchanged.
 
 ---
 

@@ -10,7 +10,7 @@ try {
         New-Item -ItemType Directory -Path $reviewData -Force | Out-Null
         $env:APPDATA = $reviewData
         $log = Join-Path $reviewData 'frontend.log'
-        $arguments = @('--path', $projectRoot, '--resolution', $resolution, '--rendering-method', 'gl_compatibility', '--log-file', $log, '--script', 'res://docs/review/check_frontend.gd')
+        $arguments = @('--path', $projectRoot, '--resolution', $resolution, '--rendering-method', 'gl_compatibility', '--log-file', $log, '--script', 'res://AI/review/check_frontend.gd')
         $process = Start-Process -FilePath $GodotExe -ArgumentList $arguments -WindowStyle Hidden -PassThru
         if (-not $process.WaitForExit(60000)) {
             Stop-Process -Id $process.Id

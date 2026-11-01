@@ -114,8 +114,9 @@ func _build_player() -> void:
 	flashlight.available = false
 	player.add_child(flashlight)
 	world.add_child(player)
-	flashlight.cone_light.range_item_cull_mask = 5
-	flashlight.ambient_light.range_item_cull_mask = 5
+	# The held lamp lights the room; the actor has its own readable fill channel.
+	flashlight.cone_light.range_item_cull_mask = 1
+	flashlight.ambient_light.range_item_cull_mask = 1
 	var actor_light: PointLight2D = world.light(Vector2.ZERO, Color("d2d8ee"), 0.8, 0.6)
 	world.remove_child(actor_light)
 	player.add_child(actor_light)
@@ -225,7 +226,7 @@ func _process(delta: float) -> void:
 	if not is_instance_valid(player) or ui == null:
 		return
 	flashlight.input_enabled = not is_blocked() and not hidden_player
-	world.update_lighting(player.position, Vector2.RIGHT.rotated(flashlight.rotation), flashlight.is_on(), state.has("power"))
+	world.update_lighting(player.position, Vector2.RIGHT.rotated(flashlight.rotation), flashlight.is_emitting(), state.has("power"), flashlight.emission_position(), flashlight.emission_height())
 	if is_blocked():
 		return
 	if not state.has("intro"):
@@ -239,7 +240,7 @@ func _process(delta: float) -> void:
 		if state.charge >= CHARGE_SECONDS:
 			state.mark("phone_ready")
 			ui.notify("Телефон зарядился. Вернитесь к тумбочке: сохранённые сообщения доступны. Связи нет.", 8.0)
-	var protected_from_dark: bool = state.has("power") or flashlight.is_on() or world.room_at(player.position) == "bedroom"
+	var protected_from_dark: bool = state.has("power") or flashlight.is_emitting() or world.room_at(player.position) == "bedroom"
 	if protected_from_dark:
 		dark_time = 0.0
 	else:
@@ -269,7 +270,7 @@ func _process(delta: float) -> void:
 	if hidden_player:
 		player.set_control_locked(true)
 	_update_target()
-	if state.phase == "encounter" and is_instance_valid(enemy) and flashlight.is_on() and blind_cooldown <= 0.0:
+	if state.phase == "encounter" and is_instance_valid(enemy) and flashlight.is_emitting() and blind_cooldown <= 0.0:
 		var towards: Vector2 = player.position.direction_to(enemy.position)
 		var aimed: bool = towards.dot(Vector2.RIGHT.rotated(flashlight.rotation)) > 0.92
 		if aimed and player.position.distance_to(enemy.position) < 310 and world.clear_line(player.position, enemy.position):
@@ -510,7 +511,7 @@ func use_pepper() -> bool:
 	return true
 
 func blind_enemy() -> bool:
-	if state.phase != "encounter" or not is_instance_valid(enemy) or not flashlight.is_on() or blind_cooldown > 0:
+	if state.phase != "encounter" or not is_instance_valid(enemy) or not flashlight.is_emitting() or blind_cooldown > 0:
 		return false
 	var towards: Vector2 = player.position.direction_to(enemy.position)
 	if player.position.distance_to(enemy.position) > 310 or towards.dot(Vector2.RIGHT.rotated(flashlight.rotation)) < 0.86 or not world.clear_line(player.position, enemy.position):
@@ -541,7 +542,7 @@ func throw_vase(target: Vector2) -> bool:
 func enter_hiding() -> void:
 	if state.phase != "encounter":
 		ui.notify("Здесь можно укрыться, если кто-то будет искать меня.")
-	elif flashlight.is_on():
+	elif flashlight.is_emitting():
 		ui.notify("Сначала выключите фонарик: луч выдаёт укрытие.")
 	elif enemy.sees_player():
 		ui.notify("Он видит, куда я прячусь. Сначала разорвите линию видимости за стеной.")
@@ -643,7 +644,7 @@ func import_chapter_save(data: Dictionary) -> void:
 	hidden_player = false
 	sneaking = false
 	flashlight.available = state.has("flashlight")
-	flashlight.toggle_flashlight(bool(data.get("flashlight_on", false)) and flashlight.available)
+	flashlight.toggle_flashlight(bool(data.get("flashlight_on", false)) and flashlight.available, true)
 	if is_instance_valid(enemy):
 		enemy.free()
 	if state.phase in ["encounter", "resolved"]:

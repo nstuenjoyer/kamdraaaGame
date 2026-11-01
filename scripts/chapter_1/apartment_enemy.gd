@@ -61,7 +61,7 @@ func sees_player() -> bool:
 		return false
 	var offset: Vector2 = host.player.global_position - global_position
 	var distance: float = offset.length()
-	var range_limit: float = 200.0 if host.sneaking and not host.flashlight.is_on() else 420.0
+	var range_limit: float = 200.0 if host.sneaking and not host.flashlight.is_emitting() else 420.0
 	return distance < range_limit and (distance < 95.0 or facing.dot(offset.normalized()) > -0.1) and host.world.clear_line(global_position, host.player.global_position)
 
 func hear(point: Vector2) -> void:

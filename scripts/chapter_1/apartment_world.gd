@@ -104,15 +104,24 @@ func build() -> void:
 
 func update_barriers() -> void:
 	var barriers: PackedVector4Array = PackedVector4Array(walls)
+	var heights: PackedFloat32Array = PackedFloat32Array()
+	heights.resize(walls.size()) # Zero means a full-height partition.
 	for rect: Rect2 in obstacles:
+		var height: float = 0.0
+		for object: Node2D in furniture:
+			if object.get_meta("footprint",Rect2()) == rect:
+				height = float(object.get_meta("height",0.0))
+				break
 		var points: PackedVector2Array = corners(rect)
 		for i: int in 4:
 			var a: Vector2 = points[i]
 			var b: Vector2 = points[(i + 1) % 4]
 			barriers.append(Vector4(a.x, a.y, b.x, b.y))
+			heights.append(height)
 	assert(barriers.size() <= 256)
 	for i: int in wall_materials.size():
 		wall_materials[i].set_shader_parameter("barriers", barriers)
+		wall_materials[i].set_shader_parameter("barrier_heights", heights)
 		wall_materials[i].set_shader_parameter("barrier_count", barriers.size())
 		wall_materials[i].set_shader_parameter("own_barrier", wall_faces[i].get_meta("barrier_id"))
 
@@ -531,10 +540,21 @@ func route(a: Vector2, b: Vector2) -> PackedVector2Array:
 		return PackedVector2Array([b])
 	return graph.get_point_path(graph.get_closest_point(a), graph.get_closest_point(b))
 
-func update_lighting(player_pos: Vector2, direction: Vector2, torch: bool, power: bool) -> void:
+func update_lighting(player_pos: Vector2, direction: Vector2, torch: bool, power: bool, emission_position: Vector2 = Vector2(INF, INF), emission_height: float = 58.0) -> void:
+	var height: float = clampf(emission_height, 0.0, 150.0)
+	var lens: Vector2 = emission_position if emission_position.is_finite() else player_pos - Vector2(0, height)
+	var ground_origin: Vector2 = lens + Vector2(0, height)
+	# A raised lens is a screen-space visual. Shadow barriers stay on the floor;
+	# never move that footprint through a wall merely because the arm reaches it.
+	if not clear_line(player_pos, ground_origin):
+		ground_origin = player_pos
+		lens = ground_origin - Vector2(0, height)
 	for i: int in wall_materials.size():
 		var mat: ShaderMaterial = wall_materials[i]
-		mat.set_shader_parameter("torch_position", player_pos)
+		mat.set_shader_parameter("player_position", player_pos)
+		mat.set_shader_parameter("torch_position", ground_origin)
+		mat.set_shader_parameter("torch_emission_position", lens)
+		mat.set_shader_parameter("torch_height", height)
 		mat.set_shader_parameter("torch_direction", direction)
 		mat.set_shader_parameter("torch_on", torch)
 		mat.set_shader_parameter("power_on", power)

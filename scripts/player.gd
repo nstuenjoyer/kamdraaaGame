@@ -11,6 +11,7 @@ extends CharacterBody2D
 var is_control_locked: bool = false
 var movement_mode: String = "walk"
 var dasha_animation: DashaAnimation
+var held_flashlight: HeldFlashlight
 
 # Визуальная моделька и анимация персонажа (Даша)
 @onready var sprite: Sprite2D = get_node_or_null("DashaSprite") as Sprite2D
@@ -27,6 +28,10 @@ func _ready() -> void:
 	if sprite:
 		dasha_animation = DashaAnimation.new()
 		dasha_animation.setup(sprite)
+		if has_node("Flashlight"):
+			held_flashlight = HeldFlashlight.new()
+			add_child(held_flashlight)
+			held_flashlight.setup(self,dasha_animation)
 
 func set_control_locked(locked: bool) -> void:
 	is_control_locked = locked
@@ -110,4 +115,7 @@ func _footstep_surface() -> String:
 func _update_sprite_animation(delta: float) -> void:
 	if dasha_animation:
 		var desired: Vector2 = Vector2.ZERO if is_control_locked else Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		if desired.is_zero_approx() and not is_control_locked and held_flashlight != null and (get_node("Flashlight").is_on() or held_flashlight.equip_amount > 0.0):
+			var light: Flashlight = get_node("Flashlight") as Flashlight
+			desired = light.body_direction_towards(get_global_mouse_position()) if light.input_enabled else Vector2.RIGHT.rotated(light.rotation)
 		dasha_animation.update(delta, velocity, movement_mode, _walk_distance, is_control_locked, desired)

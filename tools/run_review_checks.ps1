@@ -9,7 +9,7 @@ $originalAppData = $env:APPDATA
 try {
     $env:APPDATA = $testDir
     $logPath = Join-Path $testDir 'regression.log'
-    $checkArgs = '--headless --path "{0}" --script res://docs/review/reproduce.gd --quit-after 1800 --log-file "{1}"' -f $projectDir, $logPath
+    $checkArgs = '--headless --path "{0}" --script res://AI/review/reproduce.gd --quit-after 1800 --log-file "{1}"' -f $projectDir, $logPath
     $checkProcess = Start-Process -FilePath $GodotExe -ArgumentList $checkArgs -WindowStyle Hidden -Wait -PassThru
     if ($checkProcess.ExitCode -ne 0) { throw "Godot exited with $($checkProcess.ExitCode). See $logPath" }
     $logText = Get-Content -LiteralPath $logPath -Raw

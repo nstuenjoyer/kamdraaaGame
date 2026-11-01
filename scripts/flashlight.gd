@@ -22,12 +22,16 @@ var ambient_light: PointLight2D
 var _target_angle: float = 0.0
 var _parent_body: CharacterBody2D
 var _ignition_tween: Tween
+var _snap_on_next_pose: bool = false
+var _pending_switch_click: bool = false
 
 # Кэшированные процедурные текстуры освещения
 static var _cached_cone_texture: ImageTexture = null
 static var _cached_radial_texture: ImageTexture = null
 
 func _ready() -> void:
+	# Publish the current hand pose before the apartment submits wall lighting.
+	process_priority = -10
 	_parent_body = get_parent() as CharacterBody2D
 	_setup_lights()
 	_update_light_states()
@@ -60,7 +64,7 @@ func _setup_lights() -> void:
 	add_child(ambient_light)
 
 func _input(event: InputEvent) -> void:
-	if get_tree().paused or not input_enabled or not available:
+	if get_tree().paused or not input_enabled or not available or (_parent_body != null and _parent_body.is_control_locked):
 		return
 
 	var is_toggle_key: bool = event.is_action_pressed("toggle_flashlight") and not event.is_echo()
@@ -69,7 +73,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		toggle_flashlight()
 
-func toggle_flashlight(enable_state: Variant = null) -> void:
+func toggle_flashlight(enable_state: Variant = null, instant: bool = false) -> void:
 	if not available and (enable_state == null or bool(enable_state)):
 		return
 	if enable_state != null:
@@ -77,42 +81,87 @@ func toggle_flashlight(enable_state: Variant = null) -> void:
 	else:
 		is_flashlight_on = not is_flashlight_on
 
+	_pending_switch_click = is_flashlight_on and not instant
+	_snap_on_next_pose = instant
+	_sync_hand_pose(0.0)
 	_update_light_states()
 
 	# Звук щелчка карманного фонарика
 	var sound_mgr: Node = get_node_or_null("/root/SoundManager")
-	if sound_mgr and sound_mgr.has_method("play_flashlight_toggle"):
-		sound_mgr.play_flashlight_toggle(is_flashlight_on)
+	if not is_flashlight_on and not instant and sound_mgr and sound_mgr.has_method("play_flashlight_toggle"):
+		sound_mgr.play_flashlight_toggle(false)
 
 	# Уведомление игроку
 	var save_mgr: Node = get_node_or_null("/root/SaveManager")
 	if save_mgr and save_mgr.has_signal("toast_requested"):
-		save_mgr.toast_requested.emit("🔦 Фонарик: %s [%s / ПКМ]" % [("ВКЛЮЧЕН" if is_flashlight_on else "ВЫКЛЮЧЕН"), SettingsManager.get_action_key_name("toggle_flashlight")])
+		save_mgr.toast_requested.emit("Фонарик: %s [%s / ПКМ]" % [("включён" if is_flashlight_on else "выключен"), SettingsManager.get_action_key_name("toggle_flashlight")])
 
 	flashlight_toggled.emit(is_flashlight_on)
-
-	# Эффект искры при включении
-	if is_flashlight_on and cone_light:
-		if _ignition_tween and _ignition_tween.is_valid():
-			_ignition_tween.kill()
-		cone_light.energy = beam_energy * 1.4
-		_ignition_tween = create_tween()
-		_ignition_tween.tween_property(cone_light, "energy", beam_energy * 0.85, 0.04)
-		_ignition_tween.tween_property(cone_light, "energy", beam_energy, 0.06)
 
 func is_on() -> bool:
 	return is_flashlight_on
 
+func is_emitting() -> bool:
+	var hand: HeldFlashlight = _presentation()
+	return available and is_flashlight_on and (hand == null or hand.equip_amount >= 0.90)
+
+func emission_position() -> Vector2:
+	var hand: HeldFlashlight = _presentation()
+	return _parent_body.global_position+hand.lens_position if hand != null else global_position
+
+func emission_height() -> float:
+	var hand: HeldFlashlight = _presentation()
+	return hand.emission_height if hand != null else 0.0
+
+func body_direction_towards(pointer: Vector2) -> Vector2:
+	if _parent_body == null: return Vector2.RIGHT.rotated(rotation)
+	var offset: Vector2 = pointer-(_parent_body.global_position-Vector2(0,emission_height()))
+	return offset.normalized() if offset.length_squared() > 16.0 else Vector2.ZERO
+
+func aim_direction_towards(pointer: Vector2) -> Vector2:
+	var origin: Vector2 = emission_position()
+	if _parent_body != null:
+		var torso: Vector2 = _parent_body.global_position-Vector2(0,emission_height())
+		# Inside the reach of the hand, aiming from the moving muzzle would
+		# chase its own position and repeatedly reverse the arm/body.
+		if pointer.distance_squared_to(torso) < 90.0*90.0: origin = torso
+	var offset: Vector2 = pointer-origin
+	return offset.normalized() if offset.length_squared() > 16.0 else Vector2.ZERO
+
+func _presentation() -> HeldFlashlight:
+	return _parent_body.get_node_or_null("HeldFlashlight") as HeldFlashlight if _parent_body != null else null
+
+func _sync_hand_pose(delta: float) -> void:
+	var hand: HeldFlashlight = _presentation()
+	if hand == null: return
+	if _snap_on_next_pose:
+		hand.snap(is_flashlight_on and available)
+		_snap_on_next_pose = false
+	hand.update_pose(delta,rotation,is_flashlight_on and available)
+	position = hand.lens_position+Vector2(0,hand.emission_height)
+	var offset_to_lens: Vector2 = Vector2(0,-hand.emission_height).rotated(-rotation)
+	cone_light.offset = offset_to_lens
+	ambient_light.offset = offset_to_lens
+
 func _update_light_states() -> void:
+	var starting: bool = cone_light != null and not cone_light.enabled and is_emitting()
 	if cone_light:
-		cone_light.enabled = is_flashlight_on
+		cone_light.enabled = is_emitting()
 	if ambient_light:
-		ambient_light.enabled = is_flashlight_on
-		ambient_light.energy = ambient_energy if is_flashlight_on else 0.0
+		ambient_light.enabled = is_emitting()
+		ambient_light.energy = ambient_energy if is_emitting() else 0.0
+	if starting and _pending_switch_click:
+		_pending_switch_click = false
+		SoundManager.play_flashlight_toggle(true)
+		if _ignition_tween and _ignition_tween.is_valid(): _ignition_tween.kill()
+		cone_light.energy = beam_energy*1.15
+		_ignition_tween = create_tween()
+		_ignition_tween.tween_property(cone_light,"energy",beam_energy,0.10)
 
 func _process(delta: float) -> void:
 	var mouse_pos: Vector2 = get_global_mouse_position()
-	var mouse_angle: float = (mouse_pos - global_position).angle()
+	var aim_direction: Vector2 = aim_direction_towards(mouse_pos)
+	var mouse_angle: float = aim_direction.angle()
 
 	# 1. Определение целевого направления луча
 	if _parent_body and _parent_body.velocity.length() > 20.0:
@@ -125,11 +174,14 @@ func _process(delta: float) -> void:
 		_target_angle = move_angle + clamped_diff
 	else:
 		# Персонаж стоит: свободный круговой обзор на 360° за курсором мыши
-		if mouse_pos.distance_squared_to(global_position) > 10.0:
+		if not aim_direction.is_zero_approx():
 			_target_angle = mouse_angle
 
 	# 2. Плавный кинематографичный поворот
-	rotation = lerp_angle(rotation, _target_angle, delta * smooth_speed)
+	if input_enabled and (_parent_body == null or not _parent_body.is_control_locked):
+		rotation = lerp_angle(rotation, _target_angle, minf(1.0,delta * smooth_speed))
+	_sync_hand_pose(delta)
+	_update_light_states()
 
 	# 3. Микро-покачивание руки (sway & organic breath)
 	if is_flashlight_on:

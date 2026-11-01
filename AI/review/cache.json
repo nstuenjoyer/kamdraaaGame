@@ -1,0 +1,3798 @@
+{
+  "schema": 1,
+  "navigation_head": "f9294b8faac8f518d8dfb4023297e6de9712f289",
+  "review_baseline": "e5a5f551fcf1cd1b9675e7091ed6d4a802e970a7",
+  "restoration_baseline": "baa39fd1d419c5f7d8e4242195c0a4252ee72432",
+  "files": {
+    "AGENTS.md": {
+      "sha256": "7b5c09c0bccefbb68dc01d73635ec33da4e3ca30c2fbfd4d7b94753210a83a06",
+      "lines": 141,
+      "functions": [],
+      "resources": [
+        "res://scenes/main.tscn`",
+        "res://scenes/main_menu.tscn`"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/capture.gd": {
+      "sha256": "d0a611fd0316a37eb41ae74e32e6ea9afd016415997421d7ad1b261321e97a09",
+      "lines": 56,
+      "functions": [
+        {
+          "line": 5,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 8,
+          "signature": "func save_frame(filename: String) -> void:"
+        },
+        {
+          "line": 15,
+          "signature": "func capture() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images",
+        "res://scenes/main.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/capture_chapter.gd": {
+      "sha256": "42d09a05dadcaa1d384d0319de7585b60851827dafe6c6e2644952bc39a5f87b",
+      "lines": 152,
+      "functions": [
+        {
+          "line": 7,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 10,
+          "signature": "func capture(filename: String) -> Image:"
+        },
+        {
+          "line": 18,
+          "signature": "func sample(picture: Image, world_point: Vector2) -> float:"
+        },
+        {
+          "line": 27,
+          "signature": "func place(pos: Vector2, direction: Vector2, zoom: float = 1.05) -> void:"
+        },
+        {
+          "line": 39,
+          "signature": "func check(title: String, value: bool) -> void:"
+        },
+        {
+          "line": 43,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images/chapter_1/"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/capture_menu_rain.gd": {
+      "sha256": "dd746b22c6de984bbd8b69bd1154712b5ca76fec448c53c2c8d625b62bba9290",
+      "lines": 50,
+      "functions": [
+        {
+          "line": 3,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 6,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://.godot/rain-frames",
+        "res://.godot/rain-frames/%03d.png",
+        "res://AI/review/images/menu-rain",
+        "res://AI/review/images/menu-rain/%02d.png",
+        "res://AI/review/images/menu-rain/settings.png",
+        "res://AI/review/images/menu-rain/wide.png",
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/capture_ui.gd": {
+      "sha256": "d76daa72c9a361511bdc8f4a4d7c00fd195c441cf953ef0cf9ef6a96da367143",
+      "lines": 82,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 9,
+          "signature": "func check(title: String, passed: bool) -> void:"
+        },
+        {
+          "line": 13,
+          "signature": "func capture(filename: String) -> void:"
+        },
+        {
+          "line": 19,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images/ui/",
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_animation.gd": {
+      "sha256": "d15e03add8949c9f6fefa4b8c4d0c0b9d0491c5429712ed7447f8380656b7980",
+      "lines": 201,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 9,
+          "signature": "func check(title: String, passed: bool) -> void:"
+        },
+        {
+          "line": 13,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images/animation/",
+        "res://assets/sprites/dasha.png",
+        "res://scripts/player.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_apartment_route.gd": {
+      "sha256": "10c9e92406d366f824ffbd7c88f602e5c9f16a496937060fcc93cb2ed33eb09f",
+      "lines": 150,
+      "functions": [
+        {
+          "line": 8,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 10,
+          "signature": "func check(label: String, value: bool) -> void:"
+        },
+        {
+          "line": 15,
+          "signature": "func dismiss() -> void:"
+        },
+        {
+          "line": 19,
+          "signature": "func walk_to(target: Vector2) -> bool:"
+        },
+        {
+          "line": 36,
+          "signature": "func use(id: String) -> void:"
+        },
+        {
+          "line": 44,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_arm_motion.gd": {
+      "sha256": "22ecba5675e603dfca000d487a82858f052e93610e4e8326564798702bcbc235",
+      "lines": 261,
+      "functions": [
+        {
+          "line": 13,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func check(label: String, result: bool) -> void:"
+        },
+        {
+          "line": 21,
+          "signature": "func step(seconds: float = DT) -> void:"
+        },
+        {
+          "line": 25,
+          "signature": "func pose(facing: String, mirrored: bool, frame: int = 0) -> void:"
+        },
+        {
+          "line": 30,
+          "signature": "func frame_capture(folder: String, index: int) -> Image:"
+        },
+        {
+          "line": 42,
+          "signature": "func sheet(images: Array[Image], name_value: String, columns: int) -> void:"
+        },
+        {
+          "line": 53,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/chapter_1/apartment.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_audio.gd": {
+      "sha256": "6d03963555db7b57e534f3ca309577b6b57d7676ec2327866bb827bcb17c4cb3",
+      "lines": 79,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 9,
+          "signature": "func check(label: String, result: bool) -> void:"
+        },
+        {
+          "line": 14,
+          "signature": "func validate(stream: AudioStreamWAV, label: String) -> void:"
+        },
+        {
+          "line": 22,
+          "signature": "func preview(path: String, streams: Array, spacing: float, gain_db: float) -> void:"
+        },
+        {
+          "line": 41,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/audio",
+        "res://AI/review/audio/surfaces.wav",
+        "res://AI/review/audio/ui-and-interactions.wav",
+        "res://scenes/main.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_chapter.gd": {
+      "sha256": "a1df668da528d67bbccb6eedcfa81055a263e722f225fa641fd641613158409e",
+      "lines": 382,
+      "functions": [
+        {
+          "line": 9,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 12,
+          "signature": "func check(title: String, value: bool) -> void:"
+        },
+        {
+          "line": 17,
+          "signature": "func interact(id: String) -> void:"
+        },
+        {
+          "line": 27,
+          "signature": "func walk_to(logical: Vector2) -> bool:"
+        },
+        {
+          "line": 45,
+          "signature": "func enemy_reaches(logical: Vector2) -> bool:"
+        },
+        {
+          "line": 54,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/chapter_1/apartment.tscn",
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_footsteps.gd": {
+      "sha256": "bb74947005430454504be7d6258c81fd01c2f6ecab190dab630725e86fd7aebe",
+      "lines": 30,
+      "functions": [
+        {
+          "line": 3,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 6,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/audio",
+        "res://AI/review/audio/footsteps.wav"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_frontend.gd": {
+      "sha256": "6aa5de73b7726033ada381432e736bfe528367ab385e351ca434fc03306df265",
+      "lines": 112,
+      "functions": [
+        {
+          "line": 9,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 12,
+          "signature": "func check(title: String, ok: bool) -> void:"
+        },
+        {
+          "line": 17,
+          "signature": "func key(code: Key) -> void:"
+        },
+        {
+          "line": 28,
+          "signature": "func shot(label: String) -> void:"
+        },
+        {
+          "line": 32,
+          "signature": "func inside(panel: Control) -> bool:"
+        },
+        {
+          "line": 35,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_hand_wall_light.gd": {
+      "sha256": "cefe853205d179aff20a264dd01961f410679776b4ccfa62a2e253683a08c640",
+      "lines": 152,
+      "functions": [
+        {
+          "line": 9,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 11,
+          "signature": "func check(title: String, ok: bool) -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func image_at(height: float, enabled: bool, blocked: bool = false, barrier_height: float = 0.0) -> Image:"
+        },
+        {
+          "line": 31,
+          "signature": "func luminance(picture: Image, height: int, x: int = 256) -> float:"
+        },
+        {
+          "line": 37,
+          "signature": "func native_shadow_check() -> void:"
+        },
+        {
+          "line": 90,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://shaders/apartment_wall.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_held_flashlight.gd": {
+      "sha256": "8c47e9c97c2c5f136635eefa1a92c7a77818104ab1319aeff49663fc4f01485b",
+      "lines": 153,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 7,
+          "signature": "func check(label: String, result: bool) -> void:"
+        },
+        {
+          "line": 11,
+          "signature": "func shot(name_value: String) -> void:"
+        },
+        {
+          "line": 14,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/chapter_1/apartment.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_lighting.gd": {
+      "sha256": "5e5a568db237d846497746bf6300ff7afd83771012ccaeaddf3e81ace3d48431",
+      "lines": 109,
+      "functions": [
+        {
+          "line": 10,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 13,
+          "signature": "func check(label: String, condition: bool) -> void:"
+        },
+        {
+          "line": 18,
+          "signature": "func frame(filename: String) -> Image:"
+        },
+        {
+          "line": 25,
+          "signature": "func luminance_at(image: Image, world_point: Vector2) -> float:"
+        },
+        {
+          "line": 34,
+          "signature": "func place(position: Vector2, aim: float, camera_position: Vector2, zoom: float) -> void:"
+        },
+        {
+          "line": 41,
+          "signature": "func wall_spot_case(label: String, position: Vector2, wall_foot: Vector2, camera_position: Vector2) -> void:"
+        },
+        {
+          "line": 53,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images/lighting",
+        "res://scenes/main.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_november.gd": {
+      "sha256": "7835a5253f3f27d79eb1a737b2d537ce69813f93100c041b5a6f3f823a5f459c",
+      "lines": 100,
+      "functions": [
+        {
+          "line": 5,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 6,
+          "signature": "func check(title: String, ok: bool) -> void:"
+        },
+        {
+          "line": 9,
+          "signature": "func shot(name_value: String) -> void:"
+        },
+        {
+          "line": 12,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/chapter_1/apartment.tscn",
+        "res://shaders/apartment_wall.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_panic.gd": {
+      "sha256": "70c4fc13c8ee518d198906494bf13f99751df9fb89c0c2f3a8785f7f81d22ed3",
+      "lines": 61,
+      "functions": [
+        {
+          "line": 8,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 11,
+          "signature": "func check(label: String, value: bool) -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func simulate(seconds: float, fps: int) -> void:"
+        },
+        {
+          "line": 21,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_rain.gd": {
+      "sha256": "7dc9d09e84dd6556c030eb76461c8a4a62b95287ba554cce68ad4e1d64df084b",
+      "lines": 49,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 9,
+          "signature": "func check(label: String, condition: bool) -> void:"
+        },
+        {
+          "line": 14,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scripts/rain_simulation.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_recorded_audio.gd": {
+      "sha256": "8911ee0c500c8f62a6f8923bc81ef4421c67d32e138386bd933134f4ca4913a8",
+      "lines": 101,
+      "functions": [
+        {
+          "line": 9,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 11,
+          "signature": "func check(title: String, value: bool) -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func silent_heart() -> bool:"
+        },
+        {
+          "line": 19,
+          "signature": "func validate_pcm(stream: AudioStreamWAV, label: String) -> void:"
+        },
+        {
+          "line": 26,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main.tscn",
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_tutorial.gd": {
+      "sha256": "0dda327270e97cb01812f2df84e6319da30606d336ff12cb77aa35f52bc194ea",
+      "lines": 64,
+      "functions": [
+        {
+          "line": 3,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 5,
+          "signature": "func check(label: String, result: bool) -> void:"
+        },
+        {
+          "line": 9,
+          "signature": "func capture(name: String) -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images/tutorial",
+        "res://AI/review/images/tutorial/",
+        "res://scenes/main.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_ui_layout.gd": {
+      "sha256": "f3479d4050440410a50841ca0e49a01687381edc778d79b1a4a8a551009e9570",
+      "lines": 116,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 8,
+          "signature": "func check(title: String, ok: bool) -> void:"
+        },
+        {
+          "line": 12,
+          "signature": "func actually_visible(control: Control) -> bool:"
+        },
+        {
+          "line": 23,
+          "signature": "func capture(filename: String) -> void:"
+        },
+        {
+          "line": 30,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://AI/review/images/ui",
+        "res://scenes/chapter_1/apartment.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/check_window_mask.gd": {
+      "sha256": "433105ee9ca816dfd53d238bfa06974cc5b3341b708d93f27b9713231271813a",
+      "lines": 74,
+      "functions": [
+        {
+          "line": 10,
+          "signature": "func _initialize() -> void: call_deferred(\"run\")"
+        },
+        {
+          "line": 12,
+          "signature": "func check(title: String, ok: bool) -> void:"
+        },
+        {
+          "line": 17,
+          "signature": "func flood(shader_path: String, restricted: bool) -> Image:"
+        },
+        {
+          "line": 51,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main_menu.tscn",
+        "res://shaders/glass_"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/prepare_recorded_audio.gd": {
+      "sha256": "7289fe570a453d716d152617dc4fb3c1108c6eab4f406bedfbb315f11ac4d86b",
+      "lines": 23,
+      "functions": [
+        {
+          "line": 3,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 6,
+          "signature": "func run() -> void:"
+        }
+      ],
+      "resources": [
+        "res://.godot/heartbeat_decoded.wav",
+        "res://AI/review/audio_sources/heartbeat_recording.mp3"
+      ],
+      "autoload_dependencies": []
+    },
+    "AI/review/reproduce.gd": {
+      "sha256": "d2197e6ee2955b1567a7a1d39e68fb4dc5bbda296b64af80ad9056ad5b8c7c8d",
+      "lines": 141,
+      "functions": [
+        {
+          "line": 9,
+          "signature": "func _initialize() -> void:"
+        },
+        {
+          "line": 11,
+          "signature": "func check(label: String, condition: bool) -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func frames() -> void:"
+        },
+        {
+          "line": 19,
+          "signature": "func run() -> void:"
+        },
+        {
+          "line": 110,
+          "signature": "func _test_binding() -> bool:"
+        },
+        {
+          "line": 116,
+          "signature": "func _walls() -> void:"
+        }
+      ],
+      "resources": [
+        "res://.godot/review-",
+        "res://scenes/chapter_1/apartment.tscn",
+        "res://scenes/main.tscn",
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "assets/sprites/dasha_flashlight/repack.py": {
+      "sha256": "275f53fe800ed5d113cc6540256d5dd88b66997dc556f99d6fae40a12268a2e1",
+      "lines": 71,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "build_installer.bat": {
+      "sha256": "123c23e5442cfe4b7e30313186fd6f755ca444819e38cbf3f0c09ad9c13e12c5",
+      "lines": 3,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "build_installer.ps1": {
+      "sha256": "f97b55bbdbaabc1ae5a3e12c89b4d3ce2392e6a5d1fc9b564f5ecb4a3589c3af",
+      "lines": 60,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "default_bus_layout.tres": {
+      "sha256": "ff7a6310dce61f1bddf13cabefa13676d638d941ae8c118ed64c4cadccbe2bce",
+      "lines": 15,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "export_presets.cfg": {
+      "sha256": "6569a185d415fabbb7efb589043798020468a25b0eb4e067dbea2da7109146af",
+      "lines": 17,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "installer.iss": {
+      "sha256": "4193d2d1c284f638878b086063f9d7bfec83b28d78ddcb45592051fe53866a7e",
+      "lines": 56,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "project.godot": {
+      "sha256": "ec18728a23c32bc0de355a91147ec4493b7ece3616a9558f3a3161c30d0b36aa",
+      "lines": 140,
+      "functions": [],
+      "resources": [
+        "res://assets/icon.svg",
+        "res://scenes/main_menu.tscn",
+        "res://scripts/clue_manager.gd",
+        "res://scripts/inventory_manager.gd",
+        "res://scripts/paranoia_manager.gd",
+        "res://scripts/save_manager.gd",
+        "res://scripts/settings_manager.gd",
+        "res://scripts/sound_manager.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scenes/chapter_1/apartment.tscn": {
+      "sha256": "44f998b3c92a62101e4004f1368352467f632d526302919d7ff60c2a167700c6",
+      "lines": 16,
+      "functions": [],
+      "resources": [
+        "res://scripts/chapter_1/apartment_controller.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scenes/hud_paranoia.tscn": {
+      "sha256": "7dfe9bcf7b046ca4605d3cf3474abef653b62ac4b54905ce21de677710a71887",
+      "lines": 141,
+      "functions": [],
+      "resources": [
+        "res://scripts/hud_paranoia.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scenes/inventory_dialog.tscn": {
+      "sha256": "137ced50cceb8e1b7b3cc0d6ad84193a49eebc30d648c93843b1a6d0c2fd3229",
+      "lines": 195,
+      "functions": [],
+      "resources": [
+        "res://scripts/inventory_dialog.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scenes/main.tscn": {
+      "sha256": "2a96f75ce470e4e42326de8f930a59802438d9ccff77a6ce9b4c9473defbf3e4",
+      "lines": 845,
+      "functions": [],
+      "resources": [
+        "res://assets/sprites/dasha.png",
+        "res://scenes/hud_paranoia.tscn",
+        "res://scenes/inventory_dialog.tscn",
+        "res://scenes/pause_menu.tscn",
+        "res://scripts/darkness_anxiety.gd",
+        "res://scripts/dialogue_box.gd",
+        "res://scripts/door.gd",
+        "res://scripts/flashlight.gd",
+        "res://scripts/interactive_clue.gd",
+        "res://scripts/main.gd",
+        "res://scripts/pills_item.gd",
+        "res://scripts/player.gd",
+        "res://scripts/quest_item.gd",
+        "res://scripts/room_lighting.gd",
+        "res://scripts/tutorial.gd",
+        "res://scripts/window_lighting.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scenes/main_menu.tscn": {
+      "sha256": "3d551a12388eae5713636d9107565b575ef86c18266f71cb278f1a7118363fc2",
+      "lines": 876,
+      "functions": [],
+      "resources": [
+        "res://scripts/main_menu.gd",
+        "res://scripts/menu_glass_rain.gd",
+        "res://shaders/menu_rain.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "scenes/pause_menu.tscn": {
+      "sha256": "6f64e0b6d996572c97bdd7f875534c39c5b8354a17af5583731ff9697b2a44c3",
+      "lines": 1155,
+      "functions": [],
+      "resources": [
+        "res://scripts/pause_menu.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/audio_palette.gd": {
+      "sha256": "16e68a28c7b253eeb79bcda6cd6ef424a0da97ca13a9cd68e009a176f14e533e",
+      "lines": 133,
+      "functions": [
+        {
+          "line": 5,
+          "signature": "static func make(kind: String, variant: int = 0, sample_rate: int = 22050) -> AudioStreamWAV:"
+        },
+        {
+          "line": 115,
+          "signature": "static func phone_ring(sample_rate: int = 22050) -> AudioStreamWAV:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_atmosphere.gd": {
+      "sha256": "60d96fdeca219fa17122d6541cd38c5e55f57ef05877a312492bfdc494552fdb",
+      "lines": 129,
+      "functions": [
+        {
+          "line": 11,
+          "signature": "func setup(controller: Node2D) -> void:"
+        },
+        {
+          "line": 42,
+          "signature": "static func make_stream(electric: bool) -> AudioStreamWAV:"
+        },
+        {
+          "line": 69,
+          "signature": "static func drip_stream() -> AudioStreamWAV:"
+        },
+        {
+          "line": 83,
+          "signature": "static func record_stream() -> AudioStreamWAV:"
+        },
+        {
+          "line": 102,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 123,
+          "signature": "func _draw() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_controller.gd": {
+      "sha256": "3934519e08856af4bacbb1d7aa04a0e80cf4e101255517754a4ec58a074b581d",
+      "lines": 677,
+      "functions": [
+        {
+          "line": 41,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 84,
+          "signature": "func _build_player() -> void:"
+        },
+        {
+          "line": 127,
+          "signature": "func _build_gate() -> void:"
+        },
+        {
+          "line": 131,
+          "signature": "func _intro() -> void:"
+        },
+        {
+          "line": 177,
+          "signature": "func _intro_wait(seconds: float) -> void:"
+        },
+        {
+          "line": 183,
+          "signature": "func skip_intro() -> void:"
+        },
+        {
+          "line": 186,
+          "signature": "func _finish_opening() -> void:"
+        },
+        {
+          "line": 194,
+          "signature": "func is_blocked() -> bool:"
+        },
+        {
+          "line": 197,
+          "signature": "func current_goal() -> String:"
+        },
+        {
+          "line": 211,
+          "signature": "func goal_details() -> String:"
+        },
+        {
+          "line": 225,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 283,
+          "signature": "func _update_target() -> void:"
+        },
+        {
+          "line": 307,
+          "signature": "func _target_available(id: String) -> bool:"
+        },
+        {
+          "line": 316,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 337,
+          "signature": "func interact(id: String) -> void:"
+        },
+        {
+          "line": 394,
+          "signature": "func _pickup(id: String, title: String, description: String, material_type: String, amount: int = 1, usable: bool = false) -> void:"
+        },
+        {
+          "line": 400,
+          "signature": "func _on_item_used(id: String, success: bool) -> void:"
+        },
+        {
+          "line": 407,
+          "signature": "func read_document(id: String) -> void:"
+        },
+        {
+          "line": 415,
+          "signature": "func choose_diary(value: String) -> void:"
+        },
+        {
+          "line": 421,
+          "signature": "func _repair_power() -> void:"
+        },
+        {
+          "line": 433,
+          "signature": "func _charge_phone() -> void:"
+        },
+        {
+          "line": 447,
+          "signature": "func attempt_exit() -> void:"
+        },
+        {
+          "line": 474,
+          "signature": "func finish_coat() -> void:"
+        },
+        {
+          "line": 480,
+          "signature": "func begin_encounter() -> void:"
+        },
+        {
+          "line": 488,
+          "signature": "func _spawn_enemy() -> void:"
+        },
+        {
+          "line": 496,
+          "signature": "func can_escape() -> bool:"
+        },
+        {
+          "line": 499,
+          "signature": "func use_pepper() -> bool:"
+        },
+        {
+          "line": 513,
+          "signature": "func blind_enemy() -> bool:"
+        },
+        {
+          "line": 526,
+          "signature": "func throw_vase(target: Vector2) -> bool:"
+        },
+        {
+          "line": 542,
+          "signature": "func enter_hiding() -> void:"
+        },
+        {
+          "line": 555,
+          "signature": "func enemy_choices() -> void:"
+        },
+        {
+          "line": 571,
+          "signature": "func resolve_enemy(value: String) -> bool:"
+        },
+        {
+          "line": 584,
+          "signature": "func fail_encounter() -> void:"
+        },
+        {
+          "line": 588,
+          "signature": "func finish_scene(value: String) -> void:"
+        },
+        {
+          "line": 600,
+          "signature": "func show_ending() -> void:"
+        },
+        {
+          "line": 606,
+          "signature": "func _refresh_world() -> void:"
+        },
+        {
+          "line": 624,
+          "signature": "func can_save_chapter() -> bool:"
+        },
+        {
+          "line": 627,
+          "signature": "func export_chapter_save() -> Dictionary:"
+        },
+        {
+          "line": 630,
+          "signature": "func import_chapter_save(data: Dictionary) -> void:"
+        },
+        {
+          "line": 663,
+          "signature": "func checkpoint() -> void:"
+        },
+        {
+          "line": 670,
+          "signature": "func retry_checkpoint() -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/sprites/dasha.png",
+        "res://resources/chapter_1/documents.json",
+        "res://scenes/main_menu.tscn",
+        "res://scripts/chapter_1/apartment_atmosphere.gd",
+        "res://scripts/chapter_1/apartment_enemy.gd",
+        "res://scripts/chapter_1/apartment_story.gd",
+        "res://scripts/chapter_1/apartment_ui.gd",
+        "res://scripts/chapter_1/apartment_world.gd",
+        "res://scripts/chapter_1/chapter_state.gd",
+        "res://scripts/flashlight.gd",
+        "res://scripts/player.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_enemy.gd": {
+      "sha256": "db5c0ccae44a5f14c902024ca7619029757247bcb35b0658d205e242a58eca87",
+      "lines": 153,
+      "functions": [
+        {
+          "line": 18,
+          "signature": "func setup(controller: Node2D) -> void:"
+        },
+        {
+          "line": 31,
+          "signature": "func _draw() -> void:"
+        },
+        {
+          "line": 47,
+          "signature": "func draw_ellipse_shadow() -> void:"
+        },
+        {
+          "line": 52,
+          "signature": "func draw_style_mask(shift: Vector2) -> void:"
+        },
+        {
+          "line": 59,
+          "signature": "func sees_player() -> bool:"
+        },
+        {
+          "line": 67,
+          "signature": "func hear(point: Vector2) -> void:"
+        },
+        {
+          "line": 76,
+          "signature": "func stun(duration: float) -> void:"
+        },
+        {
+          "line": 85,
+          "signature": "func _physics_process(delta: float) -> void:"
+        },
+        {
+          "line": 139,
+          "signature": "func snapshot() -> Dictionary:"
+        },
+        {
+          "line": 142,
+          "signature": "func restore(data: Dictionary) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_interior.gd": {
+      "sha256": "5f4711c64eb8933b3e44cf7580e96f20f189ee0d5873b9085da8df52fb5da971",
+      "lines": 250,
+      "functions": [
+        {
+          "line": 3,
+          "signature": "static func furnish(w: ApartmentWorld) -> void:"
+        },
+        {
+          "line": 80,
+          "signature": "static func rug(w: ApartmentWorld, object: Node2D, rect: Rect2, color: Color) -> void:"
+        },
+        {
+          "line": 87,
+          "signature": "static func papers(w: ApartmentWorld, parent: Node2D, rect: Rect2, height: float) -> void:"
+        },
+        {
+          "line": 93,
+          "signature": "static func bookshelf(w: ApartmentWorld, parent: Node2D, rect: Rect2, height: float) -> void:"
+        },
+        {
+          "line": 106,
+          "signature": "static func table_legs(w: ApartmentWorld, parent: Node2D, rect: Rect2, height: float) -> void:"
+        },
+        {
+          "line": 120,
+          "signature": "static func drawers(w: ApartmentWorld, parent: Node2D, logical_a: Vector2, logical_b: Vector2, height: float) -> void:"
+        },
+        {
+          "line": 134,
+          "signature": "static func chair(w: ApartmentWorld, parent: Node2D, rect: Rect2, height: float) -> void:"
+        },
+        {
+          "line": 141,
+          "signature": "static func plant(w: ApartmentWorld, parent: Node2D, offset: Vector2 = Vector2(0, -20), scale_value: float = 1.0) -> void:"
+        },
+        {
+          "line": 147,
+          "signature": "static func television(w: ApartmentWorld) -> void:"
+        },
+        {
+          "line": 156,
+          "signature": "static func bedroom(w: ApartmentWorld) -> void:"
+        },
+        {
+          "line": 175,
+          "signature": "static func kitchen(w: ApartmentWorld) -> void:"
+        },
+        {
+          "line": 188,
+          "signature": "static func utility(w: ApartmentWorld) -> void:"
+        },
+        {
+          "line": 198,
+          "signature": "static func wall_details(w: ApartmentWorld) -> void:"
+        },
+        {
+          "line": 209,
+          "signature": "static func window(w: ApartmentWorld, a: Vector2, b: Vector2) -> void:"
+        },
+        {
+          "line": 231,
+          "signature": "static func mount(w: ApartmentWorld, logical: Vector2) -> Node2D:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_map.gd": {
+      "sha256": "9407f548b2825762249b7e9ea10ae82ed675d101ea72d0b96289dc0e1cd61661",
+      "lines": 21,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _draw() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_story.gd": {
+      "sha256": "b47584315b3cc8e9aef21849093aaaf5b561856046ff63b6252a908711381996",
+      "lines": 206,
+      "functions": [
+        {
+          "line": 13,
+          "signature": "func setup(controller: Node2D) -> void:"
+        },
+        {
+          "line": 16,
+          "signature": "func goal() -> String:"
+        },
+        {
+          "line": 33,
+          "signature": "func details() -> String:"
+        },
+        {
+          "line": 47,
+          "signature": "func interact(id: String) -> bool:"
+        },
+        {
+          "line": 109,
+          "signature": "func pin_panel() -> void:"
+        },
+        {
+          "line": 121,
+          "signature": "func enter_digit(value: int) -> void:"
+        },
+        {
+          "line": 127,
+          "signature": "func quest_log() -> Array[Dictionary]:"
+        },
+        {
+          "line": 134,
+          "signature": "func try_pin() -> bool:"
+        },
+        {
+          "line": 146,
+          "signature": "func exit_blocker() -> bool:"
+        },
+        {
+          "line": 163,
+          "signature": "func latch_panel() -> void:"
+        },
+        {
+          "line": 174,
+          "signature": "func try_latch() -> bool:"
+        },
+        {
+          "line": 184,
+          "signature": "func power_panel() -> void:"
+        },
+        {
+          "line": 195,
+          "signature": "func try_power() -> bool:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_ui.gd": {
+      "sha256": "b9a481edd240bee715566b64efb57c43d1927b8681bb1973d4ce4afba0397a5d",
+      "lines": 897,
+      "functions": [
+        {
+          "line": 55,
+          "signature": "func setup(controller: Node2D) -> void:"
+        },
+        {
+          "line": 186,
+          "signature": "func card(parent: Node, offset: Vector2, dimensions: Vector2, anchor: Vector2 = Vector2.ZERO) -> PanelContainer:"
+        },
+        {
+          "line": 200,
+          "signature": "func _layout_modal() -> void:"
+        },
+        {
+          "line": 218,
+          "signature": "func panel_style(color: Color, padding: int = 16) -> StyleBoxFlat:"
+        },
+        {
+          "line": 224,
+          "signature": "func add_label(parent: Node, value: String, size_value: int = 20, color: Color = NoirUI.TEXT) -> Label:"
+        },
+        {
+          "line": 235,
+          "signature": "func button(text: String, action: Callable, parent: Node = null) -> Button:"
+        },
+        {
+          "line": 253,
+          "signature": "func open(kind: String, title: String, body: String = \"\") -> void:"
+        },
+        {
+          "line": 291,
+          "signature": "func close() -> void:"
+        },
+        {
+          "line": 303,
+          "signature": "func notify(message: String, duration: float = 5.0) -> void:"
+        },
+        {
+          "line": 321,
+          "signature": "func opening_fade() -> void:"
+        },
+        {
+          "line": 353,
+          "signature": "func hide_intro_skip() -> void:"
+        },
+        {
+          "line": 356,
+          "signature": "func cinematic_caption(value: String) -> void:"
+        },
+        {
+          "line": 370,
+          "signature": "func document(id: String, from_journal: bool = false) -> void:"
+        },
+        {
+          "line": 411,
+          "signature": "func diary_choice() -> void:"
+        },
+        {
+          "line": 417,
+          "signature": "func journal(tab: String = \"tasks\") -> void:"
+        },
+        {
+          "line": 471,
+          "signature": "func apartment_map() -> void:"
+        },
+        {
+          "line": 480,
+          "signature": "func illustration(parent: Node, item_id: String, dimensions: Vector2, tint: Color = NoirUI.ACCENT) -> Control:"
+        },
+        {
+          "line": 489,
+          "signature": "func inventory(selected: String = \"\") -> void:"
+        },
+        {
+          "line": 572,
+          "signature": "func _primary(action: Button) -> void:"
+        },
+        {
+          "line": 578,
+          "signature": "func _item_tile_style(selected: bool, empty: bool = false) -> StyleBoxFlat:"
+        },
+        {
+          "line": 587,
+          "signature": "func message(title: String, body: String, after: Callable = Callable()) -> void:"
+        },
+        {
+          "line": 605,
+          "signature": "func _show_message_page() -> void:"
+        },
+        {
+          "line": 609,
+          "signature": "func advance_message() -> void:"
+        },
+        {
+          "line": 618,
+          "signature": "func help() -> void:"
+        },
+        {
+          "line": 622,
+          "signature": "func pause() -> void:"
+        },
+        {
+          "line": 650,
+          "signature": "func load_slots() -> void:"
+        },
+        {
+          "line": 660,
+          "signature": "func settings() -> void:"
+        },
+        {
+          "line": 720,
+          "signature": "func begin_qte() -> void:"
+        },
+        {
+          "line": 739,
+          "signature": "func qte_press(action: String) -> void:"
+        },
+        {
+          "line": 749,
+          "signature": "func _update_qte_label() -> void:"
+        },
+        {
+          "line": 753,
+          "signature": "func key(action: String) -> String:"
+        },
+        {
+          "line": 756,
+          "signature": "func _input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 831,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 883,
+          "signature": "func _update_prompt() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main_menu.tscn",
+        "res://scripts/chapter_1/apartment_map.gd",
+        "res://scripts/chapter_1/folio_decoration.gd",
+        "res://scripts/chapter_1/item_illustration.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/apartment_world.gd": {
+      "sha256": "5ec29fed42dbfe484ad3137bf1d8a0b5b21946592b51188a62b8d14291611dc1",
+      "lines": 563,
+      "functions": [
+        {
+          "line": 32,
+          "signature": "static func iso(point: Vector2) -> Vector2:"
+        },
+        {
+          "line": 35,
+          "signature": "static func grid(point: Vector2) -> Vector2:"
+        },
+        {
+          "line": 38,
+          "signature": "func build() -> void:"
+        },
+        {
+          "line": 105,
+          "signature": "func update_barriers() -> void:"
+        },
+        {
+          "line": 128,
+          "signature": "func set_study_open(opened: bool) -> void:"
+        },
+        {
+          "line": 147,
+          "signature": "func corners(rect: Rect2) -> PackedVector2Array:"
+        },
+        {
+          "line": 150,
+          "signature": "func polygon(parent: Node, points: PackedVector2Array, color: Color) -> Polygon2D:"
+        },
+        {
+          "line": 157,
+          "signature": "func line(parent: Node, points: PackedVector2Array, color: Color, width: float = 1.0) -> Line2D:"
+        },
+        {
+          "line": 165,
+          "signature": "func label(parent: Node, pos: Vector2, text: String, font_size: int = 14, color: Color = Color(\"cbd6dc\")) -> Label:"
+        },
+        {
+          "line": 175,
+          "signature": "func light(pos: Vector2, color: Color, energy: float, scale_factor: float) -> PointLight2D:"
+        },
+        {
+          "line": 188,
+          "signature": "func _floor_pattern(rect: Rect2, tile: bool) -> void:"
+        },
+        {
+          "line": 195,
+          "signature": "func partition(a: Vector2, b: Vector2, gaps: Array[Vector2]) -> void:"
+        },
+        {
+          "line": 203,
+          "signature": "func wall(a: Vector2, b: Vector2) -> void:"
+        },
+        {
+          "line": 247,
+          "signature": "func box(id: String, rect: Rect2, height: float, color: Color, title: String = \"\", blocking: bool = true) -> Node2D:"
+        },
+        {
+          "line": 283,
+          "signature": "func item(id: String, pos: Vector2, title: String, kind: String = \"paper\") -> Node2D:"
+        },
+        {
+          "line": 307,
+          "signature": "func target(id: String, pos: Vector2, title: String, kind: String = \"wood\") -> void:"
+        },
+        {
+          "line": 315,
+          "signature": "func _furnish() -> void:"
+        },
+        {
+          "line": 373,
+          "signature": "func ellipse(parent: Node2D, center: Vector2, radius: Vector2, color: Color) -> void:"
+        },
+        {
+          "line": 379,
+          "signature": "func surface(parent: Node2D, rect: Rect2, height: float, color: Color) -> Polygon2D:"
+        },
+        {
+          "line": 388,
+          "signature": "func _item_art(object: Node2D, id: String) -> void:"
+        },
+        {
+          "line": 420,
+          "signature": "func _detail_furniture() -> void:"
+        },
+        {
+          "line": 464,
+          "signature": "func _mirror(parent: Node2D, a: Vector2, b: Vector2, inscription: String, size_value: int) -> void:"
+        },
+        {
+          "line": 480,
+          "signature": "func room_at(point: Vector2) -> String:"
+        },
+        {
+          "line": 487,
+          "signature": "func can_walk(point: Vector2, margin: float = 20.0) -> bool:"
+        },
+        {
+          "line": 499,
+          "signature": "func clear_line(a: Vector2, b: Vector2, furniture: bool = true) -> bool:"
+        },
+        {
+          "line": 511,
+          "signature": "func _build_navigation() -> void:"
+        },
+        {
+          "line": 538,
+          "signature": "func route(a: Vector2, b: Vector2) -> PackedVector2Array:"
+        },
+        {
+          "line": 543,
+          "signature": "func update_lighting(player_pos: Vector2, direction: Vector2, torch: bool, power: bool, emission_position: Vector2 = Vector2(INF, INF), emission_height: float = 58.0) -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/textures/chapter_1/bed.png",
+        "res://assets/textures/chapter_1/sofa.png",
+        "res://assets/textures/chapter_1/worn_oak.png",
+        "res://scripts/chapter_1/apartment_interior.gd",
+        "res://scripts/chapter_1/depth_slicer.gd",
+        "res://shaders/apartment_wall.gdshader",
+        "res://shaders/bath_tiles.gdshader",
+        "res://shaders/furniture_grain.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/chapter_state.gd": {
+      "sha256": "4f509623633664a9b3576b406b5408a1590b29db06cc6574142e0be58695ccca",
+      "lines": 123,
+      "functions": [
+        {
+          "line": 19,
+          "signature": "func has(id: String) -> bool:"
+        },
+        {
+          "line": 22,
+          "signature": "func mark(id: String) -> bool:"
+        },
+        {
+          "line": 28,
+          "signature": "func choose(value: String) -> bool:"
+        },
+        {
+          "line": 35,
+          "signature": "func record_outcome(value: String) -> bool:"
+        },
+        {
+          "line": 42,
+          "signature": "func chaos_total() -> int:"
+        },
+        {
+          "line": 47,
+          "signature": "func serialize() -> Dictionary:"
+        },
+        {
+          "line": 50,
+          "signature": "func restore(data: Dictionary) -> void:"
+        },
+        {
+          "line": 60,
+          "signature": "static func valid(data: Dictionary, depth: int = 0) -> bool:"
+        }
+      ],
+      "resources": [
+        "res://scenes/chapter_1/apartment.tscn"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/depth_slicer.gd": {
+      "sha256": "179cacda2d8502da3cd5b00e83c2789b9d0bc88f6b3b12d71d5755d5248045e2",
+      "lines": 119,
+      "functions": [
+        {
+          "line": 9,
+          "signature": "static func sprite(world: Node2D, object: Node2D, texture: Texture2D, height: float) -> void:"
+        },
+        {
+          "line": 53,
+          "signature": "static func clip(vertices: Array[Vector3], boundary: float, keep_above: bool) -> Array[Vector3]:"
+        },
+        {
+          "line": 68,
+          "signature": "static func polygon(world: Node2D, source: Node2D, points: PackedVector2Array, color: Color, depths: PackedFloat32Array) -> void:"
+        },
+        {
+          "line": 98,
+          "signature": "static func bake(world: Node2D, object: Node2D) -> void:"
+        }
+      ],
+      "resources": [
+        "res://shaders/prop_depth.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/folio_decoration.gd": {
+      "sha256": "2fcaef4e88d39a5877cef029f751930b7bd399791643ed3a9f1dbea1823bda5f",
+      "lines": 24,
+      "functions": [
+        {
+          "line": 6,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 10,
+          "signature": "func _draw() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/chapter_1/item_illustration.gd": {
+      "sha256": "88b8aa31189d232573efd5596c1bc4ded8f751eda38cbadb3e51ecffa62d6ebe",
+      "lines": 82,
+      "functions": [
+        {
+          "line": 8,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 12,
+          "signature": "func line(points: Array[Vector2], width: float = 2.0, tint: Color = Color(-1,-1,-1,-1)) -> void:"
+        },
+        {
+          "line": 15,
+          "signature": "func _draw() -> void:"
+        },
+        {
+          "line": 76,
+          "signature": "func _outline() -> StyleBoxFlat:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/clue_manager.gd": {
+      "sha256": "43328cb5fb27f68f8e7e702901f4f402f4eeca13189de93fc516942d6a342217",
+      "lines": 395,
+      "functions": [
+        {
+          "line": 130,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 138,
+          "signature": "func discover_clue(clue_id: String) -> bool:"
+        },
+        {
+          "line": 167,
+          "signature": "func is_clue_discovered(clue_id: String) -> bool:"
+        },
+        {
+          "line": 172,
+          "signature": "func get_clue(clue_id: String) -> Dictionary:"
+        },
+        {
+          "line": 175,
+          "signature": "func get_all_clues() -> Array[Dictionary]:"
+        },
+        {
+          "line": 183,
+          "signature": "func get_discovered_count() -> int:"
+        },
+        {
+          "line": 190,
+          "signature": "func get_total_count() -> int:"
+        },
+        {
+          "line": 198,
+          "signature": "func connect_clues(clue_a: String, clue_b: String) -> Dictionary:"
+        },
+        {
+          "line": 283,
+          "signature": "func get_mismatch_reason(clue_a: String, clue_b: String) -> String:"
+        },
+        {
+          "line": 299,
+          "signature": "func is_deduction_unlocked(deduction_id: String) -> bool:"
+        },
+        {
+          "line": 304,
+          "signature": "func get_deduction(deduction_id: String) -> Dictionary:"
+        },
+        {
+          "line": 307,
+          "signature": "func get_all_deductions() -> Array[Dictionary]:"
+        },
+        {
+          "line": 315,
+          "signature": "func get_unlocked_deductions() -> Array[Dictionary]:"
+        },
+        {
+          "line": 322,
+          "signature": "func get_unlocked_deductions_count() -> int:"
+        },
+        {
+          "line": 329,
+          "signature": "func get_total_deductions_count() -> int:"
+        },
+        {
+          "line": 336,
+          "signature": "func get_save_data() -> Dictionary:"
+        },
+        {
+          "line": 353,
+          "signature": "func load_save_data(data: Dictionary) -> void:"
+        },
+        {
+          "line": 381,
+          "signature": "func register_document(id: String, data: Dictionary) -> void:"
+        },
+        {
+          "line": 387,
+          "signature": "func reset_all_clues() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "ParanoiaManager",
+        "SaveManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/darkness_anxiety.gd": {
+      "sha256": "5bc96d45c8e1867743a7191d871ed58a28b064eb735592fac32920889f57c932",
+      "lines": 120,
+      "functions": [
+        {
+          "line": 30,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 35,
+          "signature": "func _on_dark_zone_body_entered(body: Node2D) -> void:"
+        },
+        {
+          "line": 39,
+          "signature": "func _on_dark_zone_body_exited(body: Node2D) -> void:"
+        },
+        {
+          "line": 43,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 70,
+          "signature": "func _handle_darkness(delta: float) -> void:"
+        },
+        {
+          "line": 93,
+          "signature": "func _trigger_darkness_whisper() -> void:"
+        },
+        {
+          "line": 107,
+          "signature": "func _resolve_darkness_relief(lit_by_flashlight: bool) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "Main",
+        "ParanoiaManager",
+        "SaveManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/dasha_animation.gd": {
+      "sha256": "3850924c00dec6be6ab4d8bb1170cd1ca79b512aac88f043a526f3ea167bbb12",
+      "lines": 95,
+      "functions": [
+        {
+          "line": 20,
+          "signature": "func setup(target: Sprite2D) -> void:"
+        },
+        {
+          "line": 37,
+          "signature": "func update(delta: float, velocity: Vector2, mode: String, walk_distance: float, locked: bool, desired_direction: Vector2 = Vector2.ZERO) -> void:"
+        },
+        {
+          "line": 63,
+          "signature": "func show_pose(state: String, index: int, direction: String) -> void:"
+        },
+        {
+          "line": 83,
+          "signature": "func step_distance(mode: String) -> float:"
+        },
+        {
+          "line": 86,
+          "signature": "func settle(mode: String) -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/sprites/dasha_animation/dasha_atlas.png",
+        "res://assets/sprites/dasha_animation/dasha_idle_atlas.png"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/dasha_hand_sockets.gd": {
+      "sha256": "8bd6b70d5f77169cb3f0d0a83046b4cff6f860fd996e4a635004e6411589c480",
+      "lines": 1546,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/dialogue_box.gd": {
+      "sha256": "9c7194dbd78db17f6680f885932e8636d28d5215b7613567a46a5e049ddc0027",
+      "lines": 766,
+      "functions": [
+        {
+          "line": 60,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 69,
+          "signature": "func _setup_panel_style() -> void:"
+        },
+        {
+          "line": 122,
+          "signature": "func _on_dialogue_gui_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 129,
+          "signature": "func _setup_history_ui() -> void:"
+        },
+        {
+          "line": 269,
+          "signature": "func _process(_delta: float) -> void:"
+        },
+        {
+          "line": 289,
+          "signature": "func _reset_panel_position() -> void:"
+        },
+        {
+          "line": 297,
+          "signature": "func start_dialogue(lines: Array) -> void:"
+        },
+        {
+          "line": 315,
+          "signature": "func _show_next_line() -> void:"
+        },
+        {
+          "line": 445,
+          "signature": "func _on_typing_completed() -> void:"
+        },
+        {
+          "line": 465,
+          "signature": "func _finish_typing_instantly() -> void:"
+        },
+        {
+          "line": 470,
+          "signature": "func toggle_history() -> void:"
+        },
+        {
+          "line": 476,
+          "signature": "func open_history() -> void:"
+        },
+        {
+          "line": 495,
+          "signature": "func close_history() -> void:"
+        },
+        {
+          "line": 505,
+          "signature": "func _populate_history_cards() -> void:"
+        },
+        {
+          "line": 573,
+          "signature": "func cancel_dialogue() -> void:"
+        },
+        {
+          "line": 598,
+          "signature": "func _close_dialogue() -> void:"
+        },
+        {
+          "line": 618,
+          "signature": "func advance_dialogue() -> void:"
+        },
+        {
+          "line": 634,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 665,
+          "signature": "func _load_portraits() -> void:"
+        },
+        {
+          "line": 675,
+          "signature": "func _setup_portrait_ui() -> void:"
+        },
+        {
+          "line": 727,
+          "signature": "func _update_portrait(speaker: String, is_paranoia: bool, _current_data: Dictionary) -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/portraits/clue.jpg",
+        "res://assets/portraits/dasha_calm.jpg",
+        "res://assets/portraits/dasha_panic.jpg",
+        "res://assets/portraits/stranger.jpg"
+      ],
+      "autoload_dependencies": [
+        "ParanoiaManager",
+        "SettingsManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/door.gd": {
+      "sha256": "d9249b5ae5a44e39f87a44da48969f5e029d8fab48634f05bfefe3a4edb6b9a4",
+      "lines": 109,
+      "functions": [
+        {
+          "line": 14,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 27,
+          "signature": "func set_state(opened: bool) -> void:"
+        },
+        {
+          "line": 33,
+          "signature": "func open() -> void:"
+        },
+        {
+          "line": 71,
+          "signature": "func close() -> void:"
+        },
+        {
+          "line": 98,
+          "signature": "func _set_door_swing(t: float) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "SoundManager"
+      ]
+    },
+    "scripts/flashlight.gd": {
+      "sha256": "fbbef46d3df0eebe8c782d495a17b2f28f29743264278bc05efd2cebf5a9fee2",
+      "lines": 261,
+      "functions": [
+        {
+          "line": 32,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 39,
+          "signature": "func _setup_lights() -> void:"
+        },
+        {
+          "line": 66,
+          "signature": "func _input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 76,
+          "signature": "func toggle_flashlight(enable_state: Variant = null, instant: bool = false) -> void:"
+        },
+        {
+          "line": 101,
+          "signature": "func is_on() -> bool:"
+        },
+        {
+          "line": 104,
+          "signature": "func is_emitting() -> bool:"
+        },
+        {
+          "line": 108,
+          "signature": "func emission_position() -> Vector2:"
+        },
+        {
+          "line": 112,
+          "signature": "func emission_height() -> float:"
+        },
+        {
+          "line": 116,
+          "signature": "func body_direction_towards(pointer: Vector2) -> Vector2:"
+        },
+        {
+          "line": 121,
+          "signature": "func aim_direction_towards(pointer: Vector2) -> Vector2:"
+        },
+        {
+          "line": 131,
+          "signature": "func _presentation() -> HeldFlashlight:"
+        },
+        {
+          "line": 134,
+          "signature": "func _sync_hand_pose(delta: float) -> void:"
+        },
+        {
+          "line": 146,
+          "signature": "func _update_light_states() -> void:"
+        },
+        {
+          "line": 161,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 197,
+          "signature": "func _get_or_create_cone_texture() -> ImageTexture:"
+        },
+        {
+          "line": 244,
+          "signature": "func _get_or_create_radial_texture() -> ImageTexture:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "SaveManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/held_flashlight.gd": {
+      "sha256": "e22c243124bbd99af0be85e9da4154f354aef36e282759feb82b80aeb8843d7e",
+      "lines": 162,
+      "functions": [
+        {
+          "line": 26,
+          "signature": "func setup(body: CharacterBody2D, animation: DashaAnimation) -> void:"
+        },
+        {
+          "line": 47,
+          "signature": "func _part() -> Sprite2D:"
+        },
+        {
+          "line": 55,
+          "signature": "func snap(enabled: bool) -> void:"
+        },
+        {
+          "line": 58,
+          "signature": "func update_pose(delta: float, aim: float, requested: bool) -> void:"
+        },
+        {
+          "line": 152,
+          "signature": "func _local_point(point: Vector2) -> Vector2:"
+        },
+        {
+          "line": 157,
+          "signature": "func _bone(part: Sprite2D, proximal: Vector2, distal: Vector2, a: Vector2, b: Vector2) -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/sprites/dasha_flashlight/",
+        "res://scripts/dasha_hand_sockets.gd",
+        "res://shaders/flashlight_pocket.gdshader",
+        "res://shaders/held_arm_mask.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/hud_paranoia.gd": {
+      "sha256": "50c4d82ce10dc0ef2873644e98ae86a02b49dfcc51eb96ad5ff7a197c58de939",
+      "lines": 214,
+      "functions": [
+        {
+          "line": 26,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 48,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 61,
+          "signature": "func _on_heartbeat_pulsed(bpm: int, intensity: float) -> void:"
+        },
+        {
+          "line": 104,
+          "signature": "func _on_paranoia_changed(new_level: float, _delta: float, _reason: String) -> void:"
+        },
+        {
+          "line": 109,
+          "signature": "func _on_panic_state_changed(is_panic: bool) -> void:"
+        },
+        {
+          "line": 117,
+          "signature": "func _update_display(level: float, bpm: int) -> void:"
+        },
+        {
+          "line": 141,
+          "signature": "func _on_ecg_draw() -> void:"
+        },
+        {
+          "line": 205,
+          "signature": "func draw_line_grid(target: Control, size: Vector2, grid_color: Color) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "ParanoiaManager"
+      ]
+    },
+    "scripts/interactive_clue.gd": {
+      "sha256": "0697f1ef73a24f42231d58928ab1b1c039eb0f4227c6333175f0dbb4a2bf8ca8",
+      "lines": 272,
+      "functions": [
+        {
+          "line": 119,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 126,
+          "signature": "func _start_pulse_animation() -> void:"
+        },
+        {
+          "line": 135,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 168,
+          "signature": "func _on_body_entered(body: Node2D) -> void:"
+        },
+        {
+          "line": 173,
+          "signature": "func _on_body_exited(body: Node2D) -> void:"
+        },
+        {
+          "line": 178,
+          "signature": "func _update_label() -> void:"
+        },
+        {
+          "line": 190,
+          "signature": "func interact() -> void:"
+        },
+        {
+          "line": 244,
+          "signature": "func _on_inspection_finished() -> void:"
+        },
+        {
+          "line": 264,
+          "signature": "func _on_dialogue_cancelled() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "ClueManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/inventory_dialog.gd": {
+      "sha256": "ae69da47429cdfbd5dcb5d395573e3fafacda7db0926e7d02d066d7efc7d6d2a",
+      "lines": 213,
+      "functions": [
+        {
+          "line": 21,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 34,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 48,
+          "signature": "func toggle_inventory() -> void:"
+        },
+        {
+          "line": 54,
+          "signature": "func open_inventory() -> void:"
+        },
+        {
+          "line": 76,
+          "signature": "func close_inventory() -> void:"
+        },
+        {
+          "line": 96,
+          "signature": "func _refresh_ui() -> void:"
+        },
+        {
+          "line": 172,
+          "signature": "func _select_item(id: String) -> void:"
+        },
+        {
+          "line": 207,
+          "signature": "func _on_use_pressed() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "InventoryManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/inventory_manager.gd": {
+      "sha256": "58e31eeaf6ece204433a546275896f2ec8400049c6d836ab12fa226c2a19592a",
+      "lines": 150,
+      "functions": [
+        {
+          "line": 15,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 19,
+          "signature": "func add_item(id: String, name: String, count: int = 1, icon: String = \"📦\", description: String = \"\", usable: bool = false) -> void:"
+        },
+        {
+          "line": 51,
+          "signature": "func remove_item(id: String, count: int = 1) -> bool:"
+        },
+        {
+          "line": 69,
+          "signature": "func has_item(id: String) -> bool:"
+        },
+        {
+          "line": 73,
+          "signature": "func get_item_count(id: String) -> int:"
+        },
+        {
+          "line": 79,
+          "signature": "func get_item(id: String) -> Dictionary:"
+        },
+        {
+          "line": 83,
+          "signature": "func get_all_items() -> Array[Dictionary]:"
+        },
+        {
+          "line": 90,
+          "signature": "func use_item(id: String) -> bool:"
+        },
+        {
+          "line": 115,
+          "signature": "func _use_pills() -> bool:"
+        },
+        {
+          "line": 136,
+          "signature": "func get_save_data() -> Dictionary:"
+        },
+        {
+          "line": 140,
+          "signature": "func load_save_data(data: Dictionary) -> void:"
+        },
+        {
+          "line": 148,
+          "signature": "func reset_inventory() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "ParanoiaManager",
+        "SaveManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/main.gd": {
+      "sha256": "1df31aab0ea9a8b9d0c8b0c219e328bc6d7efebe7c77537ef70f6aac8c05f8e5",
+      "lines": 43,
+      "functions": [
+        {
+          "line": 8,
+          "signature": "func _ready() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "InventoryManager",
+        "ParanoiaManager",
+        "SaveManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/main_menu.gd": {
+      "sha256": "00d75fe9cd9655a3fe33386efab13aa40393feea32d82f5fb59a3ceceb0d3596",
+      "lines": 850,
+      "functions": [
+        {
+          "line": 90,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 117,
+          "signature": "func _exit_tree() -> void:"
+        },
+        {
+          "line": 120,
+          "signature": "func _update_load_button_state() -> void:"
+        },
+        {
+          "line": 125,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 151,
+          "signature": "func _build_composition() -> void:"
+        },
+        {
+          "line": 265,
+          "signature": "func _layout_frontend() -> void:"
+        },
+        {
+          "line": 274,
+          "signature": "func _connect_main_buttons() -> void:"
+        },
+        {
+          "line": 283,
+          "signature": "func _connect_modal_buttons() -> void:"
+        },
+        {
+          "line": 315,
+          "signature": "func _bind_sound_feedback(buttons: Array[Button]) -> void:"
+        },
+        {
+          "line": 329,
+          "signature": "func _on_play_pressed() -> void:"
+        },
+        {
+          "line": 336,
+          "signature": "func _on_continue_pressed() -> void:"
+        },
+        {
+          "line": 345,
+          "signature": "func _on_new_game_pressed() -> void:"
+        },
+        {
+          "line": 348,
+          "signature": "func _start_fresh_game() -> void:"
+        },
+        {
+          "line": 360,
+          "signature": "func _on_load_pressed() -> void:"
+        },
+        {
+          "line": 364,
+          "signature": "func _populate_load_slots() -> void:"
+        },
+        {
+          "line": 378,
+          "signature": "func _create_slot_card(slot_id: String, info: Dictionary) -> PanelContainer:"
+        },
+        {
+          "line": 430,
+          "signature": "func _confirm_delete_slot(slot_id: String) -> void:"
+        },
+        {
+          "line": 450,
+          "signature": "func _on_settings_pressed() -> void:"
+        },
+        {
+          "line": 459,
+          "signature": "func _mark_settings_dirty() -> void:"
+        },
+        {
+          "line": 465,
+          "signature": "func _update_save_button_state() -> void:"
+        },
+        {
+          "line": 475,
+          "signature": "func _on_apply_settings_pressed() -> void:"
+        },
+        {
+          "line": 486,
+          "signature": "func _on_try_close_settings() -> void:"
+        },
+        {
+          "line": 492,
+          "signature": "func _open_settings_confirm_dialog() -> void:"
+        },
+        {
+          "line": 499,
+          "signature": "func _on_confirm_save_pressed() -> void:"
+        },
+        {
+          "line": 511,
+          "signature": "func _on_discard_save_pressed() -> void:"
+        },
+        {
+          "line": 526,
+          "signature": "func _on_cancel_confirm_pressed() -> void:"
+        },
+        {
+          "line": 534,
+          "signature": "func _switch_settings_tab(tab_name: String) -> void:"
+        },
+        {
+          "line": 550,
+          "signature": "func _connect_settings_controls() -> void:"
+        },
+        {
+          "line": 619,
+          "signature": "func _populate_keybinds() -> void:"
+        },
+        {
+          "line": 683,
+          "signature": "func _start_key_rebind(action_name: String, btn: Button) -> void:"
+        },
+        {
+          "line": 691,
+          "signature": "func _cancel_key_rebind() -> void:"
+        },
+        {
+          "line": 700,
+          "signature": "func _finish_key_rebind() -> void:"
+        },
+        {
+          "line": 709,
+          "signature": "func _sync_settings_ui() -> void:"
+        },
+        {
+          "line": 729,
+          "signature": "func _on_about_pressed() -> void:"
+        },
+        {
+          "line": 732,
+          "signature": "func _on_quit_pressed() -> void:"
+        },
+        {
+          "line": 735,
+          "signature": "func _open_modal(target_dialog: Control) -> void:"
+        },
+        {
+          "line": 754,
+          "signature": "func _close_all_modals(instant: bool = false) -> void:"
+        },
+        {
+          "line": 792,
+          "signature": "func show_toast(text: String) -> void:"
+        },
+        {
+          "line": 817,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/textures/menu/apartment_night.png",
+        "res://scenes/chapter_1/apartment.tscn",
+        "res://scripts/menu_composition.gd"
+      ],
+      "autoload_dependencies": [
+        "InventoryManager",
+        "ParanoiaManager",
+        "SaveManager",
+        "SettingsManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/menu_composition.gd": {
+      "sha256": "e8c95a38cff7fa111434f25761df5f83e896a786c260aa94070686cd1e3243b6",
+      "lines": 16,
+      "functions": [
+        {
+          "line": 4,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 8,
+          "signature": "func _draw() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/menu_glass_rain.gd": {
+      "sha256": "02930e47409217be43c7fd64a00ac06b1c8fc37734db1067e97b5d8e6d12cf1f",
+      "lines": 68,
+      "functions": [
+        {
+          "line": 8,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 14,
+          "signature": "func _make_layer(capacity: int, shader: Shader) -> MultiMeshInstance2D:"
+        },
+        {
+          "line": 31,
+          "signature": "func restrict_to_window() -> void:"
+        },
+        {
+          "line": 35,
+          "signature": "func _process(delta: float) -> void:"
+        }
+      ],
+      "resources": [
+        "res://scripts/rain_simulation.gd",
+        "res://shaders/glass_drop.gdshader",
+        "res://shaders/glass_trail.gdshader"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/noir_ui.gd": {
+      "sha256": "6a85ea6c09287904bff640642bac72f2d318897f4fc999de8993fa1ae3435e7e",
+      "lines": 138,
+      "functions": [
+        {
+          "line": 13,
+          "signature": "static func body_font() -> SystemFont:"
+        },
+        {
+          "line": 18,
+          "signature": "static func title_font() -> SystemFont:"
+        },
+        {
+          "line": 23,
+          "signature": "static func surface(color: Color = INK, padding: int = 16) -> StyleBoxFlat:"
+        },
+        {
+          "line": 29,
+          "signature": "static func action_style(state: String) -> StyleBoxFlat:"
+        },
+        {
+          "line": 45,
+          "signature": "static func primary_style(state: String = \"normal\") -> StyleBoxFlat:"
+        },
+        {
+          "line": 54,
+          "signature": "static func quiet_style(state: String = \"normal\") -> StyleBoxFlat:"
+        },
+        {
+          "line": 60,
+          "signature": "static func tab_style(active: bool) -> StyleBoxFlat:"
+        },
+        {
+          "line": 66,
+          "signature": "static func keycap_style() -> StyleBoxFlat:"
+        },
+        {
+          "line": 73,
+          "signature": "static func frame_style(padding: int = 24) -> StyleBoxFlat:"
+        },
+        {
+          "line": 81,
+          "signature": "static func make_theme() -> Theme:"
+        },
+        {
+          "line": 107,
+          "signature": "static func clean_text(value: String) -> String:"
+        },
+        {
+          "line": 115,
+          "signature": "static func restyle_tree(node: Node) -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/ui/check_off.svg",
+        "res://assets/ui/check_on.svg"
+      ],
+      "autoload_dependencies": []
+    },
+    "scripts/paranoia_manager.gd": {
+      "sha256": "018b238448a2071096f47f05a5ee00c4784d9350f11b0ecfd9e8e86fcc094362",
+      "lines": 176,
+      "functions": [
+        {
+          "line": 36,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 41,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 71,
+          "signature": "func _in_gameplay_scene() -> bool:"
+        },
+        {
+          "line": 75,
+          "signature": "func _on_scene_changed() -> void:"
+        },
+        {
+          "line": 80,
+          "signature": "func _stop_heartbeat_audio() -> void:"
+        },
+        {
+          "line": 84,
+          "signature": "func _update_bpm(_delta: float) -> void:"
+        },
+        {
+          "line": 100,
+          "signature": "func _trigger_heartbeat() -> void:"
+        },
+        {
+          "line": 111,
+          "signature": "func add_paranoia(amount: float, reason: String = \"\") -> void:"
+        },
+        {
+          "line": 122,
+          "signature": "func reduce_paranoia(amount: float) -> void:"
+        },
+        {
+          "line": 131,
+          "signature": "func set_paranoia(level: float) -> void:"
+        },
+        {
+          "line": 138,
+          "signature": "func get_paranoia() -> float:"
+        },
+        {
+          "line": 141,
+          "signature": "func get_bpm() -> int:"
+        },
+        {
+          "line": 144,
+          "signature": "func is_panic() -> bool:"
+        },
+        {
+          "line": 148,
+          "signature": "func get_status_text() -> String:"
+        },
+        {
+          "line": 159,
+          "signature": "func get_status_color() -> Color:"
+        },
+        {
+          "line": 170,
+          "signature": "func reset_to_default() -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main.tscn"
+      ],
+      "autoload_dependencies": [
+        "SoundManager"
+      ]
+    },
+    "scripts/pause_menu.gd": {
+      "sha256": "637e89a596dc34690694e3be310c08c71056f9ab2c4a99e6d502be59f8f4240a",
+      "lines": 1198,
+      "functions": [
+        {
+          "line": 113,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 134,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 209,
+          "signature": "func close_menu() -> void:"
+        },
+        {
+          "line": 214,
+          "signature": "func toggle_pause() -> void:"
+        },
+        {
+          "line": 224,
+          "signature": "func _connect_buttons() -> void:"
+        },
+        {
+          "line": 263,
+          "signature": "func _bind_sound_feedback(buttons: Array[Button]) -> void:"
+        },
+        {
+          "line": 277,
+          "signature": "func _on_save_pressed() -> void:"
+        },
+        {
+          "line": 282,
+          "signature": "func _on_load_pressed() -> void:"
+        },
+        {
+          "line": 287,
+          "signature": "func _on_settings_pressed() -> void:"
+        },
+        {
+          "line": 297,
+          "signature": "func _on_main_menu_pressed() -> void:"
+        },
+        {
+          "line": 301,
+          "signature": "func _close_all_modals() -> void:"
+        },
+        {
+          "line": 312,
+          "signature": "func _populate_save_slots() -> void:"
+        },
+        {
+          "line": 326,
+          "signature": "func _populate_load_slots() -> void:"
+        },
+        {
+          "line": 339,
+          "signature": "func _create_slot_card(slot_id: String, info: Dictionary, is_save_mode: bool) -> PanelContainer:"
+        },
+        {
+          "line": 417,
+          "signature": "func _switch_settings_tab(tab_name: String) -> void:"
+        },
+        {
+          "line": 436,
+          "signature": "func _mark_settings_dirty() -> void:"
+        },
+        {
+          "line": 442,
+          "signature": "func _update_save_button_state() -> void:"
+        },
+        {
+          "line": 452,
+          "signature": "func _on_apply_settings_pressed() -> void:"
+        },
+        {
+          "line": 463,
+          "signature": "func _on_try_close_settings() -> void:"
+        },
+        {
+          "line": 469,
+          "signature": "func _open_settings_confirm_dialog() -> void:"
+        },
+        {
+          "line": 476,
+          "signature": "func _on_confirm_save_pressed() -> void:"
+        },
+        {
+          "line": 488,
+          "signature": "func _on_discard_save_pressed() -> void:"
+        },
+        {
+          "line": 503,
+          "signature": "func _on_cancel_confirm_pressed() -> void:"
+        },
+        {
+          "line": 511,
+          "signature": "func _connect_settings() -> void:"
+        },
+        {
+          "line": 586,
+          "signature": "func _populate_keybinds() -> void:"
+        },
+        {
+          "line": 646,
+          "signature": "func _start_key_rebind(action_name: String, btn: Button) -> void:"
+        },
+        {
+          "line": 654,
+          "signature": "func _cancel_key_rebind() -> void:"
+        },
+        {
+          "line": 663,
+          "signature": "func _finish_key_rebind() -> void:"
+        },
+        {
+          "line": 672,
+          "signature": "func _sync_settings_ui() -> void:"
+        },
+        {
+          "line": 699,
+          "signature": "func show_toast(text: String) -> void:"
+        },
+        {
+          "line": 728,
+          "signature": "func toggle_clues_menu() -> void:"
+        },
+        {
+          "line": 743,
+          "signature": "func open_mind_palace() -> void:"
+        },
+        {
+          "line": 756,
+          "signature": "func _on_clues_pressed() -> void:"
+        },
+        {
+          "line": 770,
+          "signature": "func _on_close_clues_pressed() -> void:"
+        },
+        {
+          "line": 776,
+          "signature": "func _switch_clues_tab(tab_name: String) -> void:"
+        },
+        {
+          "line": 801,
+          "signature": "func _on_clues_updated() -> void:"
+        },
+        {
+          "line": 809,
+          "signature": "func _update_clues_and_deductions_counters() -> void:"
+        },
+        {
+          "line": 830,
+          "signature": "func _populate_clues_ui() -> void:"
+        },
+        {
+          "line": 895,
+          "signature": "func _show_clue_detail(clue: Dictionary) -> void:"
+        },
+        {
+          "line": 938,
+          "signature": "func _populate_mind_palace_ui() -> void:"
+        },
+        {
+          "line": 1055,
+          "signature": "func _update_mind_palace_slots_ui() -> void:"
+        },
+        {
+          "line": 1101,
+          "signature": "func _select_clue_for_mind_palace(clue_id: String) -> void:"
+        },
+        {
+          "line": 1119,
+          "signature": "func _clear_slot(slot_idx: int) -> void:"
+        },
+        {
+          "line": 1131,
+          "signature": "func _clear_both_slots() -> void:"
+        },
+        {
+          "line": 1141,
+          "signature": "func _on_synthesize_pressed() -> void:"
+        },
+        {
+          "line": 1185,
+          "signature": "func _show_deduction_inspection(deduction: Dictionary) -> void:"
+        }
+      ],
+      "resources": [
+        "res://scenes/main_menu.tscn"
+      ],
+      "autoload_dependencies": [
+        "ClueManager",
+        "SaveManager",
+        "SettingsManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/pills_item.gd": {
+      "sha256": "a0e2d248e1661c09776cbbfe37a12ab0b1dd2dfd9de63c239ec849d484e2044c",
+      "lines": 97,
+      "functions": [
+        {
+          "line": 17,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 23,
+          "signature": "func _start_subtle_glow() -> void:"
+        },
+        {
+          "line": 32,
+          "signature": "func _process(_delta: float) -> void:"
+        },
+        {
+          "line": 38,
+          "signature": "func _on_body_entered(body: Node2D) -> void:"
+        },
+        {
+          "line": 43,
+          "signature": "func _on_body_exited(body: Node2D) -> void:"
+        },
+        {
+          "line": 48,
+          "signature": "func _update_label() -> void:"
+        },
+        {
+          "line": 60,
+          "signature": "func pick_up_pills() -> void:"
+        },
+        {
+          "line": 94,
+          "signature": "func set_picked_up(value: bool) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "InventoryManager"
+      ]
+    },
+    "scripts/player.gd": {
+      "sha256": "2c7424bcd054f0443a9d6f3b3bb57ec0db7b3d1338a5beed14361ddaad6ffcec",
+      "lines": 121,
+      "functions": [
+        {
+          "line": 27,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 36,
+          "signature": "func set_control_locked(locked: bool) -> void:"
+        },
+        {
+          "line": 41,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 48,
+          "signature": "func apply_shake(amount: float) -> void:"
+        },
+        {
+          "line": 51,
+          "signature": "func _physics_process(delta: float) -> void:"
+        },
+        {
+          "line": 105,
+          "signature": "func _footstep_surface() -> String:"
+        },
+        {
+          "line": 115,
+          "signature": "func _update_sprite_animation(delta: float) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "SoundManager"
+      ]
+    },
+    "scripts/quest_item.gd": {
+      "sha256": "a1235ae24b5d807cdc9c3b035c737c0ecfca255f5a6deab9305c8c5941abe351",
+      "lines": 236,
+      "functions": [
+        {
+          "line": 15,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 24,
+          "signature": "func _exit_tree() -> void:"
+        },
+        {
+          "line": 29,
+          "signature": "func _start_ringing_animation() -> void:"
+        },
+        {
+          "line": 38,
+          "signature": "func _process(_delta: float) -> void:"
+        },
+        {
+          "line": 44,
+          "signature": "func _on_body_entered(body: Node2D) -> void:"
+        },
+        {
+          "line": 51,
+          "signature": "func _on_body_exited(body: Node2D) -> void:"
+        },
+        {
+          "line": 57,
+          "signature": "func set_phone_state(answered: bool) -> void:"
+        },
+        {
+          "line": 88,
+          "signature": "func answer_phone() -> void:"
+        },
+        {
+          "line": 180,
+          "signature": "func _on_dialogue_finished() -> void:"
+        },
+        {
+          "line": 209,
+          "signature": "func open_door() -> void:"
+        },
+        {
+          "line": 228,
+          "signature": "func _on_dialogue_cancelled() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": [
+        "ClueManager",
+        "SaveManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/rain_simulation.gd": {
+      "sha256": "7720c5ecfccf7e8187aa4ea4f97d2ae1e2ce4842b409a46da2cacc414a51d349",
+      "lines": 129,
+      "functions": [
+        {
+          "line": 16,
+          "signature": "func initialize(seed_value: int = 104729, initial_count: int = 230) -> void:"
+        },
+        {
+          "line": 34,
+          "signature": "func add_drop(position: Vector2, radius: float) -> Dictionary:"
+        },
+        {
+          "line": 42,
+          "signature": "func advance(delta: float) -> void:"
+        },
+        {
+          "line": 48,
+          "signature": "func _step(delta: float) -> void:"
+        },
+        {
+          "line": 90,
+          "signature": "func _merge_contacts() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/room_lighting.gd": {
+      "sha256": "06e54459abd857d9c330771cdf013d6275051099273c5b4752320b39cfc18784",
+      "lines": 194,
+      "functions": [
+        {
+          "line": 22,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 71,
+          "signature": "func _add_fill(node_name: String, light_position: Vector2, texture: Texture2D, scale_factor: float, energy: float, tint: Color, mask: int, shadows: bool) -> PointLight2D:"
+        },
+        {
+          "line": 86,
+          "signature": "func _unshaded_material() -> CanvasItemMaterial:"
+        },
+        {
+          "line": 91,
+          "signature": "func _add_wall_cap(face: Polygon2D) -> void:"
+        },
+        {
+          "line": 110,
+          "signature": "func _track_foreground_face(face: Polygon2D) -> void:"
+        },
+        {
+          "line": 114,
+          "signature": "func _setup_wall_spots(texture: Texture2D) -> void:"
+        },
+        {
+          "line": 143,
+          "signature": "func _physics_process(_delta: float) -> void:"
+        },
+        {
+          "line": 173,
+          "signature": "func _process(delta: float) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/save_manager.gd": {
+      "sha256": "4b9a2e655344f39d1352739bcebf011450132a06c6dbdefe0c5074c1765f2f51",
+      "lines": 553,
+      "functions": [
+        {
+          "line": 19,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 24,
+          "signature": "func _ensure_saves_dir_exists() -> void:"
+        },
+        {
+          "line": 28,
+          "signature": "func _ensure_initial_saves_exist() -> void:"
+        },
+        {
+          "line": 34,
+          "signature": "func create_sample_saves() -> void:"
+        },
+        {
+          "line": 39,
+          "signature": "func create_sample_save_for_slot(slot_id: String) -> bool:"
+        },
+        {
+          "line": 115,
+          "signature": "func get_slot_path(slot_id: String) -> String:"
+        },
+        {
+          "line": 118,
+          "signature": "func save_exists(slot_id: String) -> bool:"
+        },
+        {
+          "line": 121,
+          "signature": "func get_save_info(slot_id: String) -> Dictionary:"
+        },
+        {
+          "line": 154,
+          "signature": "func _get_default_slot_title(slot_id: String) -> String:"
+        },
+        {
+          "line": 162,
+          "signature": "func get_all_slots() -> Array[String]:"
+        },
+        {
+          "line": 165,
+          "signature": "func has_any_save() -> bool:"
+        },
+        {
+          "line": 171,
+          "signature": "func get_latest_save_slot() -> String:"
+        },
+        {
+          "line": 183,
+          "signature": "func save_game(slot_id: String, custom_title: String = \"\", location_override: String = \"\") -> bool:"
+        },
+        {
+          "line": 289,
+          "signature": "func load_game(slot_id: String) -> bool:"
+        },
+        {
+          "line": 355,
+          "signature": "func delete_save(slot_id: String) -> bool:"
+        },
+        {
+          "line": 367,
+          "signature": "func auto_save(location_description: String = \"\") -> void:"
+        },
+        {
+          "line": 370,
+          "signature": "func apply_pending_save_if_any(scene_root: Node) -> bool:"
+        },
+        {
+          "line": 485,
+          "signature": "func _valid_save(data: Dictionary) -> bool:"
+        },
+        {
+          "line": 523,
+          "signature": "func _save_chapter(scene: Node, slot: String, title: String, location: String) -> bool:"
+        }
+      ],
+      "resources": [
+        "res://scenes/chapter_1/apartment.tscn",
+        "res://scenes/main.tscn",
+        "res://scripts/chapter_1/chapter_state.gd"
+      ],
+      "autoload_dependencies": [
+        "ClueManager",
+        "InventoryManager",
+        "ParanoiaManager",
+        "SoundManager"
+      ]
+    },
+    "scripts/settings_manager.gd": {
+      "sha256": "93620a183fa40c48b1e329e3412e800448bf8ceb8dd72eae46fe753b232eeff8",
+      "lines": 309,
+      "functions": [
+        {
+          "line": 48,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 68,
+          "signature": "func _record_default_keybinds() -> void:"
+        },
+        {
+          "line": 83,
+          "signature": "func load_settings() -> void:"
+        },
+        {
+          "line": 117,
+          "signature": "func save_settings() -> void:"
+        },
+        {
+          "line": 138,
+          "signature": "func get_typewriter_char_duration() -> float:"
+        },
+        {
+          "line": 146,
+          "signature": "func get_speed_title(mode: int = -1) -> String:"
+        },
+        {
+          "line": 155,
+          "signature": "func set_text_speed(mode: int, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 161,
+          "signature": "func set_auto_advance(enabled: bool, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 167,
+          "signature": "func set_auto_advance_delay(delay: float, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 173,
+          "signature": "func _apply_action_key(action_name: String, key_code: Key) -> void:"
+        },
+        {
+          "line": 189,
+          "signature": "func rebind_action(action_name: String, new_keycode: Key, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 199,
+          "signature": "func get_action_keycode(action_name: String) -> Key:"
+        },
+        {
+          "line": 213,
+          "signature": "func get_action_key_name(action_name: String) -> String:"
+        },
+        {
+          "line": 219,
+          "signature": "func reset_keybinds_to_defaults(auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 231,
+          "signature": "func revert_settings() -> void:"
+        },
+        {
+          "line": 235,
+          "signature": "func apply_settings() -> void:"
+        },
+        {
+          "line": 253,
+          "signature": "func _apply_bus_volume(bus_name: String, volume_linear: float) -> void:"
+        },
+        {
+          "line": 262,
+          "signature": "func set_master_volume(value: float, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 268,
+          "signature": "func set_music_volume(value: float, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 274,
+          "signature": "func set_sfx_volume(value: float, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 280,
+          "signature": "func set_fullscreen(enabled: bool, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 289,
+          "signature": "func toggle_fullscreen() -> void:"
+        },
+        {
+          "line": 292,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 297,
+          "signature": "func set_vsync(enabled: bool, auto_save: bool = false) -> void:"
+        },
+        {
+          "line": 304,
+          "signature": "func set_crt_effect(enabled: bool, auto_save: bool = false) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/sound_manager.gd": {
+      "sha256": "efdb452018aef5de360c68b482b76d9b0d9bf8f67d10f059881f14323a26280c",
+      "lines": 382,
+      "functions": [
+        {
+          "line": 52,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 94,
+          "signature": "func _generate_procedural_sounds() -> void:"
+        },
+        {
+          "line": 133,
+          "signature": "func _create_looping_music(duration: float, sample_rate: int) -> AudioStreamWAV:"
+        },
+        {
+          "line": 183,
+          "signature": "func start_bg_music() -> void:"
+        },
+        {
+          "line": 190,
+          "signature": "func stop_bg_music() -> void:"
+        },
+        {
+          "line": 194,
+          "signature": "func start_phone_ringing() -> void:"
+        },
+        {
+          "line": 201,
+          "signature": "func stop_phone_ringing() -> void:"
+        },
+        {
+          "line": 205,
+          "signature": "func is_phone_ringing() -> bool:"
+        },
+        {
+          "line": 208,
+          "signature": "func play_click() -> void:"
+        },
+        {
+          "line": 212,
+          "signature": "func play_hover() -> void:"
+        },
+        {
+          "line": 216,
+          "signature": "func play_save() -> void:"
+        },
+        {
+          "line": 220,
+          "signature": "func play_cancel() -> void:"
+        },
+        {
+          "line": 224,
+          "signature": "func play_paranoia_pulse() -> void:"
+        },
+        {
+          "line": 227,
+          "signature": "func play_heartbeat_pulse(bpm: int, paranoia_factor: float) -> void:"
+        },
+        {
+          "line": 242,
+          "signature": "func gameplay_audio_allowed() -> bool:"
+        },
+        {
+          "line": 248,
+          "signature": "func stop_heartbeat() -> void:"
+        },
+        {
+          "line": 253,
+          "signature": "func start_menu_rain() -> void:"
+        },
+        {
+          "line": 264,
+          "signature": "func stop_menu_rain() -> void:"
+        },
+        {
+          "line": 271,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 279,
+          "signature": "func play_footstep(surface: String = \"wood\", volume_offset: float = 0.0) -> void:"
+        },
+        {
+          "line": 290,
+          "signature": "func play_wall_bump() -> void:"
+        },
+        {
+          "line": 294,
+          "signature": "func play_interact() -> void:"
+        },
+        {
+          "line": 298,
+          "signature": "func play_pills_taken() -> void:"
+        },
+        {
+          "line": 302,
+          "signature": "func play_phone_pickup() -> void:"
+        },
+        {
+          "line": 307,
+          "signature": "func play_dialogue_advance() -> void:"
+        },
+        {
+          "line": 311,
+          "signature": "func play_door_unlock() -> void:"
+        },
+        {
+          "line": 315,
+          "signature": "func play_clue_found() -> void:"
+        },
+        {
+          "line": 319,
+          "signature": "func play_paper_rustle() -> void:"
+        },
+        {
+          "line": 323,
+          "signature": "func play_typewriter_tick() -> void:"
+        },
+        {
+          "line": 334,
+          "signature": "func play_deduction_success() -> void:"
+        },
+        {
+          "line": 338,
+          "signature": "func play_deduction_fail() -> void:"
+        },
+        {
+          "line": 342,
+          "signature": "func play_clue_pin() -> void:"
+        },
+        {
+          "line": 346,
+          "signature": "func play_flashlight_toggle(is_on: bool) -> void:"
+        },
+        {
+          "line": 351,
+          "signature": "func play_car_pass() -> void:"
+        },
+        {
+          "line": 355,
+          "signature": "func play_material_interact(material_name: String) -> void:"
+        },
+        {
+          "line": 359,
+          "signature": "func _play_stream(stream: AudioStreamWAV) -> void:"
+        },
+        {
+          "line": 362,
+          "signature": "func _play_stream_pitched(stream: AudioStreamWAV, pitch: float = 1.0, volume_db_offset: float = -9.0) -> void:"
+        },
+        {
+          "line": 377,
+          "signature": "func _exit_tree() -> void:"
+        }
+      ],
+      "resources": [
+        "res://assets/audio/heartbeat_s1.wav",
+        "res://assets/audio/heartbeat_s2.wav",
+        "res://assets/audio/menu_rain.wav",
+        "res://scenes/main.tscn",
+        "res://scripts/audio_palette.gd"
+      ],
+      "autoload_dependencies": [
+        "ParanoiaManager"
+      ]
+    },
+    "scripts/tutorial.gd": {
+      "sha256": "a85072151c417016421723b390441d0931766a7261ef9d8a43a0e38d94b5b44b",
+      "lines": 132,
+      "functions": [
+        {
+          "line": 12,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 37,
+          "signature": "func _exit_tree() -> void:"
+        },
+        {
+          "line": 40,
+          "signature": "func apply_stage(value: int) -> void:"
+        },
+        {
+          "line": 50,
+          "signature": "func begin_call() -> void:"
+        },
+        {
+          "line": 55,
+          "signature": "func _on_line(index: int) -> void:"
+        },
+        {
+          "line": 62,
+          "signature": "func finish_call() -> void:"
+        },
+        {
+          "line": 68,
+          "signature": "func _process(_delta: float) -> void:"
+        },
+        {
+          "line": 77,
+          "signature": "func _update_goal() -> void:"
+        },
+        {
+          "line": 92,
+          "signature": "func _unhandled_input(event: InputEvent) -> void:"
+        },
+        {
+          "line": 103,
+          "signature": "func search_bed() -> void:"
+        },
+        {
+          "line": 111,
+          "signature": "func _on_finished() -> void:"
+        },
+        {
+          "line": 119,
+          "signature": "func _on_cancelled() -> void:"
+        },
+        {
+          "line": 125,
+          "signature": "func _on_item_added(id: String, _count: int) -> void:"
+        },
+        {
+          "line": 129,
+          "signature": "func _on_item_used(id: String, success: bool) -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "scripts/window_lighting.gd": {
+      "sha256": "c67aa309b2c1fff359249c9527272357d5b2a89c139fdfbef4bc3d7778ea3688",
+      "lines": 278,
+      "functions": [
+        {
+          "line": 42,
+          "signature": "func _ready() -> void:"
+        },
+        {
+          "line": 49,
+          "signature": "func _create_window_visuals() -> void:"
+        },
+        {
+          "line": 81,
+          "signature": "func _create_blinds_visuals() -> void:"
+        },
+        {
+          "line": 104,
+          "signature": "func _create_lights() -> void:"
+        },
+        {
+          "line": 132,
+          "signature": "func _setup_car_timer() -> void:"
+        },
+        {
+          "line": 141,
+          "signature": "func _init_rain_droplets() -> void:"
+        },
+        {
+          "line": 152,
+          "signature": "func _process(delta: float) -> void:"
+        },
+        {
+          "line": 160,
+          "signature": "func _update_neon_sign(delta: float) -> void:"
+        },
+        {
+          "line": 196,
+          "signature": "func _trigger_car_pass() -> void:"
+        },
+        {
+          "line": 215,
+          "signature": "func _update_car_pass(delta: float) -> void:"
+        },
+        {
+          "line": 234,
+          "signature": "func _update_rain(delta: float) -> void:"
+        },
+        {
+          "line": 249,
+          "signature": "func _get_or_create_projected_texture(for_car: bool) -> ImageTexture:"
+        }
+      ],
+      "resources": [
+        "res://scripts/window_rain_drawer.gd"
+      ],
+      "autoload_dependencies": [
+        "SoundManager"
+      ]
+    },
+    "scripts/window_rain_drawer.gd": {
+      "sha256": "7986c09a6feb50e7b512f7c9c715463e9ca561e199a18e3fb419bfa2255b2c82",
+      "lines": 41,
+      "functions": [
+        {
+          "line": 8,
+          "signature": "func set_droplets(drops: Array) -> void:"
+        },
+        {
+          "line": 12,
+          "signature": "func _draw() -> void:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/apartment_wall.gdshader": {
+      "sha256": "94df46d76fd38891ad0abe997fcfa63700de3fa47cbb6c27709c0eacf7bad9e5",
+      "lines": 79,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/bath_tiles.gdshader": {
+      "sha256": "5943656cc93c98ca235dff7eca7a2062c3f9765c24b12e8ab2560fcb99db80cd",
+      "lines": 14,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/character_gait.gdshader": {
+      "sha256": "510e1a1381f993ae8ac96106e4a961abdb84efd13a834887e79d4d65029e6f6c",
+      "lines": 15,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/flashlight_pocket.gdshader": {
+      "sha256": "1a10405c4ece167cb5e27f661c2d34702b586627dfb4fdf4b5f24ce3589631d0",
+      "lines": 13,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/furniture_grain.gdshader": {
+      "sha256": "cdadf85dc31f8ed48961b8b7b69979d8d0ac03feb4a187420222ac5f57aa5067",
+      "lines": 9,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/glass_drop.gdshader": {
+      "sha256": "cdb61e10aa74321bd03a607e5a70d9c997d9c6d37035560def9465bd384a4c9c",
+      "lines": 24,
+      "functions": [],
+      "resources": [
+        "res://shaders/window_glass_mask.gdshaderinc"
+      ],
+      "autoload_dependencies": []
+    },
+    "shaders/glass_trail.gdshader": {
+      "sha256": "0d30e6fb07ecb67ff46eb66d8fd85ffef361d53c2bfe4e8800af906d6ba6324f",
+      "lines": 13,
+      "functions": [],
+      "resources": [
+        "res://shaders/window_glass_mask.gdshaderinc"
+      ],
+      "autoload_dependencies": []
+    },
+    "shaders/held_arm_mask.gdshader": {
+      "sha256": "f2881b1ca2bf19ff1fb741c31ae1adbdecbe17afde2013a6c5c0cedd539dea29",
+      "lines": 20,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/menu_rain.gdshader": {
+      "sha256": "7d99a624fce2dba4693e8353484fcb207ea0898df7a13103675a0281b64dd174",
+      "lines": 123,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "shaders/prop_depth.gdshader": {
+      "sha256": "a409df7f06b99b0e794cb33f7994b95a51bb8adf0b522eca6e090af41250b4a9",
+      "lines": 21,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/art/flashlight_preview.py": {
+      "sha256": "a54c8f9b9734c25e92722c57b3447ffd9a911e155a3f6fc09524e2b1e4f14029",
+      "lines": 10,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/art/prepare_recorded_audio.py": {
+      "sha256": "353de7ebb53c117423cc982df08667801d8ba06abfa288473f197c96df83f567",
+      "lines": 57,
+      "functions": [
+        {
+          "line": 10,
+          "signature": "def read(path):"
+        },
+        {
+          "line": 16,
+          "signature": "def filter_audio(data, rate, highpass, lowpass):"
+        },
+        {
+          "line": 22,
+          "signature": "def save(name, data, rate, peak, match_loop=False):"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/art/register_hand_sockets.py": {
+      "sha256": "0f98904187510b3170b80ad1b0ce7625a129fe443c4ce5459cada31f58895381",
+      "lines": 165,
+      "functions": [
+        {
+          "line": 28,
+          "signature": "def components(mask: np.ndarray) -> list[np.ndarray]:"
+        },
+        {
+          "line": 52,
+          "signature": "def register(cell: np.ndarray, table: str, row: int, column: int) -> dict:"
+        },
+        {
+          "line": 101,
+          "signature": "def preview(atlases: dict[str, Image.Image], poses: dict[str, list[dict]]) -> Path:"
+        },
+        {
+          "line": 137,
+          "signature": "def main() -> None:"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/art/repack_dasha.py": {
+      "sha256": "3d8731f0cba97918248c6f7b445fb87f3cddee578abdfeab718a95fbd9ddc945",
+      "lines": 124,
+      "functions": [
+        {
+          "line": 14,
+          "signature": "def clean(im):"
+        },
+        {
+          "line": 18,
+          "signature": "def components(im):"
+        },
+        {
+          "line": 33,
+          "signature": "def rows(im,n):"
+        },
+        {
+          "line": 37,
+          "signature": "def put(atlas,row,col,source,box,scale,lift=0):"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/check_installer.ps1": {
+      "sha256": "f6bc768695ac069a674059f6dec3f8245ab78194a0a963624440bf29da84930f",
+      "lines": 89,
+      "functions": [
+        {
+          "line": 22,
+          "signature": "function Check([string]$Label, [bool]$Condition) {"
+        },
+        {
+          "line": 28,
+          "signature": "function Install([string]$LogName) {"
+        }
+      ],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/index_codebase.bat": {
+      "sha256": "6ae55fc7fb56e5ac861a5665af548e6f8b46e02c1b2145161462f6339c429864",
+      "lines": 8,
+      "functions": [],
+      "resources": [],
+      "autoload_dependencies": []
+    },
+    "tools/index_codebase.ps1": {
+      "sha256": "3f93ac1121baf8b8ca42f7f4022d311603d8c21b62a530cdb58bf768253ba17d",
+      "lines": 236,
+      "functions": [],
+      "resources": [
+        "res://[^"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/review_cache.py": {
+      "sha256": "10a9c079f6b473a21b576954354eae9ede55daab8a44967ed6a93803570b42fd",
+      "lines": 50,
+      "functions": [
+        {
+          "line": 14,
+          "signature": "def collect():"
+        },
+        {
+          "line": 33,
+          "signature": "def main():"
+        }
+      ],
+      "resources": [
+        "res://[^"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_arm_motion_checks.ps1": {
+      "sha256": "ef78ade3f6e1a864d11a1c11e95fe10c8d0b045d9044f65faba3f38893a22bf3",
+      "lines": 56,
+      "functions": [],
+      "resources": [
+        "res://AI/review/check_arm_motion.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_chapter_checks.ps1": {
+      "sha256": "4bb95df8c8e81ef5cd06f667e6a9d5d22c3e28ea5863b5d2e56361b220f49524",
+      "lines": 44,
+      "functions": [],
+      "resources": [
+        "res://AI/review/capture_chapter.gd'",
+        "res://AI/review/check_apartment_route.gd'",
+        "res://AI/review/check_chapter.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_frontend_checks.ps1": {
+      "sha256": "3a7069db3629424f1ce357ab56d4d9176fc0a2da0c94bf3efeaf8a715bec345c",
+      "lines": 27,
+      "functions": [],
+      "resources": [
+        "res://AI/review/check_frontend.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_hand_wall_checks.ps1": {
+      "sha256": "298e509ab27480a098c578e8001306b6b1598be365b7f10d9089e90c4b91cdfd",
+      "lines": 25,
+      "functions": [],
+      "resources": [
+        "res://AI/review/check_hand_wall_light.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_held_flashlight_checks.ps1": {
+      "sha256": "b806b054455e8fea31b825d2018ecc03a1e4fce9e02f8e9e0cff9a9a7d7093f3",
+      "lines": 26,
+      "functions": [],
+      "resources": [
+        "res://AI/review/check_held_flashlight.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_presentation_checks.ps1": {
+      "sha256": "9797593d15b1cd5f0211d09da83fa8a4c9aaf57b661107a575eff52996789d45",
+      "lines": 37,
+      "functions": [],
+      "resources": [
+        "res://AI/review/'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_recorded_audio_checks.ps1": {
+      "sha256": "be1a3d446e1ff79e9598c3d8405552244b9ca7b73668f4906fa40452ae21bb2f",
+      "lines": 24,
+      "functions": [],
+      "resources": [
+        "res://AI/review/check_recorded_audio.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_review_checks.ps1": {
+      "sha256": "db46b2477a6d8588c3d30a1e08f1ee8364fd8fa0f4bdf9ec515ef1a7cc352d7d",
+      "lines": 22,
+      "functions": [],
+      "resources": [
+        "res://AI/review/reproduce.gd"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_ui_checks.ps1": {
+      "sha256": "66c3f13f3e390413b07560ff3dc42d76d1d57c0481cab5fd01cd5b9d2216507e",
+      "lines": 35,
+      "functions": [],
+      "resources": [
+        "res://AI/review/capture_ui.gd'"
+      ],
+      "autoload_dependencies": []
+    },
+    "tools/run_window_mask_checks.ps1": {
+      "sha256": "2875a8d5b2c54fea086c5ee45f13f8770241a002bec9ff6f5f9b71fbe93f0315",
+      "lines": 21,
+      "functions": [],
+      "resources": [
+        "res://AI/review/check_window_mask.gd'"
+      ],
+      "autoload_dependencies": []
+    }
+  }
+}

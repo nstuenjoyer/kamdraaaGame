@@ -8,17 +8,17 @@ $previousAppData = $env:APPDATA
 $previousUi = $env:KAMDRAAA_UI_CAPTURE_DIR
 $previousAnimation = $env:KAMDRAAA_ANIMATION_CAPTURE_DIR
 try {
-    $env:KAMDRAAA_UI_CAPTURE_DIR = Join-Path $projectRoot 'docs/review/images/ui'
-    $env:KAMDRAAA_ANIMATION_CAPTURE_DIR = Join-Path $projectRoot 'docs/review/images/animation'
+    $env:KAMDRAAA_UI_CAPTURE_DIR = Join-Path $projectRoot 'AI/review/images/ui'
+    $env:KAMDRAAA_ANIMATION_CAPTURE_DIR = Join-Path $projectRoot 'AI/review/images/animation'
     foreach ($scriptName in @('check_animation', 'check_ui_layout')) {
         $reviewData = Join-Path $projectRoot ('.godot/chapter-check-presentation-' + [guid]::NewGuid().ToString('N'))
         New-Item -ItemType Directory -Path $reviewData -Force | Out-Null
         $env:APPDATA = $reviewData
         $log = Join-Path $reviewData ($scriptName + '.log')
-        $arguments = @('--path', $projectRoot, '--resolution', '1280x720', '--rendering-method', 'gl_compatibility', '--log-file', $log, '--script', ('res://docs/review/' + $scriptName + '.gd'))
+        $arguments = @('--path', $projectRoot, '--resolution', '1280x720', '--rendering-method', 'gl_compatibility', '--log-file', $log, '--script', ('res://AI/review/' + $scriptName + '.gd'))
         if ($PackedGame) {
             $GodotExe = Join-Path $projectRoot 'build/dist/Kamdraaa.exe'
-            $arguments[$arguments.IndexOf('--script') + 1] = Join-Path $projectRoot ('docs/review/' + $scriptName + '.gd')
+            $arguments[$arguments.IndexOf('--script') + 1] = Join-Path $projectRoot ('AI/review/' + $scriptName + '.gd')
             $arguments += @('--main-pack', (Join-Path $projectRoot 'build/dist/Kamdraaa.pck'))
         }
         $process = Start-Process -FilePath $GodotExe -ArgumentList $arguments -WindowStyle Hidden -PassThru

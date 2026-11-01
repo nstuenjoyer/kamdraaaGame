@@ -11,12 +11,12 @@ $previousAppData = $env:APPDATA
 $previousOutput = $env:KAMDRAAA_UI_CAPTURE_DIR
 try {
     $env:APPDATA = $reviewData
-    $env:KAMDRAAA_UI_CAPTURE_DIR = Join-Path $projectRoot 'docs/review/images/ui'
+    $env:KAMDRAAA_UI_CAPTURE_DIR = Join-Path $projectRoot 'AI/review/images/ui'
     $log = Join-Path $reviewData 'ui.log'
-    $arguments = @('--path', $projectRoot, '--resolution', '1280x720', '--rendering-method', $Renderer, '--log-file', $log, '--script', 'res://docs/review/capture_ui.gd')
+    $arguments = @('--path', $projectRoot, '--resolution', '1280x720', '--rendering-method', $Renderer, '--log-file', $log, '--script', 'res://AI/review/capture_ui.gd')
     if ($PackedGame) {
         $GodotExe = Join-Path $projectRoot 'build/dist/Kamdraaa.exe'
-        $arguments[$arguments.IndexOf('--script') + 1] = Join-Path $projectRoot 'docs/review/capture_ui.gd'
+        $arguments[$arguments.IndexOf('--script') + 1] = Join-Path $projectRoot 'AI/review/capture_ui.gd'
         $arguments += @('--main-pack', (Join-Path $projectRoot 'build/dist/Kamdraaa.pck'))
     }
     $process = Start-Process -FilePath $GodotExe -ArgumentList $arguments -WindowStyle Hidden -PassThru

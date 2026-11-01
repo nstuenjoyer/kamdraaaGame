@@ -8,12 +8,12 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE = ROOT / 'docs/review/cache.json'
+CACHE = ROOT / 'AI/review/cache.json'
 SUFFIXES = {'.gd', '.gdshader', '.tscn', '.tres', '.godot', '.cfg', '.ps1', '.bat', '.iss', '.py'}
 
 def collect():
     tracked = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z'], cwd=ROOT).decode('utf-8').split('\0')
-    names = sorted(set(tracked) | {'tools/review_cache.py'} | {p.relative_to(ROOT).as_posix() for p in (ROOT / 'docs/review').glob('*.gd')})
+    names = sorted(set(tracked) | {'tools/review_cache.py'} | {p.relative_to(ROOT).as_posix() for p in (ROOT / 'AI/review').glob('*.gd')})
     result = {}
     for name in names:
         p = ROOT / name
