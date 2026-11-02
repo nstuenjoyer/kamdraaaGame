@@ -223,8 +223,10 @@ func run() -> void:
 		step()
 		var sprite: Sprite2D = game.player.sprite
 		var animator: DashaAnimation = game.player.dasha_animation
-		var table: String = "idle" if sprite.texture == DashaAnimation.IDLE_ATLAS else "main"
-		var socket: Dictionary = HeldFlashlight.SOCKETS.POSES[table][sprite.frame]
+		var detailed: bool = sprite.texture == DashaAnimation.DETAILED_ATLAS or sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS
+		var table: String = "idle" if sprite.texture == DashaAnimation.IDLE_ATLAS or sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS else "main"
+		var data: GDScript = HeldFlashlight.DETAILED_SOCKETS if detailed else HeldFlashlight.SOCKETS
+		var socket: Dictionary = data.POSES[table][sprite.frame]
 		var point: Vector2 = Vector2(socket.shoulder[0],socket.shoulder[1])
 		if sprite.flip_h: point.x = 160.0-point.x
 		var expected_shoulder: Vector2 = (point+sprite.offset)*sprite.scale+sprite.position

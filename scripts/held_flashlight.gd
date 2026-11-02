@@ -2,6 +2,7 @@ class_name HeldFlashlight
 extends Node2D
 
 const SOCKETS: GDScript = preload("res://scripts/dasha_hand_sockets.gd")
+const DETAILED_SOCKETS: GDScript = preload("res://scripts/dasha_hand_sockets_detailed.gd")
 const ARM_MASK: Shader = preload("res://shaders/held_arm_mask.gdshader")
 const POCKET_MASK: Shader = preload("res://shaders/flashlight_pocket.gdshader")
 const DRAW_SECONDS: float = 0.76
@@ -61,11 +62,13 @@ func update_pose(delta: float, aim: float, requested: bool) -> void:
 	visible = equip_amount > 0.005
 	var sprite: Sprite2D = animator.sprite
 	if not visible:
-		if sprite.material == arm_mask: sprite.material = null
+		if sprite.material == arm_mask: sprite.material = animator.body_material
 		torch.visible = false
 		return
-	var table: String = "idle" if sprite.texture == DashaAnimation.IDLE_ATLAS else "main"
-	var socket: Dictionary = SOCKETS.POSES[table][sprite.frame]
+	var is_detailed: bool = sprite.texture == DashaAnimation.DETAILED_ATLAS or sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS
+	var table: String = "idle" if sprite.texture == DashaAnimation.IDLE_ATLAS or sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS else "main"
+	var sockets: GDScript = DETAILED_SOCKETS if is_detailed else SOCKETS
+	var socket: Dictionary = sockets.POSES[table][sprite.frame]
 	var scale_value: float = animator.base_scale.x
 	var shoulder_px: Vector2 = Vector2(socket.shoulder[0],socket.shoulder[1])
 	var target_shoulder: Vector2 = _local_point(shoulder_px)
@@ -149,6 +152,7 @@ func update_pose(delta: float, aim: float, requested: bool) -> void:
 	arm_mask.set_shader_parameter("old_hand",old_hand)
 	arm_mask.set_shader_parameter("body_x",socket.body_x)
 	arm_mask.set_shader_parameter("strength",1.0 if socket.erase else 0.0)
+	arm_mask.set_shader_parameter("clarity_amount",animator.clarity_amount)
 	sprite.material = arm_mask
 
 func _local_point(point: Vector2) -> Vector2:

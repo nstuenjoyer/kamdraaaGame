@@ -49,7 +49,8 @@ def components(mask: np.ndarray) -> list[np.ndarray]:
     return found
 
 
-def register(cell: np.ndarray, table: str, row: int, column: int) -> dict:
+def register(cell: np.ndarray, table: str, row: int, column: int, detailed: bool = False,
+             body_anchor: dict | None = None) -> dict:
     back = row >= 4 if table == "main" else row % 2 == 1
     r, g, b, alpha = [cell[:, :, channel] for channel in range(4)]
     yy, _ = np.where(alpha > 128)
@@ -59,13 +60,19 @@ def register(cell: np.ndarray, table: str, row: int, column: int) -> dict:
 
     # Rear shoulder sits towards the coat seam, behind the hair, rather than at
     # its old lower-middle anchor. Follow the individual registered pose.
-    shoulder = np.array([head_x + (21 if back else -14),
-                         top + min(64, height * .32) - (6 if back else 0)])
     kind = row % 4 if table == "main" else (2 if row >= 2 else 0)
     crouch = float(column) / 7 if table == "main" and kind == 3 else float(kind == 2)
+    shoulder = np.array([head_x + (21 if back else -14),
+                         top + min(64, height * (.32 + (.08 * crouch if detailed and not back else 0.0))) - (6 if back else 0)])
     rest = shoulder + np.array([4 if back else -6, 42 - 14 * crouch])
     if kind == 1:
         rest = shoulder + np.array([5 if back else -7, 29])
+    if body_anchor is not None:
+        # Head-only artwork corrections move the first opaque pixel. They must
+        # not move the shoulder or the neutral arm on an unchanged coat/body.
+        shoulder = np.asarray(body_anchor["shoulder"], dtype=float)
+        rest = np.asarray(body_anchor["rest"], dtype=float)
+        head_x = float(body_anchor["body_x"])
 
     hand = rest.copy()
     erase = False
@@ -73,8 +80,8 @@ def register(cell: np.ndarray, table: str, row: int, column: int) -> dict:
         skin = ((alpha > 128) & (r > 95) & (g > 45) & (b > 28)
                 & (r - g > 18) & (g - b > 8) & (r - b > 30))
         grid_y, grid_x = np.indices(skin.shape)
-        lower_extent = 46 if kind in (1, 2) else 54
-        zone = ((grid_y >= shoulder[1] + 6)
+        lower_extent = (70 if detailed and crouch > .5 else 46) if kind in (1, 2) else 54
+        zone = ((grid_y >= shoulder[1] + (20 if detailed and crouch > .5 else 6))
                 & (grid_y <= shoulder[1] + lower_extent))
         if back:
             zone &= ((grid_x > head_x + 10) & (grid_x <= shoulder[0] + 36))
@@ -83,9 +90,11 @@ def register(cell: np.ndarray, table: str, row: int, column: int) -> dict:
                      & (grid_x >= shoulder[0] - 30)
                      & (grid_x <= shoulder[0] + 10))
         candidates = components(skin & zone)
+        if detailed and crouch > .5:
+            candidates = [points for points in candidates if len(points) >= 8]
         if candidates:
             expected = shoulder + np.array([15 if back else -7,
-                                             42 - 15 * crouch if kind != 1 else 23])
+                                             (42 if detailed and crouch > .5 else 42 - 15 * crouch) if kind != 1 else 23])
             selected = min(candidates, key=lambda points: float(np.linalg.norm(points.mean(axis=0) - expected)))
             hand = selected.mean(axis=0)
             erase = True
@@ -98,8 +107,8 @@ def register(cell: np.ndarray, table: str, row: int, column: int) -> dict:
     }
 
 
-def preview(atlases: dict[str, Image.Image], poses: dict[str, list[dict]]) -> Path:
-    output = ROOT / ".godot/hand-socket-review"
+def preview(atlases: dict[str, Image.Image], poses: dict[str, list[dict]], detailed: bool = False) -> Path:
+    output = ROOT / (".godot/hand-socket-review-detailed" if detailed else ".godot/hand-socket-review")
     output.mkdir(parents=True, exist_ok=True)
     tiles: dict[tuple[str, int, int], Image.Image] = {}
     for table, sheet in atlases.items():
@@ -137,10 +146,17 @@ def preview(atlases: dict[str, Image.Image], poses: dict[str, list[dict]]) -> Pa
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--preview", action="store_true")
+    parser.add_argument("--detailed", action="store_true", help="Register detailed atlases without modifying legacy sockets")
     arguments = parser.parse_args()
     poses: dict[str, list[dict]] = {}
     atlases: dict[str, Image.Image] = {}
-    for table, name in [("main", "dasha_atlas.png"), ("idle", "dasha_idle_atlas.png")]:
+    anchors = {}
+    if arguments.detailed:
+        anchor_path = ROOT / "assets/sprites/dasha_animation/detailed_body_sockets.json"
+        if anchor_path.exists():
+            anchors = json.loads(anchor_path.read_text(encoding="utf-8"))["poses"]
+    atlas_names = [("main", "detailed_motion_atlas.png"), ("idle", "detailed_idle_atlas.png")] if arguments.detailed else [("main", "dasha_atlas.png"), ("idle", "dasha_idle_atlas.png")]
+    for table, name in atlas_names:
         sheet = Image.open(ROOT / "assets/sprites/dasha_animation" / name).convert("RGBA")
         atlases[table] = sheet
         pixels = np.asarray(sheet).astype(int)
@@ -148,17 +164,18 @@ def main() -> None:
         for row in range(sheet.height // CELL[1]):
             for column in range(8):
                 cell = pixels[row*256:(row+1)*256, column*160:(column+1)*160]
-                poses[table].append(register(cell, table, row, column))
+                anchor = anchors[table][row * 8 + column] if table in anchors else None
+                poses[table].append(register(cell, table, row, column, arguments.detailed, anchor))
     text = ("extends RefCounted\n\n# Generated by tools/art/register_hand_sockets.py. Coordinates within 160x256 cell.\n"
             "# hand/erase describe visible original art; rest is an independent anatomical wrist.\n"
             "const POSES: Dictionary = " + json.dumps(poses, ensure_ascii=False, indent=2) + "\n")
-    (ROOT / "scripts/dasha_hand_sockets.gd").write_text(text, encoding="utf-8")
+    (ROOT / ("scripts/dasha_hand_sockets_detailed.gd" if arguments.detailed else "scripts/dasha_hand_sockets.gd")).write_text(text, encoding="utf-8")
     visible = sum(p["erase"] for entries in poses.values() for p in entries)
     print(f"Registered {sum(map(len, poses.values()))} sockets; {visible} visible free hands, remainder explicitly occluded.")
     print("idle/front2", poses["idle"][2])
     print("idle/front3", poses["idle"][3])
     if arguments.preview:
-        print("Annotated QA:", preview(atlases, poses))
+        print("Annotated QA:", preview(atlases, poses, arguments.detailed))
 
 
 if __name__ == "__main__":

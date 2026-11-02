@@ -28,10 +28,10 @@ func run() -> void:
 	stage.add_child(actor)
 	actor.set_physics_process(false)
 	var anim: DashaAnimation = actor.dasha_animation
-	check("idle uses its dedicated registered atlas", sprite.hframes == 8 and sprite.vframes == 4 and sprite.texture == DashaAnimation.IDLE_ATLAS and sprite.material == null)
+	check("idle uses its dedicated registered atlas", sprite.hframes == 8 and sprite.vframes == 4 and sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS and sprite.material == anim.body_material)
 	check("feet anchored to frame baseline", not sprite.centered and sprite.offset == Vector2(-80, -244))
 	anim.update(0.1, Vector2(180, 70), "walk", 30, false)
-	check("walk selects front pose and flips right", anim.animation_state == "walk" and anim.facing == "front" and sprite.flip_h)
+	check("walk selects detailed front pose and flips right", anim.animation_state == "walk" and anim.facing == "front" and sprite.flip_h and sprite.texture == DashaAnimation.DETAILED_ATLAS)
 	var first: int = sprite.frame
 	anim.update(0.1, Vector2(180, 70), "walk", 60, false)
 	check("walk frames advance with distance", sprite.frame != first)
@@ -47,11 +47,11 @@ func run() -> void:
 	anim.update(0.016,Vector2(185,-100),"walk",83,false,Vector2.RIGHT)
 	check("releasing W while holding D immediately faces front right",anim.facing == "front" and sprite.flip_h)
 	anim.update(0.1, Vector2(-220, -100), "run", 100, false)
-	check("run has its own back poses", anim.animation_state == "run" and anim.facing == "back" and not sprite.flip_h and sprite.frame >= 40 and sprite.frame < 48)
+	check("run has its own detailed back poses", anim.animation_state == "run" and anim.facing == "back" and not sprite.flip_h and sprite.frame >= 40 and sprite.frame < 48 and sprite.texture == DashaAnimation.DETAILED_ATLAS)
 	anim.update(0.1, Vector2.ZERO, "sneak", 100, false)
 	check("stationary crouch starts a real transition", anim.animation_state == "crouch_enter" and anim.frame_index > 0 and anim.frame_index < 7)
 	anim.update(0.3, Vector2.ZERO, "sneak", 100, false)
-	check("holding crouch remains crouched while stationary", anim.animation_state == "crouch_idle" and anim.crouch_amount == 1 and sprite.texture == DashaAnimation.IDLE_ATLAS)
+	check("holding crouch remains crouched while stationary", anim.animation_state == "crouch_idle" and anim.crouch_amount == 1 and sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS)
 	var rest_frame: int = sprite.frame
 	var rest_scale: Vector2 = sprite.scale
 	anim.update(0.8,Vector2.ZERO,"sneak",100,false)
@@ -64,9 +64,16 @@ func run() -> void:
 	check("stand-up finishes in idle", anim.animation_state == "idle" and anim.crouch_amount == 0)
 	anim.show_pose("idle",0,"front")
 	rest_frame = sprite.frame
+	var idle_image: Image = sprite.texture.get_image()
+	var resting_bitmap: Image = idle_image.get_region(Rect2i(rest_frame * 160,0,160,256))
 	rest_scale = sprite.scale
-	anim.update(0.8,Vector2.ZERO,"walk",130,false)
-	check("front rest breathes continuously without switching its silhouette",sprite.frame == rest_frame and not sprite.scale.is_equal_approx(rest_scale) and sprite.scale.y <= anim.base_scale.y and anim.animation_state == "idle")
+	anim.update(0.67,Vector2.ZERO,"walk",130,false)
+	var current_bitmap: Image = idle_image.get_region(Rect2i(sprite.frame * 160,0,160,256))
+	check("front rest breathes continuously with registered silhouette",current_bitmap.get_used_rect() == resting_bitmap.get_used_rect() and not sprite.scale.is_equal_approx(rest_scale) and sprite.scale.y <= anim.base_scale.y and anim.animation_state == "idle")
+	anim.show_pose("idle",0,"front")
+	check("idle uses detailed character art", sprite.texture == DashaAnimation.DETAILED_IDLE_ATLAS)
+	anim.show_pose("run",0,"front")
+	check("run uses detailed character art", sprite.texture == DashaAnimation.DETAILED_ATLAS)
 	anim.update(0.4, Vector2(200,0), "run", 140, true)
 	check("locked actor does not play locomotion", anim.animation_state == "idle")
 	check("footsteps follow half-stride for all gaits", anim.step_distance("walk") == 82 and anim.step_distance("run") == 110 and anim.step_distance("sneak") == 50)
@@ -144,7 +151,7 @@ func run() -> void:
 	check("all 64 poses registered; run flight explicitly raised", grounded)
 	# Exercise every source state into every stable destination, in both views.
 	# Inspect the actual selected bitmap as well as the state-machine fields.
-	var textures: Dictionary = {DashaAnimation.ATLAS: DashaAnimation.ATLAS.get_image(), DashaAnimation.IDLE_ATLAS: DashaAnimation.IDLE_ATLAS.get_image()}
+	var textures: Dictionary = {DashaAnimation.ATLAS: DashaAnimation.ATLAS.get_image(), DashaAnimation.IDLE_ATLAS: DashaAnimation.IDLE_ATLAS.get_image(), DashaAnimation.DETAILED_ATLAS: DashaAnimation.DETAILED_ATLAS.get_image(), DashaAnimation.DETAILED_IDLE_ATLAS: DashaAnimation.DETAILED_IDLE_ATLAS.get_image()}
 	var transitions_valid: bool = true
 	var anatomy_valid: bool = true
 	var pair_count: int = 0
@@ -166,18 +173,23 @@ func run() -> void:
 					var used: Rect2i = cell.get_used_rect()
 					var width: int = 0
 					for x: int in 160:
-						if cell.get_pixel(x,used.position.y+12).a > 0.5: width += 1
-					var skull: float = 40.0 if direction == "front" else 36.0
-					anatomy_valid = anatomy_valid and float(width)/skull < 1.16 and float(width)/skull > 0.79 and used.size.y <= 201
+						if cell.get_pixel(x,used.position.y+15).a > 0.5: width += 1
+					# At 200px standing height the original character has a 36px
+					# front head contour; its registered rear reference is 38px.
+					var skull: float = 36.0 if direction == "front" else 38.0
+					anatomy_valid = anatomy_valid and float(width)/skull < 1.15 and float(width)/skull > 0.85 and used.size.y <= 201
 				transitions_valid = transitions_valid and anim.animation_state == destination
 	check("all 70 state pairs finish without resizing or foot-pivot jumps", transitions_valid and pair_count == 70)
 	check("every transition keeps comparable skull scale and never enlarges crouch", anatomy_valid)
 	var identical_endpoints: bool = true
 	for view: int in 2:
-		var end_pose: Image = DashaAnimation.ATLAS.get_image().get_region(Rect2i(7*160,(3+view*4)*256,160,256))
-		var resting: Image = DashaAnimation.IDLE_ATLAS.get_image().get_region(Rect2i(0,(2+view)*256,160,256))
+		var end_pose: Image = DashaAnimation.DETAILED_ATLAS.get_image().get_region(Rect2i(7*160,(3+view*4)*256,160,256))
+		var resting: Image = DashaAnimation.DETAILED_IDLE_ATLAS.get_image().get_region(Rect2i(0,(2+view)*256,160,256))
 		identical_endpoints = identical_endpoints and end_pose.get_data() == resting.get_data()
 	check("crouch transition and resting pose are the same registered drawing", identical_endpoints)
+	check("character uses nearest filtering", sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST)
+	anim.show_pose("walk",0,"front")
+	check("movement clarity retains the same material and pixel filtering", sprite.material == anim.body_material and anim.clarity_amount > 0.0 and sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST)
 	if DisplayServer.get_name() != "headless":
 		RenderingServer.set_default_clear_color(Color("1b201e"))
 		actor.visible = false

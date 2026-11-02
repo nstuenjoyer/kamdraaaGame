@@ -4,6 +4,9 @@ extends RefCounted
 # Registered, separately drawn poses. No UV distortion, whole-body squash or rotation.
 const ATLAS: Texture2D = preload("res://assets/sprites/dasha_animation/dasha_atlas.png")
 const IDLE_ATLAS: Texture2D = preload("res://assets/sprites/dasha_animation/dasha_idle_atlas.png")
+const DETAILED_ATLAS: Texture2D = preload("res://assets/sprites/dasha_animation/detailed_motion_atlas.png")
+const DETAILED_IDLE_ATLAS: Texture2D = preload("res://assets/sprites/dasha_animation/detailed_idle_atlas.png")
+const CLARITY_SHADER: Shader = preload("res://shaders/dasha_clarity.gdshader")
 const FRAME_COUNT: int = 8
 const TRANSITION_SECONDS: float = 0.30
 const STRIDES: Dictionary = {"walk": 164.0, "run": 220.0, "sneak": 100.0}
@@ -16,13 +19,17 @@ var cycle_phase: float = 0.0
 var last_walk_distance: float = 0.0
 var idle_phase: float = 0.0
 var base_scale: Vector2 = Vector2.ONE
+var body_material: ShaderMaterial
+var clarity_amount: float = 0.0
 
 func setup(target: Sprite2D) -> void:
 	sprite = target
 	# Existing scenes set size using the original 456px-tall sprite.
 	var character_height: float = 456.0 * target.scale.y
 	sprite.texture = ATLAS
-	sprite.material = null
+	body_material = ShaderMaterial.new()
+	body_material.shader = CLARITY_SHADER
+	sprite.material = body_material
 	sprite.hframes = 8
 	sprite.vframes = 8
 	sprite.centered = false
@@ -64,21 +71,24 @@ func show_pose(state: String, index: int, direction: String) -> void:
 	animation_state = state
 	facing = direction
 	frame_index = clampi(index, 0, 7)
+	# Source movement art is softer than the standing illustration. Adjust
+	# local pixel contrast while preserving the same nearest-neighbour grid.
+	var moving_clarity: float = 1.0 if direction == "back" else 0.8
+	clarity_amount = moving_clarity if state in ["walk", "run"] else moving_clarity * 0.5 if state in ["crouch_walk", "crouch_idle"] else moving_clarity * 0.5 * crouch_amount if state in ["crouch_enter", "crouch_exit"] else 0.0
+	body_material.set_shader_parameter("clarity_amount", clarity_amount)
 	# Only a tiny resting chest movement, never a per-state character resize.
 	sprite.scale = base_scale
 	if state in ["idle", "crouch_idle"]:
 		sprite.scale.y *= 1.0 - pow(sin(idle_phase*TAU),2.0)*0.006
 	if state in ["idle", "crouch_idle"]:
-		sprite.texture = IDLE_ATLAS
+		sprite.texture = DETAILED_IDLE_ATLAS
 		sprite.vframes = 4
 		var idle_row: int = (2 if state == "crouch_idle" else 0) + (1 if facing == "back" else 0)
-		# Independently drawn front idle frames shift the face, hair and coat
-		# between drawings. Hold its registered neutral pose and use the same
-		# continuous, foot-anchored breathing as the back view.
-		var idle_frame: int = 0 if state == "idle" and facing == "front" else frame_index
-		sprite.frame = idle_row * FRAME_COUNT + idle_frame
+		# The legacy front drawings do not register consistently. New idle
+		# frames can animate hair and clothing if their atlas is registered.
+		sprite.frame = idle_row * FRAME_COUNT + frame_index
 		return
-	sprite.texture = ATLAS
+	sprite.texture = DETAILED_ATLAS
 	sprite.vframes = 8
 	var row: int = {"walk": 0, "run": 1, "crouch_walk": 2}.get(state, 3)
 	if facing == "back": row += 4

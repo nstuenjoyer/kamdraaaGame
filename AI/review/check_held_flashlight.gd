@@ -69,7 +69,7 @@ func run() -> void:
 	game.flashlight._process(0.12)
 	check("stow has intermediate pose",hand.equip_amount > 0 and hand.equip_amount < 1)
 	game.flashlight._process(0.6)
-	check("stow removes held model and arm override",not hand.visible and game.player.sprite.material == null)
+	check("stow removes held model and arm override",not hand.visible and game.player.sprite.material == game.player.dasha_animation.body_material)
 	game.flashlight.toggle_flashlight(true,true)
 	check("restore snaps into held pose",hand.equip_amount == 1 and game.flashlight.is_emitting())
 	game.flashlight.toggle_flashlight(false)

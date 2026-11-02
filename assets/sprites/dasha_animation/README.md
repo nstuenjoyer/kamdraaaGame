@@ -1,6 +1,14 @@
 # Dasha redraw — revision 2, 1 November 2026
 
-Current runtime uses `redraw_source.png`, `redraw_crouch_source.png`, and `redraw_stand_idle_source.png`, made with built-in imagegen using the ORIGINAL `../dasha.png` and a neutral crop as identity/proportion references. Brief: preserve the elongated slender character, compact head, long legs, long dark coat, silver hair, yellow laces and handbag; no chibi proportions. Match camera and anatomy through locomotion, crouch and idle. `neutral_reference.png` is the accepted neutral reference.
+## Detailed motion experiment — 2 November 2026
+
+Current runtime uses `detailed_motion_proportions_source.png`, `detailed_crouch_proportions_source.png`, and `detailed_idle_source.png`. The first two are imagegen edits of the preserved motion/crouch sources, reducing only the heads to match the original `../dasha_pixel_detailed.png` proportions. At the registered scale, the front head contour at top+15 is 34–39 px through movement, compared with 36 px in the original model (previous run drawings reached 46 px). The body retains its original packing scale and foot pivot.
+
+`tools/art/repack_dasha_detailed.ps1` rebuilds both runtime atlases. Standing and crouched idle repeat one drawing with foot-anchored breathing; the crouch endpoint matches the final transition frame. Walk/run and crouch-walk use eight generated drawings per direction. The generated cycles do not reliably alternate left and right steps; this previously discussed art limitation remains. The held flashlight uses separately registered sockets for the detailed atlas. Nearest filtering and a bounded local-contrast shader improve motion clarity; the same shader correction is applied while the arm mask is active. The shader preserves alpha and clamps neighbour samples inside each atlas cell.
+
+## Previous runtime
+
+The previous runtime used `redraw_source.png`, `redraw_crouch_source.png`, and `redraw_stand_idle_source.png`, made with built-in imagegen using the ORIGINAL `../dasha.png` and a neutral crop as identity/proportion references. Brief: preserve the elongated slender character, compact head, long legs, long dark coat, silver hair, yellow laces and handbag; no chibi proportions. Match camera and anatomy through locomotion, crouch and idle. `neutral_reference.png` is the accepted neutral reference.
 
 `dasha_atlas.png`: 8×8 cells, each160×256, baseline244. Rows: walk/run/crouch-walk/posture transition front, then same back. Main standing height200. Crouch lowers the hips; no runtime scale increase. Run flight frames2/6 have an explicit7px lift.
 
