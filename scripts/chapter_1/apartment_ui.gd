@@ -1,7 +1,7 @@
 class_name ApartmentUI
 extends CanvasLayer
 
-var host: Node2D
+var host: Node
 var root: Control
 var modal: PanelContainer
 var content: VBoxContainer
@@ -52,7 +52,7 @@ var page_scroll: ScrollContainer
 var content_body: Label
 var body_is_paper: bool = false
 
-func setup(controller: Node2D) -> void:
+func setup(controller: Node) -> void:
 	host = controller
 	name = "ChapterUI"
 	layer = 20
@@ -286,7 +286,7 @@ func open(kind: String, title: String, body: String = "") -> void:
 	root.get_node("Shade").visible = kind != "message"
 	host.player.set_control_locked(true)
 	host.player.set_physics_process(false)
-	host.player.velocity = Vector2.ZERO
+	host.player.velocity *= 0.0
 
 func close() -> void:
 	modal.visible = false

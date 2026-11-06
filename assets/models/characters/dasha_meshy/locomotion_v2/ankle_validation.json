@@ -1,0 +1,4962 @@
+{
+  "method": "independent saved-source and exported-GLB sole orientation vs bind; toe-off, early plantarflexion, late dorsiflexion and landing for both feet",
+  "source_blend_sha256": "723e4cc6fb2b99df1c470e3a156bc244623e1c9b1300d197970800b56ef1c1c7",
+  "export_glb_sha256": "f232547ef317d1a217f761a332c1740842b21a9138c5e07e78884ceb7a621934",
+  "source_export_max_pitch_difference_degrees": 0.4979170286700967,
+  "source": {
+    "walk": {
+      "L": {
+        "early_swing_plantarflexion_degrees": 29.69605380272825,
+        "later_swing_dorsiflexion_degrees": 8.750619197010925,
+        "takeoff_sole_pitch_degrees": -23.999986390939974,
+        "landing_sole_pitch_degrees": 8.999990241297265,
+        "local_rig_ankle_x_range_degrees": [
+          -32.48978578730871,
+          11.452715204983871
+        ],
+        "cycle_samples": [
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": 8.999990241297265,
+            "local_rig_ankle_x_degrees": 9.467710260469133
+          },
+          {
+            "phase": 0.008333333333333333,
+            "sole_pitch_degrees": 8.908122981888255,
+            "local_rig_ankle_x_degrees": 8.742667750825708
+          },
+          {
+            "phase": 0.016666666666666666,
+            "sole_pitch_degrees": 8.647704097602945,
+            "local_rig_ankle_x_degrees": 8.07364389143379
+          },
+          {
+            "phase": 0.025,
+            "sole_pitch_degrees": 8.241510938874674,
+            "local_rig_ankle_x_degrees": 7.466785852546388
+          },
+          {
+            "phase": 0.03333333333333333,
+            "sole_pitch_degrees": 7.712325837889711,
+            "local_rig_ankle_x_degrees": 6.937354411203428
+          },
+          {
+            "phase": 0.041666666666666664,
+            "sole_pitch_degrees": 7.082915692968876,
+            "local_rig_ankle_x_degrees": 6.498367054189307
+          },
+          {
+            "phase": 0.05,
+            "sole_pitch_degrees": 6.376081159062622,
+            "local_rig_ankle_x_degrees": 6.156139572052172
+          },
+          {
+            "phase": 0.058333333333333334,
+            "sole_pitch_degrees": 5.614568594937531,
+            "local_rig_ankle_x_degrees": 5.909887773697941
+          },
+          {
+            "phase": 0.06666666666666667,
+            "sole_pitch_degrees": 4.821173332814363,
+            "local_rig_ankle_x_degrees": 5.7526683449484715
+          },
+          {
+            "phase": 0.075,
+            "sole_pitch_degrees": 4.018667541727291,
+            "local_rig_ankle_x_degrees": 5.6727269571289956
+          },
+          {
+            "phase": 0.08333333333333333,
+            "sole_pitch_degrees": 3.229818909281569,
+            "local_rig_ankle_x_degrees": 5.654541151577014
+          },
+          {
+            "phase": 0.09166666666666666,
+            "sole_pitch_degrees": 2.4774192678642555,
+            "local_rig_ankle_x_degrees": 5.679213075519569
+          },
+          {
+            "phase": 0.1,
+            "sole_pitch_degrees": 1.7842402625717888,
+            "local_rig_ankle_x_degrees": 5.72507993023032
+          },
+          {
+            "phase": 0.10833333333333334,
+            "sole_pitch_degrees": 1.1730629080483557,
+            "local_rig_ankle_x_degrees": 5.767505223373031
+          },
+          {
+            "phase": 0.11666666666666667,
+            "sole_pitch_degrees": 0.6666604209708035,
+            "local_rig_ankle_x_degrees": 5.779866585110285
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": 0.28780151644790836,
+            "local_rig_ankle_x_degrees": 5.7325794779389945
+          },
+          {
+            "phase": 0.13333333333333333,
+            "sole_pitch_degrees": 0.05927411041479793,
+            "local_rig_ankle_x_degrees": 5.59189508339648
+          },
+          {
+            "phase": 0.14166666666666666,
+            "sole_pitch_degrees": -8.537738498071357e-06,
+            "local_rig_ankle_x_degrees": 5.325226995839434
+          },
+          {
+            "phase": 0.15,
+            "sole_pitch_degrees": -1.0245286197685594e-05,
+            "local_rig_ankle_x_degrees": 5.048446386329361
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": -1.0245286197685594e-05,
+            "local_rig_ankle_x_degrees": 4.8110866405008395
+          },
+          {
+            "phase": 0.16666666666666666,
+            "sole_pitch_degrees": -1.3660381596914015e-05,
+            "local_rig_ankle_x_degrees": 4.585044091240206
+          },
+          {
+            "phase": 0.175,
+            "sole_pitch_degrees": -1.7075474960587113e-06,
+            "local_rig_ankle_x_degrees": 4.333634646288969
+          },
+          {
+            "phase": 0.18333333333333332,
+            "sole_pitch_degrees": -5.122642488176121e-06,
+            "local_rig_ankle_x_degrees": 4.011548965127378
+          },
+          {
+            "phase": 0.19166666666666668,
+            "sole_pitch_degrees": -5.122643404176252e-06,
+            "local_rig_ankle_x_degrees": 3.5687138637330134
+          },
+          {
+            "phase": 0.2,
+            "sole_pitch_degrees": -8.537738498071357e-06,
+            "local_rig_ankle_x_degrees": 2.962478652720552
+          },
+          {
+            "phase": 0.20833333333333334,
+            "sole_pitch_degrees": -3.4150951956729797e-06,
+            "local_rig_ankle_x_degrees": 2.2663282701531045
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": 1.5714172467548966
+          },
+          {
+            "phase": 0.225,
+            "sole_pitch_degrees": -1.7075474960587113e-06,
+            "local_rig_ankle_x_degrees": 0.8776098325161747
+          },
+          {
+            "phase": 0.23333333333333334,
+            "sole_pitch_degrees": -1.7075474960587113e-06,
+            "local_rig_ankle_x_degrees": 0.1848051354043358
+          },
+          {
+            "phase": 0.24166666666666667,
+            "sole_pitch_degrees": -5.122642488176121e-06,
+            "local_rig_ankle_x_degrees": -0.5071046201632464
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -3.4150953992285643e-06,
+            "local_rig_ankle_x_degrees": -1.198187322531662
+          },
+          {
+            "phase": 0.25833333333333336,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -1.8885592583395732
+          },
+          {
+            "phase": 0.26666666666666666,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -2.578414767813208
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -5.122642793509462e-06,
+            "local_rig_ankle_x_degrees": -3.267712336209017
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": -1.7075476996142836e-06,
+            "local_rig_ankle_x_degrees": -3.956628694671775
+          },
+          {
+            "phase": 0.2916666666666667,
+            "sole_pitch_degrees": 3.4150953992285643e-06,
+            "local_rig_ankle_x_degrees": -4.6452782488700795
+          },
+          {
+            "phase": 0.3,
+            "sole_pitch_degrees": -6.830190798457104e-06,
+            "local_rig_ankle_x_degrees": -5.33374424173444
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": 1.7075476996142836e-06,
+            "local_rig_ankle_x_degrees": -6.590911421687926
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": 6.830190798457104e-06,
+            "local_rig_ankle_x_degrees": -7.875651221547106
+          },
+          {
+            "phase": 0.325,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -9.083794718732825
+          },
+          {
+            "phase": 0.3333333333333333,
+            "sole_pitch_degrees": 5.122642793509462e-06,
+            "local_rig_ankle_x_degrees": -10.22793165943271
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": 8.537739006960378e-06,
+            "local_rig_ankle_x_degrees": -11.31477355827994
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": 6.830189577123742e-06,
+            "local_rig_ankle_x_degrees": -12.347619396643637
+          },
+          {
+            "phase": 0.35833333333333334,
+            "sole_pitch_degrees": 6.830190798457104e-06,
+            "local_rig_ankle_x_degrees": -13.327608962341541
+          },
+          {
+            "phase": 0.36666666666666664,
+            "sole_pitch_degrees": 3.4150949921174193e-06,
+            "local_rig_ankle_x_degrees": -14.254249627979771
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": 6.830190798457104e-06,
+            "local_rig_ankle_x_degrees": -15.125901294383873
+          },
+          {
+            "phase": 0.38333333333333336,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -15.939796881166346
+          },
+          {
+            "phase": 0.39166666666666666,
+            "sole_pitch_degrees": 6.830189984234815e-06,
+            "local_rig_ankle_x_degrees": -16.692087576729893
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": 3.4150949921174193e-06,
+            "local_rig_ankle_x_degrees": -17.37773440901433
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": 3.4150949921174193e-06,
+            "local_rig_ankle_x_degrees": -17.990287971895874
+          },
+          {
+            "phase": 0.4166666666666667,
+            "sole_pitch_degrees": 3.4150953992285643e-06,
+            "local_rig_ankle_x_degrees": -20.806431315752786
+          },
+          {
+            "phase": 0.425,
+            "sole_pitch_degrees": 8.537736971404655e-06,
+            "local_rig_ankle_x_degrees": -23.989557308619894
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -26.627468573632616
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": -0.00775568021745516,
+            "local_rig_ankle_x_degrees": -28.85547969598536
+          },
+          {
+            "phase": 0.45,
+            "sole_pitch_degrees": -0.2695254194344561,
+            "local_rig_ankle_x_degrees": -30.484080246966954
+          },
+          {
+            "phase": 0.4583333333333333,
+            "sole_pitch_degrees": -0.8731028824059308,
+            "local_rig_ankle_x_degrees": -31.653275444184324
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": -1.77776872255028,
+            "local_rig_ankle_x_degrees": -32.32215586960367
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": -2.942868878667,
+            "local_rig_ankle_x_degrees": -32.48978578730871
+          },
+          {
+            "phase": 0.48333333333333334,
+            "sole_pitch_degrees": -4.327687162243373,
+            "local_rig_ankle_x_degrees": -32.18165887837651
+          },
+          {
+            "phase": 0.49166666666666664,
+            "sole_pitch_degrees": -5.891536613273627,
+            "local_rig_ankle_x_degrees": -31.419911785907082
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": -7.593735361905815,
+            "local_rig_ankle_x_degrees": -30.200361019033796
+          },
+          {
+            "phase": 0.5083333333333333,
+            "sole_pitch_degrees": -9.39360777584189,
+            "local_rig_ankle_x_degrees": -28.721232327848757
+          },
+          {
+            "phase": 0.5166666666666667,
+            "sole_pitch_degrees": -11.250419019572684,
+            "local_rig_ankle_x_degrees": -27.337932898266292
+          },
+          {
+            "phase": 0.525,
+            "sole_pitch_degrees": -13.123529090449155,
+            "local_rig_ankle_x_degrees": -26.04640389037212
+          },
+          {
+            "phase": 0.5333333333333333,
+            "sole_pitch_degrees": -14.972217471971527,
+            "local_rig_ankle_x_degrees": -24.844206926632545
+          },
+          {
+            "phase": 0.5416666666666666,
+            "sole_pitch_degrees": -16.75579576544238,
+            "local_rig_ankle_x_degrees": -23.732639742989864
+          },
+          {
+            "phase": 0.55,
+            "sole_pitch_degrees": -18.433591328256615,
+            "local_rig_ankle_x_degrees": -22.717376519097076
+          },
+          {
+            "phase": 0.5583333333333333,
+            "sole_pitch_degrees": -19.964893719709178,
+            "local_rig_ankle_x_degrees": -21.808097340555374
+          },
+          {
+            "phase": 0.5666666666666667,
+            "sole_pitch_degrees": -21.30901894941263,
+            "local_rig_ankle_x_degrees": -21.01747050072784
+          },
+          {
+            "phase": 0.575,
+            "sole_pitch_degrees": -22.425289809523047,
+            "local_rig_ankle_x_degrees": -20.359168330785547
+          },
+          {
+            "phase": 0.5833333333333334,
+            "sole_pitch_degrees": -23.27300290338641,
+            "local_rig_ankle_x_degrees": -19.845398086322604
+          },
+          {
+            "phase": 0.5916666666666667,
+            "sole_pitch_degrees": -23.81147173324453,
+            "local_rig_ankle_x_degrees": -19.483322928231058
+          },
+          {
+            "phase": 0.6,
+            "sole_pitch_degrees": -23.999986390939974,
+            "local_rig_ankle_x_degrees": -19.270028073282607
+          },
+          {
+            "phase": 0.6083333333333333,
+            "sole_pitch_degrees": -24.22250099441542,
+            "local_rig_ankle_x_degrees": -19.08274599378815
+          },
+          {
+            "phase": 0.6166666666666667,
+            "sole_pitch_degrees": -24.81565627565919,
+            "local_rig_ankle_x_degrees": -18.602190959258976
+          },
+          {
+            "phase": 0.625,
+            "sole_pitch_degrees": -25.66779730701061,
+            "local_rig_ankle_x_degrees": -17.955901384519446
+          },
+          {
+            "phase": 0.6333333333333333,
+            "sole_pitch_degrees": -26.667265774737093,
+            "local_rig_ankle_x_degrees": -17.192236716440537
+          },
+          {
+            "phase": 0.6416666666666667,
+            "sole_pitch_degrees": -27.702475360255466,
+            "local_rig_ankle_x_degrees": -16.35233347684595
+          },
+          {
+            "phase": 0.65,
+            "sole_pitch_degrees": -28.661778505019814,
+            "local_rig_ankle_x_degrees": -15.532116549986625
+          },
+          {
+            "phase": 0.6583333333333333,
+            "sole_pitch_degrees": -29.433537639511474,
+            "local_rig_ankle_x_degrees": -14.821264612117549
+          },
+          {
+            "phase": 0.6666666666666666,
+            "sole_pitch_degrees": -29.906100459060593,
+            "local_rig_ankle_x_degrees": -14.304063905143966
+          },
+          {
+            "phase": 0.675,
+            "sole_pitch_degrees": -29.95622206618478,
+            "local_rig_ankle_x_degrees": -14.086985125395328
+          },
+          {
+            "phase": 0.6833333333333333,
+            "sole_pitch_degrees": -29.39901230306918,
+            "local_rig_ankle_x_degrees": -14.335825992331818
+          },
+          {
+            "phase": 0.6916666666666667,
+            "sole_pitch_degrees": -28.261876409577262,
+            "local_rig_ankle_x_degrees": -15.030206929017409
+          },
+          {
+            "phase": 0.7,
+            "sole_pitch_degrees": -26.62194988769465,
+            "local_rig_ankle_x_degrees": -16.092077656259075
+          },
+          {
+            "phase": 0.7083333333333334,
+            "sole_pitch_degrees": -24.556319337076562,
+            "local_rig_ankle_x_degrees": -17.41514335509849
+          },
+          {
+            "phase": 0.7166666666666667,
+            "sole_pitch_degrees": -22.14212860989374,
+            "local_rig_ankle_x_degrees": -18.88917160252082
+          },
+          {
+            "phase": 0.725,
+            "sole_pitch_degrees": -19.45647498025603,
+            "local_rig_ankle_x_degrees": -20.422455156087594
+          },
+          {
+            "phase": 0.7333333333333333,
+            "sole_pitch_degrees": -16.57647442846612,
+            "local_rig_ankle_x_degrees": -21.926252783007424
+          },
+          {
+            "phase": 0.7416666666666667,
+            "sole_pitch_degrees": -13.579277005155186,
+            "local_rig_ankle_x_degrees": -23.316793920657393
+          },
+          {
+            "phase": 0.75,
+            "sole_pitch_degrees": -10.541952012156774,
+            "local_rig_ankle_x_degrees": -24.516866695565096
+          },
+          {
+            "phase": 0.7583333333333333,
+            "sole_pitch_degrees": -7.541660547298119,
+            "local_rig_ankle_x_degrees": -25.45672121592636
+          },
+          {
+            "phase": 0.7666666666666667,
+            "sole_pitch_degrees": -4.6555137367361095,
+            "local_rig_ankle_x_degrees": -26.074663798063046
+          },
+          {
+            "phase": 0.775,
+            "sole_pitch_degrees": -1.9605854806928955,
+            "local_rig_ankle_x_degrees": -26.317488975888047
+          },
+          {
+            "phase": 0.7833333333333333,
+            "sole_pitch_degrees": 0.46594183670301487,
+            "local_rig_ankle_x_degrees": -26.6221871298569
+          },
+          {
+            "phase": 0.7916666666666666,
+            "sole_pitch_degrees": 2.5470022523948983,
+            "local_rig_ankle_x_degrees": -27.971407330575587
+          },
+          {
+            "phase": 0.8,
+            "sole_pitch_degrees": 4.205452617329608,
+            "local_rig_ankle_x_degrees": -28.543999164170682
+          },
+          {
+            "phase": 0.8083333333333333,
+            "sole_pitch_degrees": 5.364166015248427,
+            "local_rig_ankle_x_degrees": -28.290056145924193
+          },
+          {
+            "phase": 0.8166666666666667,
+            "sole_pitch_degrees": 5.946032981561606,
+            "local_rig_ankle_x_degrees": -26.968658720789556
+          },
+          {
+            "phase": 0.825,
+            "sole_pitch_degrees": 6.0101240650438115,
+            "local_rig_ankle_x_degrees": -24.67695608442644
+          },
+          {
+            "phase": 0.8333333333333334,
+            "sole_pitch_degrees": 6.068593245039343,
+            "local_rig_ankle_x_degrees": -22.21786941716841
+          },
+          {
+            "phase": 0.8416666666666667,
+            "sole_pitch_degrees": 6.1720558681024364,
+            "local_rig_ankle_x_degrees": -19.68595585788512
+          },
+          {
+            "phase": 0.85,
+            "sole_pitch_degrees": 6.312501236162662,
+            "local_rig_ankle_x_degrees": -17.082210906648093
+          },
+          {
+            "phase": 0.8583333333333333,
+            "sole_pitch_degrees": 6.481874793623372,
+            "local_rig_ankle_x_degrees": -14.403490968891841
+          },
+          {
+            "phase": 0.8666666666666667,
+            "sole_pitch_degrees": 6.67214260258326,
+            "local_rig_ankle_x_degrees": -11.64063249207114
+          },
+          {
+            "phase": 0.875,
+            "sole_pitch_degrees": 6.875289121454205,
+            "local_rig_ankle_x_degrees": -8.774870385215026
+          },
+          {
+            "phase": 0.8833333333333333,
+            "sole_pitch_degrees": 7.083246514530898,
+            "local_rig_ankle_x_degrees": -5.770564721234374
+          },
+          {
+            "phase": 0.8916666666666667,
+            "sole_pitch_degrees": 7.287981096715871,
+            "local_rig_ankle_x_degrees": -2.5584063689698904
+          },
+          {
+            "phase": 0.9,
+            "sole_pitch_degrees": 7.481463240669532,
+            "local_rig_ankle_x_degrees": 1.0151122126791097
+          },
+          {
+            "phase": 0.9083333333333333,
+            "sole_pitch_degrees": 7.655674373610019,
+            "local_rig_ankle_x_degrees": 5.424904642152485
+          },
+          {
+            "phase": 0.9166666666666666,
+            "sole_pitch_degrees": 7.802533713527019,
+            "local_rig_ankle_x_degrees": 8.331707221297089
+          },
+          {
+            "phase": 0.925,
+            "sole_pitch_degrees": 7.91404540624758,
+            "local_rig_ankle_x_degrees": 9.226795828064445
+          },
+          {
+            "phase": 0.9333333333333333,
+            "sole_pitch_degrees": 7.982157420709044,
+            "local_rig_ankle_x_degrees": 10.034944664433999
+          },
+          {
+            "phase": 0.9416666666666667,
+            "sole_pitch_degrees": 8.002261502181629,
+            "local_rig_ankle_x_degrees": 10.749438800677986
+          },
+          {
+            "phase": 0.95,
+            "sole_pitch_degrees": 8.074057358440712,
+            "local_rig_ankle_x_degrees": 11.236544840394846
+          },
+          {
+            "phase": 0.9583333333333334,
+            "sole_pitch_degrees": 8.223028216838472,
+            "local_rig_ankle_x_degrees": 11.452715204983871
+          },
+          {
+            "phase": 0.9666666666666667,
+            "sole_pitch_degrees": 8.416991499374586,
+            "local_rig_ankle_x_degrees": 11.425508853972419
+          },
+          {
+            "phase": 0.975,
+            "sole_pitch_degrees": 8.623824774030311,
+            "local_rig_ankle_x_degrees": 11.18330693090918
+          },
+          {
+            "phase": 0.9833333333333333,
+            "sole_pitch_degrees": 8.811370653638543,
+            "local_rig_ankle_x_degrees": 10.7557447728292
+          },
+          {
+            "phase": 0.9916666666666667,
+            "sole_pitch_degrees": 8.94747987371239,
+            "local_rig_ankle_x_degrees": 10.173263679089573
+          },
+          {
+            "phase": 1.0,
+            "sole_pitch_degrees": 8.999990241297265,
+            "local_rig_ankle_x_degrees": 9.467710260469133
+          }
+        ]
+      },
+      "R": {
+        "early_swing_plantarflexion_degrees": 29.6962840355772,
+        "later_swing_dorsiflexion_degrees": 8.748562678976832,
+        "takeoff_sole_pitch_degrees": -23.99999141246459,
+        "landing_sole_pitch_degrees": 8.999990325108103,
+        "local_rig_ankle_x_range_degrees": [
+          -32.33383549308439,
+          11.454304931513192
+        ],
+        "cycle_samples": [
+          {
+            "phase": -0.5,
+            "sole_pitch_degrees": 8.999990325108103,
+            "local_rig_ankle_x_degrees": 9.469728581368873
+          },
+          {
+            "phase": -0.49166666666666664,
+            "sole_pitch_degrees": 8.908128143204246,
+            "local_rig_ankle_x_degrees": 8.744594717945299
+          },
+          {
+            "phase": -0.48333333333333334,
+            "sole_pitch_degrees": 8.647711511301523,
+            "local_rig_ankle_x_degrees": 8.075415471749762
+          },
+          {
+            "phase": -0.475,
+            "sole_pitch_degrees": 8.24151187099971,
+            "local_rig_ankle_x_degrees": 7.468356796055491
+          },
+          {
+            "phase": -0.4666666666666667,
+            "sole_pitch_degrees": 7.712324004675746,
+            "local_rig_ankle_x_degrees": 6.938620557520819
+          },
+          {
+            "phase": -0.4583333333333333,
+            "sole_pitch_degrees": 7.082923323351554,
+            "local_rig_ankle_x_degrees": 6.4993147429366465
+          },
+          {
+            "phase": -0.45,
+            "sole_pitch_degrees": 6.376090582453682,
+            "local_rig_ankle_x_degrees": 6.1568076499303634
+          },
+          {
+            "phase": -0.44166666666666665,
+            "sole_pitch_degrees": 5.614572356527713,
+            "local_rig_ankle_x_degrees": 5.910291608632617
+          },
+          {
+            "phase": -0.43333333333333335,
+            "sole_pitch_degrees": 4.821180118190316,
+            "local_rig_ankle_x_degrees": 5.75285660203747
+          },
+          {
+            "phase": -0.425,
+            "sole_pitch_degrees": 4.018676804480577,
+            "local_rig_ankle_x_degrees": 5.672730799110404
+          },
+          {
+            "phase": -0.4166666666666667,
+            "sole_pitch_degrees": 3.2298300734850685,
+            "local_rig_ankle_x_degrees": 5.65441223175643
+          },
+          {
+            "phase": -0.4083333333333333,
+            "sole_pitch_degrees": 2.477422236907612,
+            "local_rig_ankle_x_degrees": 5.67902737975151
+          },
+          {
+            "phase": -0.4,
+            "sole_pitch_degrees": 1.7842400499081281,
+            "local_rig_ankle_x_degrees": 5.724935215597281
+          },
+          {
+            "phase": -0.39166666666666666,
+            "sole_pitch_degrees": 1.1730678897863331,
+            "local_rig_ankle_x_degrees": 5.767734888483873
+          },
+          {
+            "phase": -0.3833333333333333,
+            "sole_pitch_degrees": 0.6666568869018319,
+            "local_rig_ankle_x_degrees": 5.779726993119123
+          },
+          {
+            "phase": -0.375,
+            "sole_pitch_degrees": 0.2877997403053926,
+            "local_rig_ankle_x_degrees": 5.732506907179063
+          },
+          {
+            "phase": -0.3666666666666667,
+            "sole_pitch_degrees": 0.059282641081186756,
+            "local_rig_ankle_x_degrees": 5.59188270367861
+          },
+          {
+            "phase": -0.35833333333333334,
+            "sole_pitch_degrees": -1.7075472925031871e-06,
+            "local_rig_ankle_x_degrees": 5.325226568952611
+          },
+          {
+            "phase": -0.35,
+            "sole_pitch_degrees": -8.537736462515874e-06,
+            "local_rig_ankle_x_degrees": 5.048445959442538
+          },
+          {
+            "phase": -0.3416666666666667,
+            "sole_pitch_degrees": -5.122642182842817e-06,
+            "local_rig_ankle_x_degrees": 4.811086213614017
+          },
+          {
+            "phase": -0.33333333333333337,
+            "sole_pitch_degrees": -1.0245283755019018e-05,
+            "local_rig_ankle_x_degrees": 4.585044091240206
+          },
+          {
+            "phase": -0.325,
+            "sole_pitch_degrees": -3.4150941778954206e-06,
+            "local_rig_ankle_x_degrees": 4.333634219402146
+          },
+          {
+            "phase": -0.31666666666666665,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": 4.011545976919616
+          },
+          {
+            "phase": -0.30833333333333335,
+            "sole_pitch_degrees": -3.4150949921174193e-06,
+            "local_rig_ankle_x_degrees": 3.5687136502896015
+          },
+          {
+            "phase": -0.3,
+            "sole_pitch_degrees": -1.7075470889477118e-06,
+            "local_rig_ankle_x_degrees": 2.9624784392771404
+          },
+          {
+            "phase": -0.29166666666666663,
+            "sole_pitch_degrees": -1.7075472925031871e-06,
+            "local_rig_ankle_x_degrees": 2.2663282701531045
+          },
+          {
+            "phase": -0.2833333333333333,
+            "sole_pitch_degrees": -3.4150949921174193e-06,
+            "local_rig_ankle_x_degrees": 1.5714171400331909
+          },
+          {
+            "phase": -0.275,
+            "sole_pitch_degrees": 1.7075472925031871e-06,
+            "local_rig_ankle_x_degrees": 0.8776097791553219
+          },
+          {
+            "phase": -0.26666666666666666,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": 0.18480514874454904
+          },
+          {
+            "phase": -0.2583333333333333,
+            "sole_pitch_degrees": -6.830188355790817e-06,
+            "local_rig_ankle_x_degrees": -0.5071046201632464
+          },
+          {
+            "phase": -0.25,
+            "sole_pitch_degrees": -1.7075473942809432e-06,
+            "local_rig_ankle_x_degrees": -1.1981874292533679
+          },
+          {
+            "phase": -0.24166666666666664,
+            "sole_pitch_degrees": -1.7075470889477118e-06,
+            "local_rig_ankle_x_degrees": -1.8885592583395732
+          },
+          {
+            "phase": -0.23333333333333334,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -2.5784149812566195
+          },
+          {
+            "phase": -0.22499999999999998,
+            "sole_pitch_degrees": -1.7075470889477118e-06,
+            "local_rig_ankle_x_degrees": -3.2677121227656056
+          },
+          {
+            "phase": -0.21666666666666667,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -3.9566282677849522
+          },
+          {
+            "phase": -0.20833333333333331,
+            "sole_pitch_degrees": -1.7075472925031871e-06,
+            "local_rig_ankle_x_degrees": -4.6452782488700795
+          },
+          {
+            "phase": -0.2,
+            "sole_pitch_degrees": -8.537736462515874e-06,
+            "local_rig_ankle_x_degrees": -5.33374424173444
+          },
+          {
+            "phase": -0.19166666666666665,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -6.688540011249972
+          },
+          {
+            "phase": -0.18333333333333335,
+            "sole_pitch_degrees": -3.4150941778954206e-06,
+            "local_rig_ankle_x_degrees": -7.963084473112439
+          },
+          {
+            "phase": -0.175,
+            "sole_pitch_degrees": -1.7075472925031871e-06,
+            "local_rig_ankle_x_degrees": -9.163997361288054
+          },
+          {
+            "phase": -0.16666666666666669,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -10.302754674242907
+          },
+          {
+            "phase": -0.15833333333333333,
+            "sole_pitch_degrees": -6.830189170012719e-06,
+            "local_rig_ankle_x_degrees": -11.385490775625314
+          },
+          {
+            "phase": -0.15000000000000002,
+            "sole_pitch_degrees": -3.4150945850063712e-06,
+            "local_rig_ankle_x_degrees": -12.415183627913402
+          },
+          {
+            "phase": -0.14166666666666666,
+            "sole_pitch_degrees": -5.12264187750955e-06,
+            "local_rig_ankle_x_degrees": -13.392733962303968
+          },
+          {
+            "phase": -0.13333333333333336,
+            "sole_pitch_degrees": -1.7075470889477118e-06,
+            "local_rig_ankle_x_degrees": -14.317538160829109
+          },
+          {
+            "phase": -0.125,
+            "sole_pitch_degrees": -6.830188355790817e-06,
+            "local_rig_ankle_x_degrees": -15.187875015817983
+          },
+          {
+            "phase": -0.11666666666666664,
+            "sole_pitch_degrees": -6.830189170012719e-06,
+            "local_rig_ankle_x_degrees": -16.000944149710886
+          },
+          {
+            "phase": -0.10833333333333334,
+            "sole_pitch_degrees": 0.0,
+            "local_rig_ankle_x_degrees": -16.752855769775493
+          },
+          {
+            "phase": -0.09999999999999998,
+            "sole_pitch_degrees": -6.830189170012719e-06,
+            "local_rig_ankle_x_degrees": -17.43863066810687
+          },
+          {
+            "phase": -0.09166666666666667,
+            "sole_pitch_degrees": -1.7075472925031871e-06,
+            "local_rig_ankle_x_degrees": -18.051810900844764
+          },
+          {
+            "phase": -0.08333333333333331,
+            "sole_pitch_degrees": -3.4150941778954206e-06,
+            "local_rig_ankle_x_degrees": -20.699094892946036
+          },
+          {
+            "phase": -0.07500000000000001,
+            "sole_pitch_degrees": -3.4150947885618834e-06,
+            "local_rig_ankle_x_degrees": -23.8994278398797
+          },
+          {
+            "phase": -0.06666666666666665,
+            "sole_pitch_degrees": -6.830188355790817e-06,
+            "local_rig_ankle_x_degrees": -26.546798916892886
+          },
+          {
+            "phase": -0.05833333333333335,
+            "sole_pitch_degrees": -0.007767632586008776,
+            "local_rig_ankle_x_degrees": -28.780620822682017
+          },
+          {
+            "phase": -0.04999999999999999,
+            "sole_pitch_degrees": -0.26953734000369156,
+            "local_rig_ankle_x_degrees": -30.398388693639973
+          },
+          {
+            "phase": -0.041666666666666685,
+            "sole_pitch_degrees": -0.8731027262890106,
+            "local_rig_ankle_x_degrees": -31.516845830607902
+          },
+          {
+            "phase": -0.033333333333333326,
+            "sole_pitch_degrees": -1.7777803517882937,
+            "local_rig_ankle_x_degrees": -32.16539619796271
+          },
+          {
+            "phase": -0.025000000000000022,
+            "sole_pitch_degrees": -2.942870057967774,
+            "local_rig_ankle_x_degrees": -32.33383549308439
+          },
+          {
+            "phase": -0.016666666666666663,
+            "sole_pitch_degrees": -4.327686904538311,
+            "local_rig_ankle_x_degrees": -32.025257791666974
+          },
+          {
+            "phase": -0.00833333333333336,
+            "sole_pitch_degrees": -5.891549796757608,
+            "local_rig_ankle_x_degrees": -31.2621993028769
+          },
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": -7.593748902483553,
+            "local_rig_ankle_x_degrees": -30.040821460400636
+          },
+          {
+            "phase": 0.008333333333333304,
+            "sole_pitch_degrees": -9.393617326342767,
+            "local_rig_ankle_x_degrees": -28.56121294842641
+          },
+          {
+            "phase": 0.01666666666666672,
+            "sole_pitch_degrees": -11.250435766921438,
+            "local_rig_ankle_x_degrees": -27.18089318886936
+          },
+          {
+            "phase": 0.025000000000000022,
+            "sole_pitch_degrees": -13.12353651765484,
+            "local_rig_ankle_x_degrees": -25.895120322898215
+          },
+          {
+            "phase": 0.033333333333333326,
+            "sole_pitch_degrees": -14.97222901901917,
+            "local_rig_ankle_x_degrees": -24.700757586136643
+          },
+          {
+            "phase": 0.04166666666666663,
+            "sole_pitch_degrees": -16.755802305636692,
+            "local_rig_ankle_x_degrees": -23.598324072961564
+          },
+          {
+            "phase": 0.050000000000000044,
+            "sole_pitch_degrees": -18.43360374792508,
+            "local_rig_ankle_x_degrees": -22.592898029020883
+          },
+          {
+            "phase": 0.05833333333333335,
+            "sole_pitch_degrees": -19.964897518948526,
+            "local_rig_ankle_x_degrees": -21.693795832342502
+          },
+          {
+            "phase": 0.06666666666666665,
+            "sole_pitch_degrees": -21.30903504923125,
+            "local_rig_ankle_x_degrees": -20.91323327625698
+          },
+          {
+            "phase": 0.07499999999999996,
+            "sole_pitch_degrees": -22.4253008584539,
+            "local_rig_ankle_x_degrees": -20.264571918328162
+          },
+          {
+            "phase": 0.08333333333333337,
+            "sole_pitch_degrees": -23.272994368780356,
+            "local_rig_ankle_x_degrees": -19.7597577594144
+          },
+          {
+            "phase": 0.09166666666666667,
+            "sole_pitch_degrees": -23.811472100100445,
+            "local_rig_ankle_x_degrees": -19.405667092462597
+          },
+          {
+            "phase": 0.09999999999999998,
+            "sole_pitch_degrees": -23.99999141246459,
+            "local_rig_ankle_x_degrees": -19.19907777573181
+          },
+          {
+            "phase": 0.10833333333333328,
+            "sole_pitch_degrees": -24.222507379333017,
+            "local_rig_ankle_x_degrees": -18.99961917649451
+          },
+          {
+            "phase": 0.1166666666666667,
+            "sole_pitch_degrees": -24.81565340902785,
+            "local_rig_ankle_x_degrees": -18.55791255041708
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": -25.667791270400894,
+            "local_rig_ankle_x_degrees": -17.91330490976066
+          },
+          {
+            "phase": 0.1333333333333333,
+            "sole_pitch_degrees": -26.667267287026007,
+            "local_rig_ankle_x_degrees": -17.145270628160237
+          },
+          {
+            "phase": 0.14166666666666672,
+            "sole_pitch_degrees": -27.702479744121234,
+            "local_rig_ankle_x_degrees": -16.30320051105146
+          },
+          {
+            "phase": 0.15000000000000002,
+            "sole_pitch_degrees": -28.661784498281254,
+            "local_rig_ankle_x_degrees": -15.484530622039147
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": -29.43353111769161,
+            "local_rig_ankle_x_degrees": -14.775471608827198
+          },
+          {
+            "phase": 0.16666666666666663,
+            "sole_pitch_degrees": -29.906100014017685,
+            "local_rig_ankle_x_degrees": -14.260167133121941
+          },
+          {
+            "phase": 0.17500000000000004,
+            "sole_pitch_degrees": -29.956228785773455,
+            "local_rig_ankle_x_degrees": -14.044968362942349
+          },
+          {
+            "phase": 0.18333333333333335,
+            "sole_pitch_degrees": -29.399019175000333,
+            "local_rig_ankle_x_degrees": -14.295521046039573
+          },
+          {
+            "phase": 0.19166666666666665,
+            "sole_pitch_degrees": -28.261891223406508,
+            "local_rig_ankle_x_degrees": -14.991462680950512
+          },
+          {
+            "phase": 0.19999999999999996,
+            "sole_pitch_degrees": -26.62196209225074,
+            "local_rig_ankle_x_degrees": -16.05480360641102
+          },
+          {
+            "phase": 0.20833333333333337,
+            "sole_pitch_degrees": -24.556326084834055,
+            "local_rig_ankle_x_degrees": -17.37916191855086
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": -22.142126035558416,
+            "local_rig_ankle_x_degrees": -18.85443155285484
+          },
+          {
+            "phase": 0.22499999999999998,
+            "sole_pitch_degrees": -19.456475732724893,
+            "local_rig_ankle_x_degrees": -20.38891380462095
+          },
+          {
+            "phase": 0.23333333333333328,
+            "sole_pitch_degrees": -16.57647933821029,
+            "local_rig_ankle_x_degrees": -21.89389646936178
+          },
+          {
+            "phase": 0.2416666666666667,
+            "sole_pitch_degrees": -13.579270478199248,
+            "local_rig_ankle_x_degrees": -23.28563630521109
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -10.541958335650918,
+            "local_rig_ankle_x_degrees": -24.486904363223545
+          },
+          {
+            "phase": 0.2583333333333333,
+            "sole_pitch_degrees": -7.541671052068645,
+            "local_rig_ankle_x_degrees": -25.427945628953097
+          },
+          {
+            "phase": 0.2666666666666667,
+            "sole_pitch_degrees": -4.655522246304493,
+            "local_rig_ankle_x_degrees": -26.047049343248688
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -1.9605937797562203,
+            "local_rig_ankle_x_degrees": -26.2909878419084
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": 0.4659384217215076,
+            "local_rig_ankle_x_degrees": -26.67739213382353
+          },
+          {
+            "phase": 0.29166666666666663,
+            "sole_pitch_degrees": 2.546984738501221,
+            "local_rig_ankle_x_degrees": -27.987789539299865
+          },
+          {
+            "phase": 0.30000000000000004,
+            "sole_pitch_degrees": 4.205431931496064,
+            "local_rig_ankle_x_degrees": -28.539962522371205
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": 5.364145933678046,
+            "local_rig_ankle_x_degrees": -28.250996001608183
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": 5.946024843534151,
+            "local_rig_ankle_x_degrees": -26.92347018924075
+          },
+          {
+            "phase": 0.32499999999999996,
+            "sole_pitch_degrees": 6.010127818941607,
+            "local_rig_ankle_x_degrees": -24.63114259056858
+          },
+          {
+            "phase": 0.33333333333333337,
+            "sole_pitch_degrees": 6.068575543176059,
+            "local_rig_ankle_x_degrees": -22.171024564745878
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": 6.172050040809851,
+            "local_rig_ankle_x_degrees": -19.63710122229931
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": 6.312489926515882,
+            "local_rig_ankle_x_degrees": -17.030245119895344
+          },
+          {
+            "phase": 0.3583333333333333,
+            "sole_pitch_degrees": 6.4818698582544,
+            "local_rig_ankle_x_degrees": -14.347158983712161
+          },
+          {
+            "phase": 0.3666666666666667,
+            "sole_pitch_degrees": 6.672141124226385,
+            "local_rig_ankle_x_degrees": -11.5783351904251
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": 6.875292511991259,
+            "local_rig_ankle_x_degrees": -8.70434526694006
+          },
+          {
+            "phase": 0.3833333333333333,
+            "sole_pitch_degrees": 7.0832405987821305,
+            "local_rig_ankle_x_degrees": -5.688423585615332
+          },
+          {
+            "phase": 0.3916666666666667,
+            "sole_pitch_degrees": 7.2879777092115265,
+            "local_rig_ankle_x_degrees": -2.4585754702873377
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": 7.48146823405819,
+            "local_rig_ankle_x_degrees": 1.1463735074879453
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": 7.655676720848398,
+            "local_rig_ankle_x_degrees": 5.639774709478269
+          },
+          {
+            "phase": 0.41666666666666663,
+            "sole_pitch_degrees": 7.802536470586734,
+            "local_rig_ankle_x_degrees": 8.332986174219174
+          },
+          {
+            "phase": 0.42500000000000004,
+            "sole_pitch_degrees": 7.914049069454141,
+            "local_rig_ankle_x_degrees": 9.228175526276786
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": 7.982163504545942,
+            "local_rig_ankle_x_degrees": 10.036382419254286
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": 8.002271436930954,
+            "local_rig_ankle_x_degrees": 10.750899607386721
+          },
+          {
+            "phase": 0.44999999999999996,
+            "sole_pitch_degrees": 8.074067753807231,
+            "local_rig_ankle_x_degrees": 11.238026137671092
+          },
+          {
+            "phase": 0.45833333333333337,
+            "sole_pitch_degrees": 8.22303666679808,
+            "local_rig_ankle_x_degrees": 11.454304931513192
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": 8.416998445482974,
+            "local_rig_ankle_x_degrees": 11.427182250319072
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": 8.6238321910775,
+            "local_rig_ankle_x_degrees": 11.185143398022268
+          },
+          {
+            "phase": 0.4833333333333333,
+            "sole_pitch_degrees": 8.811368966243581,
+            "local_rig_ankle_x_degrees": 10.757649541833986
+          },
+          {
+            "phase": 0.4916666666666667,
+            "sole_pitch_degrees": 8.947484402872183,
+            "local_rig_ankle_x_degrees": 10.17530078300953
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": 8.999990325108103,
+            "local_rig_ankle_x_degrees": 9.469728581368873
+          }
+        ]
+      }
+    },
+    "run": {
+      "L": {
+        "early_swing_plantarflexion_degrees": 41.99846785065369,
+        "later_swing_dorsiflexion_degrees": 11.374990163893067,
+        "takeoff_sole_pitch_degrees": -32.01075889862618,
+        "landing_sole_pitch_degrees": 11.999986603091685,
+        "local_rig_ankle_x_range_degrees": [
+          -34.880748147785035,
+          20.71936518685534
+        ],
+        "cycle_samples": [
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": 11.999986603091685,
+            "local_rig_ankle_x_degrees": 10.684611767718101
+          },
+          {
+            "phase": 0.008333333333333333,
+            "sole_pitch_degrees": 11.877502712394865,
+            "local_rig_ankle_x_degrees": 9.389462759563822
+          },
+          {
+            "phase": 0.016666666666666666,
+            "sole_pitch_degrees": 11.530157265301714,
+            "local_rig_ankle_x_degrees": 8.061279541488775
+          },
+          {
+            "phase": 0.025,
+            "sole_pitch_degrees": 10.989034288147813,
+            "local_rig_ankle_x_degrees": 7.293153906108201
+          },
+          {
+            "phase": 0.03333333333333333,
+            "sole_pitch_degrees": 10.282486677405888,
+            "local_rig_ankle_x_degrees": 6.618750845858075
+          },
+          {
+            "phase": 0.041666666666666664,
+            "sole_pitch_degrees": 9.443909841700696,
+            "local_rig_ankle_x_degrees": 6.157015116926403
+          },
+          {
+            "phase": 0.05,
+            "sole_pitch_degrees": 8.506364193450262,
+            "local_rig_ankle_x_degrees": 5.828252925851125
+          },
+          {
+            "phase": 0.058333333333333334,
+            "sole_pitch_degrees": 7.463261206656994,
+            "local_rig_ankle_x_degrees": 5.603234051192347
+          },
+          {
+            "phase": 0.06666666666666667,
+            "sole_pitch_degrees": 6.495799023374287,
+            "local_rig_ankle_x_degrees": 5.416847580252808
+          },
+          {
+            "phase": 0.075,
+            "sole_pitch_degrees": 5.233989698563129,
+            "local_rig_ankle_x_degrees": 5.3077464073192555
+          },
+          {
+            "phase": 0.08333333333333333,
+            "sole_pitch_degrees": 4.306438526144503,
+            "local_rig_ankle_x_degrees": 5.121398356193798
+          },
+          {
+            "phase": 0.09166666666666666,
+            "sole_pitch_degrees": 3.427269711513606,
+            "local_rig_ankle_x_degrees": 3.555269703568901
+          },
+          {
+            "phase": 0.1,
+            "sole_pitch_degrees": 2.3121739462812805,
+            "local_rig_ankle_x_degrees": 1.3256207231975285
+          },
+          {
+            "phase": 0.10833333333333334,
+            "sole_pitch_degrees": 1.5852350035134497,
+            "local_rig_ankle_x_degrees": -0.7637499920826805
+          },
+          {
+            "phase": 0.11666666666666667,
+            "sole_pitch_degrees": 0.8869134959607002,
+            "local_rig_ankle_x_degrees": -2.826653297442267
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": 0.383741764409593,
+            "local_rig_ankle_x_degrees": -5.0078161522778935
+          },
+          {
+            "phase": 0.13333333333333333,
+            "sole_pitch_degrees": 0.0650200160254163,
+            "local_rig_ankle_x_degrees": -7.295552156280523
+          },
+          {
+            "phase": 0.14166666666666666,
+            "sole_pitch_degrees": 0.00844211576580059,
+            "local_rig_ankle_x_degrees": -9.723960175107795
+          },
+          {
+            "phase": 0.15,
+            "sole_pitch_degrees": -0.0021429723620166557,
+            "local_rig_ankle_x_degrees": -12.109128827620655
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": 0.000659113333449588,
+            "local_rig_ankle_x_degrees": -14.322379057403355
+          },
+          {
+            "phase": 0.16666666666666666,
+            "sole_pitch_degrees": 5.122642488176121e-06,
+            "local_rig_ankle_x_degrees": -16.39677068758605
+          },
+          {
+            "phase": 0.175,
+            "sole_pitch_degrees": -0.0016921793663786505,
+            "local_rig_ankle_x_degrees": -18.33406676074825
+          },
+          {
+            "phase": 0.18333333333333332,
+            "sole_pitch_degrees": 0.007602001407844915,
+            "local_rig_ankle_x_degrees": -20.138694947019413
+          },
+          {
+            "phase": 0.19166666666666668,
+            "sole_pitch_degrees": -0.022392779392603483,
+            "local_rig_ankle_x_degrees": -21.812704303150547
+          },
+          {
+            "phase": 0.2,
+            "sole_pitch_degrees": 0.025085581652134883,
+            "local_rig_ankle_x_degrees": -23.354844904523535
+          },
+          {
+            "phase": 0.20833333333333334,
+            "sole_pitch_degrees": 5.122642488176121e-06,
+            "local_rig_ankle_x_degrees": -24.763667043487047
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": -0.0072297551980873955,
+            "local_rig_ankle_x_degrees": -26.036061276421428
+          },
+          {
+            "phase": 0.225,
+            "sole_pitch_degrees": 0.0008435284127138419,
+            "local_rig_ankle_x_degrees": -27.159598366584554
+          },
+          {
+            "phase": 0.23333333333333334,
+            "sole_pitch_degrees": 0.008903152572792082,
+            "local_rig_ankle_x_degrees": -28.15791418359925
+          },
+          {
+            "phase": 0.24166666666666667,
+            "sole_pitch_degrees": -0.021588521971020066,
+            "local_rig_ankle_x_degrees": -28.940027192626363
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -0.35937107310860644,
+            "local_rig_ankle_x_degrees": -29.32973729609978
+          },
+          {
+            "phase": 0.25833333333333336,
+            "sole_pitch_degrees": -1.1890352569321918,
+            "local_rig_ankle_x_degrees": -29.397998206664887
+          },
+          {
+            "phase": 0.26666666666666666,
+            "sole_pitch_degrees": -2.339879638841256,
+            "local_rig_ankle_x_degrees": -29.225365175392813
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -3.945127781333096,
+            "local_rig_ankle_x_degrees": -28.67278579606586
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": -5.7587197324205714,
+            "local_rig_ankle_x_degrees": -27.898016947943802
+          },
+          {
+            "phase": 0.2916666666666667,
+            "sole_pitch_degrees": -7.855392370501047,
+            "local_rig_ankle_x_degrees": -26.868446185287127
+          },
+          {
+            "phase": 0.3,
+            "sole_pitch_degrees": -10.127476211433418,
+            "local_rig_ankle_x_degrees": -25.62079943526299
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": -12.51920237238733,
+            "local_rig_ankle_x_degrees": -24.192632493022714
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": -15.02390125437146,
+            "local_rig_ankle_x_degrees": -22.56142110223088
+          },
+          {
+            "phase": 0.325,
+            "sole_pitch_degrees": -17.44827472671393,
+            "local_rig_ankle_x_degrees": -20.89634734108142
+          },
+          {
+            "phase": 0.3333333333333333,
+            "sole_pitch_degrees": -19.962962782219787,
+            "local_rig_ankle_x_degrees": -19.03192426372138
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": -22.73086611865907,
+            "local_rig_ankle_x_degrees": -16.833426388772256
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": -24.195034280394882,
+            "local_rig_ankle_x_degrees": -17.056399621774617
+          },
+          {
+            "phase": 0.35833333333333334,
+            "sole_pitch_degrees": -26.745910079838875,
+            "local_rig_ankle_x_degrees": -18.21464944084704
+          },
+          {
+            "phase": 0.36666666666666664,
+            "sole_pitch_degrees": -28.39061481894267,
+            "local_rig_ankle_x_degrees": -19.5837591524288
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": -29.900387673435674,
+            "local_rig_ankle_x_degrees": -21.046812993402213
+          },
+          {
+            "phase": 0.38333333333333336,
+            "sole_pitch_degrees": -31.02762246046506,
+            "local_rig_ankle_x_degrees": -22.71060097144042
+          },
+          {
+            "phase": 0.39166666666666666,
+            "sole_pitch_degrees": -31.75127329591207,
+            "local_rig_ankle_x_degrees": -24.432430189498106
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": -32.01075889862618,
+            "local_rig_ankle_x_degrees": -26.212983666492267
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": -32.1307440508415,
+            "local_rig_ankle_x_degrees": -27.908982816656255
+          },
+          {
+            "phase": 0.4166666666666667,
+            "sole_pitch_degrees": -32.525104494922125,
+            "local_rig_ankle_x_degrees": -29.23582561010669
+          },
+          {
+            "phase": 0.425,
+            "sole_pitch_degrees": -33.1238794945708,
+            "local_rig_ankle_x_degrees": -30.164632299485458
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": -33.877527446636186,
+            "local_rig_ankle_x_degrees": -30.772765022426714
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": -34.79621165636924,
+            "local_rig_ankle_x_degrees": -30.903071371412217
+          },
+          {
+            "phase": 0.45,
+            "sole_pitch_degrees": -35.74794999548469,
+            "local_rig_ankle_x_degrees": -30.884168822884206
+          },
+          {
+            "phase": 0.4583333333333333,
+            "sole_pitch_degrees": -36.791711074616494,
+            "local_rig_ankle_x_degrees": -30.46507183050681
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": -37.83165275609839,
+            "local_rig_ankle_x_degrees": -29.81776114248636
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": -38.834946238316284,
+            "local_rig_ankle_x_degrees": -28.95980059027355
+          },
+          {
+            "phase": 0.48333333333333334,
+            "sole_pitch_degrees": -39.77000364182891,
+            "local_rig_ankle_x_degrees": -27.915824958657318
+          },
+          {
+            "phase": 0.49166666666666664,
+            "sole_pitch_degrees": -40.590631019892896,
+            "local_rig_ankle_x_degrees": -26.713998532680215
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": -41.25924046118365,
+            "local_rig_ankle_x_degrees": -25.380550946302378
+          },
+          {
+            "phase": 0.5083333333333333,
+            "sole_pitch_degrees": -41.73559582168987,
+            "local_rig_ankle_x_degrees": -24.08841063647749
+          },
+          {
+            "phase": 0.5166666666666667,
+            "sole_pitch_degrees": -41.97360377013414,
+            "local_rig_ankle_x_degrees": -23.162009881233857
+          },
+          {
+            "phase": 0.525,
+            "sole_pitch_degrees": -41.958100877612154,
+            "local_rig_ankle_x_degrees": -22.633698164027955
+          },
+          {
+            "phase": 0.5333333333333333,
+            "sole_pitch_degrees": -41.61741110493373,
+            "local_rig_ankle_x_degrees": -22.501762814925407
+          },
+          {
+            "phase": 0.5416666666666666,
+            "sole_pitch_degrees": -41.04836315890497,
+            "local_rig_ankle_x_degrees": -22.651683759659893
+          },
+          {
+            "phase": 0.55,
+            "sole_pitch_degrees": -40.2289549265507,
+            "local_rig_ankle_x_degrees": -23.070476808619222
+          },
+          {
+            "phase": 0.5583333333333333,
+            "sole_pitch_degrees": -39.18961779345191,
+            "local_rig_ankle_x_degrees": -23.692005240070166
+          },
+          {
+            "phase": 0.5666666666666667,
+            "sole_pitch_degrees": -37.9618686002598,
+            "local_rig_ankle_x_degrees": -24.47677177758983
+          },
+          {
+            "phase": 0.575,
+            "sole_pitch_degrees": -36.5646522519621,
+            "local_rig_ankle_x_degrees": -25.321295640157935
+          },
+          {
+            "phase": 0.5833333333333334,
+            "sole_pitch_degrees": -35.02388327197074,
+            "local_rig_ankle_x_degrees": -26.257827273487987
+          },
+          {
+            "phase": 0.5916666666666667,
+            "sole_pitch_degrees": -33.363104072175844,
+            "local_rig_ankle_x_degrees": -27.625816834045867
+          },
+          {
+            "phase": 0.6,
+            "sole_pitch_degrees": -31.606279336407326,
+            "local_rig_ankle_x_degrees": -29.213098155643472
+          },
+          {
+            "phase": 0.6083333333333333,
+            "sole_pitch_degrees": -29.777583324255378,
+            "local_rig_ankle_x_degrees": -30.71874847137567
+          },
+          {
+            "phase": 0.6166666666666667,
+            "sole_pitch_degrees": -27.900619834050904,
+            "local_rig_ankle_x_degrees": -32.020620093220536
+          },
+          {
+            "phase": 0.625,
+            "sole_pitch_degrees": -25.99998783144358,
+            "local_rig_ankle_x_degrees": -33.1191603985687
+          },
+          {
+            "phase": 0.6333333333333333,
+            "sole_pitch_degrees": -24.100296323596087,
+            "local_rig_ankle_x_degrees": -33.97657112055333
+          },
+          {
+            "phase": 0.6416666666666667,
+            "sole_pitch_degrees": -22.21761880483557,
+            "local_rig_ankle_x_degrees": -34.57503912581902
+          },
+          {
+            "phase": 0.65,
+            "sole_pitch_degrees": -20.407873054356717,
+            "local_rig_ankle_x_degrees": -34.85804118388933
+          },
+          {
+            "phase": 0.6583333333333333,
+            "sole_pitch_degrees": -18.62318999270923,
+            "local_rig_ankle_x_degrees": -34.880748147785035
+          },
+          {
+            "phase": 0.6666666666666666,
+            "sole_pitch_degrees": -16.976078616777908,
+            "local_rig_ankle_x_degrees": -34.530181858444955
+          },
+          {
+            "phase": 0.675,
+            "sole_pitch_degrees": -15.425869274188917,
+            "local_rig_ankle_x_degrees": -33.84991892277378
+          },
+          {
+            "phase": 0.6833333333333333,
+            "sole_pitch_degrees": -14.048592324251965,
+            "local_rig_ankle_x_degrees": -32.819270697775536
+          },
+          {
+            "phase": 0.6916666666666667,
+            "sole_pitch_degrees": -12.805838662680483,
+            "local_rig_ankle_x_degrees": -31.418863351869483
+          },
+          {
+            "phase": 0.7,
+            "sole_pitch_degrees": -11.77383729398035,
+            "local_rig_ankle_x_degrees": -29.643645960164395
+          },
+          {
+            "phase": 0.7083333333333334,
+            "sole_pitch_degrees": -10.951632299059897,
+            "local_rig_ankle_x_degrees": -27.48460608805044
+          },
+          {
+            "phase": 0.7166666666666667,
+            "sole_pitch_degrees": -10.36668041532928,
+            "local_rig_ankle_x_degrees": -24.934490074629064
+          },
+          {
+            "phase": 0.725,
+            "sole_pitch_degrees": -10.071373203539379,
+            "local_rig_ankle_x_degrees": -21.94744344490739
+          },
+          {
+            "phase": 0.7333333333333333,
+            "sole_pitch_degrees": -9.945206111245227,
+            "local_rig_ankle_x_degrees": -18.67663489857024
+          },
+          {
+            "phase": 0.7416666666666667,
+            "sole_pitch_degrees": -9.695457170538141,
+            "local_rig_ankle_x_degrees": -15.475880187455326
+          },
+          {
+            "phase": 0.75,
+            "sole_pitch_degrees": -9.125332251850633,
+            "local_rig_ankle_x_degrees": -12.602101999834556
+          },
+          {
+            "phase": 0.7583333333333333,
+            "sole_pitch_degrees": -8.324854221984937,
+            "local_rig_ankle_x_degrees": -9.967846593575086
+          },
+          {
+            "phase": 0.7666666666666667,
+            "sole_pitch_degrees": -7.289957149722767,
+            "local_rig_ankle_x_degrees": -7.533319579025129
+          },
+          {
+            "phase": 0.775,
+            "sole_pitch_degrees": -6.115133924439019,
+            "local_rig_ankle_x_degrees": -5.249411042278646
+          },
+          {
+            "phase": 0.7833333333333333,
+            "sole_pitch_degrees": -4.790703585613897,
+            "local_rig_ankle_x_degrees": -3.0490466046954094
+          },
+          {
+            "phase": 0.7916666666666666,
+            "sole_pitch_degrees": -3.3747223619860907,
+            "local_rig_ankle_x_degrees": -0.8578631686562861
+          },
+          {
+            "phase": 0.8,
+            "sole_pitch_degrees": -1.900281302863077,
+            "local_rig_ankle_x_degrees": 1.4168318164258193
+          },
+          {
+            "phase": 0.8083333333333333,
+            "sole_pitch_degrees": -0.39275939274672106,
+            "local_rig_ankle_x_degrees": 3.8406046981275916
+          },
+          {
+            "phase": 0.8166666666666667,
+            "sole_pitch_degrees": 1.0606062813779158,
+            "local_rig_ankle_x_degrees": 6.0869121897195075
+          },
+          {
+            "phase": 0.825,
+            "sole_pitch_degrees": 2.5551315650766977,
+            "local_rig_ankle_x_degrees": 8.104950917268189
+          },
+          {
+            "phase": 0.8333333333333334,
+            "sole_pitch_degrees": 3.8573617261155575,
+            "local_rig_ankle_x_degrees": 10.72034219481373
+          },
+          {
+            "phase": 0.8416666666666667,
+            "sole_pitch_degrees": 4.771647382422,
+            "local_rig_ankle_x_degrees": 14.518719675284542
+          },
+          {
+            "phase": 0.85,
+            "sole_pitch_degrees": 6.57675569431706,
+            "local_rig_ankle_x_degrees": 16.571527907689998
+          },
+          {
+            "phase": 0.8583333333333333,
+            "sole_pitch_degrees": 6.702477708668945,
+            "local_rig_ankle_x_degrees": 17.094235454681904
+          },
+          {
+            "phase": 0.8666666666666667,
+            "sole_pitch_degrees": 7.659887509660717,
+            "local_rig_ankle_x_degrees": 17.53260382580249
+          },
+          {
+            "phase": 0.875,
+            "sole_pitch_degrees": 7.94132694310393,
+            "local_rig_ankle_x_degrees": 18.25272091528069
+          },
+          {
+            "phase": 0.8833333333333333,
+            "sole_pitch_degrees": 8.004770284593443,
+            "local_rig_ankle_x_degrees": 19.181421736727323
+          },
+          {
+            "phase": 0.8916666666666667,
+            "sole_pitch_degrees": 8.111352838449895,
+            "local_rig_ankle_x_degrees": 19.948110471061256
+          },
+          {
+            "phase": 0.9,
+            "sole_pitch_degrees": 8.284570695122989,
+            "local_rig_ankle_x_degrees": 20.464126140213843
+          },
+          {
+            "phase": 0.9083333333333333,
+            "sole_pitch_degrees": 8.5784515656986,
+            "local_rig_ankle_x_degrees": 20.692249335850388
+          },
+          {
+            "phase": 0.9166666666666666,
+            "sole_pitch_degrees": 8.892122419438387,
+            "local_rig_ankle_x_degrees": 20.71936518685534
+          },
+          {
+            "phase": 0.925,
+            "sole_pitch_degrees": 9.26010187528805,
+            "local_rig_ankle_x_degrees": 20.50980132274101
+          },
+          {
+            "phase": 0.9333333333333333,
+            "sole_pitch_degrees": 9.669592713883768,
+            "local_rig_ankle_x_degrees": 20.05954329982272
+          },
+          {
+            "phase": 0.9416666666666667,
+            "sole_pitch_degrees": 10.082757715290558,
+            "local_rig_ankle_x_degrees": 19.425319254252017
+          },
+          {
+            "phase": 0.95,
+            "sole_pitch_degrees": 10.495467436622008,
+            "local_rig_ankle_x_degrees": 18.592227420807223
+          },
+          {
+            "phase": 0.9583333333333334,
+            "sole_pitch_degrees": 10.888123549836587,
+            "local_rig_ankle_x_degrees": 17.59119318850286
+          },
+          {
+            "phase": 0.9666666666666667,
+            "sole_pitch_degrees": 11.245508034651968,
+            "local_rig_ankle_x_degrees": 16.440893709624333
+          },
+          {
+            "phase": 0.975,
+            "sole_pitch_degrees": 11.55148276293546,
+            "local_rig_ankle_x_degrees": 15.122040529955523
+          },
+          {
+            "phase": 0.9833333333333333,
+            "sole_pitch_degrees": 11.789938962799566,
+            "local_rig_ankle_x_degrees": 13.815625978538954
+          },
+          {
+            "phase": 0.9916666666666667,
+            "sole_pitch_degrees": 11.94477846837395,
+            "local_rig_ankle_x_degrees": 12.11744799802973
+          },
+          {
+            "phase": 1.0,
+            "sole_pitch_degrees": 11.999986603091685,
+            "local_rig_ankle_x_degrees": 10.684611767718101
+          }
+        ]
+      },
+      "R": {
+        "early_swing_plantarflexion_degrees": 42.0027727543359,
+        "later_swing_dorsiflexion_degrees": 11.375088276492395,
+        "takeoff_sole_pitch_degrees": -32.01085012163617,
+        "landing_sole_pitch_degrees": 11.999987563287824,
+        "local_rig_ankle_x_range_degrees": [
+          -34.85145688152943,
+          20.721704526646068
+        ],
+        "cycle_samples": [
+          {
+            "phase": -0.5,
+            "sole_pitch_degrees": 11.999987563287824,
+            "local_rig_ankle_x_degrees": 10.68929044729956
+          },
+          {
+            "phase": -0.49166666666666664,
+            "sole_pitch_degrees": 11.875444052265534,
+            "local_rig_ankle_x_degrees": 9.267830750824235
+          },
+          {
+            "phase": -0.48333333333333334,
+            "sole_pitch_degrees": 11.531295460653723,
+            "local_rig_ankle_x_degrees": 8.133930556142907
+          },
+          {
+            "phase": -0.475,
+            "sole_pitch_degrees": 10.98865659716314,
+            "local_rig_ankle_x_degrees": 7.2735546782848495
+          },
+          {
+            "phase": -0.4666666666666667,
+            "sole_pitch_degrees": 10.282552811814938,
+            "local_rig_ankle_x_degrees": 6.62671228510937
+          },
+          {
+            "phase": -0.4583333333333333,
+            "sole_pitch_degrees": 9.443918267060495,
+            "local_rig_ankle_x_degrees": 6.1593732397373495
+          },
+          {
+            "phase": -0.45,
+            "sole_pitch_degrees": 8.50636166765909,
+            "local_rig_ankle_x_degrees": 5.8293158740407085
+          },
+          {
+            "phase": -0.44166666666666665,
+            "sole_pitch_degrees": 7.463281885952247,
+            "local_rig_ankle_x_degrees": 5.604762306019138
+          },
+          {
+            "phase": -0.43333333333333335,
+            "sole_pitch_degrees": 6.495830099440033,
+            "local_rig_ankle_x_degrees": 5.417407655764749
+          },
+          {
+            "phase": -0.425,
+            "sole_pitch_degrees": 5.233936816516494,
+            "local_rig_ankle_x_degrees": 5.308142985177939
+          },
+          {
+            "phase": -0.4166666666666667,
+            "sole_pitch_degrees": 4.306440392944252,
+            "local_rig_ankle_x_degrees": 5.1214205543086
+          },
+          {
+            "phase": -0.4083333333333333,
+            "sole_pitch_degrees": 3.4272022154772745,
+            "local_rig_ankle_x_degrees": 3.577041785321963
+          },
+          {
+            "phase": -0.4,
+            "sole_pitch_degrees": 2.3127679644245585,
+            "local_rig_ankle_x_degrees": 1.336447960414174
+          },
+          {
+            "phase": -0.39166666666666666,
+            "sole_pitch_degrees": 1.5833985808978055,
+            "local_rig_ankle_x_degrees": -0.7662662764615954
+          },
+          {
+            "phase": -0.3833333333333333,
+            "sole_pitch_degrees": 0.8903185187288878,
+            "local_rig_ankle_x_degrees": -2.834441847530197
+          },
+          {
+            "phase": -0.375,
+            "sole_pitch_degrees": 0.3837382579011803,
+            "local_rig_ankle_x_degrees": -5.043763864766494
+          },
+          {
+            "phase": -0.3666666666666667,
+            "sole_pitch_degrees": 0.06128216332808993,
+            "local_rig_ankle_x_degrees": -7.326100177343404
+          },
+          {
+            "phase": -0.35833333333333334,
+            "sole_pitch_degrees": 0.010614113848781357,
+            "local_rig_ankle_x_degrees": -9.747636172091998
+          },
+          {
+            "phase": -0.35,
+            "sole_pitch_degrees": -0.0028874624691784326,
+            "local_rig_ankle_x_degrees": -12.132698956672723
+          },
+          {
+            "phase": -0.3416666666666667,
+            "sole_pitch_degrees": 0.0007974245855475011,
+            "local_rig_ankle_x_degrees": -14.344978445819635
+          },
+          {
+            "phase": -0.33333333333333337,
+            "sole_pitch_degrees": -6.830188355790817e-06,
+            "local_rig_ankle_x_degrees": -16.419006368429027
+          },
+          {
+            "phase": -0.325,
+            "sole_pitch_degrees": -0.0017058397447066642,
+            "local_rig_ankle_x_degrees": -18.356097535916124
+          },
+          {
+            "phase": -0.31666666666666665,
+            "sole_pitch_degrees": 0.007612245785190157,
+            "local_rig_ankle_x_degrees": -20.160614731613276
+          },
+          {
+            "phase": -0.30833333333333335,
+            "sole_pitch_degrees": -0.022389358959685936,
+            "local_rig_ankle_x_degrees": -21.834642870764625
+          },
+          {
+            "phase": -0.3,
+            "sole_pitch_degrees": 0.025111188875739612,
+            "local_rig_ankle_x_degrees": -23.3769917929073
+          },
+          {
+            "phase": -0.29166666666666663,
+            "sole_pitch_degrees": -1.1952832472410808e-05,
+            "local_rig_ankle_x_degrees": -24.786042743208007
+          },
+          {
+            "phase": -0.2833333333333333,
+            "sole_pitch_degrees": -0.0075900476707783035,
+            "local_rig_ankle_x_degrees": -26.058460881804486
+          },
+          {
+            "phase": -0.275,
+            "sole_pitch_degrees": 0.002525462443976693,
+            "local_rig_ankle_x_degrees": -27.184600274041383
+          },
+          {
+            "phase": -0.26666666666666666,
+            "sole_pitch_degrees": 0.0038624719697912184,
+            "local_rig_ankle_x_degrees": -28.176663052870936
+          },
+          {
+            "phase": -0.2583333333333333,
+            "sole_pitch_degrees": -0.012369473869278608,
+            "local_rig_ankle_x_degrees": -28.97405177997678
+          },
+          {
+            "phase": -0.25,
+            "sole_pitch_degrees": -0.3593830257052274,
+            "local_rig_ankle_x_degrees": -29.338541409939925
+          },
+          {
+            "phase": -0.24166666666666664,
+            "sole_pitch_degrees": -1.1975012895354533,
+            "local_rig_ankle_x_degrees": -29.343349863115616
+          },
+          {
+            "phase": -0.23333333333333334,
+            "sole_pitch_degrees": -2.3396622639885387,
+            "local_rig_ankle_x_degrees": -29.169057095875228
+          },
+          {
+            "phase": -0.22499999999999998,
+            "sole_pitch_degrees": -3.9416342535011264,
+            "local_rig_ankle_x_degrees": -28.614051291845627
+          },
+          {
+            "phase": -0.21666666666666667,
+            "sole_pitch_degrees": -5.759748684963754,
+            "local_rig_ankle_x_degrees": -27.837431462458497
+          },
+          {
+            "phase": -0.20833333333333331,
+            "sole_pitch_degrees": -7.855402519645452,
+            "local_rig_ankle_x_degrees": -26.80579969021977
+          },
+          {
+            "phase": -0.2,
+            "sole_pitch_degrees": -10.127629418283524,
+            "local_rig_ankle_x_degrees": -25.556050949478564
+          },
+          {
+            "phase": -0.19166666666666665,
+            "sole_pitch_degrees": -12.51803999815425,
+            "local_rig_ankle_x_degrees": -24.125747865575363
+          },
+          {
+            "phase": -0.18333333333333335,
+            "sole_pitch_degrees": -15.025127229601816,
+            "local_rig_ankle_x_degrees": -22.492111757628177
+          },
+          {
+            "phase": -0.175,
+            "sole_pitch_degrees": -17.44800538477897,
+            "local_rig_ankle_x_degrees": -20.82463376989087
+          },
+          {
+            "phase": -0.16666666666666669,
+            "sole_pitch_degrees": -19.962960011316692,
+            "local_rig_ankle_x_degrees": -18.957294201755232
+          },
+          {
+            "phase": -0.15833333333333333,
+            "sole_pitch_degrees": -22.730866629298095,
+            "local_rig_ankle_x_degrees": -16.754857015202308
+          },
+          {
+            "phase": -0.15000000000000002,
+            "sole_pitch_degrees": -24.194993489720652,
+            "local_rig_ankle_x_degrees": -16.947109764865242
+          },
+          {
+            "phase": -0.14166666666666666,
+            "sole_pitch_degrees": -26.74607961637882,
+            "local_rig_ankle_x_degrees": -18.06988528893591
+          },
+          {
+            "phase": -0.13333333333333336,
+            "sole_pitch_degrees": -28.39028613455169,
+            "local_rig_ankle_x_degrees": -19.447450774710152
+          },
+          {
+            "phase": -0.125,
+            "sole_pitch_degrees": -29.90039041181737,
+            "local_rig_ankle_x_degrees": -20.909966738286425
+          },
+          {
+            "phase": -0.11666666666666664,
+            "sole_pitch_degrees": -31.02792817815394,
+            "local_rig_ankle_x_degrees": -22.576375801418624
+          },
+          {
+            "phase": -0.10833333333333334,
+            "sole_pitch_degrees": -31.751135439763374,
+            "local_rig_ankle_x_degrees": -24.299224425209932
+          },
+          {
+            "phase": -0.09999999999999998,
+            "sole_pitch_degrees": -32.01085012163617,
+            "local_rig_ankle_x_degrees": -26.077370260521665
+          },
+          {
+            "phase": -0.09166666666666667,
+            "sole_pitch_degrees": -32.13071035172421,
+            "local_rig_ankle_x_degrees": -27.77001749535047
+          },
+          {
+            "phase": -0.08333333333333331,
+            "sole_pitch_degrees": -32.52511129710336,
+            "local_rig_ankle_x_degrees": -29.09330346779062
+          },
+          {
+            "phase": -0.07500000000000001,
+            "sole_pitch_degrees": -33.12424899716964,
+            "local_rig_ankle_x_degrees": -30.01807351536991
+          },
+          {
+            "phase": -0.06666666666666665,
+            "sole_pitch_degrees": -33.87601381045075,
+            "local_rig_ankle_x_degrees": -30.624263049492296
+          },
+          {
+            "phase": -0.05833333333333335,
+            "sole_pitch_degrees": -34.797906297111766,
+            "local_rig_ankle_x_degrees": -30.747626511186482
+          },
+          {
+            "phase": -0.04999999999999999,
+            "sole_pitch_degrees": -35.74754458741219,
+            "local_rig_ankle_x_degrees": -30.72722815123024
+          },
+          {
+            "phase": -0.041666666666666685,
+            "sole_pitch_degrees": -36.79172063500921,
+            "local_rig_ankle_x_degrees": -30.304661422754474
+          },
+          {
+            "phase": -0.033333333333333326,
+            "sole_pitch_degrees": -37.829872394574004,
+            "local_rig_ankle_x_degrees": -29.65900364051317
+          },
+          {
+            "phase": -0.025000000000000022,
+            "sole_pitch_degrees": -38.84373262589019,
+            "local_rig_ankle_x_degrees": -28.774138973159676
+          },
+          {
+            "phase": -0.016666666666666663,
+            "sole_pitch_degrees": -39.74388009370549,
+            "local_rig_ankle_x_degrees": -27.810780064317107
+          },
+          {
+            "phase": -0.00833333333333336,
+            "sole_pitch_degrees": -40.638694380749456,
+            "local_rig_ankle_x_degrees": -26.43508434282816
+          },
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": -41.25925073014767,
+            "local_rig_ankle_x_degrees": -25.214806160808266
+          },
+          {
+            "phase": 0.008333333333333304,
+            "sole_pitch_degrees": -41.68773062946566,
+            "local_rig_ankle_x_degrees": -24.037689651700976
+          },
+          {
+            "phase": 0.01666666666666672,
+            "sole_pitch_degrees": -41.998859781988045,
+            "local_rig_ankle_x_degrees": -22.94437785616245
+          },
+          {
+            "phase": 0.025000000000000022,
+            "sole_pitch_degrees": -41.95191271781174,
+            "local_rig_ankle_x_degrees": -22.50253121120703
+          },
+          {
+            "phase": 0.033333333333333326,
+            "sole_pitch_degrees": -41.61664735133074,
+            "local_rig_ankle_x_degrees": -22.36077917271988
+          },
+          {
+            "phase": 0.04166666666666663,
+            "sole_pitch_degrees": -41.048370885442914,
+            "local_rig_ankle_x_degrees": -22.523756024052847
+          },
+          {
+            "phase": 0.050000000000000044,
+            "sole_pitch_degrees": -40.229044568479786,
+            "local_rig_ankle_x_degrees": -22.954986847490773
+          },
+          {
+            "phase": 0.05833333333333335,
+            "sole_pitch_degrees": -39.18956396210287,
+            "local_rig_ankle_x_degrees": -23.588659355285998
+          },
+          {
+            "phase": 0.06666666666666665,
+            "sole_pitch_degrees": -37.96190602931036,
+            "local_rig_ankle_x_degrees": -24.38663889375505
+          },
+          {
+            "phase": 0.07499999999999996,
+            "sole_pitch_degrees": -36.56466322377592,
+            "local_rig_ankle_x_degrees": -25.24277749300676
+          },
+          {
+            "phase": 0.08333333333333337,
+            "sole_pitch_degrees": -35.0238922120235,
+            "local_rig_ankle_x_degrees": -26.191704212133093
+          },
+          {
+            "phase": 0.09166666666666667,
+            "sole_pitch_degrees": -33.36309648947874,
+            "local_rig_ankle_x_degrees": -27.579605481668853
+          },
+          {
+            "phase": 0.09999999999999998,
+            "sole_pitch_degrees": -31.606270610810054,
+            "local_rig_ankle_x_degrees": -29.17351379430866
+          },
+          {
+            "phase": 0.10833333333333328,
+            "sole_pitch_degrees": -29.777612965898594,
+            "local_rig_ankle_x_degrees": -30.679034336446627
+          },
+          {
+            "phase": 0.1166666666666667,
+            "sole_pitch_degrees": -27.90063625575023,
+            "local_rig_ankle_x_degrees": -31.983416052811474
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": -25.999993970377016,
+            "local_rig_ankle_x_degrees": -33.08360926393879
+          },
+          {
+            "phase": 0.1333333333333333,
+            "sole_pitch_degrees": -24.100270482439086,
+            "local_rig_ankle_x_degrees": -33.94276509925635
+          },
+          {
+            "phase": 0.14166666666666672,
+            "sole_pitch_degrees": -22.217710890236607,
+            "local_rig_ankle_x_degrees": -34.54279721784197
+          },
+          {
+            "phase": 0.15000000000000002,
+            "sole_pitch_degrees": -20.40764762840954,
+            "local_rig_ankle_x_degrees": -34.82772538925823
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": -18.62343025313707,
+            "local_rig_ankle_x_degrees": -34.85145688152943
+          },
+          {
+            "phase": 0.16666666666666663,
+            "sole_pitch_degrees": -16.976089773836247,
+            "local_rig_ankle_x_degrees": -34.50265619608981
+          },
+          {
+            "phase": 0.17500000000000004,
+            "sole_pitch_degrees": -15.426167267548418,
+            "local_rig_ankle_x_degrees": -33.82388565675228
+          },
+          {
+            "phase": 0.18333333333333335,
+            "sole_pitch_degrees": -14.048318163267563,
+            "local_rig_ankle_x_degrees": -32.79456931864219
+          },
+          {
+            "phase": 0.19166666666666665,
+            "sole_pitch_degrees": -12.805944016981002,
+            "local_rig_ankle_x_degrees": -31.395514350191796
+          },
+          {
+            "phase": 0.19999999999999996,
+            "sole_pitch_degrees": -11.773811244884087,
+            "local_rig_ankle_x_degrees": -29.62156054348316
+          },
+          {
+            "phase": 0.20833333333333337,
+            "sole_pitch_degrees": -10.95164635945224,
+            "local_rig_ankle_x_degrees": -27.463714246926664
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": -10.366701472609014,
+            "local_rig_ankle_x_degrees": -24.914750827927726
+          },
+          {
+            "phase": 0.22499999999999998,
+            "sole_pitch_degrees": -10.071392891552149,
+            "local_rig_ankle_x_degrees": -21.928762877527404
+          },
+          {
+            "phase": 0.23333333333333328,
+            "sole_pitch_degrees": -9.945203337276826,
+            "local_rig_ankle_x_degrees": -18.658956661450954
+          },
+          {
+            "phase": 0.2416666666666667,
+            "sole_pitch_degrees": -9.695458853695932,
+            "local_rig_ankle_x_degrees": -15.45885594094907
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -9.125345197721774,
+            "local_rig_ankle_x_degrees": -12.585252776925781
+          },
+          {
+            "phase": 0.2583333333333333,
+            "sole_pitch_degrees": -8.324850348419252,
+            "local_rig_ankle_x_degrees": -9.950719894231279
+          },
+          {
+            "phase": 0.2666666666666667,
+            "sole_pitch_degrees": -7.289943126794549,
+            "local_rig_ankle_x_degrees": -7.515636219263966
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -6.115173217179717,
+            "local_rig_ankle_x_degrees": -5.230111062118306
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": -4.790668983545112,
+            "local_rig_ankle_x_degrees": -3.0290518662304318
+          },
+          {
+            "phase": 0.29166666666666663,
+            "sole_pitch_degrees": -3.374718550748265,
+            "local_rig_ankle_x_degrees": -0.8349855033921812
+          },
+          {
+            "phase": 0.30000000000000004,
+            "sole_pitch_degrees": -1.9004587900737098,
+            "local_rig_ankle_x_degrees": 1.447653471942325
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": -0.3921224926052699,
+            "local_rig_ankle_x_degrees": 3.8361112874273697
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": 1.0586950417694907,
+            "local_rig_ankle_x_degrees": 6.0689394006922655
+          },
+          {
+            "phase": 0.32499999999999996,
+            "sole_pitch_degrees": 2.5586963616390705,
+            "local_rig_ankle_x_degrees": 8.110195648777113
+          },
+          {
+            "phase": 0.33333333333333337,
+            "sole_pitch_degrees": 3.857362740565394,
+            "local_rig_ankle_x_degrees": 10.744383606918529
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": 4.7436887216783274,
+            "local_rig_ankle_x_degrees": 14.589372859606446
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": 6.589007495846806,
+            "local_rig_ankle_x_degrees": 16.60322340053344
+          },
+          {
+            "phase": 0.3583333333333333,
+            "sole_pitch_degrees": 6.711411954584227,
+            "local_rig_ankle_x_degrees": 17.086298774866346
+          },
+          {
+            "phase": 0.3666666666666667,
+            "sole_pitch_degrees": 7.657972301826791,
+            "local_rig_ankle_x_degrees": 17.535926712833703
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": 7.941329657490431,
+            "local_rig_ankle_x_degrees": 18.254326009735642
+          },
+          {
+            "phase": 0.3833333333333333,
+            "sole_pitch_degrees": 8.005030156275751,
+            "local_rig_ankle_x_degrees": 19.182815095318006
+          },
+          {
+            "phase": 0.3916666666666667,
+            "sole_pitch_degrees": 8.111213501513216,
+            "local_rig_ankle_x_degrees": 19.949976820251962
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": 8.28469917959316,
+            "local_rig_ankle_x_degrees": 20.46585076297927
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": 8.578361219560074,
+            "local_rig_ankle_x_degrees": 20.694423043553748
+          },
+          {
+            "phase": 0.41666666666666663,
+            "sole_pitch_degrees": 8.892133700722676,
+            "local_rig_ankle_x_degrees": 20.721704526646068
+          },
+          {
+            "phase": 0.42500000000000004,
+            "sole_pitch_degrees": 9.260210247028908,
+            "local_rig_ankle_x_degrees": 20.51235922858518
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": 9.669500057907657,
+            "local_rig_ankle_x_degrees": 20.06257078117233
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": 10.082785697394467,
+            "local_rig_ankle_x_degrees": 19.428201594081763
+          },
+          {
+            "phase": 0.44999999999999996,
+            "sole_pitch_degrees": 10.495484413690459,
+            "local_rig_ankle_x_degrees": 18.59646043054534
+          },
+          {
+            "phase": 0.45833333333333337,
+            "sole_pitch_degrees": 10.888132965599425,
+            "local_rig_ankle_x_degrees": 17.59511371708645
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": 11.245418968574095,
+            "local_rig_ankle_x_degrees": 16.440137266173753
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": 11.551886240205942,
+            "local_rig_ankle_x_degrees": 15.149668645148225
+          },
+          {
+            "phase": 0.4833333333333333,
+            "sole_pitch_degrees": 11.78880056036141,
+            "local_rig_ankle_x_degrees": 13.751672356019185
+          },
+          {
+            "phase": 0.4916666666666667,
+            "sole_pitch_degrees": 11.94688275444936,
+            "local_rig_ankle_x_degrees": 12.248224776294318
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": 11.999987563287824,
+            "local_rig_ankle_x_degrees": 10.68929044729956
+          }
+        ]
+      }
+    },
+    "toe_weighted_vertices": {
+      "L": 0,
+      "R": 0
+    }
+  },
+  "export": {
+    "walk": {
+      "L": {
+        "early_swing_plantarflexion_degrees": 29.621916708682456,
+        "later_swing_dorsiflexion_degrees": 8.736362615291396,
+        "takeoff_sole_pitch_degrees": -23.999981369413653,
+        "landing_sole_pitch_degrees": 9.000000360446446,
+        "local_rig_ankle_x_range_degrees": [
+          -32.489789202403294,
+          11.452714351210226
+        ],
+        "cycle_samples": [
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": 9.000000360446446,
+            "local_rig_ankle_x_degrees": 9.467723920847474
+          },
+          {
+            "phase": 0.008333333333333333,
+            "sole_pitch_degrees": 8.908126884619518,
+            "local_rig_ankle_x_degrees": 8.742670312146647
+          },
+          {
+            "phase": 0.016666666666666666,
+            "sole_pitch_degrees": 8.647691106007258,
+            "local_rig_ankle_x_degrees": 8.073658405585777
+          },
+          {
+            "phase": 0.025,
+            "sole_pitch_degrees": 8.241520588813385,
+            "local_rig_ankle_x_degrees": 7.466796951603789
+          },
+          {
+            "phase": 0.03333333333333333,
+            "sole_pitch_degrees": 7.712320761584706,
+            "local_rig_ankle_x_degrees": 6.937358680071659
+          },
+          {
+            "phase": 0.041666666666666664,
+            "sole_pitch_degrees": 7.082931364721323,
+            "local_rig_ankle_x_degrees": 6.498368761736599
+          },
+          {
+            "phase": 0.05,
+            "sole_pitch_degrees": 6.376093976424065,
+            "local_rig_ankle_x_degrees": 6.156135303183941
+          },
+          {
+            "phase": 0.058333333333333334,
+            "sole_pitch_degrees": 5.614583555019873,
+            "local_rig_ankle_x_degrees": 5.909892469452995
+          },
+          {
+            "phase": 0.06666666666666667,
+            "sole_pitch_degrees": 4.821182680773391,
+            "local_rig_ankle_x_degrees": 5.752661941646124
+          },
+          {
+            "phase": 0.075,
+            "sole_pitch_degrees": 4.018667781062259,
+            "local_rig_ankle_x_degrees": 5.672741044394159
+          },
+          {
+            "phase": 0.08333333333333333,
+            "sole_pitch_degrees": 3.229832355553168,
+            "local_rig_ankle_x_degrees": 5.654542432237483
+          },
+          {
+            "phase": 0.09166666666666666,
+            "sole_pitch_degrees": 2.477426091670231,
+            "local_rig_ankle_x_degrees": 5.6792237476901475
+          },
+          {
+            "phase": 0.1,
+            "sole_pitch_degrees": 1.7842368491321956,
+            "local_rig_ankle_x_degrees": 5.725087187306314
+          },
+          {
+            "phase": 0.10833333333333334,
+            "sole_pitch_degrees": 1.173081757050153,
+            "local_rig_ankle_x_degrees": 5.767506504033501
+          },
+          {
+            "phase": 0.11666666666666667,
+            "sole_pitch_degrees": 0.6666569663717438,
+            "local_rig_ankle_x_degrees": 5.779879818601802
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": 0.2878049314998859,
+            "local_rig_ankle_x_degrees": 5.732587161901811
+          },
+          {
+            "phase": 0.13333333333333333,
+            "sole_pitch_degrees": 0.05926215405569135,
+            "local_rig_ankle_x_degrees": 5.591913012643051
+          },
+          {
+            "phase": 0.14166666666666666,
+            "sole_pitch_degrees": -5.122638620620779e-06,
+            "local_rig_ankle_x_degrees": 5.32523467980225
+          },
+          {
+            "phase": 0.15,
+            "sole_pitch_degrees": -1.8783017571312582e-05,
+            "local_rig_ankle_x_degrees": 5.0484579122735855
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": 4.443235684516987e-12,
+            "local_rig_ankle_x_degrees": 4.811090055595424
+          },
+          {
+            "phase": 0.16666666666666666,
+            "sole_pitch_degrees": -8.537733918071674e-06,
+            "local_rig_ankle_x_degrees": 4.585052628976669
+          },
+          {
+            "phase": 0.175,
+            "sole_pitch_degrees": -3.415090717451187e-06,
+            "local_rig_ankle_x_degrees": 4.333636780723085
+          },
+          {
+            "phase": 0.18333333333333332,
+            "sole_pitch_degrees": -1.0245280294575318e-05,
+            "local_rig_ankle_x_degrees": 4.011559637297957
+          },
+          {
+            "phase": 0.19166666666666668,
+            "sole_pitch_degrees": -1.7075470075254036e-05,
+            "local_rig_ankle_x_degrees": 3.5687230417997102
+          },
+          {
+            "phase": 0.2,
+            "sole_pitch_degrees": 1.7075517707247126e-06,
+            "local_rig_ankle_x_degrees": 2.9624812140414907
+          },
+          {
+            "phase": 0.20833333333333334,
+            "sole_pitch_degrees": -3.4150903103406245e-06,
+            "local_rig_ankle_x_degrees": 2.2663306180306315
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": 6.830194462456656e-06,
+            "local_rig_ankle_x_degrees": 1.571412230834725
+          },
+          {
+            "phase": 0.225,
+            "sole_pitch_degrees": -1.7075470075254036e-05,
+            "local_rig_ankle_x_degrees": 0.8776148484363465
+          },
+          {
+            "phase": 0.23333333333333334,
+            "sole_pitch_degrees": -1.5367921663195844e-05,
+            "local_rig_ankle_x_degrees": 0.1848166746887734
+          },
+          {
+            "phase": 0.24166666666666667,
+            "sole_pitch_degrees": -1.5367920747196332e-05,
+            "local_rig_ankle_x_degrees": -0.5070928807756104
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -1.0245281515908122e-05,
+            "local_rig_ankle_x_degrees": -1.1981733419882046
+          },
+          {
+            "phase": 0.25833333333333336,
+            "sole_pitch_degrees": -8.53773290029442e-06,
+            "local_rig_ankle_x_degrees": -1.8885524281504031
+          },
+          {
+            "phase": 0.26666666666666666,
+            "sole_pitch_degrees": -8.537733918071674e-06,
+            "local_rig_ankle_x_degrees": -2.578405376303099
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -6.830185098902726e-06,
+            "local_rig_ankle_x_degrees": -3.2677136168694867
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": -6.830185913124336e-06,
+            "local_rig_ankle_x_degrees": -3.9566184493880203
+          },
+          {
+            "phase": 0.2916666666666667,
+            "sole_pitch_degrees": 5.122646661064076e-06,
+            "local_rig_ankle_x_degrees": -4.6452846521724265
+          },
+          {
+            "phase": 0.3,
+            "sole_pitch_degrees": -8.53773290029442e-06,
+            "local_rig_ankle_x_degrees": -5.333745522394909
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": -3.4150907174514176e-06,
+            "local_rig_ankle_x_degrees": -6.590907579706517
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": 4.048846592163183e-12,
+            "local_rig_ankle_x_degrees": -7.87564353758429
+          },
+          {
+            "phase": 0.325,
+            "sole_pitch_degrees": -3.4150905138961362e-06,
+            "local_rig_ankle_x_degrees": -9.08379386495918
+          },
+          {
+            "phase": 0.3333333333333333,
+            "sole_pitch_degrees": -3.4150907174514176e-06,
+            "local_rig_ankle_x_degrees": -10.227920560375308
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": 1.0245289658129562e-05,
+            "local_rig_ankle_x_degrees": -11.314781242242757
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": -2.049056262470539e-05,
+            "local_rig_ankle_x_degrees": -12.34761171268082
+          },
+          {
+            "phase": 0.35833333333333334,
+            "sole_pitch_degrees": -1.5367922579195464e-05,
+            "local_rig_ankle_x_degrees": -13.327593594415909
+          },
+          {
+            "phase": 0.36666666666666664,
+            "sole_pitch_degrees": -1.1952829113744549e-05,
+            "local_rig_ankle_x_degrees": -14.254244505337892
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": 1.7075515671691888e-06,
+            "local_rig_ankle_x_degrees": -15.12589958683658
+          },
+          {
+            "phase": 0.38333333333333336,
+            "sole_pitch_degrees": -1.0245280294575318e-05,
+            "local_rig_ankle_x_degrees": -15.939796881166346
+          },
+          {
+            "phase": 0.39166666666666666,
+            "sole_pitch_degrees": -5.122638213510556e-06,
+            "local_rig_ankle_x_degrees": -16.692087576729893
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": -8.537733918071674e-06,
+            "local_rig_ankle_x_degrees": -17.37773611656162
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": -1.366037426891525e-05,
+            "local_rig_ankle_x_degrees": -17.990282849253997
+          },
+          {
+            "phase": 0.4166666666666667,
+            "sole_pitch_degrees": -3.4150946664281805e-05,
+            "local_rig_ankle_x_degrees": -20.806419362921737
+          },
+          {
+            "phase": 0.425,
+            "sole_pitch_degrees": -1.878301919975677e-05,
+            "local_rig_ankle_x_degrees": -23.98954877088343
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": -8.537733409183018e-06,
+            "local_rig_ankle_x_degrees": -26.627461743443444
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": -0.0077778787967706375,
+            "local_rig_ankle_x_degrees": -28.855472865796187
+          },
+          {
+            "phase": 0.45,
+            "sole_pitch_degrees": -0.2695288344917375,
+            "local_rig_ankle_x_degrees": -30.4840700016832
+          },
+          {
+            "phase": 0.4583333333333333,
+            "sole_pitch_degrees": -0.8731113150737149,
+            "local_rig_ankle_x_degrees": -31.653272029089738
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": -1.7778112847398138,
+            "local_rig_ankle_x_degrees": -32.322138794130744
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": -2.94287228925836,
+            "local_rig_ankle_x_degrees": -32.489789202403294
+          },
+          {
+            "phase": 0.48333333333333334,
+            "sole_pitch_degrees": -4.327707852095508,
+            "local_rig_ankle_x_degrees": -32.18165204818734
+          },
+          {
+            "phase": 0.49166666666666664,
+            "sole_pitch_degrees": -5.891553248012358,
+            "local_rig_ankle_x_degrees": -31.419898125528743
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": -7.593760750488373,
+            "local_rig_ankle_x_degrees": -30.200361019033796
+          },
+          {
+            "phase": 0.5083333333333333,
+            "sole_pitch_degrees": -9.393624609886702,
+            "local_rig_ankle_x_degrees": -28.721218667470417
+          },
+          {
+            "phase": 0.5166666666666667,
+            "sole_pitch_degrees": -11.250414661643896,
+            "local_rig_ankle_x_degrees": -27.33792436052983
+          },
+          {
+            "phase": 0.525,
+            "sole_pitch_degrees": -13.123536405507846,
+            "local_rig_ankle_x_degrees": -26.04639706018295
+          },
+          {
+            "phase": 0.5333333333333333,
+            "sole_pitch_degrees": -14.972210988662862,
+            "local_rig_ankle_x_degrees": -24.844224002105467
+          },
+          {
+            "phase": 0.5416666666666666,
+            "sole_pitch_degrees": -16.755778764453144,
+            "local_rig_ankle_x_degrees": -23.732653403368204
+          },
+          {
+            "phase": 0.55,
+            "sole_pitch_degrees": -18.433598348058762,
+            "local_rig_ankle_x_degrees": -22.717369688907905
+          },
+          {
+            "phase": 0.5583333333333333,
+            "sole_pitch_degrees": -19.964890509854047,
+            "local_rig_ankle_x_degrees": -21.80809392546079
+          },
+          {
+            "phase": 0.5666666666666667,
+            "sole_pitch_degrees": -21.309021081718193,
+            "local_rig_ankle_x_degrees": -21.017465378085962
+          },
+          {
+            "phase": 0.575,
+            "sole_pitch_degrees": -22.425288982621396,
+            "local_rig_ankle_x_degrees": -20.359166623238256
+          },
+          {
+            "phase": 0.5833333333333334,
+            "sole_pitch_degrees": -23.272999985430125,
+            "local_rig_ankle_x_degrees": -19.845399793869895
+          },
+          {
+            "phase": 0.5916666666666667,
+            "sole_pitch_degrees": -23.81146998761729,
+            "local_rig_ankle_x_degrees": -19.48332463577835
+          },
+          {
+            "phase": 0.6,
+            "sole_pitch_degrees": -23.999981369413653,
+            "local_rig_ankle_x_degrees": -19.270034903471778
+          },
+          {
+            "phase": 0.6083333333333333,
+            "sole_pitch_degrees": -24.222487135556992,
+            "local_rig_ankle_x_degrees": -19.08275111643003
+          },
+          {
+            "phase": 0.6166666666666667,
+            "sole_pitch_degrees": -24.815645309953805,
+            "local_rig_ankle_x_degrees": -18.6021858366171
+          },
+          {
+            "phase": 0.625,
+            "sole_pitch_degrees": -25.667783455578427,
+            "local_rig_ankle_x_degrees": -17.955908214708614
+          },
+          {
+            "phase": 0.6333333333333333,
+            "sole_pitch_degrees": -26.667271892009932,
+            "local_rig_ankle_x_degrees": -17.19222988625137
+          },
+          {
+            "phase": 0.6416666666666667,
+            "sole_pitch_degrees": -27.702464777531823,
+            "local_rig_ankle_x_degrees": -16.35233347684595
+          },
+          {
+            "phase": 0.65,
+            "sole_pitch_degrees": -28.661778784409417,
+            "local_rig_ankle_x_degrees": -15.532101182060993
+          },
+          {
+            "phase": 0.6583333333333333,
+            "sole_pitch_degrees": -29.433540995960296,
+            "local_rig_ankle_x_degrees": -14.821254366833793
+          },
+          {
+            "phase": 0.6666666666666666,
+            "sole_pitch_degrees": -29.906103641936014,
+            "local_rig_ankle_x_degrees": -14.30406305137032
+          },
+          {
+            "phase": 0.675,
+            "sole_pitch_degrees": -29.95620579243452,
+            "local_rig_ankle_x_degrees": -14.08698256407439
+          },
+          {
+            "phase": 0.6833333333333333,
+            "sole_pitch_degrees": -29.399018820019176,
+            "local_rig_ankle_x_degrees": -14.335817454595356
+          },
+          {
+            "phase": 0.6916666666666667,
+            "sole_pitch_degrees": -28.261859865626136,
+            "local_rig_ankle_x_degrees": -15.030205221470117
+          },
+          {
+            "phase": 0.7,
+            "sole_pitch_degrees": -26.62193461493308,
+            "local_rig_ankle_x_degrees": -16.092081071353658
+          },
+          {
+            "phase": 0.7083333333333334,
+            "sole_pitch_degrees": -24.556330074979456,
+            "local_rig_ankle_x_degrees": -17.415127987172855
+          },
+          {
+            "phase": 0.7166666666666667,
+            "sole_pitch_degrees": -22.142122981682824,
+            "local_rig_ankle_x_degrees": -18.88918014025728
+          },
+          {
+            "phase": 0.725,
+            "sole_pitch_degrees": -19.456504153470963,
+            "local_rig_ankle_x_degrees": -20.42243808061467
+          },
+          {
+            "phase": 0.7333333333333333,
+            "sole_pitch_degrees": -16.576471779375748,
+            "local_rig_ankle_x_degrees": -21.926240830176376
+          },
+          {
+            "phase": 0.7416666666666667,
+            "sole_pitch_degrees": -13.579296810632831,
+            "local_rig_ankle_x_degrees": -23.316787090468225
+          },
+          {
+            "phase": 0.75,
+            "sole_pitch_degrees": -10.541957048335465,
+            "local_rig_ankle_x_degrees": -24.516851327639465
+          },
+          {
+            "phase": 0.7583333333333333,
+            "sole_pitch_degrees": -7.541670355845894,
+            "local_rig_ankle_x_degrees": -25.456728046115533
+          },
+          {
+            "phase": 0.7666666666666667,
+            "sole_pitch_degrees": -4.655517417748723,
+            "local_rig_ankle_x_degrees": -26.07467233579951
+          },
+          {
+            "phase": 0.775,
+            "sole_pitch_degrees": -1.9605909508487138,
+            "local_rig_ankle_x_degrees": -26.31748385324617
+          },
+          {
+            "phase": 0.7833333333333333,
+            "sole_pitch_degrees": 0.465935034511582,
+            "local_rig_ankle_x_degrees": -26.6221871298569
+          },
+          {
+            "phase": 0.7916666666666666,
+            "sole_pitch_degrees": 2.5469868996484255,
+            "local_rig_ankle_x_degrees": -27.971412453217464
+          },
+          {
+            "phase": 0.8,
+            "sole_pitch_degrees": 4.2054674931276415,
+            "local_rig_ankle_x_degrees": -28.5440179471909
+          },
+          {
+            "phase": 0.8083333333333333,
+            "sole_pitch_degrees": 5.364177811978764,
+            "local_rig_ankle_x_degrees": -28.290062976113365
+          },
+          {
+            "phase": 0.8166666666666667,
+            "sole_pitch_degrees": 5.94603708583364,
+            "local_rig_ankle_x_degrees": -26.968662135884138
+          },
+          {
+            "phase": 0.825,
+            "sole_pitch_degrees": 6.010142834536767,
+            "local_rig_ankle_x_degrees": -24.676950961784563
+          },
+          {
+            "phase": 0.8333333333333334,
+            "sole_pitch_degrees": 6.068604154991676,
+            "local_rig_ankle_x_degrees": -22.21787624735758
+          },
+          {
+            "phase": 0.8416666666666667,
+            "sole_pitch_degrees": 6.172073946117962,
+            "local_rig_ankle_x_degrees": -19.685954150337825
+          },
+          {
+            "phase": 0.85,
+            "sole_pitch_degrees": 6.312488034098658,
+            "local_rig_ankle_x_degrees": -17.082197246269754
+          },
+          {
+            "phase": 0.8583333333333333,
+            "sole_pitch_degrees": 6.481873096991001,
+            "local_rig_ankle_x_degrees": -14.403494383986427
+          },
+          {
+            "phase": 0.8666666666666667,
+            "sole_pitch_degrees": 6.67214599454913,
+            "local_rig_ankle_x_degrees": -11.640627369429263
+          },
+          {
+            "phase": 0.875,
+            "sole_pitch_degrees": 6.875292043172576,
+            "local_rig_ankle_x_degrees": -8.774859286157625
+          },
+          {
+            "phase": 0.8833333333333333,
+            "sole_pitch_degrees": 7.083254987109504,
+            "local_rig_ankle_x_degrees": -5.770566001894843
+          },
+          {
+            "phase": 0.8916666666666667,
+            "sole_pitch_degrees": 7.287990865159441,
+            "local_rig_ankle_x_degrees": -2.55840359420554
+          },
+          {
+            "phase": 0.9,
+            "sole_pitch_degrees": 7.481473843402482,
+            "local_rig_ankle_x_degrees": 1.015118829424868
+          },
+          {
+            "phase": 0.9083333333333333,
+            "sole_pitch_degrees": 7.655678085720494,
+            "local_rig_ankle_x_degrees": 5.424909764794362
+          },
+          {
+            "phase": 0.9166666666666666,
+            "sole_pitch_degrees": 7.802545092067298,
+            "local_rig_ankle_x_degrees": 8.33171149016532
+          },
+          {
+            "phase": 0.925,
+            "sole_pitch_degrees": 7.914060157591404,
+            "local_rig_ankle_x_degrees": 9.226802658253614
+          },
+          {
+            "phase": 0.9333333333333333,
+            "sole_pitch_degrees": 7.982161071011643,
+            "local_rig_ankle_x_degrees": 10.034954055944107
+          },
+          {
+            "phase": 0.9416666666666667,
+            "sole_pitch_degrees": 8.00225812034061,
+            "local_rig_ankle_x_degrees": 10.749444777093508
+          },
+          {
+            "phase": 0.95,
+            "sole_pitch_degrees": 8.074062430304629,
+            "local_rig_ankle_x_degrees": 11.236554231904954
+          },
+          {
+            "phase": 0.9583333333333334,
+            "sole_pitch_degrees": 8.223050675183893,
+            "local_rig_ankle_x_degrees": 11.452714351210226
+          },
+          {
+            "phase": 0.9666666666666667,
+            "sole_pitch_degrees": 8.416985932018834,
+            "local_rig_ankle_x_degrees": 11.425520806803465
+          },
+          {
+            "phase": 0.975,
+            "sole_pitch_degrees": 8.623838279967739,
+            "local_rig_ankle_x_degrees": 11.183307784682828
+          },
+          {
+            "phase": 0.9833333333333333,
+            "sole_pitch_degrees": 8.811370653638543,
+            "local_rig_ankle_x_degrees": 10.755747334150138
+          },
+          {
+            "phase": 0.9916666666666667,
+            "sole_pitch_degrees": 8.94747987371239,
+            "local_rig_ankle_x_degrees": 10.173267947957804
+          },
+          {
+            "phase": 1.0,
+            "sole_pitch_degrees": 9.000000360446446,
+            "local_rig_ankle_x_degrees": 9.467723920847474
+          }
+        ]
+      },
+      "R": {
+        "early_swing_plantarflexion_degrees": 29.621869674791117,
+        "later_swing_dorsiflexion_degrees": 8.736365990763687,
+        "takeoff_sole_pitch_degrees": -23.99999869944111,
+        "landing_sole_pitch_degrees": 9.000014386883878,
+        "local_rig_ankle_x_range_degrees": [
+          -32.333842323273565,
+          11.4543032239659
+        ],
+        "cycle_samples": [
+          {
+            "phase": -0.5,
+            "sole_pitch_degrees": 9.000014386883878,
+            "local_rig_ankle_x_degrees": 9.469737972878981
+          },
+          {
+            "phase": -0.49166666666666664,
+            "sole_pitch_degrees": 8.908144811790235,
+            "local_rig_ankle_x_degrees": 8.744603255681762
+          },
+          {
+            "phase": -0.48333333333333334,
+            "sole_pitch_degrees": 8.647713565258137,
+            "local_rig_ankle_x_degrees": 8.07542059439164
+          },
+          {
+            "phase": -0.475,
+            "sole_pitch_degrees": 8.241530728291803,
+            "local_rig_ankle_x_degrees": 7.468369602660185
+          },
+          {
+            "phase": -0.4666666666666667,
+            "sole_pitch_degrees": 7.712339833006878,
+            "local_rig_ankle_x_degrees": 6.938622265068111
+          },
+          {
+            "phase": -0.4583333333333333,
+            "sole_pitch_degrees": 7.082949152093707,
+            "local_rig_ankle_x_degrees": 6.499319011804878
+          },
+          {
+            "phase": -0.45,
+            "sole_pitch_degrees": 6.37610623458169,
+            "local_rig_ankle_x_degrees": 6.15680850370401
+          },
+          {
+            "phase": -0.44166666666666665,
+            "sole_pitch_degrees": 5.6145716595299335,
+            "local_rig_ankle_x_degrees": 5.910292035519441
+          },
+          {
+            "phase": -0.43333333333333335,
+            "sole_pitch_degrees": 4.82117956478745,
+            "local_rig_ankle_x_degrees": 5.752862578452993
+          },
+          {
+            "phase": -0.425,
+            "sole_pitch_degrees": 4.0186882212537895,
+            "local_rig_ankle_x_degrees": 5.6727414712809825
+          },
+          {
+            "phase": -0.4166666666666667,
+            "sole_pitch_degrees": 3.2298380472930868,
+            "local_rig_ankle_x_degrees": 5.654415219964192
+          },
+          {
+            "phase": -0.4083333333333333,
+            "sole_pitch_degrees": 2.477434621427602,
+            "local_rig_ankle_x_degrees": 5.679037198148441
+          },
+          {
+            "phase": -0.4,
+            "sole_pitch_degrees": 1.7842487961707167,
+            "local_rig_ankle_x_degrees": 5.724942045786451
+          },
+          {
+            "phase": -0.39166666666666666,
+            "sole_pitch_degrees": 1.1730614106038422,
+            "local_rig_ankle_x_degrees": 5.767749829522683
+          },
+          {
+            "phase": -0.3833333333333333,
+            "sole_pitch_degrees": 0.666674040691162,
+            "local_rig_ankle_x_degrees": 5.779736811516055
+          },
+          {
+            "phase": -0.375,
+            "sole_pitch_degrees": 0.28781519381085874,
+            "local_rig_ankle_x_degrees": 5.732507334065886
+          },
+          {
+            "phase": -0.3666666666666667,
+            "sole_pitch_degrees": 0.05929117881359671,
+            "local_rig_ankle_x_degrees": 5.591889960754602
+          },
+          {
+            "phase": -0.35833333333333334,
+            "sole_pitch_degrees": 6.830194869568067e-06,
+            "local_rig_ankle_x_degrees": 5.325234252915427
+          },
+          {
+            "phase": -0.35,
+            "sole_pitch_degrees": -1.0245280701685977e-05,
+            "local_rig_ankle_x_degrees": 5.048458339160408
+          },
+          {
+            "phase": -0.3416666666666667,
+            "sole_pitch_degrees": 8.53774287451526e-06,
+            "local_rig_ankle_x_degrees": 4.811090482482248
+          },
+          {
+            "phase": -0.33333333333333337,
+            "sole_pitch_degrees": 5.122646966397647e-06,
+            "local_rig_ankle_x_degrees": 4.585052628976669
+          },
+          {
+            "phase": -0.325,
+            "sole_pitch_degrees": 1.3660384853802008e-05,
+            "local_rig_ankle_x_degrees": 4.333636780723085
+          },
+          {
+            "phase": -0.31666666666666665,
+            "sole_pitch_degrees": 1.5367932349860606e-05,
+            "local_rig_ankle_x_degrees": 4.0115455500327935
+          },
+          {
+            "phase": -0.30833333333333335,
+            "sole_pitch_degrees": -6.830185913124142e-06,
+            "local_rig_ankle_x_degrees": 3.568723255243122
+          },
+          {
+            "phase": -0.3,
+            "sole_pitch_degrees": 1.3660385668024541e-05,
+            "local_rig_ankle_x_degrees": 2.9624814274849025
+          },
+          {
+            "phase": -0.29166666666666663,
+            "sole_pitch_degrees": 6.830194869567388e-06,
+            "local_rig_ankle_x_degrees": 2.266330831474043
+          },
+          {
+            "phase": -0.2833333333333333,
+            "sole_pitch_degrees": 2.2198122334094714e-05,
+            "local_rig_ankle_x_degrees": 1.5714123375564306
+          },
+          {
+            "phase": -0.275,
+            "sole_pitch_degrees": -6.830185506013288e-06,
+            "local_rig_ankle_x_degrees": 0.8776149017971994
+          },
+          {
+            "phase": -0.26666666666666666,
+            "sole_pitch_degrees": -5.122638315287669e-06,
+            "local_rig_ankle_x_degrees": 0.18481668802898665
+          },
+          {
+            "phase": -0.2583333333333333,
+            "sole_pitch_degrees": -6.830185506013507e-06,
+            "local_rig_ankle_x_degrees": -0.5070928807756104
+          },
+          {
+            "phase": -0.25,
+            "sole_pitch_degrees": -1.7075434249477724e-06,
+            "local_rig_ankle_x_degrees": -1.1981735554316162
+          },
+          {
+            "phase": -0.24166666666666664,
+            "sole_pitch_degrees": 3.415099063227897e-06,
+            "local_rig_ankle_x_degrees": -1.8885524281504031
+          },
+          {
+            "phase": -0.23333333333333334,
+            "sole_pitch_degrees": 4.026583186745055e-12,
+            "local_rig_ankle_x_degrees": -2.578405589746511
+          },
+          {
+            "phase": -0.22499999999999998,
+            "sole_pitch_degrees": 6.830193648233978e-06,
+            "local_rig_ankle_x_degrees": -3.267713830312898
+          },
+          {
+            "phase": -0.21666666666666667,
+            "sole_pitch_degrees": -1.7075436285035389e-06,
+            "local_rig_ankle_x_degrees": -3.9566184493880203
+          },
+          {
+            "phase": -0.20833333333333331,
+            "sole_pitch_degrees": 1.5367931433860403e-05,
+            "local_rig_ankle_x_degrees": -4.645285079059249
+          },
+          {
+            "phase": -0.2,
+            "sole_pitch_degrees": 3.4150992667837e-06,
+            "local_rig_ankle_x_degrees": -5.333745522394909
+          },
+          {
+            "phase": -0.19166666666666665,
+            "sole_pitch_degrees": 6.830194462456656e-06,
+            "local_rig_ankle_x_degrees": -6.688540438136795
+          },
+          {
+            "phase": -0.18333333333333335,
+            "sole_pitch_degrees": 6.830193241122711e-06,
+            "local_rig_ankle_x_degrees": -7.963083619338794
+          },
+          {
+            "phase": -0.175,
+            "sole_pitch_degrees": 1.3660385668024541e-05,
+            "local_rig_ankle_x_degrees": -9.16400077638264
+          },
+          {
+            "phase": -0.16666666666666669,
+            "sole_pitch_degrees": 1.0245289658129562e-05,
+            "local_rig_ankle_x_degrees": -10.302746136506444
+          },
+          {
+            "phase": -0.15833333333333333,
+            "sole_pitch_degrees": -1.7075439338370432e-06,
+            "local_rig_ankle_x_degrees": -11.385490775625314
+          },
+          {
+            "phase": -0.15000000000000002,
+            "sole_pitch_degrees": 1.7075479235252988e-05,
+            "local_rig_ankle_x_degrees": -12.41518618923434
+          },
+          {
+            "phase": -0.14166666666666666,
+            "sole_pitch_degrees": 1.0245287826129009e-05,
+            "local_rig_ankle_x_degrees": -13.392727132114798
+          },
+          {
+            "phase": -0.13333333333333336,
+            "sole_pitch_degrees": 3.4150990632273634e-06,
+            "local_rig_ankle_x_degrees": -14.317541575923693
+          },
+          {
+            "phase": -0.125,
+            "sole_pitch_degrees": 6.8301940553452925e-06,
+            "local_rig_ankle_x_degrees": -15.18788013845986
+          },
+          {
+            "phase": -0.11666666666666664,
+            "sole_pitch_degrees": -1.7075472721475833e-05,
+            "local_rig_ankle_x_degrees": -16.000933904427132
+          },
+          {
+            "phase": -0.10833333333333334,
+            "sole_pitch_degrees": -1.5367925123639482e-05,
+            "local_rig_ankle_x_degrees": -16.75284552449174
+          },
+          {
+            "phase": -0.09999999999999998,
+            "sole_pitch_degrees": -6.830186320235384e-06,
+            "local_rig_ankle_x_degrees": -17.438628960559576
+          },
+          {
+            "phase": -0.09166666666666667,
+            "sole_pitch_degrees": 8.537742060293116e-06,
+            "local_rig_ankle_x_degrees": -18.051816023486644
+          },
+          {
+            "phase": -0.08333333333333331,
+            "sole_pitch_degrees": -1.707547170369823e-05,
+            "local_rig_ankle_x_degrees": -20.699086355209573
+          },
+          {
+            "phase": -0.07500000000000001,
+            "sole_pitch_degrees": -1.0245281515908122e-05,
+            "local_rig_ankle_x_degrees": -23.89941417950136
+          },
+          {
+            "phase": -0.06666666666666665,
+            "sole_pitch_degrees": -1.1952826976412149e-05,
+            "local_rig_ankle_x_degrees": -26.546797209345595
+          },
+          {
+            "phase": -0.05833333333333335,
+            "sole_pitch_degrees": -0.0077659264274034905,
+            "local_rig_ankle_x_degrees": -28.78061399249285
+          },
+          {
+            "phase": -0.04999999999999999,
+            "sole_pitch_degrees": -0.2695407711263821,
+            "local_rig_ankle_x_degrees": -30.398388693639973
+          },
+          {
+            "phase": -0.041666666666666685,
+            "sole_pitch_degrees": -0.8731027783279778,
+            "local_rig_ankle_x_degrees": -31.51684924570249
+          },
+          {
+            "phase": -0.033333333333333326,
+            "sole_pitch_degrees": -1.7777602948681541,
+            "local_rig_ankle_x_degrees": -32.165399613057296
+          },
+          {
+            "phase": -0.025000000000000022,
+            "sole_pitch_degrees": -2.94284806445774,
+            "local_rig_ankle_x_degrees": -32.333842323273565
+          },
+          {
+            "phase": -0.016666666666666663,
+            "sole_pitch_degrees": -4.327692527985328,
+            "local_rig_ankle_x_degrees": -32.025254376572384
+          },
+          {
+            "phase": -0.00833333333333336,
+            "sole_pitch_degrees": -5.891539309241158,
+            "local_rig_ankle_x_degrees": -31.262202717971487
+          },
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": -7.593763345659698,
+            "local_rig_ankle_x_degrees": -30.040807800022296
+          },
+          {
+            "phase": 0.008333333333333304,
+            "sole_pitch_degrees": -9.39360664858968,
+            "local_rig_ankle_x_degrees": -28.561209533331823
+          },
+          {
+            "phase": 0.01666666666666672,
+            "sole_pitch_degrees": -11.250431408994174,
+            "local_rig_ankle_x_degrees": -27.18089318886936
+          },
+          {
+            "phase": 0.025000000000000022,
+            "sole_pitch_degrees": -13.123522214347595,
+            "local_rig_ankle_x_degrees": -25.895122030445506
+          },
+          {
+            "phase": 0.033333333333333326,
+            "sole_pitch_degrees": -14.972213405528203,
+            "local_rig_ankle_x_degrees": -24.70075075594747
+          },
+          {
+            "phase": 0.04166666666666663,
+            "sole_pitch_degrees": -16.755799703636594,
+            "local_rig_ankle_x_degrees": -23.59832578050886
+          },
+          {
+            "phase": 0.050000000000000044,
+            "sole_pitch_degrees": -18.43358322858209,
+            "local_rig_ankle_x_degrees": -22.592903151662764
+          },
+          {
+            "phase": 0.05833333333333335,
+            "sole_pitch_degrees": -19.964893719709178,
+            "local_rig_ankle_x_degrees": -21.69380095498438
+          },
+          {
+            "phase": 0.06666666666666665,
+            "sole_pitch_degrees": -21.309020731947232,
+            "local_rig_ankle_x_degrees": -20.913234983804273
+          },
+          {
+            "phase": 0.07499999999999996,
+            "sole_pitch_degrees": -22.425276630901887,
+            "local_rig_ankle_x_degrees": -20.264577040970043
+          },
+          {
+            "phase": 0.08333333333333337,
+            "sole_pitch_degrees": -23.272990573775914,
+            "local_rig_ankle_x_degrees": -19.7597577594144
+          },
+          {
+            "phase": 0.09166666666666667,
+            "sole_pitch_degrees": -23.811473112015744,
+            "local_rig_ankle_x_degrees": -19.40566026227343
+          },
+          {
+            "phase": 0.09999999999999998,
+            "sole_pitch_degrees": -23.99999869944111,
+            "local_rig_ankle_x_degrees": -19.19907777573181
+          },
+          {
+            "phase": 0.10833333333333328,
+            "sole_pitch_degrees": -24.222511582782513,
+            "local_rig_ankle_x_degrees": -18.999622591589095
+          },
+          {
+            "phase": 0.1166666666666667,
+            "sole_pitch_degrees": -24.81564232676066,
+            "local_rig_ankle_x_degrees": -18.55791255041708
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": -25.667803343621305,
+            "local_rig_ankle_x_degrees": -17.913301494666076
+          },
+          {
+            "phase": 0.1333333333333333,
+            "sole_pitch_degrees": -26.667252041524762,
+            "local_rig_ankle_x_degrees": -17.145268920612946
+          },
+          {
+            "phase": 0.14166666666666672,
+            "sole_pitch_degrees": -27.70246923719246,
+            "local_rig_ankle_x_degrees": -16.303195388409584
+          },
+          {
+            "phase": 0.15000000000000002,
+            "sole_pitch_degrees": -28.66178192073564,
+            "local_rig_ankle_x_degrees": -15.484528914491856
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": -29.433521471955245,
+            "local_rig_ankle_x_degrees": -14.775471608827198
+          },
+          {
+            "phase": 0.16666666666666663,
+            "sole_pitch_degrees": -29.906091800519253,
+            "local_rig_ankle_x_degrees": -14.260161156706417
+          },
+          {
+            "phase": 0.17500000000000004,
+            "sole_pitch_degrees": -29.956213189594386,
+            "local_rig_ankle_x_degrees": -14.044968362942349
+          },
+          {
+            "phase": 0.18333333333333335,
+            "sole_pitch_degrees": -29.398971381304538,
+            "local_rig_ankle_x_degrees": -14.295532145096974
+          },
+          {
+            "phase": 0.19166666666666665,
+            "sole_pitch_degrees": -28.261861369621904,
+            "local_rig_ankle_x_degrees": -14.99146097340322
+          },
+          {
+            "phase": 0.19999999999999996,
+            "sole_pitch_degrees": -26.621952952105993,
+            "local_rig_ankle_x_degrees": -16.05480019131644
+          },
+          {
+            "phase": 0.20833333333333337,
+            "sole_pitch_degrees": -24.556300699809274,
+            "local_rig_ankle_x_degrees": -17.379172163834617
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": -22.1421014279155,
+            "local_rig_ankle_x_degrees": -18.85443155285484
+          },
+          {
+            "phase": 0.22499999999999998,
+            "sole_pitch_degrees": -19.456457742340525,
+            "local_rig_ankle_x_degrees": -20.388915512168246
+          },
+          {
+            "phase": 0.23333333333333328,
+            "sole_pitch_degrees": -16.576463634668574,
+            "local_rig_ankle_x_degrees": -21.89390329955095
+          },
+          {
+            "phase": 0.2416666666666667,
+            "sole_pitch_degrees": -13.57925456957882,
+            "local_rig_ankle_x_degrees": -23.28563630521109
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -10.541929563904976,
+            "local_rig_ankle_x_degrees": -24.486918023601884
+          },
+          {
+            "phase": 0.2583333333333333,
+            "sole_pitch_degrees": -7.541647901525861,
+            "local_rig_ankle_x_degrees": -25.42795416668956
+          },
+          {
+            "phase": 0.2666666666666667,
+            "sole_pitch_degrees": -4.655514013921144,
+            "local_rig_ankle_x_degrees": -26.047054465890565
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -1.960600956460641,
+            "local_rig_ankle_x_degrees": -26.290986134361106
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": 0.4659350900547617,
+            "local_rig_ankle_x_degrees": -26.677393841370822
+          },
+          {
+            "phase": 0.29166666666666663,
+            "sole_pitch_degrees": 2.547004413545565,
+            "local_rig_ankle_x_degrees": -27.987791246847156
+          },
+          {
+            "phase": 0.30000000000000004,
+            "sole_pitch_degrees": 4.205446807287818,
+            "local_rig_ankle_x_degrees": -28.539955692182033
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": 5.364177492715672,
+            "local_rig_ankle_x_degrees": -28.250997709155474
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": 5.9460387841942515,
+            "local_rig_ankle_x_degrees": -26.92347189678804
+          },
+          {
+            "phase": 0.32499999999999996,
+            "sole_pitch_degrees": 6.010145515708335,
+            "local_rig_ankle_x_degrees": -24.63114942075775
+          },
+          {
+            "phase": 0.33333333333333337,
+            "sole_pitch_degrees": 6.068580022251504,
+            "local_rig_ankle_x_degrees": -22.171022857198587
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": 6.172053207147088,
+            "local_rig_ankle_x_degrees": -19.637102929846602
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": 6.312501611656394,
+            "local_rig_ankle_x_degrees": -17.030245119895344
+          },
+          {
+            "phase": 0.3583333333333333,
+            "sole_pitch_degrees": 6.481881580152736,
+            "local_rig_ankle_x_degrees": -14.347155568617577
+          },
+          {
+            "phase": 0.3666666666666667,
+            "sole_pitch_degrees": 6.6721570728424835,
+            "local_rig_ankle_x_degrees": -11.578338605519685
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": 6.875290756720357,
+            "local_rig_ankle_x_degrees": -8.704335021656306
+          },
+          {
+            "phase": 0.3833333333333333,
+            "sole_pitch_degrees": 7.083241862140524,
+            "local_rig_ankle_x_degrees": -5.688418036086631
+          },
+          {
+            "phase": 0.3916666666666667,
+            "sole_pitch_degrees": 7.287997640168902,
+            "local_rig_ankle_x_degrees": -2.458578671938511
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": 7.4814801707832315,
+            "local_rig_ankle_x_degrees": 1.1463818317809962
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": 7.655672226325117,
+            "local_rig_ankle_x_degrees": 5.639791358064371
+          },
+          {
+            "phase": 0.41666666666666663,
+            "sole_pitch_degrees": 7.802541407746021,
+            "local_rig_ankle_x_degrees": 8.332997273276575
+          },
+          {
+            "phase": 0.42500000000000004,
+            "sole_pitch_degrees": 7.914060157591404,
+            "local_rig_ankle_x_degrees": 9.228185771560542
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": 7.982161545248086,
+            "local_rig_ankle_x_degrees": 10.036392664538042
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": 8.002272123127836,
+            "local_rig_ankle_x_degrees": 10.75091156021777
+          },
+          {
+            "phase": 0.44999999999999996,
+            "sole_pitch_degrees": 8.074084408380129,
+            "local_rig_ankle_x_degrees": 11.23802869899203
+          },
+          {
+            "phase": 0.45833333333333337,
+            "sole_pitch_degrees": 8.223066148926826,
+            "local_rig_ankle_x_degrees": 11.4543032239659
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": 8.417006012398918,
+            "local_rig_ankle_x_degrees": 11.427189080508242
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": 8.623840992374683,
+            "local_rig_ankle_x_degrees": 11.18515449707967
+          },
+          {
+            "phase": 0.4833333333333333,
+            "sole_pitch_degrees": 8.811379495743878,
+            "local_rig_ankle_x_degrees": 10.757650395607634
+          },
+          {
+            "phase": 0.4916666666666667,
+            "sole_pitch_degrees": 8.947487683081373,
+            "local_rig_ankle_x_degrees": 10.175308466972346
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": 9.000014386883878,
+            "local_rig_ankle_x_degrees": 9.469737972878981
+          }
+        ]
+      }
+    },
+    "run": {
+      "L": {
+        "early_swing_plantarflexion_degrees": 41.984083892323234,
+        "later_swing_dorsiflexion_degrees": 11.36980692633136,
+        "takeoff_sole_pitch_degrees": -31.993031427812703,
+        "landing_sole_pitch_degrees": 11.999998795041037,
+        "local_rig_ankle_x_range_degrees": [
+          -34.82407123805227,
+          20.719375432139095
+        ],
+        "cycle_samples": [
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": 11.999998795041037,
+            "local_rig_ankle_x_degrees": 10.684622013001857
+          },
+          {
+            "phase": 0.008333333333333333,
+            "sole_pitch_degrees": 11.848455968506514,
+            "local_rig_ankle_x_degrees": 9.296645611385225
+          },
+          {
+            "phase": 0.016666666666666666,
+            "sole_pitch_degrees": 11.493341540947792,
+            "local_rig_ankle_x_degrees": 8.182502592651806
+          },
+          {
+            "phase": 0.025,
+            "sole_pitch_degrees": 10.958410018392973,
+            "local_rig_ankle_x_degrees": 7.309384996897091
+          },
+          {
+            "phase": 0.03333333333333333,
+            "sole_pitch_degrees": 10.267370000378628,
+            "local_rig_ankle_x_degrees": 6.644891687359006
+          },
+          {
+            "phase": 0.041666666666666664,
+            "sole_pitch_degrees": 9.443912093136001,
+            "local_rig_ankle_x_degrees": 6.157018958907811
+          },
+          {
+            "phase": 0.05,
+            "sole_pitch_degrees": 8.491382615710549,
+            "local_rig_ankle_x_degrees": 5.842142115528346
+          },
+          {
+            "phase": 0.058333333333333334,
+            "sole_pitch_degrees": 7.477653293883383,
+            "local_rig_ankle_x_degrees": 5.6110221743934545
+          },
+          {
+            "phase": 0.06666666666666667,
+            "sole_pitch_degrees": 6.426433850006027,
+            "local_rig_ankle_x_degrees": 5.433636612119523
+          },
+          {
+            "phase": 0.075,
+            "sole_pitch_degrees": 5.361459680569293,
+            "local_rig_ankle_x_degrees": 5.280245931286669
+          },
+          {
+            "phase": 0.08333333333333333,
+            "sole_pitch_degrees": 4.306446014007763,
+            "local_rig_ankle_x_degrees": 5.121398356193798
+          },
+          {
+            "phase": 0.09166666666666666,
+            "sole_pitch_degrees": 3.312122799205767,
+            "local_rig_ankle_x_degrees": 3.4152644859619796
+          },
+          {
+            "phase": 0.1,
+            "sole_pitch_degrees": 2.399000560883823,
+            "local_rig_ankle_x_degrees": 1.3540667535433393
+          },
+          {
+            "phase": 0.10833333333333334,
+            "sole_pitch_degrees": 1.5908085657904685,
+            "local_rig_ankle_x_degrees": -0.7617914353381793
+          },
+          {
+            "phase": 0.11666666666666667,
+            "sole_pitch_degrees": 0.9111378632397644,
+            "local_rig_ankle_x_degrees": -2.8423001936137084
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": 0.38372974322824194,
+            "local_rig_ankle_x_degrees": -5.0077965154840305
+          },
+          {
+            "phase": 0.13333333333333333,
+            "sole_pitch_degrees": 0.10693179478169235,
+            "local_rig_ankle_x_degrees": -7.314032086853638
+          },
+          {
+            "phase": 0.14166666666666666,
+            "sole_pitch_degrees": 0.015094717716500644,
+            "local_rig_ankle_x_degrees": -9.719589707812633
+          },
+          {
+            "phase": 0.15,
+            "sole_pitch_degrees": -1.1952819037749096e-05,
+            "local_rig_ankle_x_degrees": -12.07638575451326
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": -1.3660363684031017e-05,
+            "local_rig_ankle_x_degrees": -14.305435919393492
+          },
+          {
+            "phase": 0.16666666666666666,
+            "sole_pitch_degrees": 2.3905664130597995e-05,
+            "local_rig_ankle_x_degrees": -16.39677751777522
+          },
+          {
+            "phase": 0.175,
+            "sole_pitch_degrees": 6.830205454450747e-06,
+            "local_rig_ankle_x_degrees": -18.317351580301935
+          },
+          {
+            "phase": 0.18333333333333332,
+            "sole_pitch_degrees": -5.122613990409427e-06,
+            "local_rig_ankle_x_degrees": -20.11422408677055
+          },
+          {
+            "phase": 0.19166666666666668,
+            "sole_pitch_degrees": 6.830218482001169e-06,
+            "local_rig_ankle_x_degrees": -21.787946574956543
+          },
+          {
+            "phase": 0.2,
+            "sole_pitch_degrees": 2.2581935546414475e-11,
+            "local_rig_ankle_x_degrees": -23.338174120306828
+          },
+          {
+            "phase": 0.20833333333333334,
+            "sole_pitch_degrees": -1.3660372640471932e-05,
+            "local_rig_ankle_x_degrees": -24.763658505750584
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": -1.0245261771025059e-05,
+            "local_rig_ankle_x_degrees": -26.01746096376419
+          },
+          {
+            "phase": 0.225,
+            "sole_pitch_degrees": -6.830157415358564e-06,
+            "local_rig_ankle_x_degrees": -27.13638255359568
+          },
+          {
+            "phase": 0.23333333333333334,
+            "sole_pitch_degrees": 1.7075766044951316e-06,
+            "local_rig_ankle_x_degrees": -28.114740557855598
+          },
+          {
+            "phase": 0.24166666666666667,
+            "sole_pitch_degrees": -0.07186726416029136,
+            "local_rig_ankle_x_degrees": -28.887390339787657
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -0.35937442387547863,
+            "local_rig_ankle_x_degrees": -29.32973046591061
+          },
+          {
+            "phase": 0.25833333333333336,
+            "sole_pitch_degrees": -1.216021951982174,
+            "local_rig_ankle_x_degrees": -29.38477496043174
+          },
+          {
+            "phase": 0.26666666666666666,
+            "sole_pitch_degrees": -2.4363229083756015,
+            "local_rig_ankle_x_degrees": -29.14484066017295
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -3.9779017273668984,
+            "local_rig_ankle_x_degrees": -28.631809783687658
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": -5.798390044148241,
+            "local_rig_ankle_x_degrees": -27.866456351336463
+          },
+          {
+            "phase": 0.2916666666666667,
+            "sole_pitch_degrees": -7.855380354349194,
+            "local_rig_ankle_x_degrees": -26.86845472302359
+          },
+          {
+            "phase": 0.3,
+            "sole_pitch_degrees": -10.142971269298581,
+            "local_rig_ankle_x_degrees": -25.59780901851673
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": -12.539908610629318,
+            "local_rig_ankle_x_degrees": -24.153811405327655
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": -15.00377748505762,
+            "local_rig_ankle_x_degrees": -22.560572451226506
+          },
+          {
+            "phase": 0.325,
+            "sole_pitch_degrees": -17.49224589897863,
+            "local_rig_ankle_x_degrees": -20.844026384491826
+          },
+          {
+            "phase": 0.3333333333333333,
+            "sole_pitch_degrees": -19.962963948176295,
+            "local_rig_ankle_x_degrees": -19.0319191410795
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": -22.32513891106494,
+            "local_rig_ankle_x_degrees": -17.153354157042948
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": -24.54239753240603,
+            "local_rig_ankle_x_degrees": -17.226177633973624
+          },
+          {
+            "phase": 0.35833333333333334,
+            "sole_pitch_degrees": -26.57214995907612,
+            "local_rig_ankle_x_degrees": -18.247094546951892
+          },
+          {
+            "phase": 0.36666666666666664,
+            "sole_pitch_degrees": -28.372290328188818,
+            "local_rig_ankle_x_degrees": -19.598169144030237
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": -29.90037812544239,
+            "local_rig_ankle_x_degrees": -21.046809578307627
+          },
+          {
+            "phase": 0.38333333333333336,
+            "sole_pitch_degrees": -30.98082101762081,
+            "local_rig_ankle_x_degrees": -22.72225156661717
+          },
+          {
+            "phase": 0.39166666666666666,
+            "sole_pitch_degrees": -31.661968283054193,
+            "local_rig_ankle_x_degrees": -24.443348246886373
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": -31.993031427812703,
+            "local_rig_ankle_x_degrees": -26.19252724992808
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": -32.16786717637435,
+            "local_rig_ankle_x_degrees": -27.85841892623065
+          },
+          {
+            "phase": 0.4166666666666667,
+            "sole_pitch_degrees": -32.525112340369226,
+            "local_rig_ankle_x_degrees": -29.23583927048503
+          },
+          {
+            "phase": 0.425,
+            "sole_pitch_degrees": -33.14357516487064,
+            "local_rig_ankle_x_degrees": -30.125133315515274
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": -33.91087014134422,
+            "local_rig_ankle_x_degrees": -30.67147673213001
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": -34.79559563077577,
+            "local_rig_ankle_x_degrees": -30.895455710487653
+          },
+          {
+            "phase": 0.45,
+            "sole_pitch_degrees": -35.76633102892325,
+            "local_rig_ankle_x_degrees": -30.81893027102683
+          },
+          {
+            "phase": 0.4583333333333333,
+            "sole_pitch_degrees": -36.79172541520575,
+            "local_rig_ankle_x_degrees": -30.465061585223054
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": -37.82712156513531,
+            "local_rig_ankle_x_degrees": -29.79294365013712
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": -38.82299170268943,
+            "local_rig_ankle_x_degrees": -28.923931851847225
+          },
+          {
+            "phase": 0.48333333333333334,
+            "sole_pitch_degrees": -39.74789236300983,
+            "local_rig_ankle_x_degrees": -27.886137541429857
+          },
+          {
+            "phase": 0.49166666666666664,
+            "sole_pitch_degrees": -40.57043651311332,
+            "local_rig_ankle_x_degrees": -26.700445729819617
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": -41.259245280567946,
+            "local_rig_ankle_x_degrees": -25.380547531207796
+          },
+          {
+            "phase": 0.5083333333333333,
+            "sole_pitch_degrees": -41.706948220267826,
+            "local_rig_ankle_x_degrees": -24.12629086561438
+          },
+          {
+            "phase": 0.5166666666666667,
+            "sole_pitch_degrees": -41.92662673849678,
+            "local_rig_ankle_x_degrees": -23.23805037726361
+          },
+          {
+            "phase": 0.525,
+            "sole_pitch_degrees": -41.89281825188652,
+            "local_rig_ankle_x_degrees": -22.711727952653476
+          },
+          {
+            "phase": 0.5333333333333333,
+            "sole_pitch_degrees": -41.59713396211172,
+            "local_rig_ankle_x_degrees": -22.527878043216948
+          },
+          {
+            "phase": 0.5416666666666666,
+            "sole_pitch_degrees": -41.04835318968657,
+            "local_rig_ankle_x_degrees": -22.651690589849064
+          },
+          {
+            "phase": 0.55,
+            "sole_pitch_degrees": -40.19966005505553,
+            "local_rig_ankle_x_degrees": -23.09841398987187
+          },
+          {
+            "phase": 0.5583333333333333,
+            "sole_pitch_degrees": -39.15410764572208,
+            "local_rig_ankle_x_degrees": -23.723354100813232
+          },
+          {
+            "phase": 0.5666666666666667,
+            "sole_pitch_degrees": -37.930481796121356,
+            "local_rig_ankle_x_degrees": -24.48512168385017
+          },
+          {
+            "phase": 0.575,
+            "sole_pitch_degrees": -36.54751852863401,
+            "local_rig_ankle_x_degrees": -25.34317444361678
+          },
+          {
+            "phase": 0.5833333333333334,
+            "sole_pitch_degrees": -35.023887191939224,
+            "local_rig_ankle_x_degrees": -26.25782044329882
+          },
+          {
+            "phase": 0.5916666666666667,
+            "sole_pitch_degrees": -33.35032640846368,
+            "local_rig_ankle_x_degrees": -27.664023204715626
+          },
+          {
+            "phase": 0.6,
+            "sole_pitch_degrees": -31.59246980717336,
+            "local_rig_ankle_x_degrees": -29.200855041556224
+          },
+          {
+            "phase": 0.6083333333333333,
+            "sole_pitch_degrees": -29.76894080948015,
+            "local_rig_ankle_x_degrees": -30.67988127990371
+          },
+          {
+            "phase": 0.6166666666666667,
+            "sole_pitch_degrees": -27.898553064176028,
+            "local_rig_ankle_x_degrees": -31.994317034726812
+          },
+          {
+            "phase": 0.625,
+            "sole_pitch_degrees": -25.999990825600342,
+            "local_rig_ankle_x_degrees": -33.1191603985687
+          },
+          {
+            "phase": 0.6333333333333333,
+            "sole_pitch_degrees": -24.10150495671844,
+            "local_rig_ankle_x_degrees": -33.9450771182904
+          },
+          {
+            "phase": 0.6416666666666667,
+            "sole_pitch_degrees": -22.23109097110283,
+            "local_rig_ankle_x_degrees": -34.516087763092635
+          },
+          {
+            "phase": 0.65,
+            "sole_pitch_degrees": -20.40758562336502,
+            "local_rig_ankle_x_degrees": -34.814481652457566
+          },
+          {
+            "phase": 0.6583333333333333,
+            "sole_pitch_degrees": -18.64970398087307,
+            "local_rig_ankle_x_degrees": -34.82407123805227
+          },
+          {
+            "phase": 0.6666666666666666,
+            "sole_pitch_degrees": -16.97607053719301,
+            "local_rig_ankle_x_degrees": -34.53017844335037
+          },
+          {
+            "phase": 0.675,
+            "sole_pitch_degrees": -15.45251965630994,
+            "local_rig_ankle_x_degrees": -33.80781080654065
+          },
+          {
+            "phase": 0.6833333333333333,
+            "sole_pitch_degrees": -14.069557809424296,
+            "local_rig_ankle_x_degrees": -32.74984865505153
+          },
+          {
+            "phase": 0.6916666666666667,
+            "sole_pitch_degrees": -12.845902583663737,
+            "local_rig_ankle_x_degrees": -31.348396290202462
+          },
+          {
+            "phase": 0.7,
+            "sole_pitch_degrees": -11.800356024441125,
+            "local_rig_ankle_x_degrees": -29.59576974917719
+          },
+          {
+            "phase": 0.7083333333333334,
+            "sole_pitch_degrees": -10.951619806217405,
+            "local_rig_ankle_x_degrees": -27.484609503145023
+          },
+          {
+            "phase": 0.7166666666666667,
+            "sole_pitch_degrees": -10.40285892460118,
+            "local_rig_ankle_x_degrees": -24.879534372567143
+          },
+          {
+            "phase": 0.725,
+            "sole_pitch_degrees": -10.107206513177529,
+            "local_rig_ankle_x_degrees": -21.889265601104512
+          },
+          {
+            "phase": 0.7333333333333333,
+            "sole_pitch_degrees": -9.916495620768352,
+            "local_rig_ankle_x_degrees": -18.6964595226362
+          },
+          {
+            "phase": 0.7416666666666667,
+            "sole_pitch_degrees": -9.656251162378192,
+            "local_rig_ankle_x_degrees": -15.517366756473983
+          },
+          {
+            "phase": 0.75,
+            "sole_pitch_degrees": -9.125285045636575,
+            "local_rig_ankle_x_degrees": -12.602115660212897
+          },
+          {
+            "phase": 0.7583333333333333,
+            "sole_pitch_degrees": -8.288801286419561,
+            "local_rig_ankle_x_degrees": -9.99367495392149
+          },
+          {
+            "phase": 0.7666666666666667,
+            "sole_pitch_degrees": -7.266578727531024,
+            "local_rig_ankle_x_degrees": -7.562633897169177
+          },
+          {
+            "phase": 0.775,
+            "sole_pitch_degrees": -6.087679037866646,
+            "local_rig_ankle_x_degrees": -5.264049845217276
+          },
+          {
+            "phase": 0.7833333333333333,
+            "sole_pitch_degrees": -4.780887909186989,
+            "local_rig_ankle_x_degrees": -3.0476466293589684
+          },
+          {
+            "phase": 0.7916666666666666,
+            "sole_pitch_degrees": -3.374723865539432,
+            "local_rig_ankle_x_degrees": -0.8578522830422964
+          },
+          {
+            "phase": 0.8,
+            "sole_pitch_degrees": -1.894334483993868,
+            "local_rig_ankle_x_degrees": 1.437777872176133
+          },
+          {
+            "phase": 0.8083333333333333,
+            "sole_pitch_degrees": -0.4023817348746868,
+            "local_rig_ankle_x_degrees": 3.8125496961117644
+          },
+          {
+            "phase": 0.8166666666666667,
+            "sole_pitch_degrees": 1.0725834320645815,
+            "local_rig_ankle_x_degrees": 6.046628160881595
+          },
+          {
+            "phase": 0.825,
+            "sole_pitch_degrees": 2.5018857247171487,
+            "local_rig_ankle_x_degrees": 8.221540538853015
+          },
+          {
+            "phase": 0.8333333333333334,
+            "sole_pitch_degrees": 3.8574023846681578,
+            "local_rig_ankle_x_degrees": 10.720341341040085
+          },
+          {
+            "phase": 0.8416666666666667,
+            "sole_pitch_degrees": 5.05608779623048,
+            "local_rig_ankle_x_degrees": 14.378793004853076
+          },
+          {
+            "phase": 0.85,
+            "sole_pitch_degrees": 6.091090467176709,
+            "local_rig_ankle_x_degrees": 16.250852233705192
+          },
+          {
+            "phase": 0.8583333333333333,
+            "sole_pitch_degrees": 6.936803801711427,
+            "local_rig_ankle_x_degrees": 17.093982737682612
+          },
+          {
+            "phase": 0.8666666666666667,
+            "sole_pitch_degrees": 7.56320288589235,
+            "local_rig_ankle_x_degrees": 17.571387347457115
+          },
+          {
+            "phase": 0.875,
+            "sole_pitch_degrees": 7.941344602346503,
+            "local_rig_ankle_x_degrees": 18.252731160564444
+          },
+          {
+            "phase": 0.8833333333333333,
+            "sole_pitch_degrees": 8.007253967166255,
+            "local_rig_ankle_x_degrees": 19.171205481276278
+          },
+          {
+            "phase": 0.8916666666666667,
+            "sole_pitch_degrees": 8.123832472165562,
+            "local_rig_ankle_x_degrees": 19.900338420458894
+          },
+          {
+            "phase": 0.9,
+            "sole_pitch_degrees": 8.310526908208312,
+            "local_rig_ankle_x_degrees": 20.406732060618225
+          },
+          {
+            "phase": 0.9083333333333333,
+            "sole_pitch_degrees": 8.570806680486378,
+            "local_rig_ankle_x_degrees": 20.67731683477745
+          },
+          {
+            "phase": 0.9166666666666666,
+            "sole_pitch_degrees": 8.892144350756597,
+            "local_rig_ankle_x_degrees": 20.719375432139095
+          },
+          {
+            "phase": 0.925,
+            "sole_pitch_degrees": 9.2697598183978,
+            "local_rig_ankle_x_degrees": 20.473345188046064
+          },
+          {
+            "phase": 0.9333333333333333,
+            "sole_pitch_degrees": 9.670713350302266,
+            "local_rig_ankle_x_degrees": 20.025856806836217
+          },
+          {
+            "phase": 0.9416666666666667,
+            "sole_pitch_degrees": 10.082451178911265,
+            "local_rig_ankle_x_degrees": 19.38816302516715
+          },
+          {
+            "phase": 0.95,
+            "sole_pitch_degrees": 10.492459476451288,
+            "local_rig_ankle_x_degrees": 18.572312296734758
+          },
+          {
+            "phase": 0.9583333333333334,
+            "sole_pitch_degrees": 10.88813425576799,
+            "local_rig_ankle_x_degrees": 17.591201726239323
+          },
+          {
+            "phase": 0.9666666666666667,
+            "sole_pitch_degrees": 11.239620555272099,
+            "local_rig_ankle_x_degrees": 16.418275538187835
+          },
+          {
+            "phase": 0.975,
+            "sole_pitch_degrees": 11.53908916306858,
+            "local_rig_ankle_x_degrees": 15.124762360339773
+          },
+          {
+            "phase": 0.9833333333333333,
+            "sole_pitch_degrees": 11.774017277322894,
+            "local_rig_ankle_x_degrees": 13.72693767971363
+          },
+          {
+            "phase": 0.9916666666666667,
+            "sole_pitch_degrees": 11.931832770629425,
+            "local_rig_ankle_x_degrees": 12.24132287013802
+          },
+          {
+            "phase": 1.0,
+            "sole_pitch_degrees": 11.999998795041037,
+            "local_rig_ankle_x_degrees": 10.684622013001857
+          }
+        ]
+      },
+      "R": {
+        "early_swing_plantarflexion_degrees": 41.98411562288357,
+        "later_swing_dorsiflexion_degrees": 11.369796208854298,
+        "takeoff_sole_pitch_degrees": -31.99301332714172,
+        "landing_sole_pitch_degrees": 11.999999964959933,
+        "local_rig_ankle_x_range_degrees": [
+          -34.79501561332303,
+          20.721716479477116
+        ],
+        "cycle_samples": [
+          {
+            "phase": -0.5,
+            "sole_pitch_degrees": 11.999999964959933,
+            "local_rig_ankle_x_degrees": 10.689294716167792
+          },
+          {
+            "phase": -0.49166666666666664,
+            "sole_pitch_degrees": 11.848454729774344,
+            "local_rig_ankle_x_degrees": 9.301080965477503
+          },
+          {
+            "phase": -0.48333333333333334,
+            "sole_pitch_degrees": 11.49334823417655,
+            "local_rig_ankle_x_degrees": 8.186565701434318
+          },
+          {
+            "phase": -0.475,
+            "sole_pitch_degrees": 10.958422673647098,
+            "local_rig_ankle_x_degrees": 7.312938402812789
+          },
+          {
+            "phase": -0.4666666666666667,
+            "sole_pitch_degrees": 10.267391988963613,
+            "local_rig_ankle_x_degrees": 6.647849159269621
+          },
+          {
+            "phase": -0.4583333333333333,
+            "sole_pitch_degrees": 9.443943529792318,
+            "local_rig_ankle_x_degrees": 6.159375801058289
+          },
+          {
+            "phase": -0.45,
+            "sole_pitch_degrees": 8.491384808814898,
+            "local_rig_ankle_x_degrees": 5.8438641769728354
+          },
+          {
+            "phase": -0.44166666666666665,
+            "sole_pitch_degrees": 7.477641442702952,
+            "local_rig_ankle_x_degrees": 5.612210627309037
+          },
+          {
+            "phase": -0.43333333333333335,
+            "sole_pitch_degrees": 6.4264282094629115,
+            "local_rig_ankle_x_degrees": 5.434358050850605
+          },
+          {
+            "phase": -0.425,
+            "sole_pitch_degrees": 5.3614633998247765,
+            "local_rig_ankle_x_degrees": 5.280570792159067
+          },
+          {
+            "phase": -0.4166666666666667,
+            "sole_pitch_degrees": 4.306441162271008,
+            "local_rig_ankle_x_degrees": 5.121426530724124
+          },
+          {
+            "phase": -0.4083333333333333,
+            "sole_pitch_degrees": 3.3121245039007525,
+            "local_rig_ankle_x_degrees": 3.4351580522498764
+          },
+          {
+            "phase": -0.4,
+            "sole_pitch_degrees": 2.399002266934529,
+            "local_rig_ankle_x_degrees": 1.3633152565663595
+          },
+          {
+            "phase": -0.39166666666666666,
+            "sole_pitch_degrees": 1.5908137812656016,
+            "local_rig_ankle_x_degrees": -0.7635566657126573
+          },
+          {
+            "phase": -0.3833333333333333,
+            "sole_pitch_degrees": 0.911136047296995,
+            "local_rig_ankle_x_degrees": -2.85162126739666
+          },
+          {
+            "phase": -0.375,
+            "sole_pitch_degrees": 0.3837604783914254,
+            "local_rig_ankle_x_degrees": -5.043774110050249
+          },
+          {
+            "phase": -0.3666666666666667,
+            "sole_pitch_degrees": 0.10693180115532058,
+            "local_rig_ankle_x_degrees": -7.343118447434137
+          },
+          {
+            "phase": -0.35833333333333334,
+            "sole_pitch_degrees": 0.015101548805318788,
+            "local_rig_ankle_x_degrees": -9.744792252076333
+          },
+          {
+            "phase": -0.35,
+            "sole_pitch_degrees": -1.7075364022833087e-06,
+            "local_rig_ankle_x_degrees": -12.09975951562669
+          },
+          {
+            "phase": -0.3416666666666667,
+            "sole_pitch_degrees": 1.3450565747909212e-11,
+            "local_rig_ankle_x_degrees": -14.328121538948043
+          },
+          {
+            "phase": -0.33333333333333337,
+            "sole_pitch_degrees": 1.7075515671681696e-06,
+            "local_rig_ankle_x_degrees": -16.418999538239856
+          },
+          {
+            "phase": -0.325,
+            "sole_pitch_degrees": 2.390568285770668e-05,
+            "local_rig_ankle_x_degrees": -18.339385770564398
+          },
+          {
+            "phase": -0.31666666666666665,
+            "sole_pitch_degrees": 2.7340044782673073e-11,
+            "local_rig_ankle_x_degrees": -20.136169484573802
+          },
+          {
+            "phase": -0.30833333333333335,
+            "sole_pitch_degrees": -1.1952801633750694e-05,
+            "local_rig_ankle_x_degrees": -21.80991758596918
+          },
+          {
+            "phase": -0.3,
+            "sole_pitch_degrees": 3.415117790336094e-06,
+            "local_rig_ankle_x_degrees": -23.360285150197452
+          },
+          {
+            "phase": -0.29166666666666663,
+            "sole_pitch_degrees": 1.7075518725022017e-06,
+            "local_rig_ankle_x_degrees": -24.78603762056613
+          },
+          {
+            "phase": -0.2833333333333333,
+            "sole_pitch_degrees": -5.122619486404592e-06,
+            "local_rig_ankle_x_degrees": -26.04024988992994
+          },
+          {
+            "phase": -0.275,
+            "sole_pitch_degrees": 1.7075782329354403e-06,
+            "local_rig_ankle_x_degrees": -27.159675206212714
+          },
+          {
+            "phase": -0.26666666666666666,
+            "sole_pitch_degrees": 1.7075502237023317e-05,
+            "local_rig_ankle_x_degrees": -28.138668418065446
+          },
+          {
+            "phase": -0.2583333333333333,
+            "sole_pitch_degrees": -0.07186385763547302,
+            "local_rig_ankle_x_degrees": -28.908738096038533
+          },
+          {
+            "phase": -0.25,
+            "sole_pitch_degrees": -0.35938127535011827,
+            "local_rig_ankle_x_degrees": -29.338548240129096
+          },
+          {
+            "phase": -0.24166666666666664,
+            "sole_pitch_degrees": -1.2160049528302903,
+            "local_rig_ankle_x_degrees": -29.342427787577662
+          },
+          {
+            "phase": -0.23333333333333334,
+            "sole_pitch_degrees": -2.436319641540617,
+            "local_rig_ankle_x_degrees": -29.088201316480617
+          },
+          {
+            "phase": -0.22499999999999998,
+            "sole_pitch_degrees": -3.977910718356634,
+            "local_rig_ankle_x_degrees": -28.57318456249415
+          },
+          {
+            "phase": -0.21666666666666667,
+            "sole_pitch_degrees": -5.798387681590677,
+            "local_rig_ankle_x_degrees": -27.805840129999893
+          },
+          {
+            "phase": -0.20833333333333331,
+            "sole_pitch_degrees": -7.855382512624739,
+            "local_rig_ankle_x_degrees": -26.805809935503525
+          },
+          {
+            "phase": -0.2,
+            "sole_pitch_degrees": -10.1429691104078,
+            "local_rig_ankle_x_degrees": -25.533069070468763
+          },
+          {
+            "phase": -0.19166666666666665,
+            "sole_pitch_degrees": -12.539867124132556,
+            "local_rig_ankle_x_degrees": -24.086873843914237
+          },
+          {
+            "phase": -0.18333333333333335,
+            "sole_pitch_degrees": -15.003749565244137,
+            "local_rig_ankle_x_degrees": -22.491276767002145
+          },
+          {
+            "phase": -0.175,
+            "sole_pitch_degrees": -17.49223980904262,
+            "local_rig_ankle_x_degrees": -20.77219157744351
+          },
+          {
+            "phase": -0.16666666666666669,
+            "sole_pitch_degrees": -19.962961904238995,
+            "local_rig_ankle_x_degrees": -18.95729249420794
+          },
+          {
+            "phase": -0.15833333333333333,
+            "sole_pitch_degrees": -22.325159613385235,
+            "local_rig_ankle_x_degrees": -17.075341443890355
+          },
+          {
+            "phase": -0.15000000000000002,
+            "sole_pitch_degrees": -24.542398816160343,
+            "local_rig_ankle_x_degrees": -17.112864795643112
+          },
+          {
+            "phase": -0.14166666666666666,
+            "sole_pitch_degrees": -26.572148432839974,
+            "local_rig_ankle_x_degrees": -18.110162914471477
+          },
+          {
+            "phase": -0.13333333333333336,
+            "sole_pitch_degrees": -28.37231322594491,
+            "local_rig_ankle_x_degrees": -19.460503266214044
+          },
+          {
+            "phase": -0.125,
+            "sole_pitch_degrees": -29.900393594482054,
+            "local_rig_ankle_x_degrees": -20.909961615644544
+          },
+          {
+            "phase": -0.11666666666666664,
+            "sole_pitch_degrees": -30.980844446721395,
+            "local_rig_ankle_x_degrees": -22.58807250037227
+          },
+          {
+            "phase": -0.10833333333333334,
+            "sole_pitch_degrees": -31.661959998443866,
+            "local_rig_ankle_x_degrees": -24.309438973113686
+          },
+          {
+            "phase": -0.09999999999999998,
+            "sole_pitch_degrees": -31.99301332714172,
+            "local_rig_ankle_x_degrees": -26.056768702437616
+          },
+          {
+            "phase": -0.09166666666666667,
+            "sole_pitch_degrees": -32.16786321287608,
+            "local_rig_ankle_x_degrees": -27.71941603888443
+          },
+          {
+            "phase": -0.08333333333333331,
+            "sole_pitch_degrees": -32.52509715015911,
+            "local_rig_ankle_x_degrees": -29.09330346779062
+          },
+          {
+            "phase": -0.07500000000000001,
+            "sole_pitch_degrees": -33.14355900035677,
+            "local_rig_ankle_x_degrees": -29.97887847481779
+          },
+          {
+            "phase": -0.06666666666666665,
+            "sole_pitch_degrees": -33.91086163871634,
+            "local_rig_ankle_x_degrees": -30.52145845719985
+          },
+          {
+            "phase": -0.05833333333333335,
+            "sole_pitch_degrees": -34.795591970696606,
+            "local_rig_ankle_x_degrees": -30.74173205793276
+          },
+          {
+            "phase": -0.04999999999999999,
+            "sole_pitch_degrees": -35.766339788131,
+            "local_rig_ankle_x_degrees": -30.661699316333134
+          },
+          {
+            "phase": -0.041666666666666685,
+            "sole_pitch_degrees": -36.79170833974691,
+            "local_rig_ankle_x_degrees": -30.304654592565303
+          },
+          {
+            "phase": -0.033333333333333326,
+            "sole_pitch_degrees": -37.82713533771493,
+            "local_rig_ankle_x_degrees": -29.629927525216424
+          },
+          {
+            "phase": -0.025000000000000022,
+            "sole_pitch_degrees": -38.82301142889828,
+            "local_rig_ankle_x_degrees": -28.75902376452644
+          },
+          {
+            "phase": -0.016666666666666663,
+            "sole_pitch_degrees": -39.74790416545256,
+            "local_rig_ankle_x_degrees": -27.72009564270685
+          },
+          {
+            "phase": -0.00833333333333336,
+            "sole_pitch_degrees": -40.57045021283374,
+            "local_rig_ankle_x_degrees": -26.534110132962294
+          },
+          {
+            "phase": 0.0,
+            "sole_pitch_degrees": -41.259245280567946,
+            "local_rig_ankle_x_degrees": -25.214806160808266
+          },
+          {
+            "phase": 0.008333333333333304,
+            "sole_pitch_degrees": -41.70694057157252,
+            "local_rig_ankle_x_degrees": -23.96362991053053
+          },
+          {
+            "phase": 0.01666666666666672,
+            "sole_pitch_degrees": -41.9266434885728,
+            "local_rig_ankle_x_degrees": -23.081172884859463
+          },
+          {
+            "phase": 0.025000000000000022,
+            "sole_pitch_degrees": -41.89283500000144,
+            "local_rig_ankle_x_degrees": -22.562863979693045
+          },
+          {
+            "phase": 0.033333333333333326,
+            "sole_pitch_degrees": -41.597148425588756,
+            "local_rig_ankle_x_degrees": -22.38880173133715
+          },
+          {
+            "phase": 0.04166666666666663,
+            "sole_pitch_degrees": -41.048363491739075,
+            "local_rig_ankle_x_degrees": -22.523749193863676
+          },
+          {
+            "phase": 0.050000000000000044,
+            "sole_pitch_degrees": -40.19966968052125,
+            "local_rig_ankle_x_degrees": -22.982741321183116
+          },
+          {
+            "phase": 0.05833333333333335,
+            "sole_pitch_degrees": -39.154146574091186,
+            "local_rig_ankle_x_degrees": -23.62023190472438
+          },
+          {
+            "phase": 0.06666666666666665,
+            "sole_pitch_degrees": -37.930522239052294,
+            "local_rig_ankle_x_degrees": -24.394604601874576
+          },
+          {
+            "phase": 0.07499999999999996,
+            "sole_pitch_degrees": -36.54751914246756,
+            "local_rig_ankle_x_degrees": -25.265081475741436
+          },
+          {
+            "phase": 0.08333333333333337,
+            "sole_pitch_degrees": -35.02389194858928,
+            "local_rig_ankle_x_degrees": -26.19170762722768
+          },
+          {
+            "phase": 0.09166666666666667,
+            "sole_pitch_degrees": -33.35032640846368,
+            "local_rig_ankle_x_degrees": -27.616662673010758
+          },
+          {
+            "phase": 0.09999999999999998,
+            "sole_pitch_degrees": -31.59243713937395,
+            "local_rig_ankle_x_degrees": -29.159713397090652
+          },
+          {
+            "phase": 0.10833333333333328,
+            "sole_pitch_degrees": -29.768949702742752,
+            "local_rig_ankle_x_degrees": -30.64068623935159
+          },
+          {
+            "phase": 0.1166666666666667,
+            "sole_pitch_degrees": -27.898551555084005,
+            "local_rig_ankle_x_degrees": -31.956990050912694
+          },
+          {
+            "phase": 0.125,
+            "sole_pitch_degrees": -25.99998311427647,
+            "local_rig_ankle_x_degrees": -33.08360926393879
+          },
+          {
+            "phase": 0.1333333333333333,
+            "sole_pitch_degrees": -24.10148469375518,
+            "local_rig_ankle_x_degrees": -33.91124719133133
+          },
+          {
+            "phase": 0.14166666666666672,
+            "sole_pitch_degrees": -22.231109361434758,
+            "local_rig_ankle_x_degrees": -34.48390732681812
+          },
+          {
+            "phase": 0.15000000000000002,
+            "sole_pitch_degrees": -20.407621984637377,
+            "local_rig_ankle_x_degrees": -34.78388240497591
+          },
+          {
+            "phase": 0.15833333333333333,
+            "sole_pitch_degrees": -18.64972505387754,
+            "local_rig_ankle_x_degrees": -34.79501561332303
+          },
+          {
+            "phase": 0.16666666666666663,
+            "sole_pitch_degrees": -16.976078066882767,
+            "local_rig_ankle_x_degrees": -34.50264936590064
+          },
+          {
+            "phase": 0.17500000000000004,
+            "sole_pitch_degrees": -15.45253208698052,
+            "local_rig_ankle_x_degrees": -33.78172972919496
+          },
+          {
+            "phase": 0.18333333333333335,
+            "sole_pitch_degrees": -14.069590935887136,
+            "local_rig_ankle_x_degrees": -32.725147275918175
+          },
+          {
+            "phase": 0.19166666666666665,
+            "sole_pitch_degrees": -12.845934535566318,
+            "local_rig_ankle_x_degrees": -31.325013137578924
+          },
+          {
+            "phase": 0.19999999999999996,
+            "sole_pitch_degrees": -11.800352681520238,
+            "local_rig_ankle_x_degrees": -29.57368774759054
+          },
+          {
+            "phase": 0.20833333333333337,
+            "sole_pitch_degrees": -10.95161915741755,
+            "local_rig_ankle_x_degrees": -27.463715954473955
+          },
+          {
+            "phase": 0.21666666666666667,
+            "sole_pitch_degrees": -10.40288394630156,
+            "local_rig_ankle_x_degrees": -24.859767805109126
+          },
+          {
+            "phase": 0.22499999999999998,
+            "sole_pitch_degrees": -10.10720807732307,
+            "local_rig_ankle_x_degrees": -21.870591863913695
+          },
+          {
+            "phase": 0.23333333333333328,
+            "sole_pitch_degrees": -9.916521357099397,
+            "local_rig_ankle_x_degrees": -18.678726644003554
+          },
+          {
+            "phase": 0.2416666666666667,
+            "sole_pitch_degrees": -9.65626237302226,
+            "local_rig_ankle_x_degrees": -15.50027591562332
+          },
+          {
+            "phase": 0.25,
+            "sole_pitch_degrees": -9.125337851274418,
+            "local_rig_ankle_x_degrees": -12.585242531642026
+          },
+          {
+            "phase": 0.2583333333333333,
+            "sole_pitch_degrees": -8.288800794089966,
+            "local_rig_ankle_x_degrees": -9.976496174385261
+          },
+          {
+            "phase": 0.2666666666666667,
+            "sole_pitch_degrees": -7.266573180057078,
+            "local_rig_ankle_x_degrees": -7.544751608148437
+          },
+          {
+            "phase": 0.275,
+            "sole_pitch_degrees": -6.0876796492698535,
+            "local_rig_ankle_x_degrees": -5.244987641017417
+          },
+          {
+            "phase": 0.2833333333333333,
+            "sole_pitch_degrees": -4.780891875475789,
+            "local_rig_ankle_x_degrees": -3.0269330134838466
+          },
+          {
+            "phase": 0.29166666666666663,
+            "sole_pitch_degrees": -3.3747042146319335,
+            "local_rig_ankle_x_degrees": -0.8349786198421584
+          },
+          {
+            "phase": 0.30000000000000004,
+            "sole_pitch_degrees": -1.8943603089908476,
+            "local_rig_ankle_x_degrees": 1.463794809776652
+          },
+          {
+            "phase": 0.30833333333333335,
+            "sole_pitch_degrees": -0.4023851259014838,
+            "local_rig_ankle_x_degrees": 3.8108365992905604
+          },
+          {
+            "phase": 0.31666666666666665,
+            "sole_pitch_degrees": 1.0725765391447872,
+            "local_rig_ankle_x_degrees": 6.034690270872883
+          },
+          {
+            "phase": 0.32499999999999996,
+            "sole_pitch_degrees": 2.501860284996176,
+            "local_rig_ankle_x_degrees": 8.227373520404205
+          },
+          {
+            "phase": 0.33333333333333337,
+            "sole_pitch_degrees": 3.8573753555486796,
+            "local_rig_ankle_x_degrees": 10.744392998428639
+          },
+          {
+            "phase": 0.3416666666666667,
+            "sole_pitch_degrees": 5.05611610962757,
+            "local_rig_ankle_x_degrees": 14.441043348948572
+          },
+          {
+            "phase": 0.35,
+            "sole_pitch_degrees": 6.091090467176709,
+            "local_rig_ankle_x_degrees": 16.28006666033263
+          },
+          {
+            "phase": 0.3583333333333333,
+            "sole_pitch_degrees": 6.936815621827571,
+            "local_rig_ankle_x_degrees": 17.094995313227066
+          },
+          {
+            "phase": 0.3666666666666667,
+            "sole_pitch_degrees": 7.563198152026213,
+            "local_rig_ankle_x_degrees": 17.572758507932996
+          },
+          {
+            "phase": 0.375,
+            "sole_pitch_degrees": 7.94133182048857,
+            "local_rig_ankle_x_degrees": 18.254326009735642
+          },
+          {
+            "phase": 0.3833333333333333,
+            "sole_pitch_degrees": 8.007262421663649,
+            "local_rig_ankle_x_degrees": 19.17284472667708
+          },
+          {
+            "phase": 0.3916666666666667,
+            "sole_pitch_degrees": 8.123826193114075,
+            "local_rig_ankle_x_degrees": 19.90206133567703
+          },
+          {
+            "phase": 0.4,
+            "sole_pitch_degrees": 8.310530078658223,
+            "local_rig_ankle_x_degrees": 20.408603532450808
+          },
+          {
+            "phase": 0.4083333333333333,
+            "sole_pitch_degrees": 8.570821876790605,
+            "local_rig_ankle_x_degrees": 20.67941199530535
+          },
+          {
+            "phase": 0.41666666666666663,
+            "sole_pitch_degrees": 8.892131382448337,
+            "local_rig_ankle_x_degrees": 20.721716479477116
+          },
+          {
+            "phase": 0.42500000000000004,
+            "sole_pitch_degrees": 9.2697491218862,
+            "local_rig_ankle_x_degrees": 20.47595432030901
+          },
+          {
+            "phase": 0.43333333333333335,
+            "sole_pitch_degrees": 9.670715033584568,
+            "local_rig_ankle_x_degrees": 20.028768174969937
+          },
+          {
+            "phase": 0.44166666666666665,
+            "sole_pitch_degrees": 10.08247026972874,
+            "local_rig_ankle_x_degrees": 19.391402242381027
+          },
+          {
+            "phase": 0.44999999999999996,
+            "sole_pitch_degrees": 10.492466192432405,
+            "local_rig_ankle_x_degrees": 18.575910098880062
+          },
+          {
+            "phase": 0.45833333333333337,
+            "sole_pitch_degrees": 10.888161343141807,
+            "local_rig_ankle_x_degrees": 17.59511371708645
+          },
+          {
+            "phase": 0.4666666666666667,
+            "sole_pitch_degrees": 11.239610184350314,
+            "local_rig_ankle_x_degrees": 16.422498302642197
+          },
+          {
+            "phase": 0.475,
+            "sole_pitch_degrees": 11.53908749003327,
+            "local_rig_ankle_x_degrees": 15.129212228584036
+          },
+          {
+            "phase": 0.4833333333333333,
+            "sole_pitch_degrees": 11.774006550742069,
+            "local_rig_ankle_x_degrees": 13.731554887592559
+          },
+          {
+            "phase": 0.4916666666666667,
+            "sole_pitch_degrees": 11.931824417356735,
+            "local_rig_ankle_x_degrees": 12.246010941229589
+          },
+          {
+            "phase": 0.5,
+            "sole_pitch_degrees": 11.999999964959933,
+            "local_rig_ankle_x_degrees": 10.689294716167792
+          }
+        ]
+      }
+    },
+    "toe_weighted_vertices": {
+      "L": 0,
+      "R": 0
+    }
+  }
+}

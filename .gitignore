@@ -3,4 +3,10 @@
 /android/
 build/
 installer/
+tools/mcp-servers/
+__pycache__/
+*.blend1
+*.blend2
+# Raw render sequences can be regenerated; retain packaged previews and stills.
+assets/models/**/previews/*/
 

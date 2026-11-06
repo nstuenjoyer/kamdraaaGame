@@ -1,0 +1,52 @@
+{
+  "source": "steps-2.mp3",
+  "source_sha256": "50ac31c607e087e7648e5c37769a187aed9fd1b137e1e7ae25769a35e9d93d63",
+  "sample_rate": 44100,
+  "global_gain": 2.3586442091027795,
+  "pitch_changed": false,
+  "edge_fade_ms": 16,
+  "highpass_hz": 85,
+  "lowpass_hz": 2400,
+  "lowpass_poles": 2,
+  "noise_floor": 0.0039666862574714344,
+  "target_peak": 0.22,
+  "transient_soft_knee": 0.14,
+  "clips": [
+    {
+      "file": "step_00.wav",
+      "source_start": 0.03,
+      "duration": 0.43,
+      "peak": 0.158599853515625
+    },
+    {
+      "file": "step_01.wav",
+      "source_start": 0.57,
+      "duration": 0.4850113378684807,
+      "peak": 0.109344482421875
+    },
+    {
+      "file": "step_02.wav",
+      "source_start": 1.22,
+      "duration": 0.47,
+      "peak": 0.097198486328125
+    },
+    {
+      "file": "step_03.wav",
+      "source_start": 1.84,
+      "duration": 0.47,
+      "peak": 0.1502685546875
+    },
+    {
+      "file": "step_04.wav",
+      "source_start": 2.46,
+      "duration": 0.4750113378684807,
+      "peak": 0.10382080078125
+    },
+    {
+      "file": "step_05.wav",
+      "source_start": 3.09,
+      "duration": 0.51,
+      "peak": 0.22003173828125
+    }
+  ]
+}

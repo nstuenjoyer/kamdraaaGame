@@ -1,5 +1,14 @@
 # Recorded heartbeat and window rain
 
+5 November 2026: the active 3D footstep bank now comes from the user-provided
+`steps-2.mp3`, not Kenney. Six WAV cuts, source preservation, provenance and
+processing are documented in `footsteps_user/README.md`.
+
+3D prototype update (4 November 2026): footsteps now use original CC0 recordings
+from [Kenney Impact Sounds](https://kenney.nl/assets/impact-sounds), with license
+and provenance in `footsteps_3d/`. Recorded heartbeat is temporarily disabled
+in the 3D scene only; the files and 2D behavior are preserved.
+
 Added 1 November 2026. Both recordings are available under CC0.
 
 - **kathol — real heartbeat.wav**: https://freesound.org/people/kathol/sounds/43621/ . The author describes a real heartbeat recorded through a stethoscope after exercise. The downloaded MP3 preview is preserved in `AI/review/audio_sources/heartbeat_recording.mp3`. Runtime `heartbeat_s1.wav` and `heartbeat_s2.wav` are two extracted natural sounds, band-limited to 42–240 Hz with soft sample edges. Pitch is unchanged during playback; BPM changes the interval, not the recording's pitch.

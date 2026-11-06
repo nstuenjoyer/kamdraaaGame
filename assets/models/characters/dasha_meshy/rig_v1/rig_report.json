@@ -1,0 +1,12 @@
+{
+  "bones": 31,
+  "vertices": 12683,
+  "rest_pose_max_error": 1.2036781326982014e-07,
+  "rigid_head_vertices": 10000,
+  "bag_island_vertices": 362,
+  "bag_weighted_vertices": 362,
+  "max_influences": 4,
+  "materials_preserved": true,
+  "topology_changed": false,
+  "status": "First FK rig; coat and joints need artist deformation review"
+}

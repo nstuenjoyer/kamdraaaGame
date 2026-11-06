@@ -1,0 +1,69 @@
+{
+  "source": "rig_v1/source/dasha_rig_v1.blend",
+  "bones": 31,
+  "geometry_changed": "planar support cuts on trousers only",
+  "skin": {
+    "method": "connected components below .53H; nearest surface for detached seams",
+    "changed_vertices": 1392,
+    "coat_vertices": 465,
+    "leg_vertices": 732,
+    "sole_vertices": 195,
+    "protected_face_vertices": 10000,
+    "bag_vertices_unchanged": 362,
+    "positions_uv_materials_unchanged": true,
+    "max_influences": 4
+  },
+  "joint_support": {
+    "selected_edges": 96,
+    "cuts_per_edge": 2,
+    "vertices_before": 12683,
+    "vertices_after": 12901,
+    "polygons_before": 25434,
+    "polygons_after": 25712,
+    "triangles_after": 25870,
+    "protected_vertices_unchanged": 10000,
+    "protected_polygons_and_uv_unchanged": 19779,
+    "original_positions_unchanged": true,
+    "subdivide_max_float_error": 0.0,
+    "smoothing": false
+  },
+  "runtime_ik": false,
+  "clips": {
+    "idle": {
+      "seconds": 4.0,
+      "cycle_distance": 0,
+      "front_coat_clearance_offset_max": 0.0,
+      "ankle_target_max_error": 0
+    },
+    "walk": {
+      "seconds": 1.0,
+      "cycle_distance": 1.1333333333333335,
+      "front_coat_clearance_offset_max": 0.016625,
+      "ankle_target_max_error": 1.884864366154897e-07
+    },
+    "run": {
+      "seconds": 0.8,
+      "cycle_distance": 2.1999999999999997,
+      "front_coat_clearance_offset_max": 0.12068750000000002,
+      "ankle_target_max_error": 2.0701354726329154e-07
+    },
+    "sneak": {
+      "seconds": 1.4,
+      "cycle_distance": 0.5555555555555556,
+      "front_coat_clearance_offset_max": 0.11068750000000002,
+      "ankle_target_max_error": 1.884864366154897e-07
+    },
+    "stairs_up": {
+      "seconds": 1.2,
+      "cycle_distance": 0.6875,
+      "front_coat_clearance_offset_max": 0.204359375,
+      "ankle_target_max_error": 2.407356265396403e-07
+    },
+    "stairs_down": {
+      "seconds": 1.2,
+      "cycle_distance": 0.6875,
+      "front_coat_clearance_offset_max": 0.060062500000000005,
+      "ankle_target_max_error": 1.9670097205704578e-07
+    }
+  }
+}

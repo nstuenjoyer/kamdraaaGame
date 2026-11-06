@@ -3,7 +3,7 @@ extends Control
 # Скрипт главного меню (MainMenu)
 # Отвечает за навигацию, диалоги сохранения/загрузки, настройки и экран "Об игре"
 
-const GAME_SCENE_PATH: String = "res://scenes/chapter_1/apartment.tscn"
+const GAME_SCENE_PATH: String = "res://scenes/chapter_1_3d/apartment.tscn"
 
 # Главные кнопки
 @onready var btn_play: Button = $Content/MenuButtons/BtnPlay

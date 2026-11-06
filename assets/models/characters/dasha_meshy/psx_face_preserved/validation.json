@@ -1,0 +1,25 @@
+{
+  "roundtrip": "pass",
+  "meshes": 1,
+  "triangles": 25434,
+  "embedded_textures": [
+    [
+      2048,
+      2048
+    ],
+    [
+      2048,
+      2048
+    ],
+    [
+      2048,
+      2048
+    ]
+  ],
+  "height_blender_units": 1.8986839652061462,
+  "boundary_edges_after_positional_weld": 0,
+  "rigged": false,
+  "protected_source_vertex_checks": 10916,
+  "protected_source_max_position_error": 0.0,
+  "facial_materials": 1
+}

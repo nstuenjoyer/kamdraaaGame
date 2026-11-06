@@ -1,5 +1,32 @@
 # Kamdraaa — Developer & Agent Architecture Guide
 
+## 3D migration prototype (2026-11-04)
+
+`scenes/chapter_1_3d/apartment.tscn` is a separate, unfinished PSX 3D version.
+Read `docs/3d_migration/IMPLEMENTATION_STATUS.md` and `docs/3D_MIGRATION_PLAN.md`
+before continuing migration. By explicit user request (7 November), main-menu
+New Game and Continue now use 3D by default. The 2D chapter remains a legacy
+scene, with its saves preserved separately. This switch is not final art/export
+acceptance of the whole migration.
+`scripts/chapter_1_3d/layout.gd` defines 14 zones on two floors and camera poses;
+the 3D controller reuses the existing chapter story/UI through a Node host.
+3D saves are v4, layout revision 1, isolated in `user://saves/chapter_1_3d/`.
+Use `tools/preview_3d.ps1` for an isolated interactive profile and
+`tools/run_3d_checks.ps1 [-Route|-EnemyOnly|-Visual]` for isolated checks.
+The Meshy character retains its protected face. Since 2026-11-06 the prototype
+uses `assets/models/characters/dasha_meshy/locomotion_v2/dasha_locomotion.glb`:
+31 bones, corrected garment/boot weights and idle/walk/run/sneak/stairs up/down.
+Stance distances match runtime speeds; baked cloth clearance and trouser joint
+support preserve the head. See the v2 README and contact_validation.json.
+`dasha_animation.gd` blends clips and drives cadence/footsteps from actual travel.
+Ordinary walk has an extended support leg distinct from sneak; keep the model's
+`animation/fps=120` import to retain intermediate knee/ankle poses. Its independent
+regression is `tools/art/check_dasha_walk.py`, with a preserved previous source.
+Read the locomotion folder README for limits: no runtime IK or interaction clips.
+`rig_v1` retains the initial rig and its deformation exercise as a source baseline.
+The bedroom GLB kit is a first art pass; the rest of the environment and enemy
+are provisional. Do not describe this prototype as the finished migration.
+
 Welcome to **Kamdraaa** — a top-down psychological noir detective thriller built with **Godot Engine 4.7.2** on Windows.
 
 This file serves as the primary system map for AI agents and human developers, providing instant architectural orientation, conventions, and key APIs.

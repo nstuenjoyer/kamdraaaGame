@@ -1,0 +1,34 @@
+{
+  "original_triangles": 124180,
+  "working_triangles": 7450,
+  "reduction_percent": 94.0,
+  "vertices": 3691,
+  "texture_size": [
+    1024,
+    1024
+  ],
+  "uv_layers": 1,
+  "flat_shaded": true,
+  "rigged": false,
+  "normal_map_used": false,
+  "transforms_preserved": true,
+  "before_weld": {
+    "vertices": 73530,
+    "boundary_edges": 21942
+  },
+  "after_weld": {
+    "vertices": 62056,
+    "boundary_edges": 0
+  },
+  "sampled_surface_distance_local_units": {
+    "samples": 3677,
+    "max": 0.012093465775251389,
+    "p95": 0.004094048868864775
+  },
+  "sampled_head_distance_local_units": {
+    "samples": 647,
+    "max": 0.004565853159874678,
+    "p95": 0.0022679113317281008
+  },
+  "status": "Unapproved static style copy; decimation is not animation retopology"
+}

@@ -1,0 +1,2641 @@
+{
+  "method": "saved source keys sampled with explicit forward root translation; heel/flat/toe rigid sole landmarks; strict leg-edge/cloth-triangle crossings",
+  "source_blend_sha256": "723e4cc6fb2b99df1c470e3a156bc244623e1c9b1300d197970800b56ef1c1c7",
+  "support_vertices": "all rigid foot vertices below .085H, main boot and detached sole",
+  "sample_count_per_cycle": 121,
+  "cloth_triangles_below_043H": 435,
+  "leg_edges_020_to_043H": 561,
+  "clips": {
+    "walk": {
+      "support_segments": {
+        "L_heel": {
+          "landmark_vertex": 11430,
+          "world_horizontal_drift_m": 0.0009704865667310723,
+          "max_absolute_plane_clearance_m": 0.001018226146697998
+        },
+        "L_flat": {
+          "landmark_vertex": 11097,
+          "world_horizontal_drift_m": 0.0015111171785163347,
+          "max_absolute_plane_clearance_m": 0.0004761219024658203
+        },
+        "L_toe": {
+          "landmark_vertex": 11582,
+          "world_horizontal_drift_m": 0.00018966641028386107,
+          "max_absolute_plane_clearance_m": 0.0005685091018676758
+        },
+        "R_heel": {
+          "landmark_vertex": 1160,
+          "world_horizontal_drift_m": 9.065976685356268e-05,
+          "max_absolute_plane_clearance_m": 0.0010122060775756836
+        },
+        "R_flat": {
+          "landmark_vertex": 1255,
+          "world_horizontal_drift_m": 0.001889463126278862,
+          "max_absolute_plane_clearance_m": 0.0005068778991699219
+        },
+        "R_toe": {
+          "landmark_vertex": 1222,
+          "world_horizontal_drift_m": 0.0005949251671803622,
+          "max_absolute_plane_clearance_m": 0.0009328126907348633
+        }
+      },
+      "min_sole_clearance_m": -4.76837158203125e-07,
+      "max_support_clearance_m": 4.76837158203125e-07,
+      "crossings_by_frame": [
+        {
+          "phase": 0.0,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.008333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.016666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.025,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.03333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.041666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.05,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.058333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.06666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.075,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.08333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.09166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.1,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.10833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.11666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.125,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.13333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.14166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.16666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.175,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.18333333333333332,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.19166666666666668,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.20833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.21666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.225,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.23333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.24166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25833333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.26666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.275,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.30833333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.31666666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.325,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.36666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.375,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.38333333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.39166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.425,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.43333333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.44166666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.45,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.475,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.48333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.49166666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.525,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5416666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.55,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.575,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.625,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.65,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.675,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7083333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.725,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.75,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.775,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7916666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.825,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.85,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.875,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.925,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.95,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9583333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.975,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 1.0,
+          "edge_crossings": 0
+        }
+      ],
+      "max_edge_crossings": 0,
+      "worst_crossing_phases": [],
+      "support_max_horizontal_drift_m": 0.001889463126278862,
+      "flat_support_max_horizontal_drift_m": 0.001889463126278862
+    },
+    "run": {
+      "support_segments": {
+        "L_heel": {
+          "landmark_vertex": 11430,
+          "world_horizontal_drift_m": 0.004127982073714614,
+          "max_absolute_plane_clearance_m": 0.001028299331665039
+        },
+        "L_flat": {
+          "landmark_vertex": 11097,
+          "world_horizontal_drift_m": 0.0004955791783622775,
+          "max_absolute_plane_clearance_m": 0.00010752677917480469
+        },
+        "L_toe": {
+          "landmark_vertex": 11582,
+          "world_horizontal_drift_m": 0.0038932920643378168,
+          "max_absolute_plane_clearance_m": 0.0005481243133544922
+        },
+        "R_heel": {
+          "landmark_vertex": 1160,
+          "world_horizontal_drift_m": 0.004125435266026255,
+          "max_absolute_plane_clearance_m": 0.0010200738906860352
+        },
+        "R_flat": {
+          "landmark_vertex": 1255,
+          "world_horizontal_drift_m": 0.0005364923486473478,
+          "max_absolute_plane_clearance_m": 0.0001169443130493164
+        },
+        "R_toe": {
+          "landmark_vertex": 1222,
+          "world_horizontal_drift_m": 0.0038968016025845474,
+          "max_absolute_plane_clearance_m": 0.0009192824363708496
+        }
+      },
+      "min_sole_clearance_m": -0.00019943714141845703,
+      "max_support_clearance_m": 0.00019943714141845703,
+      "crossings_by_frame": [
+        {
+          "phase": 0.0,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.008333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.016666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.025,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.03333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.041666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.05,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.058333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.06666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.075,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.08333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.09166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.1,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.10833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.11666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.125,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.13333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.14166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.16666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.175,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.18333333333333332,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.19166666666666668,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.20833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.21666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.225,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.23333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.24166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25833333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.26666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.275,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.30833333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.31666666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.325,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.36666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.375,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.38333333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.39166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.425,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.43333333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.44166666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.45,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.475,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.48333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.49166666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.525,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5416666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.55,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.575,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.625,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.65,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.675,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7083333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.725,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.75,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.775,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7916666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.825,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.85,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.875,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.925,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.95,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9583333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.975,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 1.0,
+          "edge_crossings": 0
+        }
+      ],
+      "max_edge_crossings": 0,
+      "worst_crossing_phases": [],
+      "support_max_horizontal_drift_m": 0.004127982073714614,
+      "flat_support_max_horizontal_drift_m": 0.0005364923486473478
+    },
+    "sneak": {
+      "support_segments": {
+        "L_heel": {
+          "landmark_vertex": 11430,
+          "world_horizontal_drift_m": 1.8335903068698543e-05,
+          "max_absolute_plane_clearance_m": 0.0010230541229248047
+        },
+        "L_flat": {
+          "landmark_vertex": 11097,
+          "world_horizontal_drift_m": 5.603331971336729e-06,
+          "max_absolute_plane_clearance_m": 4.5299530029296875e-06
+        },
+        "L_toe": {
+          "landmark_vertex": 11582,
+          "world_horizontal_drift_m": 2.8816892505686198e-05,
+          "max_absolute_plane_clearance_m": 0.0005545616149902344
+        },
+        "R_heel": {
+          "landmark_vertex": 1160,
+          "world_horizontal_drift_m": 1.3947876913066072e-05,
+          "max_absolute_plane_clearance_m": 0.0010148286819458008
+        },
+        "R_flat": {
+          "landmark_vertex": 1255,
+          "world_horizontal_drift_m": 0.0001383423855394214,
+          "max_absolute_plane_clearance_m": 2.5033950805664062e-06
+        },
+        "R_toe": {
+          "landmark_vertex": 1222,
+          "world_horizontal_drift_m": 2.881213116143506e-05,
+          "max_absolute_plane_clearance_m": 0.0009205937385559082
+        }
+      },
+      "min_sole_clearance_m": -7.790327072143555e-05,
+      "max_support_clearance_m": 7.790327072143555e-05,
+      "crossings_by_frame": [
+        {
+          "phase": 0.0,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.008333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.016666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.025,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.03333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.041666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.05,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.058333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.06666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.075,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.08333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.09166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.1,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.10833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.11666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.125,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.13333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.14166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.16666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.175,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.18333333333333332,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.19166666666666668,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.20833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.21666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.225,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.23333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.24166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25833333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.26666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.275,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.30833333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.31666666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.325,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.36666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.375,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.38333333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.39166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.425,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.43333333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.44166666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.45,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.475,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.48333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.49166666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.525,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5416666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.55,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.575,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.625,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.65,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.675,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7083333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.725,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.75,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.775,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7916666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.825,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.85,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.875,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.925,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.95,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9583333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.975,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 1.0,
+          "edge_crossings": 0
+        }
+      ],
+      "max_edge_crossings": 0,
+      "worst_crossing_phases": [],
+      "support_max_horizontal_drift_m": 0.0001383423855394214,
+      "flat_support_max_horizontal_drift_m": 0.0001383423855394214
+    },
+    "stairs_up": {
+      "support_segments": {
+        "L_heel": {
+          "landmark_vertex": 11430,
+          "world_horizontal_drift_m": 0.0002475976961905645,
+          "max_absolute_plane_clearance_m": 0.0010231617230819137
+        },
+        "L_flat": {
+          "landmark_vertex": 11097,
+          "world_horizontal_drift_m": 3.3213882732805278e-06,
+          "max_absolute_plane_clearance_m": 1.2428215274716344e-05
+        },
+        "L_toe": {
+          "landmark_vertex": 11582,
+          "world_horizontal_drift_m": 0.000169896892209884,
+          "max_absolute_plane_clearance_m": 0.0005387412543687641
+        },
+        "R_heel": {
+          "landmark_vertex": 1160,
+          "world_horizontal_drift_m": 0.0003554970135321813,
+          "max_absolute_plane_clearance_m": 0.0010134838585305927
+        },
+        "R_flat": {
+          "landmark_vertex": 1255,
+          "world_horizontal_drift_m": 1.8105096347568917e-05,
+          "max_absolute_plane_clearance_m": 6.869761898236053e-06
+        },
+        "R_toe": {
+          "landmark_vertex": 1222,
+          "world_horizontal_drift_m": 0.00016953052072561878,
+          "max_absolute_plane_clearance_m": 0.0009060374124471799
+        }
+      },
+      "min_sole_clearance_m": -8.065226843343004e-05,
+      "max_support_clearance_m": 8.065226843343004e-05,
+      "crossings_by_frame": [
+        {
+          "phase": 0.0,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.008333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.016666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.025,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.03333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.041666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.05,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.058333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.06666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.075,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.08333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.09166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.1,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.10833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.11666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.125,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.13333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.14166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.16666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.175,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.18333333333333332,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.19166666666666668,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.20833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.21666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.225,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.23333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.24166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25833333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.26666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.275,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.30833333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.31666666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.325,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.36666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.375,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.38333333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.39166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.425,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.43333333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.44166666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.45,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.475,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.48333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.49166666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.525,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5416666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.55,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.575,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.625,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.65,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.675,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7083333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.725,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.75,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.775,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7916666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.825,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.85,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.875,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.925,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.95,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9583333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.975,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 1.0,
+          "edge_crossings": 0
+        }
+      ],
+      "max_edge_crossings": 0,
+      "worst_crossing_phases": [],
+      "support_max_horizontal_drift_m": 0.0003554970135321813,
+      "flat_support_max_horizontal_drift_m": 1.8105096347568917e-05
+    },
+    "stairs_down": {
+      "support_segments": {
+        "L_heel": {
+          "landmark_vertex": 11430,
+          "world_horizontal_drift_m": 0.0002469793113787506,
+          "max_absolute_plane_clearance_m": 0.0010262382023495703
+        },
+        "L_flat": {
+          "landmark_vertex": 11097,
+          "world_horizontal_drift_m": 6.362813278415528e-06,
+          "max_absolute_plane_clearance_m": 1.0863477696656942e-05
+        },
+        "L_toe": {
+          "landmark_vertex": 11582,
+          "world_horizontal_drift_m": 0.00011420250813902511,
+          "max_absolute_plane_clearance_m": 0.0005392073464132992
+        },
+        "R_heel": {
+          "landmark_vertex": 1160,
+          "world_horizontal_drift_m": 0.00037217140227584867,
+          "max_absolute_plane_clearance_m": 0.0010166636118372641
+        },
+        "R_flat": {
+          "landmark_vertex": 1255,
+          "world_horizontal_drift_m": 1.6838392918422554e-05,
+          "max_absolute_plane_clearance_m": 6.483163686388027e-06
+        },
+        "R_toe": {
+          "landmark_vertex": 1222,
+          "world_horizontal_drift_m": 0.0001697298122061081,
+          "max_absolute_plane_clearance_m": 0.0009029705301913768
+        }
+      },
+      "min_sole_clearance_m": -4.844163921063487e-05,
+      "max_support_clearance_m": 6.122927531851607e-05,
+      "crossings_by_frame": [
+        {
+          "phase": 0.0,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.008333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.016666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.025,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.03333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.041666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.05,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.058333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.06666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.075,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.08333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.09166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.1,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.10833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.11666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.125,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.13333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.14166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.15833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.16666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.175,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.18333333333333332,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.19166666666666668,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.20833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.21666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.225,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.23333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.24166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.25833333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.26666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.275,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.2916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.30833333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.31666666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.325,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.3416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.35833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.36666666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.375,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.38333333333333336,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.39166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.425,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.43333333333333335,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.44166666666666665,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.45,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.4666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.475,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.48333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.49166666666666664,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.525,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5416666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.55,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.575,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5833333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.5916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.625,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.65,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6666666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.675,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.6916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7083333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.725,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.75,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.775,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.7916666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8166666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.825,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8333333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.85,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8583333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.875,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.8916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9083333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9166666666666666,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.925,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9333333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9416666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.95,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9583333333333334,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9666666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.975,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9833333333333333,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 0.9916666666666667,
+          "edge_crossings": 0
+        },
+        {
+          "phase": 1.0,
+          "edge_crossings": 0
+        }
+      ],
+      "max_edge_crossings": 0,
+      "worst_crossing_phases": [],
+      "support_max_horizontal_drift_m": 0.00037217140227584867,
+      "flat_support_max_horizontal_drift_m": 1.6838392918422554e-05
+    }
+  },
+  "bind_edge_crossings": 0
+}

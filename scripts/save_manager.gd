@@ -9,6 +9,9 @@ signal save_deleted(slot_id: String)
 signal toast_requested(message: String)
 
 const SAVES_DIR: String = "user://saves/chapter_1/"
+const SAVES_3D_DIR: String = "user://saves/chapter_1_3d/"
+const CHAPTER_3D_SCENE: String = "res://scenes/chapter_1_3d/apartment.tscn"
+const SCHEMA_3D: GDScript = preload("res://scripts/chapter_1_3d/save_schema.gd")
 const CHAPTER_STATE: GDScript = preload("res://scripts/chapter_1/chapter_state.gd")
 const CHAPTER_SCENE_PATH: String = "res://scenes/chapter_1/apartment.tscn"
 const GAME_SCENE_PATH: String = "res://scenes/main.tscn"
@@ -22,8 +25,13 @@ func _ready() -> void:
 
 
 func _ensure_saves_dir_exists() -> void:
-	if not DirAccess.dir_exists_absolute(SAVES_DIR):
-		DirAccess.make_dir_recursive_absolute(SAVES_DIR)
+	DirAccess.make_dir_recursive_absolute(_save_directory())
+
+func _save_directory() -> String:
+	var scene: Node = get_tree().current_scene
+	if scene != null and scene.scene_file_path in [CHAPTER_SCENE_PATH, GAME_SCENE_PATH]:
+		return SAVES_DIR
+	return SAVES_3D_DIR
 
 func _ensure_initial_saves_exist() -> void:
 	if not save_exists("slot_1"):
@@ -113,13 +121,15 @@ func create_sample_save_for_slot(slot_id: String) -> bool:
 	return true
 
 func get_slot_path(slot_id: String) -> String:
-	return SAVES_DIR + slot_id + ".json"
+	return _save_directory() + slot_id + ".json"
 
 func save_exists(slot_id: String) -> bool:
 	return FileAccess.file_exists(get_slot_path(slot_id))
 
 func get_save_info(slot_id: String) -> Dictionary:
 	var path: String = get_slot_path(slot_id)
+	if not FileAccess.file_exists(path) and _save_directory() == SAVES_3D_DIR and FileAccess.file_exists(SAVES_DIR + slot_id + ".json"):
+		return {"exists": true, "compatible": false, "slot_id": slot_id, "title": _get_default_slot_title(slot_id), "timestamp": "2D", "location": "Предыдущая 2D-глава", "details": "Исходный файл сохранён без изменений"}
 	if not FileAccess.file_exists(path) and FileAccess.file_exists("user://saves/" + slot_id + ".json"):
 		return {"exists": true, "compatible": false, "slot_id": slot_id, "title": _get_default_slot_title(slot_id), "timestamp": "v1/v2", "location": "Технодемо · несовместимое сохранение", "details": "Исходный файл сохранён без изменений"}
 	if not FileAccess.file_exists(path):
@@ -143,7 +153,7 @@ func get_save_info(slot_id: String) -> Dictionary:
 	var data: Dictionary = json.data
 	return {
 		"exists": true,
-		"compatible": CHAPTER_STATE.valid(data),
+		"compatible": SCHEMA_3D.valid(data) if _save_directory() == SAVES_3D_DIR else CHAPTER_STATE.valid(data),
 		"slot_id": slot_id,
 		"title": data.get("slot_title", _get_default_slot_title(slot_id)),
 		"timestamp": data.get("timestamp", "Неизвестно"),
@@ -181,6 +191,7 @@ func get_latest_save_slot() -> String:
 	return latest_slot
 
 func save_game(slot_id: String, custom_title: String = "", location_override: String = "") -> bool:
+	if slot_id not in get_all_slots(): return false
 	_ensure_saves_dir_exists()
 	var tree: SceneTree = get_tree()
 	if not tree or not tree.current_scene:
@@ -287,6 +298,7 @@ func save_game(slot_id: String, custom_title: String = "", location_override: St
 	return true
 
 func load_game(slot_id: String) -> bool:
+	if slot_id not in get_all_slots(): return false
 	var path: String = get_slot_path(slot_id)
 	if not FileAccess.file_exists(path):
 		toast_requested.emit("Слот пуст или относится к несовместимому технодемо")
@@ -306,10 +318,21 @@ func load_game(slot_id: String) -> bool:
 		return false
 
 	var data: Dictionary = json.data
-	if not _valid_save(data):
+	if not (SCHEMA_3D.valid(data) if _save_directory() == SAVES_3D_DIR else _valid_save(data)):
 		toast_requested.emit("Сохранение повреждено или относится к несовместимой версии")
 		game_loaded.emit(slot_id, false)
 		return false
+	if int(data.get("version", 0)) == 4:
+		last_used_slot = slot_id
+		get_tree().paused = false
+		if get_tree().current_scene and get_tree().current_scene.scene_file_path == CHAPTER_3D_SCENE:
+			var loaded: bool = get_tree().current_scene.load_slot(slot_id)
+			game_loaded.emit(slot_id, loaded)
+			return loaded
+		pending_save_data = data
+		var changed: Error = get_tree().change_scene_to_file(CHAPTER_3D_SCENE)
+		if changed != OK: pending_save_data = {}
+		return changed == OK
 	if int(data.get("version", 0)) == 3:
 		pending_save_data = data
 		last_used_slot = slot_id
@@ -353,6 +376,7 @@ func load_game(slot_id: String) -> bool:
 	return true
 
 func delete_save(slot_id: String) -> bool:
+	if slot_id not in get_all_slots(): return false
 	var path: String = get_slot_path(slot_id)
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
@@ -370,6 +394,12 @@ func auto_save(location_description: String = "") -> void:
 func apply_pending_save_if_any(scene_root: Node) -> bool:
 	if pending_save_data.is_empty():
 		return false
+	if int(pending_save_data.get("version", 0)) == 4:
+		if scene_root.scene_file_path != CHAPTER_3D_SCENE: return false
+		pending_save_data = {}
+		var loaded: bool = scene_root.load_slot(last_used_slot)
+		game_loaded.emit(last_used_slot, loaded)
+		return loaded
 	if int(pending_save_data.get("version", 0)) == 3:
 		if not CHAPTER_STATE.valid(pending_save_data) or not scene_root.has_method("import_chapter_save"):
 			pending_save_data = {}
@@ -483,6 +513,7 @@ func apply_pending_save_if_any(scene_root: Node) -> bool:
 	return true
 
 func _valid_save(data: Dictionary) -> bool:
+	if data.get("version", 0) == 4: return SCHEMA_3D.valid(data)
 	if data.get("version", 0) == 3:
 		return CHAPTER_STATE.valid(data)
 	if data.is_empty() or not (data.get("version", 1) is int or data.get("version", 1) is float):
@@ -530,7 +561,7 @@ func _save_chapter(scene: Node, slot: String, title: String, location: String) -
 	data["timestamp"] = Time.get_datetime_string_from_system().replace("T", " ")
 	data["location"] = location if not location.is_empty() else "Глава 1 · Тёмная квартира"
 	data["details"] = "Фаза: %s · стресс %d" % [data.chapter.phase, roundi(float(data.stress))]
-	if not CHAPTER_STATE.valid(data):
+	if not (SCHEMA_3D.valid(data) if int(data.get("version", 0)) == 4 else CHAPTER_STATE.valid(data)):
 		game_saved.emit(slot, false)
 		return false
 	var path: String = get_slot_path(slot)

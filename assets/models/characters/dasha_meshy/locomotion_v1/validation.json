@@ -1,0 +1,44 @@
+{
+  "triangles": 25434,
+  "bones": 31,
+  "protected_head_vertices": 16319,
+  "rigid_bag_vertices": 2200,
+  "clips": {
+    "idle": {
+      "loop_max_error": 3.2061255844759336e-18,
+      "pose_motion": 0.009599038174290087,
+      "head_rigid_max_error": 6.188917057900187e-08,
+      "bag_rigid_max_error": 9.06402249678704e-08
+    },
+    "walk": {
+      "loop_max_error": 8.549648079974655e-18,
+      "pose_motion": 0.18174290657043457,
+      "head_rigid_max_error": 8.971687092477304e-08,
+      "bag_rigid_max_error": 1.228781230931777e-07
+    },
+    "run": {
+      "loop_max_error": 8.549648079974655e-18,
+      "pose_motion": 0.45232290029525757,
+      "head_rigid_max_error": 6.322027276634104e-08,
+      "bag_rigid_max_error": 1.2731557704981462e-07
+    },
+    "sneak": {
+      "loop_max_error": 8.549648079974655e-18,
+      "pose_motion": 0.22749459743499756,
+      "head_rigid_max_error": 6.188917057900187e-08,
+      "bag_rigid_max_error": 1.2377834115800373e-07
+    },
+    "stairs_up": {
+      "loop_max_error": 8.549648079974655e-18,
+      "pose_motion": 0.3432259261608124,
+      "head_rigid_max_error": 1.201947465904182e-07,
+      "bag_rigid_max_error": 1.228781230931777e-07
+    },
+    "stairs_down": {
+      "loop_max_error": 8.549648079974655e-18,
+      "pose_motion": 0.040307044982910156,
+      "head_rigid_max_error": 6.322027276634104e-08,
+      "bag_rigid_max_error": 1.2377834115800373e-07
+    }
+  }
+}

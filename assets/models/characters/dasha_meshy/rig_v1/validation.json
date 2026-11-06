@@ -1,0 +1,10 @@
+{
+  "roundtrip": "pass",
+  "triangles": 25434,
+  "bones": 31,
+  "bind_source_max_error": 1.5777341104694642e-06,
+  "rotated_head_max_rigid_error": 6.664652624284791e-08,
+  "head_checks": 16319,
+  "weights_normalized": true,
+  "max_influences": 4
+}

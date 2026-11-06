@@ -1,6 +1,6 @@
 extends RefCounted
 
-var host: Node2D
+var host: Node
 var pin: Array[int] = [0, 0, 0, 0]
 var latch: Array[int] = [0, 0, 0]
 var breakers: Array[bool] = [false, false, false]
@@ -10,7 +10,7 @@ var latch_error: String = ""
 var power_error: String = ""
 var active_digit: int = 0
 
-func setup(controller: Node2D) -> void:
+func setup(controller: Node) -> void:
 	host = controller
 
 func goal() -> String:

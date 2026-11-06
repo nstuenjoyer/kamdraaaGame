@@ -225,7 +225,7 @@ func play_paranoia_pulse() -> void:
 	play_heartbeat_pulse(90, 0.5)
 
 func play_heartbeat_pulse(bpm: int, paranoia_factor: float) -> void:
-	if not gameplay_audio_allowed() or not _heart_s1_player:
+	if not heartbeat_audio_allowed() or not _heart_s1_player:
 		return
 	# Recorded S1/S2 retain their original pitch. Only spacing and level change.
 	# Dedicated players prevent busy Foley voices or duplicate suppression from
@@ -269,7 +269,7 @@ func stop_menu_rain() -> void:
 	_rain_tween.tween_callback(_rain_player.stop)
 
 func _process(delta: float) -> void:
-	if not gameplay_audio_allowed():
+	if not heartbeat_audio_allowed():
 		stop_heartbeat()
 		return
 	if _pending_dub >= 0.0:
@@ -380,3 +380,8 @@ func _exit_tree() -> void:
 		if child is AudioStreamPlayer:
 			child.stop()
 			child.stream = null
+
+func heartbeat_audio_allowed() -> bool:
+	var scene: Node = get_tree().current_scene
+	if scene != null and scene.has_method("allows_heartbeat_audio") and not scene.allows_heartbeat_audio(): return false
+	return gameplay_audio_allowed()

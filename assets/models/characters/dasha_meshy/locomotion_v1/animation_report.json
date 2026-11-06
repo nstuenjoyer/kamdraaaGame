@@ -1,0 +1,38 @@
+{
+  "source": "rig_v1/source/dasha_rig_v1.blend",
+  "bones": 31,
+  "geometry_changed": false,
+  "runtime_ik": false,
+  "clips": {
+    "idle": {
+      "seconds": 4.0,
+      "cycle_distance": 0,
+      "ankle_target_max_error": 0
+    },
+    "walk": {
+      "seconds": 1.0,
+      "cycle_distance": 1.6,
+      "ankle_target_max_error": 1.812804499357408e-07
+    },
+    "run": {
+      "seconds": 0.8,
+      "cycle_distance": 2.2,
+      "ankle_target_max_error": 1.6858739404357614e-07
+    },
+    "sneak": {
+      "seconds": 1.4,
+      "cycle_distance": 0.85,
+      "ankle_target_max_error": 1.853776471398333e-07
+    },
+    "stairs_up": {
+      "seconds": 1.2,
+      "cycle_distance": 0.85,
+      "ankle_target_max_error": 1.454295314546163e-07
+    },
+    "stairs_down": {
+      "seconds": 1.2,
+      "cycle_distance": 0.85,
+      "ankle_target_max_error": 1.8431718463976653e-07
+    }
+  }
+}
