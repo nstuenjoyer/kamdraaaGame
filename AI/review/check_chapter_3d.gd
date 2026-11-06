@@ -23,6 +23,7 @@ func run() -> void:
 	root.add_child(host)
 	current_scene = host
 	await process_frame
+	host.skip_intro()
 	host.ui.close()
 	for i: int in 12: await physics_frame
 	while not host.navigation_ready: await physics_frame

@@ -33,6 +33,11 @@ func run() -> void:
 	var host: Node = await settle_3d()
 	check(host != null, "actual menu New Game launches 3D")
 	if host == null: quit(1); return
+	check(host.intro_active and not host.state.has("opening_done"), "fresh game starts actual opening instead of marking it complete")
+	check(not manager.save_game("slot_2"), "intro cannot be saved halfway")
+	host.skip_intro()
+	for i: int in 6: await process_frame
+	check(not host.intro_active and host.state.has("opening_done"), "skip opening reaches tutorial and releases control")
 	host.ui.close()
 	for i: int in 5: await physics_frame
 	check(manager.save_game("slot_1"), "central manager writes v4 in 3D")

@@ -16,6 +16,7 @@ func run() -> void:
 	root.add_child(host)
 	current_scene = host
 	await process_frame
+	host.skip_intro()
 	host.ui.close()
 	for i: int in 20: await physics_frame
 	var actor: ApartmentPlayer3D = host.player

@@ -38,6 +38,7 @@ var vertex_snap_enabled: bool = false
 var affine_enabled: bool = false
 var listener: AudioListener3D
 var audio_timer: float = 0.0
+var opening: RefCounted
 
 func _ready() -> void:
 	SoundManager.stop_bg_music()
@@ -72,12 +73,14 @@ func _ready() -> void:
 	ui.setup(self)
 	SaveManager.toast_requested.connect(ui.notify)
 	InventoryManager.item_used.connect(_on_item_used)
-	state.mark("intro")
-	state.mark("opening_done")
+	intro_active = true
+	player.set_control_locked(true)
+	ui.hud.visible = false
+	opening = preload("res://scripts/chapter_1_3d/opening.gd").new()
+	opening.setup(self)
 	_refresh_world()
 	_load_graphics()
 	_update_camera(true)
-	ui.message("Даша · второй этаж", "Накануне вечером погас свет. Часы разошлись, а последние часы словно выпали из памяти. Под одеялом у кровати должен быть блистер. Нужно осмотреть кровать, взять таблетки и принять одну через сумку.")
 	_bake_navigation.call_deferred()
 
 func _setup_viewport() -> void:
@@ -135,7 +138,7 @@ func _bake_navigation() -> void:
 	await get_tree().physics_frame
 	NavigationServer3D.map_force_update(world.get_world_3d().navigation_map)
 	navigation_ready = true
-	SaveManager.apply_pending_save_if_any(self)
+	if not SaveManager.apply_pending_save_if_any(self): opening.play()
 
 func is_blocked() -> bool:
 	return get_tree().paused or ui == null or not ui.modal_kind.is_empty() or intro_active
@@ -155,7 +158,7 @@ func goal_details() -> String:
 
 func _process(delta: float) -> void:
 	if not is_instance_valid(player): return
-	_update_camera(false, delta)
+	if not intro_active: _update_camera(false, delta)
 	world.update_visibility(player.global_position, camera, room_id, delta)
 	listener.position = player.position + Vector3.UP * 1.5
 	audio_timer -= delta
@@ -516,10 +519,13 @@ func _save_graphics() -> void:
 	config.save("user://psx_3d.cfg")
 
 func skip_intro() -> void:
-	intro_skip_requested = true
+	if intro_active: intro_skip_requested = true
 
 func _intro_wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout
+	var elapsed: float = 0.0
+	while elapsed < seconds and intro_active and not intro_skip_requested:
+		await get_tree().process_frame
+		if not get_tree().paused: elapsed += get_process_delta_time()
 
 func can_save_chapter() -> bool:
 	return not is_blocked() and not hidden_player
@@ -528,8 +534,11 @@ func export_chapter_save() -> Dictionary:
 	return {"version": 4, "layout_revision": 1, "scene": SCENE, "chapter": state.serialize(), "player": {"x": player.position.x, "y": player.position.y, "z": player.position.z, "yaw": player.visual.rotation.y}, "inventory": InventoryManager.get_save_data(), "stress": ParanoiaManager.target_paranoia, "flashlight_on": player.torch.visible, "enemy": enemy.snapshot() if is_instance_valid(enemy) else {}, "checkpoint": checkpoint_data.duplicate(true)}
 
 func import_chapter_save(data: Dictionary) -> void:
+	opening.cancel()
 	ui.close()
 	state.restore(data.chapter)
+	state.mark("intro")
+	state.mark("opening_done")
 	checkpoint_data = data.checkpoint.duplicate(true)
 	InventoryManager.load_save_data(data.inventory)
 	ClueManager.reset_all_clues()

@@ -4,7 +4,8 @@ param(
     [switch]$Route,
     [switch]$EnemyOnly,
     [switch]$AnimationOnly,
-    [switch]$Entry
+    [switch]$Entry,
+    [switch]$Opening
 )
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -16,7 +17,7 @@ try {
     $env:APPDATA = $reviewData
     $env:KAMDRAAA_3D_CAPTURE_DIR = Join-Path $reviewData 'captures'
     $log = Join-Path $reviewData 'checks.log'
-    $checkScript = if ($Entry) { 'res://AI/review/check_3d_entry.gd' } elseif ($AnimationOnly) { 'res://AI/review/check_dasha_animation.gd' } else { 'res://AI/review/check_chapter_3d.gd' }
+    $checkScript = if ($Opening) { 'res://AI/review/check_3d_opening.gd' } elseif ($Entry) { 'res://AI/review/check_3d_entry.gd' } elseif ($AnimationOnly) { 'res://AI/review/check_dasha_animation.gd' } else { 'res://AI/review/check_chapter_3d.gd' }
     $arguments = @('--path', $projectRoot, '--log-file', $log, '--script', $checkScript)
     if ($Visual) {
         $arguments += @('--resolution', '1280x720', '--rendering-method', 'forward_plus', '--', '--visual')
